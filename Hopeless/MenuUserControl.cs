@@ -23,6 +23,7 @@ namespace Hopeless
 
         private void startButton_Click(object sender, EventArgs e)
         {
+
             StartButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }

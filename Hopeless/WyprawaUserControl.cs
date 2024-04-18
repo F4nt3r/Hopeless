@@ -17,5 +17,6 @@ namespace Hopeless
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Wyprawa;
         }
+
     }
 }
