@@ -19,12 +19,14 @@ namespace Hopeless
             pictureBox1.Image = Properties.Resources.hope;
         }
 
-        public event EventHandler StartButtonClicked;
+        public event EventHandler NowaGraButtonClicked;
 
-        private void startButton_Click(object sender, EventArgs e)
+       
+
+        private void nowaGraButton_Click(object sender, EventArgs e)
         {
-
-            StartButtonClicked?.Invoke(this, EventArgs.Empty);
+            NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
         }
+        
     }
 }

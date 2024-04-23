@@ -1,0 +1,61 @@
+﻿namespace HopelessLibary
+{
+    public abstract class Character
+    {
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int ExperiencePoints { get; set; }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Intelligence { get; set; }
+        public int CurrentHP { get; set; }
+        public int MaxHP { get; set; }
+        public int MagicResistance { get; set; }
+        public int PhysicalResistance { get; set; }
+        public int CritChance { get; set; }
+        public int Initiative { get; set; }
+        public int MinDmg { get; set; }
+        public int MaxDmg { get; set; }
+
+
+
+        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int magicResistance, int physicalResistance, int critChance, int initiative,int minDmg,int maxDmg)
+        {
+            Name = name;
+            Level = 1;
+            ExperiencePoints = experiencePoints;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
+            CurrentHP = currentHP;
+            MaxHP = maxHP;
+            MagicResistance = magicResistance;
+            PhysicalResistance = physicalResistance;
+            CritChance = critChance;
+            Initiative = initiative;
+            MinDmg = minDmg;
+            MaxDmg = maxDmg;
+        }
+
+        public abstract void BasicAttack(Character target);
+
+        public abstract void TakeDamage(int damage);
+
+        public bool IsDead()
+        {
+            return CurrentHP <= 0;
+        }
+
+        public abstract void LevelUp();
+        
+
+        public void GainExperience(int exp)
+        {
+            ExperiencePoints += exp;
+            while (ExperiencePoints >= Level * 100)
+            {
+                LevelUp();
+            }
+        }
+    }
+}

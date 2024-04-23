@@ -24,7 +24,8 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.Visible = false;
             wyprawaUserControl.Visible = false;
 
-            menuUserControl.StartButtonClicked += (sender, args) =>
+           
+            menuUserControl.NowaGraButtonClicked += (sender, args) =>
             {
                 fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
