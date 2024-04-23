@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
-    public class Armor : IEkwipunek
+    public class Armor
     {
         public string Name { get; set; }
         public string Description { get; set; }

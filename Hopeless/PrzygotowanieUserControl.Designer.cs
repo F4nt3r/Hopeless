@@ -79,6 +79,8 @@
             knightLevel = new Label();
             knightName = new Label();
             knightEkwipunek = new TabPage();
+            knightArmor = new Label();
+            knightWeapon = new Label();
             tabControl2 = new TabControl();
             jokerPostac = new TabPage();
             pictureBox5 = new PictureBox();
@@ -95,6 +97,7 @@
             jokerDexterity = new Label();
             jokerIntelligence = new Label();
             jokerEkwipunek = new TabPage();
+            Inventory = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -108,6 +111,7 @@
             knightPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             knightStatystyki.SuspendLayout();
+            knightEkwipunek.SuspendLayout();
             tabControl2.SuspendLayout();
             jokerPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
@@ -119,7 +123,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1424, 861);
+            pictureBox1.Size = new Size(1361, 861);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -612,6 +616,8 @@
             // 
             // knightEkwipunek
             // 
+            knightEkwipunek.Controls.Add(knightArmor);
+            knightEkwipunek.Controls.Add(knightWeapon);
             knightEkwipunek.Location = new Point(4, 24);
             knightEkwipunek.Name = "knightEkwipunek";
             knightEkwipunek.Padding = new Padding(3);
@@ -619,6 +625,27 @@
             knightEkwipunek.TabIndex = 2;
             knightEkwipunek.Text = "Ekwipunek";
             knightEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // knightArmor
+            // 
+            knightArmor.Location = new Point(115, 51);
+            knightArmor.MinimumSize = new Size(60, 60);
+            knightArmor.Name = "knightArmor";
+            knightArmor.Size = new Size(60, 60);
+            knightArmor.TabIndex = 1;
+            knightArmor.Text = "Armor";
+            knightArmor.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // knightWeapon
+            // 
+            knightWeapon.AllowDrop = true;
+            knightWeapon.Location = new Point(6, 51);
+            knightWeapon.MinimumSize = new Size(60, 60);
+            knightWeapon.Name = "knightWeapon";
+            knightWeapon.Size = new Size(60, 60);
+            knightWeapon.TabIndex = 0;
+            knightWeapon.Text = "Bron";
+            knightWeapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl2
             // 
@@ -782,10 +809,18 @@
             jokerEkwipunek.Text = "Ekwipunek";
             jokerEkwipunek.UseVisualStyleBackColor = true;
             // 
+            // Inventory
+            // 
+            Inventory.Location = new Point(92, 578);
+            Inventory.Name = "Inventory";
+            Inventory.Size = new Size(301, 203);
+            Inventory.TabIndex = 8;
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Inventory);
             Controls.Add(tabControl2);
             Controls.Add(tabControl1);
             Controls.Add(tabControl5);
@@ -810,6 +845,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             knightStatystyki.ResumeLayout(false);
             knightStatystyki.PerformLayout();
+            knightEkwipunek.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
             jokerPostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -886,5 +922,8 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
         private PictureBox pictureBox5;
+        private FlowLayoutPanel Inventory;
+        private Label knightWeapon;
+        private Label knightArmor;
     }
 }

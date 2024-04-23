@@ -14,6 +14,7 @@ namespace Hopeless
     public partial class PrzygotowanieUserControl : UserControl
     {
         public List<Character> Characters { get; set; }
+        public List<IEkwipunek> Ekwipunek { get; set; }
         public PrzygotowanieUserControl()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Hopeless
         {
             if (Characters != null && Characters.Any())
             {
+                
                 knightName.Text += Characters[0].Name;
                 knightLevel.Text += Characters[0].Level;
                 knightExp.Text += Characters[0].ExperiencePoints;
@@ -37,6 +39,13 @@ namespace Hopeless
                 knightCrit.Text += Characters[0].CritChance;
                 knightInitiative.Text += Characters[0].Initiative;
                 knightDmg.Text += Characters[0].MinDmg + "-" + Characters[0].MaxDmg;
+                if (Characters[0] is Knight knight)
+                {
+                    if (knight.Weapon != null) knightWeapon.Text = knight.Weapon.Wypisz();
+                    else knightWeapon.Text = "Brak";
+
+                }
+                
 
                 rogueName.Text += Characters[1].Name;
                 rogueLevel.Text += Characters[1].Level;
@@ -76,6 +85,29 @@ namespace Hopeless
 
 
             }
+
+            if (Ekwipunek != null && Ekwipunek.Any())
+            {
+                foreach (IEkwipunek item in Ekwipunek)
+                {
+                    Label label = new Label();
+                    label.Text = item.Wypisz();
+                    label.AutoSize = false;
+                    label.Height = 30;
+                    label.TextAlign = ContentAlignment.MiddleCenter;
+                    label.BorderStyle = BorderStyle.FixedSingle;
+                    Inventory.Controls.Add(label);
+
+                }
+
+            }
+
+
+            InitializeDragDrop();
+
+
+
+
         }
 
 
@@ -85,6 +117,82 @@ namespace Hopeless
             WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
-      
+
+
+
+        //Przeciaganie przedmiotow
+
+        private void InitializeDragDrop()
+        {
+            foreach (Control control in Inventory.Controls)
+            {
+                control.MouseDown += ItemMouseDown;
+            }
+
+            knightWeapon.AllowDrop = true;
+            knightWeapon.DragDrop += KnightWeapon_DragDrop;
+            knightWeapon.DragEnter += KnightWeapon_DragEnter;
+            knightWeapon.DragLeave += KnightWeapon_DragLeave;
+
+
+
+        }
+
+
+        private void ItemMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Control control = (Control)sender;
+                control.DoDragDrop(control.Text, DragDropEffects.Move);
+            }
+        }
+
+        private void KnightWeapon_DragEnter(object sender, DragEventArgs e)
+        {
+            knightWeapon.BackColor = Color.LightGray;
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void KnightWeapon_DragLeave(object sender, EventArgs e)
+        {
+            knightWeapon.BackColor = SystemColors.Control;
+        }
+
+        private void KnightWeapon_DragDrop(object sender, DragEventArgs e)
+        {
+            
+                
+                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                knightWeapon.Text = draggedItemText;
+                knightWeapon.BackColor = SystemColors.Control;
+
+                IEkwipunek itemToRemove = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText);
+                Ekwipunek.Remove(itemToRemove);
+                RefreshInventory();
+            
+            
+
+        }
+
+        private void RefreshInventory()
+        {
+            
+                Inventory.Controls.Clear();
+
+                foreach (IEkwipunek item in Ekwipunek)
+                {
+                    Label label = new Label();
+                    label.Text = item.Wypisz();
+                    label.AutoSize = false;
+                    label.Height = 30;
+                    label.TextAlign = ContentAlignment.MiddleCenter;
+                    label.BorderStyle = BorderStyle.FixedSingle;
+                    Inventory.Controls.Add(label);
+                }
+                InitializeDragDrop();
+            
+        }
+
     }
 }

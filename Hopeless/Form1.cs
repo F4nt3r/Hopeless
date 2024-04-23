@@ -28,6 +28,13 @@ namespace Hopeless
             characters = new List<Character> { knight,rogue,cleric,joker };
             fazaPrzygotowaniaUserControl.Characters = characters;
 
+
+            Weapon sword = new Weapon("Miecz Stalowy", "Opis Miecza", 5, 12,new List<Character> {knight});
+            Weapon gun = new Weapon("Pistolet Skalkowy", "Opis Pistoletu", 5, 12, new List<Character> { rogue });
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> {sword,gun};
+            fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+
+
             // Dodanie UserControl do Form1
 
 

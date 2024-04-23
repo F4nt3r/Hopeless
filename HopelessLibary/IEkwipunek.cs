@@ -8,5 +8,6 @@ namespace HopelessLibary
 {
     public interface IEkwipunek
     {
+        string Wypisz();
     }
 }

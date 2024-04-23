@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
-    public class Weapon
+    public class Weapon : IEkwipunek
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -22,5 +22,11 @@ namespace HopelessLibary
             MaxDmg = maxDmg;
             Character = character;
         }
+
+        public string Wypisz()
+        {
+            return this.Name;
+        }
+
     }
 }
