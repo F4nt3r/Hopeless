@@ -10,8 +10,7 @@
         public int Intelligence { get; set; }
         public int CurrentHP { get; set; }
         public int MaxHP { get; set; }
-        public int MagicResistance { get; set; }
-        public int PhysicalResistance { get; set; }
+        public int Resistance { get; set; }
         public int CritChance { get; set; }
         public int Initiative { get; set; }
         public int MinDmg { get; set; }
@@ -19,7 +18,7 @@
 
 
 
-        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int magicResistance, int physicalResistance, int critChance, int initiative,int minDmg,int maxDmg)
+        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative,int minDmg,int maxDmg)
         {
             Name = name;
             Level = 1;
@@ -29,8 +28,7 @@
             Intelligence = intelligence;
             CurrentHP = currentHP;
             MaxHP = maxHP;
-            MagicResistance = magicResistance;
-            PhysicalResistance = physicalResistance;
+            Resistance = resistance;
             CritChance = critChance;
             Initiative = initiative;
             MinDmg = minDmg;
