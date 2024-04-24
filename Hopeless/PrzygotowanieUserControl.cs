@@ -32,6 +32,8 @@ namespace Hopeless
 
             this.Load += PrzygotowanieUserControl_Load;
 
+            Console.Write("Test");
+
 
         }
         private void PrzygotowanieUserControl_Load(object sender, EventArgs e)
