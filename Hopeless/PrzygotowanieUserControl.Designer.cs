@@ -103,11 +103,11 @@
             jokerDexterity = new Label();
             jokerIntelligence = new Label();
             jokerEkwipunek = new TabPage();
+            jokerArmor = new Label();
+            jokerWeapon = new Label();
             Inventory = new FlowLayoutPanel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             DescriptionBox = new TextBox();
-            jokerWeapon = new Label();
-            jokerArmor = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -890,24 +890,15 @@
             jokerEkwipunek.Text = "Ekwipunek";
             jokerEkwipunek.UseVisualStyleBackColor = true;
             // 
-            // Inventory
+            // jokerArmor
             // 
-            Inventory.AllowDrop = true;
-            Inventory.Location = new Point(92, 578);
-            Inventory.Name = "Inventory";
-            Inventory.Size = new Size(301, 203);
-            Inventory.TabIndex = 8;
-            // 
-            // DescriptionBox
-            // 
-            DescriptionBox.Location = new Point(587, 690);
-            DescriptionBox.MaximumSize = new Size(270, 160);
-            DescriptionBox.Multiline = true;
-            DescriptionBox.Name = "DescriptionBox";
-            DescriptionBox.ScrollBars = ScrollBars.Vertical;
-            DescriptionBox.Size = new Size(270, 160);
-            DescriptionBox.TabIndex = 9;
-            DescriptionBox.TextAlign = HorizontalAlignment.Center;
+            jokerArmor.Location = new Point(110, 51);
+            jokerArmor.MinimumSize = new Size(60, 60);
+            jokerArmor.Name = "jokerArmor";
+            jokerArmor.Size = new Size(60, 60);
+            jokerArmor.TabIndex = 4;
+            jokerArmor.Text = "Armor";
+            jokerArmor.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // jokerWeapon
             // 
@@ -920,15 +911,25 @@
             jokerWeapon.Text = "Bron";
             jokerWeapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // jokerArmor
+            // Inventory
             // 
-            jokerArmor.Location = new Point(110, 51);
-            jokerArmor.MinimumSize = new Size(60, 60);
-            jokerArmor.Name = "jokerArmor";
-            jokerArmor.Size = new Size(60, 60);
-            jokerArmor.TabIndex = 4;
-            jokerArmor.Text = "Armor";
-            jokerArmor.TextAlign = ContentAlignment.MiddleCenter;
+            Inventory.AllowDrop = true;
+            Inventory.Location = new Point(92, 578);
+            Inventory.Name = "Inventory";
+            Inventory.Size = new Size(301, 203);
+            Inventory.TabIndex = 8;
+            // 
+            // DescriptionBox
+            // 
+            DescriptionBox.Enabled = false;
+            DescriptionBox.Location = new Point(587, 690);
+            DescriptionBox.MaximumSize = new Size(270, 160);
+            DescriptionBox.Multiline = true;
+            DescriptionBox.Name = "DescriptionBox";
+            DescriptionBox.ScrollBars = ScrollBars.Vertical;
+            DescriptionBox.Size = new Size(270, 160);
+            DescriptionBox.TabIndex = 9;
+            DescriptionBox.TextAlign = HorizontalAlignment.Center;
             // 
             // PrzygotowanieUserControl
             // 

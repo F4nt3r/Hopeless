@@ -18,7 +18,7 @@ namespace Hopeless
     {
         public List<Character> Characters { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
-        private List<IEkwipunek> removedItems = new List<IEkwipunek>();
+        private List<IEkwipunek> equipedItems = new List<IEkwipunek>();
         private Label lastDraggedLabel;
         public Knight knight;
         public Rogue rogue;
@@ -31,7 +31,7 @@ namespace Hopeless
             pictureBox1.Image = Properties.Resources.Prep;
 
             this.Load += PrzygotowanieUserControl_Load;
-            
+
 
         }
         private void PrzygotowanieUserControl_Load(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Hopeless
                     knightWeapon.Text = "Brak";
                     knightWeapon.AccessibleDescription = "  ";
                 }
-                
+
                 if (knight.Armor != null)
                 {
                     knightArmor.Text = knight.Armor.Name;
@@ -81,10 +81,10 @@ namespace Hopeless
                 }
                 else
                 {
-                    knightArmor.Text = "Brak"; 
+                    knightArmor.Text = "Brak";
                     knightArmor.AccessibleDescription = "  ";
                 }
-                
+
 
 
 
@@ -102,10 +102,11 @@ namespace Hopeless
                 rogueInitiative.Text = "Inicjatywa: " + rogue.Initiative;
                 rogueDmg.Text = "Obrazenia Ataku: " + rogue.MinDmg + "-" + rogue.MaxDmg;
                 rogueDodge.Text = "Szansa na Blok: " + rogue.DodgeChance + "%";
-                if (rogue.Weapon != null) {
+                if (rogue.Weapon != null)
+                {
                     rogueWeapon.Text = rogue.Weapon.Name;
-                    rogueWeapon.AccessibleDescription = rogue.Weapon.Name + Environment.NewLine + rogue.Weapon.Description + Environment.NewLine + "MinDMG: "+ rogue.Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: "+ rogue.Weapon.MaxDmg.ToString();
+                    rogueWeapon.AccessibleDescription = rogue.Weapon.Name + Environment.NewLine + rogue.Weapon.Description + Environment.NewLine + "MinDMG: " + rogue.Weapon.MinDmg.ToString() +
+                        Environment.NewLine + "MaxDMG: " + rogue.Weapon.MaxDmg.ToString();
                 }
                 else
                 {
@@ -320,12 +321,12 @@ namespace Hopeless
         }
 
         private void KnightWeapon_DragDrop(object sender, DragEventArgs e)
-        {           
+        {
             try
-            {            
+            {
                 string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
                 IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
-    
+
                 if (itemToSelect != null)
                 {
                     if (knightWeapon.Text != "Brak")
@@ -333,7 +334,7 @@ namespace Hopeless
                         itemToSelect.Equip(knight);
                         string oldItem = knightWeapon.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         knightWeapon.Text = draggedItemText;
                         knightWeapon.BackColor = SystemColors.Control;
 
@@ -345,7 +346,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(knight);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         knightWeapon.Text = draggedItemText;
                         knightWeapon.BackColor = SystemColors.Control;
 
@@ -354,7 +355,7 @@ namespace Hopeless
                         knight.UpdateStats();
                         RefreshStats();
                     }
-                   
+
                 }
 
             }
@@ -362,7 +363,7 @@ namespace Hopeless
             {
                 MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         private void KnightArmor_DragEnter(object sender, DragEventArgs e)
         {
@@ -390,7 +391,7 @@ namespace Hopeless
                         itemToSelect.Equip(knight);
                         string oldItem = knightArmor.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         knightArmor.Text = draggedItemText;
                         knightArmor.BackColor = SystemColors.Control;
 
@@ -402,7 +403,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(knight);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         knightArmor.Text = draggedItemText;
                         knightArmor.BackColor = SystemColors.Control;
 
@@ -449,7 +450,7 @@ namespace Hopeless
                         itemToSelect.Equip(rogue);
                         string oldItem = rogueWeapon.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         rogueWeapon.Text = draggedItemText;
                         rogueWeapon.BackColor = SystemColors.Control;
 
@@ -461,7 +462,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(rogue);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         rogueWeapon.Text = draggedItemText;
                         rogueWeapon.BackColor = SystemColors.Control;
 
@@ -506,7 +507,7 @@ namespace Hopeless
                         itemToSelect.Equip(rogue);
                         string oldItem = rogueArmor.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         rogueArmor.Text = draggedItemText;
                         rogueArmor.BackColor = SystemColors.Control;
 
@@ -518,7 +519,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(rogue);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         rogueArmor.Text = draggedItemText;
                         rogueArmor.BackColor = SystemColors.Control;
 
@@ -567,7 +568,7 @@ namespace Hopeless
                         itemToSelect.Equip(cleric);
                         string oldItem = clericWeapon.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         clericWeapon.Text = draggedItemText;
                         clericWeapon.BackColor = SystemColors.Control;
 
@@ -579,7 +580,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(cleric);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         clericWeapon.Text = draggedItemText;
                         clericWeapon.BackColor = SystemColors.Control;
 
@@ -624,7 +625,7 @@ namespace Hopeless
                         itemToSelect.Equip(cleric);
                         string oldItem = clericArmor.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         clericArmor.Text = draggedItemText;
                         clericArmor.BackColor = SystemColors.Control;
 
@@ -636,7 +637,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(cleric);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         clericArmor.Text = draggedItemText;
                         clericArmor.BackColor = SystemColors.Control;
 
@@ -685,7 +686,7 @@ namespace Hopeless
                         itemToSelect.Equip(joker);
                         string oldItem = jokerWeapon.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         jokerWeapon.Text = draggedItemText;
                         jokerWeapon.BackColor = SystemColors.Control;
 
@@ -697,7 +698,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(joker);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         jokerWeapon.Text = draggedItemText;
                         jokerWeapon.BackColor = SystemColors.Control;
 
@@ -742,7 +743,7 @@ namespace Hopeless
                         itemToSelect.Equip(joker);
                         string oldItem = jokerArmor.Text;
                         AddItemToInventory(oldItem);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         jokerArmor.Text = draggedItemText;
                         jokerArmor.BackColor = SystemColors.Control;
 
@@ -754,7 +755,7 @@ namespace Hopeless
                     else
                     {
                         itemToSelect.Equip(joker);
-                        removedItems.Add(itemToSelect);
+                        equipedItems.Add(itemToSelect);
                         jokerArmor.Text = draggedItemText;
                         jokerArmor.BackColor = SystemColors.Control;
 
@@ -802,7 +803,7 @@ namespace Hopeless
             control.BackColor = SystemColors.Control;
 
             string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-            
+
 
             if (lastDraggedLabel != null && !Ekwipunek.Any(item => item.Wypisz() == draggedItemText))
             {
@@ -820,17 +821,17 @@ namespace Hopeless
                 AddItemToInventory(draggedItemText);
                 RefreshStats();
             }
-            
+
         }
 
 
         private void AddItemToInventory(string itemName)
         {
-            IEkwipunek itemToAdd = removedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
+            IEkwipunek itemToAdd = equipedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
             if (itemToAdd != null && !Ekwipunek.Contains(itemToAdd))
             {
                 Ekwipunek.Add(itemToAdd);
-                removedItems.Remove(itemToAdd);
+                equipedItems.Remove(itemToAdd);
                 RefreshInventory();
             }
         }
@@ -842,39 +843,39 @@ namespace Hopeless
         // Odswiezanie ekwipunku
         private void RefreshInventory()
         {
-            
-                Inventory.Controls.Clear();
 
-                foreach (IEkwipunek item in Ekwipunek)
+            Inventory.Controls.Clear();
+
+            foreach (IEkwipunek item in Ekwipunek)
+            {
+                Label label = new Label();
+                label.Text = item.Wypisz();
+                label.AutoSize = false;
+                label.Height = 30;
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.BorderStyle = BorderStyle.FixedSingle;
+                if (item is Weapon)
                 {
-                    Label label = new Label();
-                    label.Text = item.Wypisz();
-                    label.AutoSize = false;
-                    label.Height = 30;
-                    label.TextAlign = ContentAlignment.MiddleCenter;
-                    label.BorderStyle = BorderStyle.FixedSingle;
-                    if(item is Weapon)
-                    {
-                        Weapon weapon = (Weapon)item;
-                        label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString();
-                    }
-                    if(item is Armor)
-                    {
-                        Armor armor = (Armor)item;
-                        label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString();
+                    Weapon weapon = (Weapon)item;
+                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
+                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString();
                 }
-                    Inventory.Controls.Add(label);
-                }
-                foreach (Control control in Inventory.Controls)
+                if (item is Armor)
                 {
-                    control.MouseDown += ItemMouseDown;
-                    control.MouseHover += ItemMouseHover;
+                    Armor armor = (Armor)item;
+                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString();
                 }
+                Inventory.Controls.Add(label);
+            }
+            foreach (Control control in Inventory.Controls)
+            {
+                control.MouseDown += ItemMouseDown;
+                control.MouseHover += ItemMouseHover;
+            }
 
         }
 
-        
+
 
     }
 }
