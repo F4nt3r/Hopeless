@@ -136,7 +136,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1361, 861);
+            pictureBox1.Size = new Size(1424, 861);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -914,15 +914,15 @@
             // Inventory
             // 
             Inventory.AllowDrop = true;
-            Inventory.Location = new Point(92, 578);
+            Inventory.Location = new Point(67, 578);
             Inventory.Name = "Inventory";
-            Inventory.Size = new Size(301, 203);
+            Inventory.Size = new Size(320, 203);
             Inventory.TabIndex = 8;
             // 
             // DescriptionBox
             // 
             DescriptionBox.Enabled = false;
-            DescriptionBox.Location = new Point(587, 690);
+            DescriptionBox.Location = new Point(423, 578);
             DescriptionBox.MaximumSize = new Size(270, 160);
             DescriptionBox.Multiline = true;
             DescriptionBox.Name = "DescriptionBox";

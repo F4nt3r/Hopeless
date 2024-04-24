@@ -32,7 +32,6 @@ namespace Hopeless
 
             this.Load += PrzygotowanieUserControl_Load;
 
-            Console.Write("Test");
 
 
         }

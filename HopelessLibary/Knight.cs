@@ -31,7 +31,7 @@ namespace HopelessLibary
 
         public override void TakeDamage(int damage)
         {
-            Console.Write("test");
+            
         }
 
         public override void BasicAttack(Character target)
