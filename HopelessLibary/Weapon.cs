@@ -40,6 +40,7 @@ namespace HopelessLibary
 
 
 
+
         [Serializable]
         public class ClassWeaponException : Exception
         {

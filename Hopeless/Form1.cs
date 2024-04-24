@@ -35,8 +35,9 @@ namespace Hopeless
             
             // Inicjalizacja armora
             Armor armour = new Armor("Ciezka Zbroja", "Opis Zbroi",12, new List<Character> { knight });
+            Armor lightweightarmour = new Armor("Lekka Zbroja", "Opis Zbroi", 5, new List<Character> { rogue,cleric,joker });
 
-            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe };
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe, lightweightarmour };
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
 
             // Dodanie UserControl do Form1

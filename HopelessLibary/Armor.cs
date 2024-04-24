@@ -38,6 +38,7 @@ namespace HopelessLibary
 
 
 
+
         [Serializable]
         public class ClassArmorException : Exception
         {

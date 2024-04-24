@@ -11,6 +11,7 @@
         public int CurrentHP { get; set; }
         public int MaxHP { get; set; }
         public int Resistance { get; set; }
+        private int BaseResistance { get; set; }
         public int CritChance { get; set; }
         public int Initiative { get; set; }
         public int MinDmg { get; set; }
@@ -30,6 +31,7 @@
             CurrentHP = currentHP;
             MaxHP = maxHP;
             Resistance = resistance;
+            BaseResistance = resistance;
             CritChance = critChance;
             Initiative = initiative;
             MinDmg = minDmg;
@@ -56,6 +58,30 @@
             while (ExperiencePoints >= Level * 100)
             {
                 LevelUp();
+            }
+        }
+
+        public void UpdateStats()
+        {
+            
+            if(Weapon != null)
+            {
+                MinDmg = 1 + Weapon.MinDmg;
+                MaxDmg = 2 + Weapon.MaxDmg;
+            }
+            else
+            {
+                MinDmg = 1;
+                MaxDmg = 2;
+            }
+
+            if (Armor != null)
+            {
+                Resistance = BaseResistance + Armor.DmgReduction;
+            }
+            else
+            {
+                Resistance = BaseResistance;
             }
         }
 

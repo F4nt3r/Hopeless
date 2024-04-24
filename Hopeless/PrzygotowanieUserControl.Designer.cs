@@ -47,10 +47,13 @@
             clericDexterity = new Label();
             clericIntelligence = new Label();
             clericEkwipunek = new TabPage();
+            clericArmor = new Label();
+            clericWeapon = new Label();
             tabControl5 = new TabControl();
             roguePostac = new TabPage();
             pictureBox4 = new PictureBox();
             rogueStatystyki = new TabPage();
+            rogueDodge = new Label();
             rogueDmg = new Label();
             rogueInitiative = new Label();
             rogueCrit = new Label();
@@ -63,6 +66,8 @@
             rogueLevel = new Label();
             rogueName = new Label();
             rogueEkwipunek = new TabPage();
+            rogueArmor = new Label();
+            rogueWeapon = new Label();
             tabControl1 = new TabControl();
             knightPostac = new TabPage();
             pictureBox3 = new PictureBox();
@@ -100,15 +105,20 @@
             jokerEkwipunek = new TabPage();
             Inventory = new FlowLayoutPanel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            DescriptionBox = new TextBox();
+            jokerWeapon = new Label();
+            jokerArmor = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             clericStatystyki.SuspendLayout();
+            clericEkwipunek.SuspendLayout();
             tabControl5.SuspendLayout();
             roguePostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             rogueStatystyki.SuspendLayout();
+            rogueEkwipunek.SuspendLayout();
             tabControl1.SuspendLayout();
             knightPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -118,6 +128,7 @@
             jokerPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             jokerStatystyki.SuspendLayout();
+            jokerEkwipunek.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -294,6 +305,8 @@
             // 
             // clericEkwipunek
             // 
+            clericEkwipunek.Controls.Add(clericArmor);
+            clericEkwipunek.Controls.Add(clericWeapon);
             clericEkwipunek.Location = new Point(4, 24);
             clericEkwipunek.Name = "clericEkwipunek";
             clericEkwipunek.Padding = new Padding(3);
@@ -301,6 +314,27 @@
             clericEkwipunek.TabIndex = 2;
             clericEkwipunek.Text = "Ekwipunek";
             clericEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // clericArmor
+            // 
+            clericArmor.Location = new Point(115, 51);
+            clericArmor.MinimumSize = new Size(60, 60);
+            clericArmor.Name = "clericArmor";
+            clericArmor.Size = new Size(60, 60);
+            clericArmor.TabIndex = 3;
+            clericArmor.Text = "Armor";
+            clericArmor.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // clericWeapon
+            // 
+            clericWeapon.AllowDrop = true;
+            clericWeapon.Location = new Point(24, 51);
+            clericWeapon.MinimumSize = new Size(60, 60);
+            clericWeapon.Name = "clericWeapon";
+            clericWeapon.Size = new Size(60, 60);
+            clericWeapon.TabIndex = 2;
+            clericWeapon.Text = "Bron";
+            clericWeapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl5
             // 
@@ -336,6 +370,7 @@
             // 
             // rogueStatystyki
             // 
+            rogueStatystyki.Controls.Add(rogueDodge);
             rogueStatystyki.Controls.Add(rogueDmg);
             rogueStatystyki.Controls.Add(rogueInitiative);
             rogueStatystyki.Controls.Add(rogueCrit);
@@ -354,6 +389,15 @@
             rogueStatystyki.TabIndex = 1;
             rogueStatystyki.Text = "Statystyki";
             rogueStatystyki.UseVisualStyleBackColor = true;
+            // 
+            // rogueDodge
+            // 
+            rogueDodge.AutoSize = true;
+            rogueDodge.Location = new Point(6, 275);
+            rogueDodge.Name = "rogueDodge";
+            rogueDodge.Size = new Size(94, 15);
+            rogueDodge.TabIndex = 22;
+            rogueDodge.Text = "Szansa na Unik:  ";
             // 
             // rogueDmg
             // 
@@ -456,6 +500,8 @@
             // 
             // rogueEkwipunek
             // 
+            rogueEkwipunek.Controls.Add(rogueArmor);
+            rogueEkwipunek.Controls.Add(rogueWeapon);
             rogueEkwipunek.Location = new Point(4, 24);
             rogueEkwipunek.Name = "rogueEkwipunek";
             rogueEkwipunek.Padding = new Padding(3);
@@ -463,6 +509,27 @@
             rogueEkwipunek.TabIndex = 2;
             rogueEkwipunek.Text = "Ekwipunek";
             rogueEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // rogueArmor
+            // 
+            rogueArmor.Location = new Point(112, 51);
+            rogueArmor.MinimumSize = new Size(60, 60);
+            rogueArmor.Name = "rogueArmor";
+            rogueArmor.Size = new Size(60, 60);
+            rogueArmor.TabIndex = 2;
+            rogueArmor.Text = "Armor";
+            rogueArmor.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // rogueWeapon
+            // 
+            rogueWeapon.AllowDrop = true;
+            rogueWeapon.Location = new Point(16, 51);
+            rogueWeapon.MinimumSize = new Size(60, 60);
+            rogueWeapon.Name = "rogueWeapon";
+            rogueWeapon.Size = new Size(60, 60);
+            rogueWeapon.TabIndex = 1;
+            rogueWeapon.Text = "Bron";
+            rogueWeapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -813,6 +880,8 @@
             // 
             // jokerEkwipunek
             // 
+            jokerEkwipunek.Controls.Add(jokerArmor);
+            jokerEkwipunek.Controls.Add(jokerWeapon);
             jokerEkwipunek.Location = new Point(4, 24);
             jokerEkwipunek.Name = "jokerEkwipunek";
             jokerEkwipunek.Padding = new Padding(3);
@@ -829,10 +898,43 @@
             Inventory.Size = new Size(301, 203);
             Inventory.TabIndex = 8;
             // 
+            // DescriptionBox
+            // 
+            DescriptionBox.Location = new Point(587, 690);
+            DescriptionBox.MaximumSize = new Size(270, 160);
+            DescriptionBox.Multiline = true;
+            DescriptionBox.Name = "DescriptionBox";
+            DescriptionBox.ScrollBars = ScrollBars.Vertical;
+            DescriptionBox.Size = new Size(270, 160);
+            DescriptionBox.TabIndex = 9;
+            DescriptionBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // jokerWeapon
+            // 
+            jokerWeapon.AllowDrop = true;
+            jokerWeapon.Location = new Point(19, 51);
+            jokerWeapon.MinimumSize = new Size(60, 60);
+            jokerWeapon.Name = "jokerWeapon";
+            jokerWeapon.Size = new Size(60, 60);
+            jokerWeapon.TabIndex = 3;
+            jokerWeapon.Text = "Bron";
+            jokerWeapon.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // jokerArmor
+            // 
+            jokerArmor.Location = new Point(110, 51);
+            jokerArmor.MinimumSize = new Size(60, 60);
+            jokerArmor.Name = "jokerArmor";
+            jokerArmor.Size = new Size(60, 60);
+            jokerArmor.TabIndex = 4;
+            jokerArmor.Text = "Armor";
+            jokerArmor.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(DescriptionBox);
             Controls.Add(Inventory);
             Controls.Add(tabControl2);
             Controls.Add(tabControl1);
@@ -848,11 +950,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             clericStatystyki.ResumeLayout(false);
             clericStatystyki.PerformLayout();
+            clericEkwipunek.ResumeLayout(false);
             tabControl5.ResumeLayout(false);
             roguePostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             rogueStatystyki.ResumeLayout(false);
             rogueStatystyki.PerformLayout();
+            rogueEkwipunek.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             knightPostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -864,7 +968,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             jokerStatystyki.ResumeLayout(false);
             jokerStatystyki.PerformLayout();
+            jokerEkwipunek.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -940,5 +1046,13 @@
         private Label knightArmor;
         private Label knightBlock;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private TextBox DescriptionBox;
+        private Label rogueDodge;
+        private Label rogueArmor;
+        private Label rogueWeapon;
+        private Label clericArmor;
+        private Label clericWeapon;
+        private Label jokerArmor;
+        private Label jokerWeapon;
     }
 }
