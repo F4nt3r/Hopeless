@@ -20,7 +20,7 @@ namespace Hopeless
             Controls.Add(fazaPrzygotowaniaUserControl);
             Controls.Add(wyprawaUserControl);
 
-
+            // Inicjalizacja postaci
             Knight knight = new Knight("Lancelot",0,10,5,2,50,50,50,10,34,1,2,33);
             Rogue rogue = new Rogue("Astarion",0,2,10,5,35,35,30,50,70,1,2,33);
             Cleric cleric = new Cleric("Melitele",0,2,5,10,45,45,40,30,30,1,2);
@@ -28,12 +28,16 @@ namespace Hopeless
             characters = new List<Character> { knight,rogue,cleric,joker };
             fazaPrzygotowaniaUserControl.Characters = characters;
 
-
+            // Inicjalizacja broni
             Weapon sword = new Weapon("Miecz Stalowy", "Opis Miecza", 5, 12,new List<Character> {knight});
+            Weapon axe = new Weapon("Topor Bojowy", "Opis Topora", 8, 13, new List<Character> { knight });
             Weapon gun = new Weapon("Pistolet Skalkowy", "Opis Pistoletu", 5, 12, new List<Character> { rogue });
-            List<IEkwipunek> ekwipunek = new List<IEkwipunek> {sword,gun};
-            fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+            
+            // Inicjalizacja armora
+            Armor armour = new Armor("Ciezka Zbroja", "Opis Zbroi",12, new List<Character> { knight });
 
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe };
+            fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
 
             // Dodanie UserControl do Form1
 

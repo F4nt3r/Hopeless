@@ -67,6 +67,7 @@
             knightPostac = new TabPage();
             pictureBox3 = new PictureBox();
             knightStatystyki = new TabPage();
+            knightBlock = new Label();
             knightDmg = new Label();
             knightInitiative = new Label();
             knightCrit = new Label();
@@ -98,6 +99,7 @@
             jokerIntelligence = new Label();
             jokerEkwipunek = new TabPage();
             Inventory = new FlowLayoutPanel();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -146,7 +148,7 @@
             tabControl3.Location = new Point(640, 70);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
-            tabControl3.Size = new Size(200, 300);
+            tabControl3.Size = new Size(200, 336);
             tabControl3.TabIndex = 3;
             // 
             // clericPostac
@@ -155,7 +157,7 @@
             clericPostac.Location = new Point(4, 24);
             clericPostac.Name = "clericPostac";
             clericPostac.Padding = new Padding(3);
-            clericPostac.Size = new Size(192, 272);
+            clericPostac.Size = new Size(192, 308);
             clericPostac.TabIndex = 0;
             clericPostac.Text = "Postac";
             clericPostac.UseVisualStyleBackColor = true;
@@ -165,7 +167,7 @@
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Location = new Point(3, 3);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(186, 266);
+            pictureBox2.Size = new Size(186, 302);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
@@ -186,7 +188,7 @@
             clericStatystyki.Location = new Point(4, 24);
             clericStatystyki.Name = "clericStatystyki";
             clericStatystyki.Padding = new Padding(3);
-            clericStatystyki.Size = new Size(192, 272);
+            clericStatystyki.Size = new Size(192, 308);
             clericStatystyki.TabIndex = 1;
             clericStatystyki.Text = "Statystyki";
             clericStatystyki.UseVisualStyleBackColor = true;
@@ -295,7 +297,7 @@
             clericEkwipunek.Location = new Point(4, 24);
             clericEkwipunek.Name = "clericEkwipunek";
             clericEkwipunek.Padding = new Padding(3);
-            clericEkwipunek.Size = new Size(192, 272);
+            clericEkwipunek.Size = new Size(192, 308);
             clericEkwipunek.TabIndex = 2;
             clericEkwipunek.Text = "Ekwipunek";
             clericEkwipunek.UseVisualStyleBackColor = true;
@@ -308,7 +310,7 @@
             tabControl5.Location = new Point(353, 70);
             tabControl5.Name = "tabControl5";
             tabControl5.SelectedIndex = 0;
-            tabControl5.Size = new Size(200, 300);
+            tabControl5.Size = new Size(200, 336);
             tabControl5.TabIndex = 5;
             // 
             // roguePostac
@@ -317,7 +319,7 @@
             roguePostac.Location = new Point(4, 24);
             roguePostac.Name = "roguePostac";
             roguePostac.Padding = new Padding(3);
-            roguePostac.Size = new Size(192, 272);
+            roguePostac.Size = new Size(192, 308);
             roguePostac.TabIndex = 0;
             roguePostac.Text = "Postac";
             roguePostac.UseVisualStyleBackColor = true;
@@ -327,7 +329,7 @@
             pictureBox4.Dock = DockStyle.Fill;
             pictureBox4.Location = new Point(3, 3);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(186, 266);
+            pictureBox4.Size = new Size(186, 302);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
@@ -348,7 +350,7 @@
             rogueStatystyki.Location = new Point(4, 24);
             rogueStatystyki.Name = "rogueStatystyki";
             rogueStatystyki.Padding = new Padding(3);
-            rogueStatystyki.Size = new Size(192, 272);
+            rogueStatystyki.Size = new Size(192, 308);
             rogueStatystyki.TabIndex = 1;
             rogueStatystyki.Text = "Statystyki";
             rogueStatystyki.UseVisualStyleBackColor = true;
@@ -457,7 +459,7 @@
             rogueEkwipunek.Location = new Point(4, 24);
             rogueEkwipunek.Name = "rogueEkwipunek";
             rogueEkwipunek.Padding = new Padding(3);
-            rogueEkwipunek.Size = new Size(192, 272);
+            rogueEkwipunek.Size = new Size(192, 308);
             rogueEkwipunek.TabIndex = 2;
             rogueEkwipunek.Text = "Ekwipunek";
             rogueEkwipunek.UseVisualStyleBackColor = true;
@@ -470,7 +472,7 @@
             tabControl1.Location = new Point(67, 70);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(200, 300);
+            tabControl1.Size = new Size(200, 336);
             tabControl1.TabIndex = 6;
             // 
             // knightPostac
@@ -479,7 +481,7 @@
             knightPostac.Location = new Point(4, 24);
             knightPostac.Name = "knightPostac";
             knightPostac.Padding = new Padding(3);
-            knightPostac.Size = new Size(192, 272);
+            knightPostac.Size = new Size(192, 308);
             knightPostac.TabIndex = 0;
             knightPostac.Text = "Postac";
             knightPostac.UseVisualStyleBackColor = true;
@@ -489,13 +491,14 @@
             pictureBox3.Dock = DockStyle.Fill;
             pictureBox3.Location = new Point(3, 3);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(186, 266);
+            pictureBox3.Size = new Size(186, 302);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
             // knightStatystyki
             // 
+            knightStatystyki.Controls.Add(knightBlock);
             knightStatystyki.Controls.Add(knightDmg);
             knightStatystyki.Controls.Add(knightInitiative);
             knightStatystyki.Controls.Add(knightCrit);
@@ -510,10 +513,19 @@
             knightStatystyki.Location = new Point(4, 24);
             knightStatystyki.Name = "knightStatystyki";
             knightStatystyki.Padding = new Padding(3);
-            knightStatystyki.Size = new Size(192, 272);
+            knightStatystyki.Size = new Size(192, 308);
             knightStatystyki.TabIndex = 1;
             knightStatystyki.Text = "Statystyki";
             knightStatystyki.UseVisualStyleBackColor = true;
+            // 
+            // knightBlock
+            // 
+            knightBlock.AutoSize = true;
+            knightBlock.Location = new Point(8, 282);
+            knightBlock.Name = "knightBlock";
+            knightBlock.Size = new Size(90, 15);
+            knightBlock.TabIndex = 11;
+            knightBlock.Text = "Szansa na Blok: ";
             // 
             // knightDmg
             // 
@@ -621,7 +633,7 @@
             knightEkwipunek.Location = new Point(4, 24);
             knightEkwipunek.Name = "knightEkwipunek";
             knightEkwipunek.Padding = new Padding(3);
-            knightEkwipunek.Size = new Size(192, 272);
+            knightEkwipunek.Size = new Size(192, 308);
             knightEkwipunek.TabIndex = 2;
             knightEkwipunek.Text = "Ekwipunek";
             knightEkwipunek.UseVisualStyleBackColor = true;
@@ -655,7 +667,7 @@
             tabControl2.Location = new Point(928, 70);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(200, 300);
+            tabControl2.Size = new Size(200, 336);
             tabControl2.TabIndex = 7;
             // 
             // jokerPostac
@@ -664,7 +676,7 @@
             jokerPostac.Location = new Point(4, 24);
             jokerPostac.Name = "jokerPostac";
             jokerPostac.Padding = new Padding(3);
-            jokerPostac.Size = new Size(192, 272);
+            jokerPostac.Size = new Size(192, 308);
             jokerPostac.TabIndex = 0;
             jokerPostac.Text = "Postac";
             jokerPostac.UseVisualStyleBackColor = true;
@@ -674,7 +686,7 @@
             pictureBox5.Dock = DockStyle.Fill;
             pictureBox5.Location = new Point(3, 3);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(186, 266);
+            pictureBox5.Size = new Size(186, 302);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
@@ -695,7 +707,7 @@
             jokerStatystyki.Location = new Point(4, 24);
             jokerStatystyki.Name = "jokerStatystyki";
             jokerStatystyki.Padding = new Padding(3);
-            jokerStatystyki.Size = new Size(192, 272);
+            jokerStatystyki.Size = new Size(192, 308);
             jokerStatystyki.TabIndex = 1;
             jokerStatystyki.Text = "Statystyki";
             jokerStatystyki.UseVisualStyleBackColor = true;
@@ -804,13 +816,14 @@
             jokerEkwipunek.Location = new Point(4, 24);
             jokerEkwipunek.Name = "jokerEkwipunek";
             jokerEkwipunek.Padding = new Padding(3);
-            jokerEkwipunek.Size = new Size(192, 272);
+            jokerEkwipunek.Size = new Size(192, 308);
             jokerEkwipunek.TabIndex = 2;
             jokerEkwipunek.Text = "Ekwipunek";
             jokerEkwipunek.UseVisualStyleBackColor = true;
             // 
             // Inventory
             // 
+            Inventory.AllowDrop = true;
             Inventory.Location = new Point(92, 578);
             Inventory.Name = "Inventory";
             Inventory.Size = new Size(301, 203);
@@ -925,5 +938,7 @@
         private FlowLayoutPanel Inventory;
         private Label knightWeapon;
         private Label knightArmor;
+        private Label knightBlock;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

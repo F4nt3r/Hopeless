@@ -10,8 +10,7 @@ namespace HopelessLibary
 
 
         public int BlockChance { get; set; }
-        public Weapon Weapon { get; set; }
-        public Armor Armor { get; set; }
+        
 
 
         public Knight(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int blockChance) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, critChance, initiative, minDmg, maxDmg)

@@ -11,15 +11,11 @@ namespace HopelessLibary
     {
 
         public int DodgeChance { get; set; }
-        public Weapon Weapon { get; set; }
-        public Armor Armor { get; set; }
 
 
         public Rogue(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int dodgeChance) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, critChance, initiative, minDmg, maxDmg)
         {
             DodgeChance = dodgeChance;
-            Weapon = null;
-            Armor = null;
         }
 
        

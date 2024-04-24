@@ -6,8 +6,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static HopelessLibary.Weapon;
 
 namespace Hopeless
 {
@@ -15,36 +17,43 @@ namespace Hopeless
     {
         public List<Character> Characters { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
+        private List<IEkwipunek> removedItems = new List<IEkwipunek>();
+        private Label lastDraggedLabel;
+        public Knight knight;
+
         public PrzygotowanieUserControl()
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
 
             this.Load += PrzygotowanieUserControl_Load;
+            
 
         }
         private void PrzygotowanieUserControl_Load(object sender, EventArgs e)
         {
+            knight = (Knight)Characters[0];
             if (Characters != null && Characters.Any())
             {
                 
-                knightName.Text += Characters[0].Name;
-                knightLevel.Text += Characters[0].Level;
-                knightExp.Text += Characters[0].ExperiencePoints;
-                knightStrength.Text += Characters[0].Strength;
-                knightDexterity.Text += Characters[0].Dexterity;
-                knightIntelligence.Text += Characters[0].Intelligence;
-                knightHp.Text += Characters[0].CurrentHP + "/" + Characters[0].MaxHP;
-                knightResistance.Text += Characters[0].Resistance;
-                knightCrit.Text += Characters[0].CritChance;
-                knightInitiative.Text += Characters[0].Initiative;
-                knightDmg.Text += Characters[0].MinDmg + "-" + Characters[0].MaxDmg;
-                if (Characters[0] is Knight knight)
-                {
-                    if (knight.Weapon != null) knightWeapon.Text = knight.Weapon.Wypisz();
-                    else knightWeapon.Text = "Brak";
+                knightName.Text += knight.Name;
+                knightLevel.Text += knight.Level;
+                knightExp.Text += knight.ExperiencePoints;
+                knightStrength.Text += knight.Strength;
+                knightDexterity.Text += knight.Dexterity;
+                knightIntelligence.Text += knight.Intelligence;
+                knightHp.Text += knight.CurrentHP + "/" + knight.MaxHP;
+                knightResistance.Text += knight.Resistance;
+                knightCrit.Text += knight.CritChance+"%";
+                knightInitiative.Text += knight.Initiative;
+                knightDmg.Text += knight.MinDmg + "-" + knight.MaxDmg;
+                knightBlock.Text += knight.BlockChance + "%";
 
-                }
+                if (knight.Weapon != null) knightWeapon.Text = knight.Weapon.Name;
+                else knightWeapon.Text = "Brak";
+                if (knight.Armor != null) knightArmor.Text = knight.Armor.Name;
+                else knightArmor.Text = "Brak";
+
                 
 
                 rogueName.Text += Characters[1].Name;
@@ -120,7 +129,7 @@ namespace Hopeless
 
 
 
-        //Przeciaganie przedmiotow
+        //Inicjalizacja Przeciagania
 
         private void InitializeDragDrop()
         {
@@ -130,23 +139,39 @@ namespace Hopeless
             }
 
             knightWeapon.AllowDrop = true;
+            knightWeapon.MouseDown += ItemMouseDown;
             knightWeapon.DragDrop += KnightWeapon_DragDrop;
             knightWeapon.DragEnter += KnightWeapon_DragEnter;
             knightWeapon.DragLeave += KnightWeapon_DragLeave;
 
 
+            Inventory.AllowDrop = true;
+            Inventory.DragEnter += Inventory_DragEnter;
+            Inventory.DragLeave += Inventory_DragLeave;
+            Inventory.DragDrop += Inventory_DragDrop;
+
+
 
         }
-
 
         private void ItemMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 Control control = (Control)sender;
-                control.DoDragDrop(control.Text, DragDropEffects.Move);
+                if (control.Text != "Brak")
+                {
+                    lastDraggedLabel = (Label)control;
+                    control.DoDragDrop(control.Text, DragDropEffects.Move);
+                }
             }
         }
+
+
+
+
+
+        //Przeciaganie Knight
 
         private void KnightWeapon_DragEnter(object sender, DragEventArgs e)
         {
@@ -162,19 +187,113 @@ namespace Hopeless
         private void KnightWeapon_DragDrop(object sender, DragEventArgs e)
         {
             
+            try
+            {
                 
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                knightWeapon.Text = draggedItemText;
-                knightWeapon.BackColor = SystemColors.Control;
+                
 
-                IEkwipunek itemToRemove = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText);
-                Ekwipunek.Remove(itemToRemove);
-                RefreshInventory();
-            
+                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+
+
+                
+                if (itemToSelect != null)
+                {
+                    if (knightWeapon.Text != "Brak")
+                    {
+                        string oldItem = knightWeapon.Text;
+                        AddItemToInventory(oldItem);
+
+                    }
+                    itemToSelect.Equip(knight);
+                    removedItems.Add(itemToSelect);
+                    knightWeapon.Text = draggedItemText;
+                    knightWeapon.BackColor = SystemColors.Control;
+
+                    Ekwipunek.Remove(itemToSelect);
+                    RefreshInventory();
+
+                }
+
+
+
+            }
+            catch (ClassWeaponException ex)
+            {
+                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
 
         }
 
+        // Przeciaganie do ekwipunka
+
+
+        private void Inventory_DragEnter(object sender, DragEventArgs e)
+        {
+            Control control = (Control)sender;
+            control.BackColor = Color.LightGray;
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void Inventory_DragLeave(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+            control.BackColor = SystemColors.Control;
+        }
+
+        private void Inventory_DragDrop(object sender, DragEventArgs e)
+        {
+            Control control = (Control)sender;
+            control.BackColor = SystemColors.Control;
+
+            string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+
+            Knight knight = (Knight)Characters[0];
+            
+
+            if (lastDraggedLabel != null && lastDraggedLabel.Text != draggedItemText)
+            {
+                lastDraggedLabel.Text = "Brak";
+                knight.Weapon = null;
+            }
+            AddItemToInventory(draggedItemText);
+        }
+
+
+        private void AddItemToInventory(string itemName)
+        {
+            IEkwipunek itemToAdd = removedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
+            if (itemToAdd != null && !Ekwipunek.Contains(itemToAdd))
+            {
+                Ekwipunek.Add(itemToAdd);
+                removedItems.Remove(itemToAdd);
+                RefreshInventory();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Odswiezanie ekwipunku
         private void RefreshInventory()
         {
             
@@ -190,8 +309,11 @@ namespace Hopeless
                     label.BorderStyle = BorderStyle.FixedSingle;
                     Inventory.Controls.Add(label);
                 }
-                InitializeDragDrop();
-            
+                foreach (Control control in Inventory.Controls)
+                {
+                    control.MouseDown += ItemMouseDown;
+                }
+
         }
 
     }

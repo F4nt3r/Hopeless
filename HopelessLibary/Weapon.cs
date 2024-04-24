@@ -23,9 +23,32 @@ namespace HopelessLibary
             Character = character;
         }
 
+
         public string Wypisz()
         {
             return this.Name;
+        }
+
+        public void Equip(Character target)
+        {
+            if (!Character.Contains(target))
+            {
+                throw new ClassWeaponException("Ta postac nie moze uzywac tej broni.");
+            }
+            target.Weapon = this;
+        }
+
+
+
+        [Serializable]
+        public class ClassWeaponException : Exception
+        {
+            public ClassWeaponException() { }
+            public ClassWeaponException(string message) : base(message) { }
+            public ClassWeaponException(string message, Exception inner) : base(message, inner) { }
+            protected ClassWeaponException(
+              System.Runtime.Serialization.SerializationInfo info,
+              System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
         }
 
     }

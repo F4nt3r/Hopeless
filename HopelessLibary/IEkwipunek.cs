@@ -9,5 +9,7 @@ namespace HopelessLibary
     public interface IEkwipunek
     {
         string Wypisz();
+        void Equip(Character target);
+
     }
 }

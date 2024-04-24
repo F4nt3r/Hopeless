@@ -10,15 +10,12 @@ namespace HopelessLibary
 
     {
 
-        public Weapon Weapon { get; set; }
-        public Armor Armor { get; set; }
 
 
 
         public Cleric(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, critChance, initiative, minDmg, maxDmg)
         {
-            Weapon = null;
-            Armor = null;
+
         }
 
         

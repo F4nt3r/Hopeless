@@ -15,7 +15,8 @@
         public int Initiative { get; set; }
         public int MinDmg { get; set; }
         public int MaxDmg { get; set; }
-
+        public Weapon Weapon { get; set; }
+        public Armor Armor { get; set; }
 
 
         public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative,int minDmg,int maxDmg)
@@ -33,6 +34,8 @@
             Initiative = initiative;
             MinDmg = minDmg;
             MaxDmg = maxDmg;
+            Weapon = null;
+            Armor = null;
         }
 
         public abstract void BasicAttack(Character target);
@@ -55,5 +58,9 @@
                 LevelUp();
             }
         }
+
+
+
+
     }
 }
