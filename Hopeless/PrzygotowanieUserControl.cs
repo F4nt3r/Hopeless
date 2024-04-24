@@ -31,8 +31,8 @@ namespace Hopeless
             pictureBox1.Image = Properties.Resources.Prep;
 
             this.Load += PrzygotowanieUserControl_Load;
-            
 
+            Console.Write("Test");
         }
         private void PrzygotowanieUserControl_Load(object sender, EventArgs e)
         {
