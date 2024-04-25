@@ -69,7 +69,8 @@ namespace Hopeless
                 {
                     knightWeapon.Text = knight.Weapon.Name;
                     knightWeapon.AccessibleDescription = knight.Weapon.Name + Environment.NewLine + knight.Weapon.Description + Environment.NewLine + "MinDMG: " + knight.Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + knight.Weapon.MaxDmg.ToString();
+                        Environment.NewLine + "MaxDMG: " + knight.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, knight.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -80,7 +81,8 @@ namespace Hopeless
                 if (knight.Armor != null)
                 {
                     knightArmor.Text = knight.Armor.Name;
-                    knightArmor.AccessibleDescription = knight.Armor.Name + Environment.NewLine + knight.Armor.Description + Environment.NewLine + "DmgReduction: " + knight.Armor.DmgReduction.ToString();
+                    knightArmor.AccessibleDescription = knight.Armor.Name + Environment.NewLine + knight.Armor.Description + Environment.NewLine + "DmgReduction: " + knight.Armor.DmgReduction.ToString()
+                        + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, knight.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -109,7 +111,8 @@ namespace Hopeless
                 {
                     rogueWeapon.Text = rogue.Weapon.Name;
                     rogueWeapon.AccessibleDescription = rogue.Weapon.Name + Environment.NewLine + rogue.Weapon.Description + Environment.NewLine + "MinDMG: " + rogue.Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + rogue.Weapon.MaxDmg.ToString();
+                        Environment.NewLine + "MaxDMG: " + rogue.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, rogue.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -119,7 +122,8 @@ namespace Hopeless
                 if (rogue.Armor != null)
                 {
                     rogueArmor.Text = rogue.Armor.Name;
-                    rogueArmor.AccessibleDescription = rogue.Armor.Name + Environment.NewLine + rogue.Armor.Description + Environment.NewLine + "DmgReduction: " + rogue.Armor.DmgReduction.ToString();
+                    rogueArmor.AccessibleDescription = rogue.Armor.Name + Environment.NewLine + rogue.Armor.Description + Environment.NewLine + "DmgReduction: " + rogue.Armor.DmgReduction.ToString()
+                        + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, rogue.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -145,7 +149,8 @@ namespace Hopeless
                 {
                     clericWeapon.Text = cleric.Weapon.Name;
                     clericWeapon.AccessibleDescription = cleric.Weapon.Name + Environment.NewLine + cleric.Weapon.Description + Environment.NewLine + "MinDMG: " + cleric.Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + cleric.Weapon.MaxDmg.ToString();
+                        Environment.NewLine + "MaxDMG: " + cleric.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, cleric.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -155,7 +160,8 @@ namespace Hopeless
                 if (cleric.Armor != null)
                 {
                     clericArmor.Text = cleric.Armor.Name;
-                    clericArmor.AccessibleDescription = cleric.Armor.Name + Environment.NewLine + cleric.Armor.Description + Environment.NewLine + "DmgReduction: " + cleric.Armor.DmgReduction.ToString();
+                    clericArmor.AccessibleDescription = cleric.Armor.Name + Environment.NewLine + cleric.Armor.Description + Environment.NewLine + "DmgReduction: " + cleric.Armor.DmgReduction.ToString()
+                    + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, cleric.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -182,7 +188,8 @@ namespace Hopeless
                 {
                     jokerWeapon.Text = joker.Weapon.Name;
                     jokerWeapon.AccessibleDescription = joker.Weapon.Name + Environment.NewLine + joker.Weapon.Description + Environment.NewLine + "MinDMG: " + joker.Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + joker.Weapon.MaxDmg.ToString();
+                        Environment.NewLine + "MaxDMG: " + joker.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, joker.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -192,7 +199,8 @@ namespace Hopeless
                 if (joker.Armor != null)
                 {
                     jokerArmor.Text = joker.Armor.Name;
-                    jokerArmor.AccessibleDescription = joker.Armor.Name + Environment.NewLine + joker.Armor.Description + Environment.NewLine + "DmgReduction: " + joker.Armor.DmgReduction.ToString();
+                    jokerArmor.AccessibleDescription = joker.Armor.Name + Environment.NewLine + joker.Armor.Description + Environment.NewLine + "DmgReduction: " + joker.Armor.DmgReduction.ToString()
+                    + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, joker.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 else
                 {
@@ -914,12 +922,14 @@ namespace Hopeless
                 {
                     Weapon weapon = (Weapon)item;
                     label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
-                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString();
+                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + 
+                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 if (item is Armor)
                 {
                     Armor armor = (Armor)item;
-                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString();
+                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
+                    "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 Inventory.Controls.Add(label);
             }
