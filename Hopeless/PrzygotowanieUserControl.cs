@@ -214,14 +214,15 @@ namespace Hopeless
             gameState.knight = knight;
             gameState.cleric = cleric;
             gameState.joker = joker;
-            
+
             List<Weapon> weapons = new List<Weapon>();
             List<Weapon> equippedWeapons = new List<Weapon>();
             List<Armor> armors = new List<Armor>();
             List<Armor> equippedArmors = new List<Armor>();
-            
-            foreach (IEkwipunek item in Ekwipunek) { 
-            if(item is Weapon)
+
+            foreach (IEkwipunek item in Ekwipunek)
+            {
+                if (item is Weapon)
                 {
                     weapons.Add((Weapon)item);
                 }
@@ -246,8 +247,8 @@ namespace Hopeless
             }
             gameState.armors = armors;
             gameState.weapons = weapons;
-            gameState.equippedWeapons= equippedWeapons;
-            gameState.equippedArmors= equippedArmors;
+            gameState.equippedWeapons = equippedWeapons;
+            gameState.equippedArmors = equippedArmors;
             SaveGameState(gameState);
 
             WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
@@ -259,7 +260,7 @@ namespace Hopeless
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
-               
+
 
             };
 

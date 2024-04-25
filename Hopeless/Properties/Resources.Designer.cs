@@ -73,6 +73,16 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newgame {
+            get {
+                object obj = ResourceManager.GetObject("newgame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Prep {
             get {
                 object obj = ResourceManager.GetObject("Prep", resourceCulture);

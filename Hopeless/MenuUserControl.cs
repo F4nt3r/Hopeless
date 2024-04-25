@@ -35,7 +35,7 @@ namespace Hopeless
         }
         private void UpdateKontynuujGreButtonState()
         {
-      
+
             string saveFilePath = "game_state.json";
 
             bool fileExists = File.Exists(saveFilePath);

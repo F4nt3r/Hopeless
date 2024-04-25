@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUserControl));
             pictureBox1 = new PictureBox();
             kontynuujGreButton = new Button();
             nowaGraButton = new Button();
@@ -37,7 +36,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1424, 861);
@@ -58,11 +56,12 @@
             // 
             // nowaGraButton
             // 
+            nowaGraButton.BackgroundImage = Properties.Resources.newgame;
+            nowaGraButton.BackgroundImageLayout = ImageLayout.Stretch;
             nowaGraButton.Location = new Point(638, 657);
             nowaGraButton.Name = "nowaGraButton";
             nowaGraButton.Size = new Size(150, 50);
             nowaGraButton.TabIndex = 2;
-            nowaGraButton.Text = "Nowa Gra";
             nowaGraButton.UseVisualStyleBackColor = true;
             nowaGraButton.Click += nowaGraButton_Click;
             // 
