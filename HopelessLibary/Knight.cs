@@ -13,11 +13,10 @@ namespace HopelessLibary
         
 
 
-        public Knight(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int blockChance) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, critChance, initiative, minDmg, maxDmg)
+        public Knight(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int blockChance, CharacterType type) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, critChance, initiative, minDmg, maxDmg, type)
         {
             BlockChance = blockChance;
-            Weapon = null;
-            Armor = null;
+
         }
 
         

@@ -16,11 +16,13 @@
         public int Initiative { get; set; }
         public int MinDmg { get; set; }
         public int MaxDmg { get; set; }
+
+        public CharacterType Type { get; set; }
         public Weapon Weapon { get; set; }
         public Armor Armor { get; set; }
 
 
-        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative,int minDmg,int maxDmg)
+        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)
         {
             Name = name;
             Level = 1;
@@ -36,6 +38,7 @@
             Initiative = initiative;
             MinDmg = minDmg;
             MaxDmg = maxDmg;
+            Type = type;
             Weapon = null;
             Armor = null;
         }

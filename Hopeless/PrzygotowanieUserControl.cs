@@ -1,4 +1,5 @@
 ﻿using HopelessLibary;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static HopelessLibary.Armor;
@@ -18,7 +20,7 @@ namespace Hopeless
     {
         public List<Character> Characters { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
-        private List<IEkwipunek> equipedItems = new List<IEkwipunek>();
+        public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
         private Label lastDraggedLabel;
         public Knight knight;
         public Rogue rogue;
@@ -207,11 +209,63 @@ namespace Hopeless
         public event EventHandler WyruszButtonClicked;
         private void wyruszButton_Click(object sender, EventArgs e)
         {
+            GameState gameState = new GameState();
+            gameState.rogue = rogue;
+            gameState.knight = knight;
+            gameState.cleric = cleric;
+            gameState.joker = joker;
+            
+            List<Weapon> weapons = new List<Weapon>();
+            List<Weapon> equippedWeapons = new List<Weapon>();
+            List<Armor> armors = new List<Armor>();
+            List<Armor> equippedArmors = new List<Armor>();
+            
+            foreach (IEkwipunek item in Ekwipunek) { 
+            if(item is Weapon)
+                {
+                    weapons.Add((Weapon)item);
+                }
+                else
+                {
+                    armors.Add((Armor)item);
+
+                }
+            }
+
+            foreach (IEkwipunek item in equipedItems)
+            {
+                if (item is Weapon)
+                {
+                    equippedWeapons.Add((Weapon)item);
+                }
+                else
+                {
+                    equippedArmors.Add((Armor)item);
+
+                }
+            }
+            gameState.armors = armors;
+            gameState.weapons = weapons;
+            gameState.equippedWeapons= equippedWeapons;
+            gameState.equippedArmors= equippedArmors;
+            SaveGameState(gameState);
+
             WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
 
+        public void SaveGameState(GameState gameState)
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+               
 
+            };
+
+            string json = JsonConvert.SerializeObject(gameState);
+            File.WriteAllText("game_state.json", json);
+        }
 
         //Inicjalizacja Przeciagania
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static HopelessLibary.Weapon;
 
@@ -12,14 +13,15 @@ namespace HopelessLibary
         public string Name { get; set; }
         public string Description { get; set; }
         public int DmgReduction { get; set; }
-        public List<Character> Character { get; set; }
 
-        public Armor(string name, string description, int dmgReduction, List<Character> character)
+        public List<CharacterType> AllowedCharacters { get; set; }
+
+        public Armor(string name, string description, int dmgReduction, List<CharacterType> allowedCharacters)
         {
             Name = name;
             Description = description;
             DmgReduction = dmgReduction;
-            Character = character;
+            AllowedCharacters = allowedCharacters;
         }
 
         public string Wypisz()
@@ -29,7 +31,7 @@ namespace HopelessLibary
 
         public void Equip(Character target)
         {
-            if (!Character.Contains(target))
+            if (!AllowedCharacters.Contains(target.Type))
             {
                 throw new ClassArmorException("Ta postac nie moze uzywac tego armora.");
             }

@@ -17,16 +17,30 @@ namespace Hopeless
             InitializeComponent();
 
             pictureBox1.Image = Properties.Resources.hope;
+            UpdateKontynuujGreButtonState();
         }
 
         public event EventHandler NowaGraButtonClicked;
 
-       
+        public event EventHandler KontynuujGreButtonClicked;
 
         private void nowaGraButton_Click(object sender, EventArgs e)
         {
             NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
         }
-        
+
+        private void kontynuujGreButton_Click(object sender, EventArgs e)
+        {
+            KontynuujGreButtonClicked?.Invoke(this, EventArgs.Empty);
+        }
+        private void UpdateKontynuujGreButtonState()
+        {
+      
+            string saveFilePath = "game_state.json";
+
+            bool fileExists = File.Exists(saveFilePath);
+
+            kontynuujGreButton.Enabled = fileExists;
+        }
     }
 }

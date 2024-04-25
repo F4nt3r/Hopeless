@@ -54,6 +54,7 @@
             kontynuujGreButton.TabIndex = 1;
             kontynuujGreButton.Text = "Kontynuuj Gre";
             kontynuujGreButton.UseVisualStyleBackColor = true;
+            kontynuujGreButton.Click += kontynuujGreButton_Click;
             // 
             // nowaGraButton
             // 
