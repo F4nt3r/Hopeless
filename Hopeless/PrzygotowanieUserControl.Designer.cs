@@ -162,6 +162,7 @@
             // 
             // clericPostac
             // 
+            clericPostac.BackColor = Color.Transparent;
             clericPostac.Controls.Add(pictureBox2);
             clericPostac.Location = new Point(4, 24);
             clericPostac.Name = "clericPostac";
@@ -169,7 +170,6 @@
             clericPostac.Size = new Size(192, 308);
             clericPostac.TabIndex = 0;
             clericPostac.Text = "Postac";
-            clericPostac.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 

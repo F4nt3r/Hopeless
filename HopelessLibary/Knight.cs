@@ -30,12 +30,33 @@ namespace HopelessLibary
 
         public override void TakeDamage(int damage)
         {
-            
+            double finalDmg;
+            if (new Random().Next(1, 101) > BlockChance)
+            {
+                finalDmg = damage * ((double)Resistance / 100);
+                finalDmg = Math.Round(finalDmg);
+                CurrentHP -= (int)finalDmg;
+            }
+            else
+            {
+              
+            }
+          
         }
 
         public override void BasicAttack(Character target)
         {
-            throw new NotImplementedException();
+            int dmg;
+            if (new Random().Next(1, 101) > CritChance)
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1);
+            }
+            else
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
+            }
+
+            target.TakeDamage(dmg);
         }
     }
 }

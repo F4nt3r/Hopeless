@@ -22,7 +22,17 @@ namespace HopelessLibary
 
         public override void BasicAttack(Character target)
         {
-            throw new NotImplementedException();
+            int dmg;
+            if (new Random().Next(1, 101) > CritChance)
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1);
+            }
+            else
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
+            }
+
+            target.TakeDamage(dmg);
         }
 
         public override void LevelUp()
@@ -32,7 +42,12 @@ namespace HopelessLibary
 
         public override void TakeDamage(int damage)
         {
-            throw new NotImplementedException();
+
+                double finalDmg = damage * ((double)Resistance / 100);
+                finalDmg = Math.Round(finalDmg);
+                CurrentHP -= (int)finalDmg;
+            
+           
         }
     }
 }

@@ -56,13 +56,14 @@
             // 
             // nowaGraButton
             // 
+            nowaGraButton.BackColor = Color.DodgerBlue;
             nowaGraButton.BackgroundImage = Properties.Resources.newgame;
             nowaGraButton.BackgroundImageLayout = ImageLayout.Stretch;
             nowaGraButton.Location = new Point(638, 657);
             nowaGraButton.Name = "nowaGraButton";
             nowaGraButton.Size = new Size(150, 50);
             nowaGraButton.TabIndex = 2;
-            nowaGraButton.UseVisualStyleBackColor = true;
+            nowaGraButton.UseVisualStyleBackColor = false;
             nowaGraButton.Click += nowaGraButton_Click;
             // 
             // MenuUserControl

@@ -33,18 +33,27 @@ namespace Hopeless
             Weapon sword = new Weapon("Miecz Stalowy", "Opis Miecza", 5, 12,new List<CharacterType> {CharacterType.Knight});
             Weapon axe = new Weapon("Topor Bojowy", "Opis Topora", 8, 13, new List<CharacterType> { CharacterType.Knight });
             Weapon gun = new Weapon("Pistolet Skalkowy", "Opis Pistoletu", 5, 12, new List<CharacterType> { CharacterType.Rogue });
-            
+            Weapon greatsword = new Weapon("Wielki Miecz Stalowy", "Opis Miecza", 7, 15, new List<CharacterType> { CharacterType.Knight });
             // Inicjalizacja armora
             Armor armour = new Armor("Ciezka Zbroja", "Opis Zbroi",12, new List<CharacterType> { CharacterType.Knight });
+
             Armor lightweightarmour = new Armor("Lekka Zbroja", "Opis Zbroi", 5, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker });
-
-            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe, lightweightarmour };
-            
-
-          
+            Armor mediumweightarmour = new Armor("Srednia Zbroja", "Opis Zbroi", 7, new List<CharacterType> { CharacterType.Cleric });
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe, lightweightarmour};
 
 
-            
+            // Inicjalizacja Potworów
+
+            Monster rat1 = new Monster("Ratatuj",20,20,20,10,10,20,2,4,33,DifficultyType.Easy);
+            Monster rat2 = new Monster("Regi", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            Monster rat3 = new Monster("Emet", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            Monster rat4 = new Monster("Lino", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            // Inicjalizacja Wypraw
+
+            Expediton expedition1 = new Expediton("Kana³y","Ale¿ tu œmierdzi...",50,DifficultyType.Easy,new List<Monster> { rat1,rat2,rat3,rat4 },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
+            Expediton expedition2 = new Expediton("Kana³y", "Ale¿ tu œmierdzi...", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expediton expedition3 = new Expediton("Kana³y", "Ale¿ tu œmierdzi...", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+
 
             // Ustawienie pocz¹tkowej widocznoœci UserControl
             menuUserControl.Visible = true;

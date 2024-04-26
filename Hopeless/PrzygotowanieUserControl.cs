@@ -106,7 +106,7 @@ namespace Hopeless
                 rogueCrit.Text = "Szansa na Kryta: " + rogue.CritChance + "%";
                 rogueInitiative.Text = "Inicjatywa: " + rogue.Initiative;
                 rogueDmg.Text = "Obrazenia Ataku: " + rogue.MinDmg + "-" + rogue.MaxDmg;
-                rogueDodge.Text = "Szansa na Blok: " + rogue.DodgeChance + "%";
+                rogueDodge.Text = "Szansa na Unik: " + rogue.DodgeChance + "%";
                 if (rogue.Weapon != null)
                 {
                     rogueWeapon.Text = rogue.Weapon.Name;
@@ -922,7 +922,7 @@ namespace Hopeless
                 {
                     Weapon weapon = (Weapon)item;
                     label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
-                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + 
+                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
                 }
                 if (item is Armor)

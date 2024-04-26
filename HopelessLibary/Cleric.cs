@@ -46,7 +46,7 @@ namespace HopelessLibary
         public void Purify(Character target)
         {
             int dmg;
-            if (new Random().Next(1, 100) > CritChance)
+            if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = Intelligence * 10;
             }
@@ -62,7 +62,17 @@ namespace HopelessLibary
 
         public override void BasicAttack(Character target)
         {
-            throw new NotImplementedException();
+            int dmg;
+            if (new Random().Next(1, 101) > CritChance)
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1);
+            }
+            else
+            {
+                dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
+            }
+
+            target.TakeDamage(dmg);
         }
 
         public override void LevelUp()
@@ -72,7 +82,9 @@ namespace HopelessLibary
 
         public override void TakeDamage(int damage)
         {
-           CurrentHP -= damage;
+            double finalDmg = damage * ((double)Resistance / 100);
+            finalDmg = Math.Round(finalDmg);
+            CurrentHP -= (int)finalDmg;
         }
     }
 }
