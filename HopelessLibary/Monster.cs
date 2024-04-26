@@ -72,5 +72,9 @@ namespace HopelessLibary
             return CurrentHP <= 0;
         }
 
+        public override string? ToString()
+        {
+            return Name;
+        }
     }
 }

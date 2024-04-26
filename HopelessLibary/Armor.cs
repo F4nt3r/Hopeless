@@ -28,7 +28,10 @@ namespace HopelessLibary
         {
             return this.Name;
         }
-
+        public override string? ToString()
+        {
+            return Name;
+        }
         public void Equip(Character target)
         {
             if (!AllowedCharacters.Contains(target.Type))

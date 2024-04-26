@@ -8,6 +8,7 @@ namespace Hopeless
         private MenuUserControl menuUserControl;
         private PrzygotowanieUserControl fazaPrzygotowaniaUserControl;
         private WyprawaUserControl wyprawaUserControl;
+        private WyborWyprawyUserControl wyborWyprawyUserControl;
         private List<Character> characters;
         public Form1()
         {
@@ -17,10 +18,14 @@ namespace Hopeless
             menuUserControl = new MenuUserControl();
             fazaPrzygotowaniaUserControl = new PrzygotowanieUserControl();
             wyprawaUserControl = new WyprawaUserControl();
+            wyborWyprawyUserControl= new WyborWyprawyUserControl();
             Controls.Add(menuUserControl);
             Controls.Add(fazaPrzygotowaniaUserControl);
             Controls.Add(wyprawaUserControl);
+            Controls.Add(wyborWyprawyUserControl);
 
+            wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterWin;
+            wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterLose;
             // Inicjalizacja postaci
             Knight knight = new Knight("Lancelot",0,10,5,2,50,50,50,10,34,1,2,33,CharacterType.Knight);
             Rogue rogue = new Rogue("Astarion",0,2,10,5,35,35,30,50,70,1,2,33, CharacterType.Rogue);
@@ -44,27 +49,28 @@ namespace Hopeless
 
             // Inicjalizacja Potworów
 
-            Monster rat1 = new Monster("Ratatuj",20,20,20,10,10,20,2,4,33,DifficultyType.Easy);
-            Monster rat2 = new Monster("Regi", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
-            Monster rat3 = new Monster("Emet", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
-            Monster rat4 = new Monster("Lino", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            Monster rat1 = new Monster("Szczur",20,20,20,10,10,20,2,4,33,DifficultyType.Easy);
+            Monster rat2 = new Monster("Szczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            Monster rat3 = new Monster("Szczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
+            Monster rat4 = new Monster("Szczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Easy);
             // Inicjalizacja Wypraw
 
-            Expediton expedition1 = new Expediton("Kana³y","Ale¿ tu œmierdzi...",50,DifficultyType.Easy,new List<Monster> { rat1,rat2,rat3,rat4 },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
-            Expediton expedition2 = new Expediton("Kana³y", "Ale¿ tu œmierdzi...", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
-            Expediton expedition3 = new Expediton("Kana³y", "Ale¿ tu œmierdzi...", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
-
+            Expediton expedition1 = new Expediton("Kana³y Pary¿a","Ale¿ tu œmierdzi... Serem?",50,DifficultyType.Easy,new List<Monster> { rat1,rat2,rat3,rat4 },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
+            Expediton expedition2 = new Expediton("Kana³y UWS", "Wydostaj¹ siê przez ¿eñsk¹ toalete", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expediton expedition3 = new Expediton("Kana³y Warszawy", "Ale¿ tu œmierdzi... Aco tu robi DUDU", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, rat4 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            List<Expediton> expeditons = new List<Expediton> { expedition1, expedition2, expedition3 };
 
             // Ustawienie pocz¹tkowej widocznoœci UserControl
             menuUserControl.Visible = true;
             fazaPrzygotowaniaUserControl.Visible = false;
             wyprawaUserControl.Visible = false;
+            wyborWyprawyUserControl.Visible = false;
 
-           
             menuUserControl.NowaGraButtonClicked += (sender, args) =>
             {
                 fazaPrzygotowaniaUserControl.Characters = characters;
                 fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+                wyborWyprawyUserControl.Expeditions = expeditons;
                 fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
@@ -81,10 +87,28 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.WyruszButtonClicked += (sender, args) =>
             {
                 fazaPrzygotowaniaUserControl.Visible = false;
-                wyprawaUserControl.Visible = true;
-            };
-        }
+                wyborWyprawyUserControl.Visible = true;
 
+                wyprawaUserControl.Characters = fazaPrzygotowaniaUserControl.Characters;
+
+
+            };
+            wyborWyprawyUserControl.powrotButtonClicked += (sender, args) =>
+            {
+                fazaPrzygotowaniaUserControl.Visible = true;
+                wyborWyprawyUserControl.Visible = false;
+            };
+            wyborWyprawyUserControl.ExpeditionMouseClicked += (sender, args) =>
+            {
+                wyborWyprawyUserControl.Visible = false;
+
+                wyprawaUserControl.Expedition = wyborWyprawyUserControl.SelectedExpedition;
+                wyprawaUserControl.Visible = true;
+                
+            };
+
+
+        }
         public void loadGame()
         {
             string jsonData = File.ReadAllText("game_state.json");
