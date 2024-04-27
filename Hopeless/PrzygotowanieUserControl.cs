@@ -19,6 +19,7 @@ namespace Hopeless
     public partial class PrzygotowanieUserControl : UserControl
     {
         public List<Character> Characters { get; set; }
+        public List<Expediton> Expeditons { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
         public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
         private Label lastDraggedLabel;
@@ -217,6 +218,9 @@ namespace Hopeless
         public event EventHandler WyruszButtonClicked;
         private void wyruszButton_Click(object sender, EventArgs e)
         {
+
+            WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
+
             GameState gameState = new GameState();
             gameState.rogue = rogue;
             gameState.knight = knight;
@@ -257,20 +261,17 @@ namespace Hopeless
             gameState.weapons = weapons;
             gameState.equippedWeapons = equippedWeapons;
             gameState.equippedArmors = equippedArmors;
+            gameState.expeditions = Expeditons;
+
             SaveGameState(gameState);
 
-            WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
+            
         }
 
 
         public void SaveGameState(GameState gameState)
         {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-
-
-            };
+            
 
             string json = JsonConvert.SerializeObject(gameState);
             File.WriteAllText("game_state.json", json);

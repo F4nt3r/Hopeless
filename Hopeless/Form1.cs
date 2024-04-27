@@ -86,8 +86,11 @@ namespace Hopeless
 
             fazaPrzygotowaniaUserControl.WyruszButtonClicked += (sender, args) =>
             {
+
+                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.Expeditions;
                 fazaPrzygotowaniaUserControl.Visible = false;
                 wyborWyprawyUserControl.Visible = true;
+
 
                 wyprawaUserControl.Characters = fazaPrzygotowaniaUserControl.Characters;
 
@@ -122,6 +125,7 @@ namespace Hopeless
             List<IEkwipunek> equippedEkwipunek = new List<IEkwipunek>();
             List<Character> characters = new List<Character>();
             List<IEkwipunek> ekwipunek = new List<IEkwipunek>();
+            List<Expediton> expeditons = new List<Expediton>();
 
             gameState = JsonConvert.DeserializeObject<GameState>(jsonData);
 
@@ -134,10 +138,12 @@ namespace Hopeless
             equippedEkwipunek.AddRange(gameState.equippedArmors);
             ekwipunek.AddRange(gameState.weapons);
             ekwipunek.AddRange(gameState.armors);
+            expeditons.AddRange(gameState.expeditions);
 
             fazaPrzygotowaniaUserControl.Characters = characters;
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
             fazaPrzygotowaniaUserControl.equipedItems = equippedEkwipunek;
+            wyborWyprawyUserControl.Expeditions = expeditons;
         }
 
     }
