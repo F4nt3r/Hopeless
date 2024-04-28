@@ -24,8 +24,8 @@ namespace Hopeless
             Controls.Add(wyprawaUserControl);
             Controls.Add(wyborWyprawyUserControl);
 
-            wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterWin;
-            wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterLose;
+            wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterExpedition;
+          
             // Inicjalizacja postaci
             Knight knight = new Knight("Lancelot",0,10,5,2,50,50,50,10,34,1,2,33,CharacterType.Knight);
             Rogue rogue = new Rogue("Astarion",0,2,10,5,35,35,30,50,70,1,2,33, CharacterType.Rogue);
@@ -57,9 +57,10 @@ namespace Hopeless
             Armor leatherarmor = new Armor("Skorzana Zbroja", "Zrobiona z pierwszorzêdnej skóry Cieniostworów", 7, new List<CharacterType> { CharacterType.Cleric, CharacterType.Joker, CharacterType.Rogue });
             Armor durableovercoat = new Armor("Wytrzymaly Plaszcz", "Zapewni podstawow¹ ochrone. Ale nieprzeciêtny wygl¹d", 6, new List<CharacterType> { CharacterType.Rogue });
             Armor bronzedchestplate = new Armor("Napiersnik z Brazu", "A¿ mo¿na poczuæ sie jak Rzymianin", 9, new List<CharacterType> { CharacterType.Rogue, CharacterType.Knight });
+            List<IEkwipunek> pulaEkwipunku = new List<IEkwipunek> { sword, gun, durableovercoat, bronzedchestplate, leatherarmor, armour, axe, lightweightarmour, mediumweightarmour, greatsword , glaive , metal_cudge , sharpened_sickle , gilded_mace , scarlet_flail , dagger , spearofdestiny ,};
 
             List<IEkwipunek> ekwipunek = new List<IEkwipunek> { sword, gun, armour, axe, lightweightarmour};
-
+            wyborWyprawyUserControl.pulaEkwipunku = pulaEkwipunku;
 
             // Inicjalizacja Potworów
 
@@ -76,14 +77,21 @@ namespace Hopeless
             Monster brigandTrainee3 = new Monster("Poczatkujacy Bandyta", 25, 20, 20, 15, 10, 10, 3, 5, 15, DifficultyType.Easy);
             Monster brigand1 = new Monster("Bandyta", 30, 25, 25, 20, 15, 15, 6, 9, 15, DifficultyType.Easy);
             Monster floutist1 = new Monster("Flecista",30,30,30,25,20,19,5,10,20, DifficultyType.Easy);
+
+            Monster kretoszczur1 = new Monster("Kretoszczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Medium);
+            Monster kretoszczur2 = new Monster("Kretoszczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Medium);
+            Monster kretoszczur3 = new Monster("Kretoszczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Medium);
+            Monster kretoszczur4 = new Monster("Kretoszczur", 30, 30, 30, 15, 15, 19, 3, 6, 20, DifficultyType.Medium);
+            List<Monster> monsters = new List<Monster> { rat1, rat2, rat3, rat4, webber1, webber2, webberSpitter1, webberSpitter2, brigandTrainee1, brigandTrainee2, brigandTrainee3, brigand1, floutist1, kretoszczur1, kretoszczur2, kretoszczur3, kretoszczur4 };
+            wyborWyprawyUserControl.monsters = monsters;
             // Inicjalizacja Wypraw
 
-            Expediton expedition1 = new Expediton("Kana³y Pary¿a","Ale¿ tu œmierdzi... Serem?",50,DifficultyType.Easy,new List<Monster> { rat1,rat2,rat3,rat4 },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
-            Expediton expedition2 = new Expediton("Opuszczony Magazyn", "Ponoæ kiedys sk³adowali tu Alkohol", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, webber1, webber2 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
-            Expediton expedition3 = new Expediton("Flecista z Hameln", "Wiesz gdzie mo¿esz sobie wsadziæ ten flet...?", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, floutist1 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
-            Expediton expedition4 = new Expediton("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn", 50, DifficultyType.Easy, new List<Monster> { webber1, webber2, webberSpitter1, webberSpitter2 }, 100, new List<Weapon> { glaive }, new List<Armor> {  });
-            Expediton expedition5 = new Expediton("Oboz na Bagnach", "Nielegalna plantacja bagiennego ziela", 50, DifficultyType.Easy, new List<Monster> { brigandTrainee1, brigandTrainee2, brigandTrainee3, brigand1 }, 100, new List<Weapon> { dagger }, new List<Armor> { leatherarmor });
-            List<Expediton> expeditons = new List<Expediton> { expedition1, expedition2, expedition3, expedition4, expedition5 };
+            Expedition expedition1 = new Expedition("Kana³y Pary¿a","Ale¿ tu œmierdzi... Serem?",50,DifficultyType.Easy,new List<Monster> { rat1,rat2,rat3,rat4 },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
+            Expedition expedition2 = new Expedition("Opuszczony Magazyn", "Ponoæ kiedys sk³adowali tu Jabole", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, webber1, webber2 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expedition expedition3 = new Expedition("Flecista z Hameln", "Wiesz gdzie mo¿esz sobie wsadziæ ten flet...?", 50, DifficultyType.Easy, new List<Monster> { rat1, rat2, rat3, floutist1 }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expedition expedition4 = new Expedition("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn", 50, DifficultyType.Easy, new List<Monster> { webber1, webber2, webberSpitter1, webberSpitter2 }, 100, new List<Weapon> { glaive }, new List<Armor> {  });
+            Expedition expedition5 = new Expedition("Oboz na Bagnach", "Nielegalna plantacja bagiennego ziela", 50, DifficultyType.Easy, new List<Monster> { brigandTrainee1, brigandTrainee2, brigandTrainee3, brigand1 }, 100, new List<Weapon> { dagger }, new List<Armor> { leatherarmor });
+            List<Expedition> expeditons = new List<Expedition> { expedition1, expedition2, expedition3, expedition4, expedition5 };
 
             // Ustawienie pocz¹tkowej widocznoœci UserControl
             menuUserControl.Visible = true;
@@ -95,7 +103,9 @@ namespace Hopeless
             {
                 fazaPrzygotowaniaUserControl.Characters = characters;
                 fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
-                wyborWyprawyUserControl.Expeditions = expeditons;
+                wyborWyprawyUserControl.expeditions = expeditons;
+                
+                
                 fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
@@ -112,7 +122,7 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.WyruszButtonClicked += (sender, args) =>
             {
 
-                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.Expeditions;
+                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
                 fazaPrzygotowaniaUserControl.Visible = false;
                 wyborWyprawyUserControl.Visible = true;
 
@@ -130,9 +140,14 @@ namespace Hopeless
             {
                 wyborWyprawyUserControl.Visible = false;
 
-                wyprawaUserControl.Expedition = wyborWyprawyUserControl.SelectedExpedition;
+                wyprawaUserControl.expedition = wyborWyprawyUserControl.selectedExpedition;
                 wyprawaUserControl.Visible = true;
                 
+            };
+            wyprawaUserControl.FinishButtonClicked += (sender, args) =>
+            {
+                wyprawaUserControl.Visible = false;
+                fazaPrzygotowaniaUserControl.Visible = true;
             };
 
 
@@ -150,7 +165,7 @@ namespace Hopeless
             List<IEkwipunek> equippedEkwipunek = new List<IEkwipunek>();
             List<Character> characters = new List<Character>();
             List<IEkwipunek> ekwipunek = new List<IEkwipunek>();
-            List<Expediton> expeditons = new List<Expediton>();
+            List<Expedition> expeditons = new List<Expedition>();
 
             gameState = JsonConvert.DeserializeObject<GameState>(jsonData);
 
@@ -168,7 +183,7 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.Characters = characters;
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
             fazaPrzygotowaniaUserControl.equipedItems = equippedEkwipunek;
-            wyborWyprawyUserControl.Expeditions = expeditons;
+            wyborWyprawyUserControl.expeditions = expeditons;
         }
 
     }

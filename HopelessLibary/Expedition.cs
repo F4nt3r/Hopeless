@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
-    public class Expediton
+    public class Expedition
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,7 +17,7 @@ namespace HopelessLibary
         public List<Weapon> WeaponRewards { get; set; }
         public List<Armor> ArmorRewards { get; set; }
 
-        public Expediton(string name, string description, int experienceGains, DifficultyType type, List<Monster> monsters, int gold, List<Weapon> weaponRewards, List<Armor> armorRewards)
+        public Expedition(string name, string description, int experienceGains, DifficultyType type, List<Monster> monsters, int gold, List<Weapon> weaponRewards, List<Armor> armorRewards)
         {
             Name = name;
             Description = description;

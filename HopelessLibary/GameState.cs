@@ -16,7 +16,7 @@ namespace HopelessLibary
         public List<Weapon> equippedWeapons { get; set; }
         public List<Armor> armors { get; set; }
         public List<Armor> equippedArmors { get; set; }
-        public List<Expediton> expeditions { get; set; }
+        public List<Expedition> expeditions { get; set; }
         // Dodaj inne pola, jeśli potrzebujesz
     }
 }

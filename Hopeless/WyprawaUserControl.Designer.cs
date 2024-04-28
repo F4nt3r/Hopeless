@@ -38,6 +38,8 @@
             enemy2Name = new Label();
             enemy3Name = new Label();
             enemy4Name = new Label();
+            winButton = new Button();
+            loseButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -123,10 +125,32 @@
             enemy4Name.TabIndex = 19;
             enemy4Name.Text = "Imie: ";
             // 
+            // winButton
+            // 
+            winButton.Location = new Point(622, 694);
+            winButton.Name = "winButton";
+            winButton.Size = new Size(109, 23);
+            winButton.TabIndex = 20;
+            winButton.Text = "Zwycięstwo";
+            winButton.UseVisualStyleBackColor = true;
+            winButton.Click += winButton_Click;
+            // 
+            // loseButton
+            // 
+            loseButton.Location = new Point(622, 772);
+            loseButton.Name = "loseButton";
+            loseButton.Size = new Size(109, 23);
+            loseButton.TabIndex = 21;
+            loseButton.Text = "Porażka";
+            loseButton.UseVisualStyleBackColor = true;
+            loseButton.Click += loseButton_Click;
+            // 
             // WyprawaUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(loseButton);
+            Controls.Add(winButton);
             Controls.Add(enemy4Name);
             Controls.Add(enemy3Name);
             Controls.Add(enemy2Name);
@@ -154,5 +178,7 @@
         private Label enemy2Name;
         private Label enemy3Name;
         private Label enemy4Name;
+        private Button winButton;
+        private Button loseButton;
     }
 }

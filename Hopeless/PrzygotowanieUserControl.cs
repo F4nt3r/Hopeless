@@ -19,7 +19,7 @@ namespace Hopeless
     public partial class PrzygotowanieUserControl : UserControl
     {
         public List<Character> Characters { get; set; }
-        public List<Expediton> Expeditons { get; set; }
+        public List<Expedition> Expeditons { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
         public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
         private Label lastDraggedLabel;
@@ -32,18 +32,30 @@ namespace Hopeless
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
-
-            this.Load += PrzygotowanieUserControl_Load;
-
+            InitializeCharactersDragDrop();
+            this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
+      
 
 
         }
-        private void PrzygotowanieUserControl_Load(object sender, EventArgs e)
+
+        private void PrzygotowanieUserControl_VisibleChanged(object? sender, EventArgs e)
         {
-            RefreshStats();
-            RefreshInventory();
-            InitializeDragDrop();
+            var control = sender as UserControl;
+            if (control != null)
+            {
+                if (control.Visible)
+                {
+                    RefreshStats();
+                    RefreshInventory();
+                }
+               
+
+
+            }
         }
+
+       
         private void RefreshStats()
         {
             knight = (Knight)Characters[0];
@@ -278,13 +290,11 @@ namespace Hopeless
         }
 
         //Inicjalizacja Przeciagania
-
-        private void InitializeDragDrop()
+        
+        private void InitializeCharactersDragDrop()
         {
-            foreach (Control control in Inventory.Controls)
-            {
-                control.MouseDown += ItemMouseDown;
-            }
+            
+
 
             knightWeapon.AllowDrop = true;
             knightWeapon.MouseDown += ItemMouseDown;
@@ -339,10 +349,7 @@ namespace Hopeless
             jokerArmor.DragLeave += JokerArmor_DragLeave;
 
 
-            Inventory.AllowDrop = true;
-            Inventory.DragEnter += Inventory_DragEnter;
-            Inventory.DragLeave += Inventory_DragLeave;
-            Inventory.DragDrop += Inventory_DragDrop;
+           
 
 
 
@@ -939,6 +946,10 @@ namespace Hopeless
                 control.MouseDown += ItemMouseDown;
                 control.MouseHover += ItemMouseHover;
             }
+            Inventory.AllowDrop = true;
+            Inventory.DragEnter += Inventory_DragEnter;
+            Inventory.DragLeave += Inventory_DragLeave;
+            Inventory.DragDrop += Inventory_DragDrop;
 
         }
 

@@ -14,9 +14,9 @@ namespace Hopeless
     public partial class WyprawaUserControl : UserControl
     {
         public List<Character> Characters { get; set; }
-        public Expediton Expedition { get; set; }
+        public Expedition expedition { get; set; }
 
-        public delegate void CustomDelegate(bool wynik);
+        public delegate void CustomDelegate(bool wynik, Expedition wyprawa);
         public event CustomDelegate eventFirst;
 
         public WyprawaUserControl()
@@ -32,19 +32,23 @@ namespace Hopeless
             clericName.Text = Characters[2].Name;
             jokerName.Text = Characters[3].Name;
 
-            enemy1Name.Text = Expedition.Monsters[0].Name;
-            enemy2Name.Text = Expedition.Monsters[1].Name;
-            enemy3Name.Text = Expedition.Monsters[2].Name;
-            enemy4Name.Text = Expedition.Monsters[3].Name;
+            enemy1Name.Text = expedition.Monsters[0].Name;
+            enemy2Name.Text = expedition.Monsters[1].Name;
+            enemy3Name.Text = expedition.Monsters[2].Name;
+            enemy4Name.Text = expedition.Monsters[3].Name;
 
         }
-        private void ClickLoseButton(object sender, EventArgs e)
+        public event EventHandler FinishButtonClicked;
+        private void loseButton_Click(object sender, EventArgs e)
         {
-            eventFirst?.Invoke(false);
+            eventFirst?.Invoke(false, expedition);
+            FinishButtonClicked?.Invoke(this, EventArgs.Empty);
         }
-        private void ClickWinButton(object sender, EventArgs e)
+        private void winButton_Click(object sender, EventArgs e)
         {
-            eventFirst?.Invoke(true);
+            eventFirst?.Invoke(true, expedition);
+            FinishButtonClicked?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }
