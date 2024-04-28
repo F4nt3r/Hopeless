@@ -55,7 +55,7 @@
             hardExpeditions.AllowDrop = true;
             hardExpeditions.Location = new Point(31, 407);
             hardExpeditions.Name = "hardExpeditions";
-            hardExpeditions.Size = new Size(917, 160);
+            hardExpeditions.Size = new Size(920, 160);
             hardExpeditions.TabIndex = 12;
             // 
             // mediumExpeditions
@@ -63,7 +63,7 @@
             mediumExpeditions.AllowDrop = true;
             mediumExpeditions.Location = new Point(31, 217);
             mediumExpeditions.Name = "mediumExpeditions";
-            mediumExpeditions.Size = new Size(917, 160);
+            mediumExpeditions.Size = new Size(920, 160);
             mediumExpeditions.TabIndex = 13;
             // 
             // easyExpeditions
@@ -71,7 +71,7 @@
             easyExpeditions.AllowDrop = true;
             easyExpeditions.Location = new Point(31, 28);
             easyExpeditions.Name = "easyExpeditions";
-            easyExpeditions.Size = new Size(917, 160);
+            easyExpeditions.Size = new Size(920, 160);
             easyExpeditions.TabIndex = 13;
             // 
             // bossExpeditions

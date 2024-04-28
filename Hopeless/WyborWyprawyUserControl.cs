@@ -32,6 +32,17 @@ namespace Hopeless
         }
         private void InitializeExpeditions()
         {
+            //Losowanie 3 startowych misji
+            if (Expeditions.Count(expedition => expedition.Type == DifficultyType.Easy) > 4)
+            {
+                var random = new Random();
+                var randomExpeditions = Expeditions.Where(expedition => expedition.Type == DifficultyType.Easy).OrderBy(x => random.Next()).Take(3).ToList();
+                Expeditions.RemoveAll(expedition => expedition.Type == DifficultyType.Easy && !randomExpeditions.Contains(expedition));
+
+            }
+
+
+
             foreach (Expediton expediton in Expeditions)
             {
                 Label label = new Label();
@@ -40,7 +51,9 @@ namespace Hopeless
 
                     label.Text = expediton.Name;
                     label.AutoSize = false;
-                    label.Height = 50;
+                    label.Height = 155;
+                    label.Width = 300;
+                    label.Font = new Font("Arial", 15);
                     label.TextAlign = ContentAlignment.MiddleCenter;
                     label.BorderStyle = BorderStyle.FixedSingle;
 
@@ -60,9 +73,6 @@ namespace Hopeless
                     easyExpeditions.Controls.Add(label);
 
                 }
-
-
-
                 else if (expediton.Type == DifficultyType.Medium)
                 {
 
