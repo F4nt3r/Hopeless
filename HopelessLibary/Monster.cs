@@ -37,6 +37,19 @@ namespace HopelessLibary
             DodgeChance = dodgeChance;
             Type = type;
         }
+        public Monster(Monster monster){
+            Name = monster.Name;
+            ExperienceGains = monster.ExperienceGains;
+            CurrentHP = monster.CurrentHP;
+            MaxHP = monster.MaxHP;
+            Resistance = monster.Resistance;
+            CritChance = monster.CritChance;
+            Initiative = monster.Initiative;
+            MinDmg = monster.MinDmg;
+            MaxDmg = monster.MaxDmg;
+            DodgeChance = monster.DodgeChance;
+            Type = monster.Type;
+        }
         public void BasicAttack(Character target)
         {
             int dmg;

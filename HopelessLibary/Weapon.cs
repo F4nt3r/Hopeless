@@ -24,7 +24,14 @@ namespace HopelessLibary
             MaxDmg = maxDmg;
             AllowedCharacters = allowedCharacters;
         }
-
+        public Weapon(Weapon weapon)
+        {
+            Name = weapon.Name;
+            Description = weapon.Description;
+            MinDmg = weapon.MinDmg;
+            MaxDmg = weapon.MaxDmg;
+            AllowedCharacters = weapon.AllowedCharacters;
+        }
 
         public string Wypisz()
         {

@@ -1,16 +1,6 @@
 ﻿using HopelessLibary;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static HopelessLibary.Armor;
 using static HopelessLibary.Weapon;
 
@@ -34,7 +24,7 @@ namespace Hopeless
             pictureBox1.Image = Properties.Resources.Prep;
             InitializeCharactersDragDrop();
             this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
-      
+
 
 
         }
@@ -49,13 +39,13 @@ namespace Hopeless
                     RefreshStats();
                     RefreshInventory();
                 }
-               
+
 
 
             }
         }
 
-       
+
         private void RefreshStats()
         {
             knight = (Knight)Characters[0];
@@ -277,23 +267,23 @@ namespace Hopeless
 
             SaveGameState(gameState);
 
-            
+
         }
 
 
         public void SaveGameState(GameState gameState)
         {
-            
+
 
             string json = JsonConvert.SerializeObject(gameState);
             File.WriteAllText("game_state.json", json);
         }
 
         //Inicjalizacja Przeciagania
-        
+
         private void InitializeCharactersDragDrop()
         {
-            
+
 
 
             knightWeapon.AllowDrop = true;
@@ -349,7 +339,7 @@ namespace Hopeless
             jokerArmor.DragLeave += JokerArmor_DragLeave;
 
 
-           
+
 
 
 
@@ -877,7 +867,7 @@ namespace Hopeless
             string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
 
 
-            if (lastDraggedLabel != null && !Ekwipunek.Any(item => item.Wypisz() == draggedItemText))
+            if (lastDraggedLabel != null)
             {
                 lastDraggedLabel.Text = "Brak";
                 if (lastDraggedLabel == knightWeapon) knight.Weapon = null; knight.UpdateStats();
@@ -892,6 +882,7 @@ namespace Hopeless
 
                 AddItemToInventory(draggedItemText);
                 RefreshStats();
+                lastDraggedLabel = null;
             }
 
         }
@@ -900,7 +891,7 @@ namespace Hopeless
         private void AddItemToInventory(string itemName)
         {
             IEkwipunek itemToAdd = equipedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
-            if (itemToAdd != null && !Ekwipunek.Contains(itemToAdd))
+            if (itemToAdd != null)
             {
                 Ekwipunek.Add(itemToAdd);
                 equipedItems.Remove(itemToAdd);
@@ -952,8 +943,35 @@ namespace Hopeless
             Inventory.DragDrop += Inventory_DragDrop;
 
         }
+        public void AfterExpedition(bool wynik, Expedition wyprawa)
+        {
+            if (wynik)
+            {
 
+                foreach (Weapon weapon in wyprawa.WeaponRewards)
+                {
+                    Ekwipunek.Add(new Weapon(weapon));
+                }
+                foreach (Armor armor in wyprawa.ArmorRewards)
+                {
+                    Ekwipunek.Add(new Armor(armor));
+                }
+                RefreshInventory();
+            }
+            else
+            {
+                equipedItems.Clear();
+                knight.Weapon = null; knight.UpdateStats();
+                knight.Armor = null; knight.UpdateStats();
+                rogue.Weapon = null; rogue.UpdateStats();
+                rogue.Armor = null; rogue.UpdateStats();
+                cleric.Weapon = null; cleric.UpdateStats();
+                cleric.Armor = null; cleric.UpdateStats();
+                joker.Weapon = null; joker.UpdateStats();
+                joker.Armor = null; joker.UpdateStats();
+                RefreshStats();
+            }
 
-
+        }
     }
 }

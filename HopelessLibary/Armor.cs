@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static HopelessLibary.Weapon;
 
 namespace HopelessLibary
@@ -22,6 +23,13 @@ namespace HopelessLibary
             Description = description;
             DmgReduction = dmgReduction;
             AllowedCharacters = allowedCharacters;
+        }
+        public Armor(Armor armor) 
+        {
+            Name = armor.Name;
+            Description = armor.Description;
+            DmgReduction = armor.DmgReduction;
+            AllowedCharacters = armor.AllowedCharacters;
         }
 
         public string Wypisz()

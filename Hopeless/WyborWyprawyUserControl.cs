@@ -1,6 +1,7 @@
 ﻿using HopelessLibary;
+using System;
 using System.Data;
-
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 namespace Hopeless
 {
@@ -48,7 +49,12 @@ namespace Hopeless
             questDescriptions.Add("Zadanie 4", "Opis zadania 4.");
             questDescriptions.Add("Zadanie 5", "Opis zadania 5.");
             questDescriptions.Add("Zadanie 6", "Opis zadania 6.");
-
+            questDescriptions.Add("Zadanie 7", "Opis zadania 7.");
+            questDescriptions.Add("Zadanie 8", "Opis zadania 8.");
+            questDescriptions.Add("Zadanie 9", "Opis zadania 9.");
+            questDescriptions.Add("Zadanie 10", "Opis zadania 10.");
+            questDescriptions.Add("Zadanie 11", "Opis zadania 11.");
+            questDescriptions.Add("Zadanie 12", "Opis zadania 12.");
         }
 
         private void InitializeExpeditions()
@@ -213,7 +219,7 @@ namespace Hopeless
                 }
                 else if (wyprawa.Type == DifficultyType.Hard)
                 {
-                    if (expeditions.Count(exp => exp.Type == DifficultyType.Medium) < 1)
+                    if (expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
                     {
                         newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                         expeditions.Add(newExpedition2);
@@ -311,20 +317,23 @@ namespace Hopeless
 
             List<Monster> wybrane = new List<Monster>();
             Random r = new Random();
-            List<int> list = new List<int>();
-            while (list.Count != 4)
+           
+            if (difficulty != DifficultyType.Boss) { 
+            while (wybrane.Count != 4)
             {
                 int i = r.Next(0, monsters.Count);
-                if (list.Contains(i))
-                    continue;
-                else
-                {
+               
                     if (monsters[i].Type == difficulty)
                     {
-                        list.Add(i);
-                        wybrane.Add(monsters[i]);
+                        wybrane.Add(new Monster(monsters[i]));
                     }
-                }
+              
+            }
+            }
+            else
+            {
+               var boss = monsters.Where(monster => monster.Type == DifficultyType.Boss).OrderBy(x => r.Next()).Take(1).ToList(); 
+               wybrane.AddRange(boss);
             }
 
             return wybrane;
