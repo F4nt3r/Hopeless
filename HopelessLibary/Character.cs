@@ -11,7 +11,7 @@
         public int CurrentHP { get; set; }
         public int MaxHP { get; set; }
         public int Resistance { get; set; }
-        private int BaseResistance { get; set; }
+        public int BaseResistance { get; set; }
         public int CritChance { get; set; }
         public int Initiative { get; set; }
         public int MinDmg { get; set; }
@@ -22,7 +22,7 @@
         public Armor Armor { get; set; }
 
 
-        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)
+        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)
         {
             Name = name;
             Level = 1;
@@ -33,7 +33,7 @@
             CurrentHP = currentHP;
             MaxHP = maxHP;
             Resistance = resistance;
-            BaseResistance = resistance;
+            BaseResistance = baseResistance;
             CritChance = critChance;
             Initiative = initiative;
             MinDmg = minDmg;

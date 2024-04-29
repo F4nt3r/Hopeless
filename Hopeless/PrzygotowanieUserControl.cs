@@ -520,47 +520,51 @@ namespace Hopeless
 
         private void KnightWeapon_DragDrop(object sender, DragEventArgs e)
         {
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (knightWeapon.Text != "Brak")
-                    {
-                        itemToSelect.Equip(knight);
-                        string oldItem = knightWeapon.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        knightWeapon.Text = draggedItemText;
-                        knightWeapon.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        knight.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(knight);
-                        equipedItems.Add(itemToSelect);
-                        knightWeapon.Text = draggedItemText;
-                        knightWeapon.BackColor = SystemColors.Control;
+                        if (knightWeapon.Text != "Brak")
+                        {
+                            itemToSelect.Equip(knight);
+                            string oldItem = knightWeapon.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            knightWeapon.Text = draggedItemText;
+                            knightWeapon.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        knight.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            knight.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(knight);
+                            equipedItems.Add(itemToSelect);
+                            knightWeapon.Text = draggedItemText;
+                            knightWeapon.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            knight.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
-
+                catch (ClassWeaponException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (ClassWeaponException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void KnightArmor_DragEnter(object sender, DragEventArgs e)
@@ -576,48 +580,52 @@ namespace Hopeless
 
         private void KnightArmor_DragDrop(object sender, DragEventArgs e)
         {
-
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (knightArmor.Text != "Brak")
-                    {
-                        itemToSelect.Equip(knight);
-                        string oldItem = knightArmor.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        knightArmor.Text = draggedItemText;
-                        knightArmor.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        knight.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(knight);
-                        equipedItems.Add(itemToSelect);
-                        knightArmor.Text = draggedItemText;
-                        knightArmor.BackColor = SystemColors.Control;
+                        if (knightArmor.Text != "Brak")
+                        {
+                            itemToSelect.Equip(knight);
+                            string oldItem = knightArmor.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            knightArmor.Text = draggedItemText;
+                            knightArmor.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        knight.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            knight.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(knight);
+                            equipedItems.Add(itemToSelect);
+                            knightArmor.Text = draggedItemText;
+                            knightArmor.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            knight.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
+                catch (ClassArmorException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-            }
-            catch (ClassArmorException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
 
@@ -636,47 +644,51 @@ namespace Hopeless
 
         private void RogueWeapon_DragDrop(object sender, DragEventArgs e)
         {
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (rogueWeapon.Text != "Brak")
-                    {
-                        itemToSelect.Equip(rogue);
-                        string oldItem = rogueWeapon.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        rogueWeapon.Text = draggedItemText;
-                        rogueWeapon.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        rogue.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(rogue);
-                        equipedItems.Add(itemToSelect);
-                        rogueWeapon.Text = draggedItemText;
-                        rogueWeapon.BackColor = SystemColors.Control;
+                        if (rogueWeapon.Text != "Brak")
+                        {
+                            itemToSelect.Equip(rogue);
+                            string oldItem = rogueWeapon.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            rogueWeapon.Text = draggedItemText;
+                            rogueWeapon.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        rogue.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            rogue.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(rogue);
+                            equipedItems.Add(itemToSelect);
+                            rogueWeapon.Text = draggedItemText;
+                            rogueWeapon.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            rogue.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
-
+                catch (ClassWeaponException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (ClassWeaponException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void RogueArmor_DragEnter(object sender, DragEventArgs e)
@@ -692,48 +704,52 @@ namespace Hopeless
 
         private void RogueArmor_DragDrop(object sender, DragEventArgs e)
         {
-
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (rogueArmor.Text != "Brak")
-                    {
-                        itemToSelect.Equip(rogue);
-                        string oldItem = rogueArmor.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        rogueArmor.Text = draggedItemText;
-                        rogueArmor.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        rogue.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(rogue);
-                        equipedItems.Add(itemToSelect);
-                        rogueArmor.Text = draggedItemText;
-                        rogueArmor.BackColor = SystemColors.Control;
+                        if (rogueArmor.Text != "Brak")
+                        {
+                            itemToSelect.Equip(rogue);
+                            string oldItem = rogueArmor.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            rogueArmor.Text = draggedItemText;
+                            rogueArmor.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        rogue.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            rogue.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(rogue);
+                            equipedItems.Add(itemToSelect);
+                            rogueArmor.Text = draggedItemText;
+                            rogueArmor.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            rogue.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
+                catch (ClassArmorException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-            }
-            catch (ClassArmorException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
 
@@ -754,47 +770,51 @@ namespace Hopeless
 
         private void ClericWeapon_DragDrop(object sender, DragEventArgs e)
         {
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (clericWeapon.Text != "Brak")
-                    {
-                        itemToSelect.Equip(cleric);
-                        string oldItem = clericWeapon.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        clericWeapon.Text = draggedItemText;
-                        clericWeapon.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        cleric.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(cleric);
-                        equipedItems.Add(itemToSelect);
-                        clericWeapon.Text = draggedItemText;
-                        clericWeapon.BackColor = SystemColors.Control;
+                        if (clericWeapon.Text != "Brak")
+                        {
+                            itemToSelect.Equip(cleric);
+                            string oldItem = clericWeapon.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            clericWeapon.Text = draggedItemText;
+                            clericWeapon.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        cleric.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            cleric.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(cleric);
+                            equipedItems.Add(itemToSelect);
+                            clericWeapon.Text = draggedItemText;
+                            clericWeapon.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            cleric.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
-
+                catch (ClassWeaponException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (ClassWeaponException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void ClericArmor_DragEnter(object sender, DragEventArgs e)
@@ -810,48 +830,52 @@ namespace Hopeless
 
         private void ClericArmor_DragDrop(object sender, DragEventArgs e)
         {
-
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (clericArmor.Text != "Brak")
-                    {
-                        itemToSelect.Equip(cleric);
-                        string oldItem = clericArmor.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        clericArmor.Text = draggedItemText;
-                        clericArmor.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        cleric.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(cleric);
-                        equipedItems.Add(itemToSelect);
-                        clericArmor.Text = draggedItemText;
-                        clericArmor.BackColor = SystemColors.Control;
+                        if (clericArmor.Text != "Brak")
+                        {
+                            itemToSelect.Equip(cleric);
+                            string oldItem = clericArmor.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            clericArmor.Text = draggedItemText;
+                            clericArmor.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        cleric.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            cleric.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(cleric);
+                            equipedItems.Add(itemToSelect);
+                            clericArmor.Text = draggedItemText;
+                            clericArmor.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            cleric.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
+                catch (ClassArmorException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-            }
-            catch (ClassArmorException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
 
@@ -872,47 +896,51 @@ namespace Hopeless
 
         private void JokerWeapon_DragDrop(object sender, DragEventArgs e)
         {
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (jokerWeapon.Text != "Brak")
-                    {
-                        itemToSelect.Equip(joker);
-                        string oldItem = jokerWeapon.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        jokerWeapon.Text = draggedItemText;
-                        jokerWeapon.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        joker.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(joker);
-                        equipedItems.Add(itemToSelect);
-                        jokerWeapon.Text = draggedItemText;
-                        jokerWeapon.BackColor = SystemColors.Control;
+                        if (jokerWeapon.Text != "Brak")
+                        {
+                            itemToSelect.Equip(joker);
+                            string oldItem = jokerWeapon.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            jokerWeapon.Text = draggedItemText;
+                            jokerWeapon.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        joker.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            joker.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(joker);
+                            equipedItems.Add(itemToSelect);
+                            jokerWeapon.Text = draggedItemText;
+                            jokerWeapon.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            joker.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
-
+                catch (ClassWeaponException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (ClassWeaponException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void JokerArmor_DragEnter(object sender, DragEventArgs e)
@@ -928,48 +956,52 @@ namespace Hopeless
 
         private void JokerArmor_DragDrop(object sender, DragEventArgs e)
         {
-
-            try
+            if (!CheckLabel(lastDraggedLabel))
             {
-                string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
-
-                if (itemToSelect != null)
+                try
                 {
-                    if (jokerArmor.Text != "Brak")
-                    {
-                        itemToSelect.Equip(joker);
-                        string oldItem = jokerArmor.Text;
-                        AddItemToInventory(oldItem);
-                        equipedItems.Add(itemToSelect);
-                        jokerArmor.Text = draggedItemText;
-                        jokerArmor.BackColor = SystemColors.Control;
+                    string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
+                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        joker.UpdateStats();
-                        RefreshStats();
-                    }
-                    else
+                    if (itemToSelect != null)
                     {
-                        itemToSelect.Equip(joker);
-                        equipedItems.Add(itemToSelect);
-                        jokerArmor.Text = draggedItemText;
-                        jokerArmor.BackColor = SystemColors.Control;
+                        if (jokerArmor.Text != "Brak")
+                        {
+                            itemToSelect.Equip(joker);
+                            string oldItem = jokerArmor.Text;
+                            AddItemToInventory(oldItem);
+                            equipedItems.Add(itemToSelect);
+                            jokerArmor.Text = draggedItemText;
+                            jokerArmor.BackColor = SystemColors.Control;
 
-                        Ekwipunek.Remove(itemToSelect);
-                        RefreshInventory();
-                        joker.UpdateStats();
-                        RefreshStats();
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            joker.UpdateStats();
+                            RefreshStats();
+                        }
+                        else
+                        {
+                            itemToSelect.Equip(joker);
+                            equipedItems.Add(itemToSelect);
+                            jokerArmor.Text = draggedItemText;
+                            jokerArmor.BackColor = SystemColors.Control;
+
+                            Ekwipunek.Remove(itemToSelect);
+                            RefreshInventory();
+                            joker.UpdateStats();
+                            RefreshStats();
+                        }
+
                     }
 
                 }
+                catch (ClassArmorException ex)
+                {
+                    MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-            }
-            catch (ClassArmorException ex)
-            {
-                MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
 
@@ -1003,7 +1035,7 @@ namespace Hopeless
             string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
 
 
-            if (lastDraggedLabel != null)
+            if (lastDraggedLabel != null && CheckLabel(lastDraggedLabel))
             {
                 lastDraggedLabel.Text = "Brak";
                 if (lastDraggedLabel == knightWeapon) knight.Weapon = null; knight.UpdateStats();
@@ -1019,6 +1051,7 @@ namespace Hopeless
                 AddItemToInventory(draggedItemText);
                 RefreshStats();
                 lastDraggedLabel = null;
+
             }
 
         }
@@ -1035,7 +1068,22 @@ namespace Hopeless
             }
         }
 
-
+        //Logika Przenoszenia
+        private bool CheckLabel(Label label)
+        {
+            if (label == knightWeapon ||
+                label == knightArmor ||
+                label == rogueWeapon ||
+                label == rogueArmor ||
+                label == clericWeapon ||
+                label == clericArmor ||
+                label == jokerWeapon ||
+                label == jokerArmor)
+            {
+                return true;
+            }
+            else return false;
+        }
 
 
 
