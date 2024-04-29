@@ -15,17 +15,18 @@ namespace HopelessLibary
         public int MaxDmg { get; set; }
 
         public List<CharacterType> AllowedCharacters { get; set; }
+        public Rarity Rarity { get; set; }
 
-
-      public Weapon() { }
+        public Weapon() { }
         [JsonConstructor]
-        public Weapon(string name, string description, int minDmg, int maxDmg, List<CharacterType> allowedCharacters)
+        public Weapon(string name, string description, int minDmg, int maxDmg, List<CharacterType> allowedCharacters,Rarity rarity)
         {
             Name = name;
             Description = description;
             MinDmg = minDmg;
             MaxDmg = maxDmg;
             AllowedCharacters = allowedCharacters;
+            Rarity = rarity;
         }
         
         public Weapon(Weapon weapon)
@@ -35,6 +36,7 @@ namespace HopelessLibary
             MinDmg = weapon.MinDmg;
             MaxDmg = weapon.MaxDmg;
             AllowedCharacters = weapon.AllowedCharacters;
+            Rarity = weapon.Rarity;
         }
 
         public string Wypisz()

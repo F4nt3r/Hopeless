@@ -99,6 +99,25 @@ namespace Hopeless
                 string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
                  "Potwory:" + Environment.NewLine +
                 string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
+                switch (expediton.Type)
+                {
+                    case DifficultyType.Easy:
+                        label.BackColor = Color.Green; // Dostosuj kolor do poziomu Rarity
+                        break;
+                    case DifficultyType.Medium:
+                        label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                        break;
+                    case DifficultyType.Hard:
+                        label.BackColor = Color.Red; // Dostosuj kolor do poziomu Rarity
+                        label.ForeColor = Color.White;
+                        break;
+                    case DifficultyType.Boss:
+                        label.BackColor = Color.Black; // Dostosuj kolor do poziomu
+                        label.ForeColor = Color.White; 
+                        break;
+                    default:
+                        break;
+                }
 
                 if (expediton.Type == DifficultyType.Easy)
                 {

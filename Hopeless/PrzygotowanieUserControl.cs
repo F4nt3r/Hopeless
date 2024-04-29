@@ -71,9 +71,26 @@ namespace Hopeless
                 if (knight.Weapon != null)
                 {
                     knightWeapon.Text = knight.Weapon.Name;
-                    knightWeapon.AccessibleDescription = knight.Weapon.Name + Environment.NewLine + knight.Weapon.Description + Environment.NewLine + "MinDMG: " + knight.Weapon.MinDmg.ToString() +
+                    knightWeapon.AccessibleDescription = knight.Weapon.Name + Environment.NewLine + knight.Weapon.Description + Environment.NewLine + knight.Weapon.Rarity + Environment.NewLine + "MinDMG: " + knight.Weapon.MinDmg.ToString() +
                         Environment.NewLine + "MaxDMG: " + knight.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, knight.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (knight.Weapon.Rarity)
+                    {
+                        case Rarity.Common:
+                            knightWeapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            knightWeapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            knightWeapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            knightWeapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -84,8 +101,25 @@ namespace Hopeless
                 if (knight.Armor != null)
                 {
                     knightArmor.Text = knight.Armor.Name;
-                    knightArmor.AccessibleDescription = knight.Armor.Name + Environment.NewLine + knight.Armor.Description + Environment.NewLine + "DmgReduction: " + knight.Armor.DmgReduction.ToString()
+                    knightArmor.AccessibleDescription = knight.Armor.Name + Environment.NewLine + knight.Armor.Description + Environment.NewLine + knight.Armor.Rarity + Environment.NewLine + "DmgReduction: " + knight.Armor.DmgReduction.ToString()
                         + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, knight.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (knight.Armor.Rarity)
+                    {
+                        case Rarity.Common:
+                            knightArmor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            knightArmor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            knightArmor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            knightArmor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -113,9 +147,26 @@ namespace Hopeless
                 if (rogue.Weapon != null)
                 {
                     rogueWeapon.Text = rogue.Weapon.Name;
-                    rogueWeapon.AccessibleDescription = rogue.Weapon.Name + Environment.NewLine + rogue.Weapon.Description + Environment.NewLine + "MinDMG: " + rogue.Weapon.MinDmg.ToString() +
+                    rogueWeapon.AccessibleDescription = rogue.Weapon.Name + Environment.NewLine + rogue.Weapon.Description + Environment.NewLine + rogue.Weapon.Rarity + Environment.NewLine + "MinDMG: " + rogue.Weapon.MinDmg.ToString() +
                         Environment.NewLine + "MaxDMG: " + rogue.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, rogue.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (rogue.Weapon.Rarity)
+                    {
+                        case Rarity.Common:
+                            rogueWeapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            rogueWeapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            rogueWeapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            rogueWeapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -125,8 +176,25 @@ namespace Hopeless
                 if (rogue.Armor != null)
                 {
                     rogueArmor.Text = rogue.Armor.Name;
-                    rogueArmor.AccessibleDescription = rogue.Armor.Name + Environment.NewLine + rogue.Armor.Description + Environment.NewLine + "DmgReduction: " + rogue.Armor.DmgReduction.ToString()
+                    rogueArmor.AccessibleDescription = rogue.Armor.Name + Environment.NewLine + rogue.Armor.Description + Environment.NewLine + rogue.Armor.Rarity + Environment.NewLine + "DmgReduction: " + rogue.Armor.DmgReduction.ToString()
                         + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, rogue.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (rogue.Armor.Rarity)
+                    {
+                        case Rarity.Common:
+                            rogueArmor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            rogueArmor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            rogueArmor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            rogueArmor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -151,9 +219,26 @@ namespace Hopeless
                 if (cleric.Weapon != null)
                 {
                     clericWeapon.Text = cleric.Weapon.Name;
-                    clericWeapon.AccessibleDescription = cleric.Weapon.Name + Environment.NewLine + cleric.Weapon.Description + Environment.NewLine + "MinDMG: " + cleric.Weapon.MinDmg.ToString() +
+                    clericWeapon.AccessibleDescription = cleric.Weapon.Name + Environment.NewLine + cleric.Weapon.Description + Environment.NewLine + cleric.Weapon.Rarity + Environment.NewLine + "MinDMG: " + cleric.Weapon.MinDmg.ToString() +
                         Environment.NewLine + "MaxDMG: " + cleric.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, cleric.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (cleric.Weapon.Rarity)
+                    {
+                        case Rarity.Common:
+                            clericWeapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            clericWeapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            clericWeapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            clericWeapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -163,8 +248,25 @@ namespace Hopeless
                 if (cleric.Armor != null)
                 {
                     clericArmor.Text = cleric.Armor.Name;
-                    clericArmor.AccessibleDescription = cleric.Armor.Name + Environment.NewLine + cleric.Armor.Description + Environment.NewLine + "DmgReduction: " + cleric.Armor.DmgReduction.ToString()
+                    clericArmor.AccessibleDescription = cleric.Armor.Name + Environment.NewLine + cleric.Armor.Description + Environment.NewLine + cleric.Armor.Rarity + Environment.NewLine + "DmgReduction: " + cleric.Armor.DmgReduction.ToString()
                     + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, cleric.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (cleric.Armor.Rarity)
+                    {
+                        case Rarity.Common:
+                            clericArmor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            clericArmor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            clericArmor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            clericArmor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -190,9 +292,26 @@ namespace Hopeless
                 if (joker.Weapon != null)
                 {
                     jokerWeapon.Text = joker.Weapon.Name;
-                    jokerWeapon.AccessibleDescription = joker.Weapon.Name + Environment.NewLine + joker.Weapon.Description + Environment.NewLine + "MinDMG: " + joker.Weapon.MinDmg.ToString() +
+                    jokerWeapon.AccessibleDescription = joker.Weapon.Name + Environment.NewLine + joker.Weapon.Description + Environment.NewLine + joker.Weapon.Rarity + Environment.NewLine + "MinDMG: " + joker.Weapon.MinDmg.ToString() +
                         Environment.NewLine + "MaxDMG: " + joker.Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, joker.Weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (joker.Weapon.Rarity)
+                    {
+                        case Rarity.Common:
+                            jokerWeapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            jokerWeapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            jokerWeapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            jokerWeapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -202,8 +321,25 @@ namespace Hopeless
                 if (joker.Armor != null)
                 {
                     jokerArmor.Text = joker.Armor.Name;
-                    jokerArmor.AccessibleDescription = joker.Armor.Name + Environment.NewLine + joker.Armor.Description + Environment.NewLine + "DmgReduction: " + joker.Armor.DmgReduction.ToString()
+                    jokerArmor.AccessibleDescription = joker.Armor.Name + Environment.NewLine + joker.Armor.Description + Environment.NewLine + joker.Armor.Rarity + Environment.NewLine + "DmgReduction: " + joker.Armor.DmgReduction.ToString()
                     + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, joker.Armor.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (joker.Armor.Rarity)
+                    {
+                        case Rarity.Common:
+                            jokerArmor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            jokerArmor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            jokerArmor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            jokerArmor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -920,15 +1056,49 @@ namespace Hopeless
                 if (item is Weapon)
                 {
                     Weapon weapon = (Weapon)item;
-                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
+                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
                     Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
                     string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (weapon.Rarity)
+                    {
+                        case Rarity.Common:
+                            label.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            label.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            label.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 if (item is Armor)
                 {
                     Armor armor = (Armor)item;
-                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
+                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
                     "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString()));
+                    switch (armor.Rarity)
+                    {
+                        case Rarity.Common:
+                            label.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Rare:
+                            label.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Epic:
+                            label.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        case Rarity.Legendary:
+                            label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 Inventory.Controls.Add(label);
             }

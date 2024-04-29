@@ -14,16 +14,18 @@ namespace HopelessLibary
         public string Name { get; set; }
         public string Description { get; set; }
         public int DmgReduction { get; set; }
+        public Rarity Rarity { get; set; }
 
         public List<CharacterType> AllowedCharacters { get; set; }
         public Armor () { }
         [JsonConstructor]
-        public Armor(string name, string description, int dmgReduction, List<CharacterType> allowedCharacters)
+        public Armor(string name, string description, int dmgReduction, List<CharacterType> allowedCharacters, Rarity rarity)
         {
             Name = name;
             Description = description;
             DmgReduction = dmgReduction;
             AllowedCharacters = allowedCharacters;
+            Rarity = rarity;
         }
         
         public Armor(Armor armor) 
@@ -32,6 +34,7 @@ namespace HopelessLibary
             Description = armor.Description;
             DmgReduction = armor.DmgReduction;
             AllowedCharacters = armor.AllowedCharacters;
+            Rarity = armor.Rarity;
         }
 
         public string Wypisz()
