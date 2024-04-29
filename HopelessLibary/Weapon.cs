@@ -16,6 +16,9 @@ namespace HopelessLibary
 
         public List<CharacterType> AllowedCharacters { get; set; }
 
+
+      public Weapon() { }
+        [JsonConstructor]
         public Weapon(string name, string description, int minDmg, int maxDmg, List<CharacterType> allowedCharacters)
         {
             Name = name;
@@ -24,6 +27,7 @@ namespace HopelessLibary
             MaxDmg = maxDmg;
             AllowedCharacters = allowedCharacters;
         }
+        
         public Weapon(Weapon weapon)
         {
             Name = weapon.Name;

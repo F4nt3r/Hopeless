@@ -16,7 +16,8 @@ namespace HopelessLibary
         public int DmgReduction { get; set; }
 
         public List<CharacterType> AllowedCharacters { get; set; }
-
+        public Armor () { }
+        [JsonConstructor]
         public Armor(string name, string description, int dmgReduction, List<CharacterType> allowedCharacters)
         {
             Name = name;
@@ -24,6 +25,7 @@ namespace HopelessLibary
             DmgReduction = dmgReduction;
             AllowedCharacters = allowedCharacters;
         }
+        
         public Armor(Armor armor) 
         {
             Name = armor.Name;

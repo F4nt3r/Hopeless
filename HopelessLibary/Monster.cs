@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
     public class Monster
     {
-        
+
 
         public string Name { get; set; }
         public int ExperienceGains { get; set; }
@@ -21,7 +22,8 @@ namespace HopelessLibary
         public int MaxDmg { get; set; }
         public int DodgeChance { get; set; }
         public DifficultyType Type { get; set; }
-
+        public Monster() { }
+        [JsonConstructor]
         public Monster(string name, int experienceGains,  int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int dodgeChance, DifficultyType type)
         {
             Name = name;
