@@ -107,6 +107,7 @@
             Inventory = new FlowLayoutPanel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             DescriptionBox = new TextBox();
+            goldLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -929,10 +930,21 @@
             DescriptionBox.TabIndex = 9;
             DescriptionBox.TextAlign = HorizontalAlignment.Center;
             // 
+            // goldLabel
+            // 
+            goldLabel.AutoSize = true;
+            goldLabel.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            goldLabel.Location = new Point(1184, 94);
+            goldLabel.Name = "goldLabel";
+            goldLabel.Size = new Size(82, 36);
+            goldLabel.TabIndex = 23;
+            goldLabel.Text = "Złoto:";
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(goldLabel);
             Controls.Add(DescriptionBox);
             Controls.Add(Inventory);
             Controls.Add(tabControl2);
@@ -1053,5 +1065,6 @@
         private Label clericWeapon;
         private Label jokerArmor;
         private Label jokerWeapon;
+        private Label goldLabel;
     }
 }

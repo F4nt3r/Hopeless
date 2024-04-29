@@ -111,8 +111,8 @@ namespace Hopeless
                 fazaPrzygotowaniaUserControl.Characters = characters;
                 fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
                 wyborWyprawyUserControl.expeditions = expeditons;
-                
-                
+                fazaPrzygotowaniaUserControl.gold = 100;
+
                 fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
@@ -191,6 +191,7 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
             fazaPrzygotowaniaUserControl.equipedItems = equippedEkwipunek;
             wyborWyprawyUserControl.expeditions = expeditons;
+            fazaPrzygotowaniaUserControl.gold = gameState.gold;
         }
 
     }

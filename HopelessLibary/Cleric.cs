@@ -77,7 +77,7 @@ namespace HopelessLibary
 
         public override void LevelUp()
         {
-            throw new NotImplementedException();
+            Level++;
         }
 
         public override void TakeDamage(int damage)

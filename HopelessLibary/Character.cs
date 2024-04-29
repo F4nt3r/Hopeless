@@ -61,6 +61,7 @@
             while (ExperiencePoints >= Level * 100)
             {
                 LevelUp();
+                ExperiencePoints -= (Level-1) * 100;
             }
         }
 

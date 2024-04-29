@@ -19,13 +19,9 @@ namespace HopelessLibary
 
         }
 
-        
-       
-
         public override void LevelUp()
         {
             Level++;
-            
         }
 
         public override void TakeDamage(int damage)

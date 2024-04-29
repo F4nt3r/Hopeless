@@ -12,6 +12,7 @@ namespace Hopeless
         public List<Expedition> Expeditons { get; set; }
         public List<IEkwipunek> Ekwipunek { get; set; }
         public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
+        public int gold { get; set; }
         private Label lastDraggedLabel;
         public Knight knight;
         public Rogue rogue;
@@ -400,7 +401,7 @@ namespace Hopeless
             gameState.equippedWeapons = equippedWeapons;
             gameState.equippedArmors = equippedArmors;
             gameState.expeditions = Expeditons;
-
+            gameState.gold = gold;
             SaveGameState(gameState);
 
 
@@ -564,7 +565,7 @@ namespace Hopeless
                     MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
 
         }
         private void KnightArmor_DragEnter(object sender, DragEventArgs e)
@@ -625,7 +626,7 @@ namespace Hopeless
                 }
             }
 
-            
+
         }
 
 
@@ -688,7 +689,7 @@ namespace Hopeless
                     MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
 
         }
         private void RogueArmor_DragEnter(object sender, DragEventArgs e)
@@ -749,7 +750,7 @@ namespace Hopeless
                 }
             }
 
-            
+
         }
 
 
@@ -814,7 +815,7 @@ namespace Hopeless
                     MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
 
         }
         private void ClericArmor_DragEnter(object sender, DragEventArgs e)
@@ -875,7 +876,7 @@ namespace Hopeless
                 }
             }
 
-            
+
         }
 
 
@@ -940,7 +941,7 @@ namespace Hopeless
                     MessageBox.Show(ex.Message, "Weapon Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
 
         }
         private void JokerArmor_DragEnter(object sender, DragEventArgs e)
@@ -1001,7 +1002,7 @@ namespace Hopeless
                 }
             }
 
-            
+
         }
 
 
@@ -1090,7 +1091,9 @@ namespace Hopeless
         // Odswiezanie ekwipunku
         private void RefreshInventory()
         {
-
+            
+            goldLabel.Text = "Złoto: "+gold.ToString();
+            Inventory.AutoScroll = true;
             Inventory.Controls.Clear();
 
             foreach (IEkwipunek item in Ekwipunek)
@@ -1165,7 +1168,12 @@ namespace Hopeless
         {
             if (wynik)
             {
+                knight.GainExperience(wyprawa.ExperienceGains);
+                rogue.GainExperience(wyprawa.ExperienceGains);
+                cleric.GainExperience(wyprawa.ExperienceGains);
+                joker.GainExperience(wyprawa.ExperienceGains);
 
+                gold += wyprawa.Gold;
                 foreach (Weapon weapon in wyprawa.WeaponRewards)
                 {
                     Ekwipunek.Add(new Weapon(weapon));
