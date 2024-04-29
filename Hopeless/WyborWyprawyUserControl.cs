@@ -362,14 +362,26 @@ namespace Hopeless
         private List<Weapon> GenerateWeapons(DifficultyType difficulty)
         {
 
+          
+           
+
+            // Konwersja Enumów na wartości liczbowe (int) i porównanie
+           
             List<Weapon> wybrane = new List<Weapon>();
             Random r = new Random();
             do
             {
                 int i = r.Next(0, pulaEkwipunku.Count);
+               
                 if (pulaEkwipunku[i] is Weapon)
                 {
-                    wybrane.Add((Weapon)pulaEkwipunku[i]);
+                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    if ((int)weapon.Rarity == (int)difficulty)
+                    {
+                        wybrane.Add((Weapon)pulaEkwipunku[i]);
+                    }
+                   
+               
                 }
             } while (wybrane.Count == 0);
 
@@ -387,7 +399,12 @@ namespace Hopeless
                 int i = r.Next(0, pulaEkwipunku.Count);
                 if (pulaEkwipunku[i] is Armor)
                 {
-                    wybrane.Add((Armor)pulaEkwipunku[i]);
+                    Armor armor = (Armor)pulaEkwipunku[i];
+                    if ((int)armor.Rarity == (int)difficulty)
+                    {
+                        wybrane.Add((Armor)pulaEkwipunku[i]);
+                    }
+                        
                 }
             } while (wybrane.Count == 0);
 
