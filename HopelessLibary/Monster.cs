@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HopelessLibary.Intefrace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
-    public class Monster
+    public class Monster: ICreature
     {
-
-
         public string Name { get; set; }
         public int ExperienceGains { get; set; }
         public int CurrentHP { get; set; }
@@ -52,7 +51,7 @@ namespace HopelessLibary
             DodgeChance = monster.DodgeChance;
             Type = monster.Type;
         }
-        public void BasicAttack(Character target)
+        public int BasicAttack()
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -64,7 +63,7 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1)*2;
             }
 
-            target.TakeDamage(dmg);
+          return dmg;
         }
 
         public void TakeDamage(int damage)

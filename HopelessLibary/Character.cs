@@ -1,6 +1,8 @@
-﻿namespace HopelessLibary
+﻿using HopelessLibary.Intefrace;
+
+namespace HopelessLibary
 {
-    public abstract class Character
+    public abstract class Character: ICreature
     {
         public string Name { get; set; }
         public int Level { get; set; }
@@ -88,9 +90,6 @@
                 Resistance = BaseResistance;
             }
         }
-
-       
-
 
     }
 }

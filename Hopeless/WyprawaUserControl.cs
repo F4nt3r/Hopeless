@@ -1,4 +1,5 @@
 ﻿using HopelessLibary;
+using HopelessLibary.Intefrace;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,19 +21,17 @@ namespace Hopeless
         public List<Character> characters { get; set; }
         public Expedition expedition { get; set; }
 
-        private List<Monster> monsters = new List<Monster>();
-        Dictionary<int, string> orderDictionary = new Dictionary<int, string>();
 
+        private List <ICreature> fightOrder = new();
+        private ICreature target;
         public delegate void CustomDelegate(bool wynik, Expedition wyprawa);
         public event CustomDelegate eventFirst;
-        private Skill skill { get; set; }
 
         public WyprawaUserControl()
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Wyprawa;
-            this.VisibleChanged += WyprawaUserControl_VisibleChanged;
-           
+            this.VisibleChanged += WyprawaUserControl_VisibleChanged; 
         }
 
         private void WyprawaUserControl_VisibleChanged(object? sender, EventArgs e)
@@ -48,50 +47,79 @@ namespace Hopeless
 
             }
         }
-        private void Fight()
+        private async Task Fight()
         {
             int value;
             bool fightStatus = true;
             bool playerActionTaken;
             while (fightStatus)
             {
-                foreach (KeyValuePair<int, string> postac in orderDictionary)
+               foreach (var postac in fightOrder)
                 {
-                    if (postac.Value.Equals(characters[0].Name))
+                    playerActionTaken = false;
+                    if (postac is Knight)
                     {
-                        Knight knight = (Knight)characters[0];
-
-
-                    }
-                    else if (postac.Value.Equals(characters[1].Name))
-                    {
-                        Rogue rogue = (Rogue)characters[1];
-
-                    }
-                    else if (postac.Value.Equals(characters[2].Name))
-                    {
-                        Cleric cleric = (Cleric)characters[2];
-                        skill1Label.Text = "Heal";
-
-                        skill2Label.Text = "Purify";
-                        playerActionTaken = false;
+                        Knight knight = (Knight)postac;
+                        playerActionTaken = true;
                         while (!playerActionTaken)
                         {
-                            
+
                         }
 
+                    }
+                    else if (postac is Rogue)
+                    {
+                        Rogue rogue = (Rogue)postac;
+                        playerActionTaken = true;
+                        while (!playerActionTaken)
+                        {
+
+                        }
 
                     }
-                    else if (postac.Value.Equals(characters[3].Name))
+                    else if (postac is Cleric)
                     {
-                        Joker joker = (Joker)characters[3];
+                        Cleric cleric = (Cleric)postac;
+                        skill1Label.Text = "Heal";
+                        skill2Label.Text = "Purify";
+
+                        EventHandler handlerHeal = (s, e) => { cleric.Heal(); };
+                        EventHandler handlerPurify = (s, e) => {
+                            if (target != null)
+                            {
+                                target.TakeDamage(cleric.Purify());
+                                playerActionTaken = true;
+
+                            }
+                        };
+
+                        skill1Label.Click += handlerHeal;
+                        skill2Label.Click += handlerPurify;
+
+
+                        while (!playerActionTaken)
+                            await Task.Delay(200);
+
+                        skill1Label.Click -= handlerHeal;
+                        skill2Label.Click -= handlerPurify;
+                    }
+                    else if (postac is Joker)
+                    {
+                        Joker joker = (Joker)postac;
+                        playerActionTaken = true;
+                        while (!playerActionTaken)
+                        {
+
+                        }
                     }
                     else
                     {
 
-                        Monster monster = monsters.Find(monster => monster.Name == postac.Value);
+                        Monster monster = (Monster)postac;
+   
                     }
-
+                
+                   
                 }
 
 
@@ -104,7 +132,8 @@ namespace Hopeless
         }
         private void InitializeBeforeFight()
         {
-            monsters.AddRange(expedition.Monsters);
+            fightOrder.Clear();
+
             basicAttackLabel.Text = "Atak Bazowy";
 
             knightName.Text = characters[0].Name;
@@ -134,25 +163,25 @@ namespace Hopeless
                 enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
                 enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
                 enemy1Health.Value = expedition.Monsters[0].CurrentHP;
-
+                enemy1Name.Click += Enemy_Click;
 
                 enemy2Name.Text = expedition.Monsters[1].Name;
                 enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
                 enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
                 enemy2Health.Value = expedition.Monsters[1].CurrentHP;
-
+                enemy2Name.Click += Enemy_Click;
 
                 enemy3Name.Text = expedition.Monsters[2].Name;
                 enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
                 enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
                 enemy3Health.Value = expedition.Monsters[2].CurrentHP;
-
+                enemy3Name.Click += Enemy_Click;
 
                 enemy4Name.Text = expedition.Monsters[3].Name;
                 enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
                 enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
                 enemy4Health.Value = expedition.Monsters[3].CurrentHP;
-
+                enemy4Name.Click += Enemy_Click;
 
 
             }
@@ -178,43 +207,23 @@ namespace Hopeless
 
             //Kolejnosc Tur
 
-            List<int> initiatives = new List<int>();
-            foreach (Monster monster in monsters)
-            {
-                initiatives.Add(monster.Initiative);
-            }
-            foreach (Character character in characters)
-            {
-                initiatives.Add(character.Initiative);
-            }
-            initiatives.Add(-1);
-            initiatives.Sort();
-            initiatives.Reverse();
-            int all = characters.Count + monsters.Count;
-            int position = 0;
-            do
-            {
+            fightOrder.AddRange(expedition.Monsters);
+            fightOrder.AddRange(characters);
+            fightOrder = fightOrder.OrderByDescending(x=>x.Initiative).ToList();
 
-                foreach (Character character in characters)
+        }
+
+        private void Enemy_Click(object? sender, EventArgs e)
+        {
+            var label = sender as Label;
+            if (label != null)
+            {
+               if(label.Name.Equals("enemy1Name"))
                 {
-                    if (initiatives[position] == character.Initiative)
-                    {
-                        orderDictionary.Add(position, character.Name);
-                        position++;
-                    }
-
+                    target = expedition.Monsters[0];
                 }
-                foreach (Monster monster in monsters)
-                {
-                    if (initiatives[position] == monster.Initiative)
-                    {
-                        orderDictionary.Add(position, monster.Name);
-                        position++;
-                    }
-
-                }
-
-            } while (orderDictionary.Count != all);
+            }
+           
         }
 
         public event EventHandler FinishButtonClicked;
@@ -225,9 +234,9 @@ namespace Hopeless
         }
         private void winButton_Click(object sender, EventArgs e)
         {
-
-            eventFirst?.Invoke(true, expedition);
-            FinishButtonClicked?.Invoke(this, EventArgs.Empty);
+            Fight();
+            //eventFirst?.Invoke(true, expedition);
+            //FinishButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
    

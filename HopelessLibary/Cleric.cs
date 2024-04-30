@@ -37,7 +37,7 @@ namespace HopelessLibary
 
         }
 
-        public void Purify(Character target)
+        public int Purify()
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -49,7 +49,7 @@ namespace HopelessLibary
                 dmg = Intelligence * 10 * 2;
             }
 
-            target.TakeDamage(dmg);
+            return dmg;
            
         }
 
