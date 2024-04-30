@@ -42,7 +42,7 @@ namespace HopelessLibary
             }
         }
 
-        public override void BasicAttack(Character target)
+        public override int BasicAttack()
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -54,7 +54,7 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-            target.TakeDamage(dmg);
+            return dmg;
         }
     }
 }

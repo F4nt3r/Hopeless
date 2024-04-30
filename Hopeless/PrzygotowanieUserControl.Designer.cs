@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             wyruszButton = new Button();
             tabControl3 = new TabControl();
@@ -108,6 +109,7 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             DescriptionBox = new TextBox();
             goldLabel = new Label();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -135,7 +137,7 @@
             // 
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1424, 861);
+            pictureBox1.Size = new Size(1382, 861);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -933,12 +935,21 @@
             // goldLabel
             // 
             goldLabel.AutoSize = true;
+            goldLabel.BackColor = Color.Gold;
+            goldLabel.BorderStyle = BorderStyle.FixedSingle;
             goldLabel.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
             goldLabel.Location = new Point(1184, 94);
             goldLabel.Name = "goldLabel";
-            goldLabel.Size = new Size(82, 36);
+            goldLabel.Size = new Size(84, 38);
             goldLabel.TabIndex = 23;
             goldLabel.Text = "Złoto:";
+            // 
+            // toolTip1
+            // 
+            toolTip1.AutomaticDelay = 200;
+            toolTip1.AutoPopDelay = 10000;
+            toolTip1.InitialDelay = 200;
+            toolTip1.ReshowDelay = 40;
             // 
             // PrzygotowanieUserControl
             // 
@@ -1066,5 +1077,6 @@
         private Label jokerArmor;
         private Label jokerWeapon;
         private Label goldLabel;
+        private ToolTip toolTip1;
     }
 }

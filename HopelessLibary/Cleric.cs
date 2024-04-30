@@ -18,14 +18,14 @@ namespace HopelessLibary
 
         }
 
-        
 
 
 
-        public void Heal(Character target)
+
+        public int Heal()
         {
             int heal;
-            if (new Random().Next(1,100) > CritChance)
+            if (new Random().Next(1, 100) > CritChance)
             {
                 heal = Intelligence * 10;
             }
@@ -33,14 +33,8 @@ namespace HopelessLibary
             {
                 heal = Intelligence * 10 * 2;
             }
-            if (target.MaxHP-target.CurrentHP>heal)
-            {
-                target.CurrentHP += heal;
-            }
-            else
-            {
-                target.CurrentHP = target.MaxHP;
-            }
+            return heal;
+
         }
 
         public void Purify(Character target)
@@ -60,7 +54,7 @@ namespace HopelessLibary
         }
 
 
-        public override void BasicAttack(Character target)
+        public override int BasicAttack()
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -72,7 +66,7 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-            target.TakeDamage(dmg);
+            return dmg;
         }
 
         public override void LevelUp()

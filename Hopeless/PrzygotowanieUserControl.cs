@@ -500,6 +500,7 @@ namespace Hopeless
             Label label = sender as Label;
             string itemDescription = label.AccessibleDescription;
             DescriptionBox.Text = itemDescription;
+            toolTip1.SetToolTip(label, label.AccessibleDescription);
         }
 
 
@@ -1091,8 +1092,8 @@ namespace Hopeless
         // Odswiezanie ekwipunku
         private void RefreshInventory()
         {
-            
-            goldLabel.Text = "Złoto: "+gold.ToString();
+
+            goldLabel.Text = "Złoto: " + gold.ToString();
             Inventory.AutoScroll = true;
             Inventory.Controls.Clear();
 

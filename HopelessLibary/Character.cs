@@ -43,7 +43,7 @@
             Armor = null;
         }
 
-        public abstract void BasicAttack(Character target);
+        public abstract int BasicAttack();
 
         public abstract void TakeDamage(int damage);
 
@@ -89,7 +89,7 @@
             }
         }
 
-
+       
 
 
     }

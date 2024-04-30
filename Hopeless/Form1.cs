@@ -134,7 +134,7 @@ namespace Hopeless
                 wyborWyprawyUserControl.Visible = true;
 
 
-                wyprawaUserControl.Characters = fazaPrzygotowaniaUserControl.Characters;
+                wyprawaUserControl.characters = fazaPrzygotowaniaUserControl.Characters;
 
 
             };
