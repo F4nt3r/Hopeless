@@ -14,8 +14,10 @@ namespace HopelessLibary
         public Rogue rogue { get; set; }    
         public List<Weapon> weapons { get; set; }
         public List<Weapon> equippedWeapons { get; set; }
+        public List<Weapon> shopWeapons { get; set; }
         public List<Armor> armors { get; set; }
         public List<Armor> equippedArmors { get; set; }
+        public List<Armor> shopArmors { get; set; }
         public List<Expedition> expeditions { get; set; }
         public int gold { get; set; }
         // Dodaj inne pola, jeśli potrzebujesz

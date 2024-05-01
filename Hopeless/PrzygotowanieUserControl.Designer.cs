@@ -107,9 +107,10 @@
             jokerWeapon = new Label();
             Inventory = new FlowLayoutPanel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            DescriptionBox = new TextBox();
             goldLabel = new Label();
             toolTip1 = new ToolTip(components);
+            Shop = new FlowLayoutPanel();
+            Roll = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -920,18 +921,6 @@
             Inventory.Size = new Size(320, 203);
             Inventory.TabIndex = 8;
             // 
-            // DescriptionBox
-            // 
-            DescriptionBox.Enabled = false;
-            DescriptionBox.Location = new Point(423, 578);
-            DescriptionBox.MaximumSize = new Size(270, 160);
-            DescriptionBox.Multiline = true;
-            DescriptionBox.Name = "DescriptionBox";
-            DescriptionBox.ScrollBars = ScrollBars.Vertical;
-            DescriptionBox.Size = new Size(270, 160);
-            DescriptionBox.TabIndex = 9;
-            DescriptionBox.TextAlign = HorizontalAlignment.Center;
-            // 
             // goldLabel
             // 
             goldLabel.AutoSize = true;
@@ -951,12 +940,31 @@
             toolTip1.InitialDelay = 200;
             toolTip1.ReshowDelay = 40;
             // 
+            // Shop
+            // 
+            Shop.AllowDrop = true;
+            Shop.Location = new Point(1039, 526);
+            Shop.Name = "Shop";
+            Shop.Size = new Size(320, 203);
+            Shop.TabIndex = 24;
+            // 
+            // Roll
+            // 
+            Roll.Location = new Point(1162, 735);
+            Roll.Name = "Roll";
+            Roll.Size = new Size(91, 23);
+            Roll.TabIndex = 25;
+            Roll.Text = "Roll 25 Golda";
+            Roll.UseVisualStyleBackColor = true;
+            Roll.Click += Roll_Click;
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Roll);
+            Controls.Add(Shop);
             Controls.Add(goldLabel);
-            Controls.Add(DescriptionBox);
             Controls.Add(Inventory);
             Controls.Add(tabControl2);
             Controls.Add(tabControl1);
@@ -1068,7 +1076,6 @@
         private Label knightArmor;
         private Label knightBlock;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private TextBox DescriptionBox;
         private Label rogueDodge;
         private Label rogueArmor;
         private Label rogueWeapon;
@@ -1078,5 +1085,7 @@
         private Label jokerWeapon;
         private Label goldLabel;
         private ToolTip toolTip1;
+        private FlowLayoutPanel Shop;
+        private Button Roll;
     }
 }

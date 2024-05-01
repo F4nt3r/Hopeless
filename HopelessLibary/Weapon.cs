@@ -13,18 +13,22 @@ namespace HopelessLibary
         public string Description { get; set; }
         public int MinDmg { get; set; }
         public int MaxDmg { get; set; }
+        public double Price { get; set; }
+        public double SalesPrice { get; set; }
 
         public List<CharacterType> AllowedCharacters { get; set; }
         public Rarity Rarity { get; set; }
 
         public Weapon() { }
         [JsonConstructor]
-        public Weapon(string name, string description, int minDmg, int maxDmg, List<CharacterType> allowedCharacters,Rarity rarity)
+        public Weapon(string name, string description, int minDmg, int maxDmg, double price, List<CharacterType> allowedCharacters,Rarity rarity)
         {
             Name = name;
             Description = description;
             MinDmg = minDmg;
             MaxDmg = maxDmg;
+            Price = price;
+            SalesPrice = (int)(price * 0.20);
             AllowedCharacters = allowedCharacters;
             Rarity = rarity;
         }
@@ -35,6 +39,8 @@ namespace HopelessLibary
             Description = weapon.Description;
             MinDmg = weapon.MinDmg;
             MaxDmg = weapon.MaxDmg;
+            Price = weapon.Price;
+            SalesPrice = weapon.SalesPrice;
             AllowedCharacters = weapon.AllowedCharacters;
             Rarity = weapon.Rarity;
         }
