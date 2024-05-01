@@ -197,6 +197,8 @@
             // 
             // enemy1Health
             // 
+            enemy1Health.BackColor = SystemColors.ActiveCaptionText;
+            enemy1Health.ForeColor = SystemColors.HotTrack;
             enemy1Health.Location = new Point(841, 759);
             enemy1Health.Name = "enemy1Health";
             enemy1Health.Size = new Size(100, 23);
@@ -322,7 +324,6 @@
             skill1Label.Size = new Size(80, 80);
             skill1Label.TabIndex = 39;
             skill1Label.Text = "label2";
-
             // 
             // basicAttackLabel
             // 

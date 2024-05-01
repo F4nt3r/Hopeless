@@ -43,11 +43,28 @@ namespace HopelessLibary
         public override void TakeDamage(int damage)
         {
 
-                double finalDmg = damage * ((double)Resistance / 100);
+                double finalDmg = damage * ((1 - (double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
                 CurrentHP -= (int)finalDmg;
             
            
+        }
+
+        public void AoeBuff(List<Character> characters)
+        {
+            
+            foreach (Character character in characters)
+            {
+               
+            }
+        }
+        public void AoeDeBuff(List<Monster> monsters)
+        {
+
+            foreach (Monster monster in monsters)
+            {
+
+            }
         }
     }
 }

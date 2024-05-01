@@ -22,35 +22,45 @@ namespace HopelessLibary
 
 
 
-        public int Heal()
+        public void Heal (Character character)
         {
             int heal;
             if (new Random().Next(1, 100) > CritChance)
             {
-                heal = Intelligence * 10;
+                heal = Intelligence * 3;
             }
             else
             {
-                heal = Intelligence * 10 * 2;
+                heal = Intelligence * 3 * 2;
             }
-            return heal;
+            if (heal < character.MaxHP - character.CurrentHP)
+                character.CurrentHP += heal;
+            else
+                character.CurrentHP = character.MaxHP;
 
         }
 
-        public int Purify()
+        public void AoeHeal(List<Character> characters)
         {
-            int dmg;
-            if (new Random().Next(1, 101) > CritChance)
+            int heal;
+            if (new Random().Next(1, 100) > CritChance)
             {
-                dmg = Intelligence * 10;
+                heal = Intelligence;
+               
             }
             else
             {
-                dmg = Intelligence * 10 * 2;
+                heal = Intelligence * 2;
+            }
+            foreach (Character character in characters)
+            {
+                if (heal < character.MaxHP - character.CurrentHP)
+                    character.CurrentHP += heal;
+                else
+                    character.CurrentHP = character.MaxHP;
             }
 
-            return dmg;
-           
+
         }
 
 
@@ -76,7 +86,7 @@ namespace HopelessLibary
 
         public override void TakeDamage(int damage)
         {
-            double finalDmg = damage * ((double)Resistance / 100);
+            double finalDmg = damage * ((1 - (double)Resistance) / 100);
             finalDmg = Math.Round(finalDmg);
             CurrentHP -= (int)finalDmg;
         }

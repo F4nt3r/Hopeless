@@ -29,7 +29,7 @@ namespace HopelessLibary
             double finalDmg;
             if (new Random().Next(1, 101) > BlockChance)
             {
-                finalDmg = damage * ((double)Resistance / 100);
+                finalDmg = damage * ((1 - (double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
                 CurrentHP -= (int)finalDmg;
             }
@@ -53,6 +53,36 @@ namespace HopelessLibary
             }
 
             return dmg;
+        }
+        public void Purify(Monster monster)
+        {
+            int dmg;
+            if (new Random().Next(1, 101) > CritChance)
+            {
+                dmg = Intelligence ;
+            }
+            else
+            {
+                dmg = Intelligence  * 2;
+            }
+
+            monster.TakeDamage(dmg);
+
+        }
+        public void Slash(Monster monster)
+        {
+            int dmg;
+            if (new Random().Next(1, 101) > CritChance)
+            {
+                dmg = Strength ;
+            }
+            else
+            {
+                dmg = Strength  * 2;
+            }
+
+            monster.TakeDamage(dmg);
+
         }
     }
 }

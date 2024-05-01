@@ -71,7 +71,7 @@ namespace HopelessLibary
             double finalDmg;
             if (new Random().Next(1, 101) > DodgeChance)
             {
-                finalDmg = damage * ((double)Resistance / 100);
+                finalDmg = damage * ((1-(double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
                 CurrentHP -= (int)finalDmg;
             }

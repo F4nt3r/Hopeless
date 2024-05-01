@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Hopeless
         public Expedition expedition { get; set; }
 
 
-        private List <ICreature> fightOrder = new();
+        private List<ICreature> fightOrder = new();
         private ICreature target;
         public delegate void CustomDelegate(bool wynik, Expedition wyprawa);
         public event CustomDelegate eventFirst;
@@ -31,7 +32,7 @@ namespace Hopeless
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Wyprawa;
-            this.VisibleChanged += WyprawaUserControl_VisibleChanged; 
+            this.VisibleChanged += WyprawaUserControl_VisibleChanged;
         }
 
         private void WyprawaUserControl_VisibleChanged(object? sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace Hopeless
                 if (control.Visible)
                 {
                     InitializeBeforeFight();
-                   
+
                 }
 
             }
@@ -52,76 +53,373 @@ namespace Hopeless
             int value;
             bool fightStatus = true;
             bool playerActionTaken;
+            Dictionary<string, int> cooldowns = new();
             while (fightStatus)
             {
-               foreach (var postac in fightOrder)
+                foreach (var postac in fightOrder)
                 {
                     playerActionTaken = false;
                     if (postac is Knight)
                     {
                         Knight knight = (Knight)postac;
-                        playerActionTaken = true;
+                        if (cooldowns.ContainsKey("Slash"))
+                        {
+                            cooldowns.TryGetValue("Slash", out int tury);
+                            skill1Label.Text = "Slash" + Environment.NewLine +"Odnawianie: "+ tury + " tur";
+                        }
+                        else
+                        {
+                            skill1Label.Text = "Slash";
+                        }
+                        if (cooldowns.ContainsKey("Purify"))
+                        {
+                            cooldowns.TryGetValue("Purify", out int tury);
+                            skill2Label.Text = "Purify" + Environment.NewLine + "Odnawianie: " + tury + " tur";
+                        }
+                        else
+                        {
+                            skill2Label.Text = "Purify";
+                        }
+                        EventHandler handlerBassicAttack = (s, e) => {
+                            if (target != null)
+                            {
+                                target.TakeDamage(knight.BasicAttack());
+                                playerActionTaken = true;
+
+                            }
+
+                        };
+
+                        EventHandler handlerSlash = (s, e) => {
+                            if (target != null)
+                            {
+                                if (cooldowns.ContainsKey("Slash"))
+                                {
+
+                                    cooldowns.TryGetValue("Slash", out int tury);
+                                    MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    knight.Slash((Monster)target);
+                                    cooldowns.Add("Slash", 3);
+                                    playerActionTaken = true;
+                                }
+                               
+                                
+
+                            }
+                            
+                        };
+
+                        EventHandler handlerPurify = (s, e) =>
+                        {
+                            if (target != null)
+                            {
+                                if (cooldowns.ContainsKey("Purify"))
+                                {
+
+                                    cooldowns.TryGetValue("Purify", out int tury);
+                                    MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else { 
+                                    knight.Purify((Monster)target);
+                                cooldowns.Add("Purify", 3);
+                                playerActionTaken = true;
+                                }
+                            }
+                        };
+
+                        skill1Label.Click += handlerSlash;
+                        skill2Label.Click += handlerPurify;
+                        basicAttackLabel.Click += handlerBassicAttack;
+
                         while (!playerActionTaken)
                         {
-
+                            await Task.Delay(200);
+                            
+                            if (target is Character) { 
+                                skill1Label.Enabled = false;
+                                skill2Label.Enabled = false;
+                            }
+                            else { 
+                                skill1Label.Enabled = true;
+                                skill2Label.Enabled = true;
                         }
+                    }
+
+                        skill1Label.Click -= handlerSlash;
+                        skill2Label.Click -= handlerPurify;
+                        basicAttackLabel.Click -= handlerPurify;
+                        skill1Label.Enabled = true;
+                        skill2Label.Enabled = true;
 
                     }
                     else if (postac is Rogue)
                     {
                         Rogue rogue = (Rogue)postac;
-                        playerActionTaken = true;
-                        while (!playerActionTaken)
+                        if (cooldowns.ContainsKey("Ambush"))
                         {
-
+                            cooldowns.TryGetValue("Ambush", out int tury);
+                            skill1Label.Text = "Ambush" + Environment.NewLine + "Odnawianie: " + tury + " tur";
                         }
-
-                    }
-                    else if (postac is Cleric)
-                    {
-                        Cleric cleric = (Cleric)postac;
-                        skill1Label.Text = "Heal";
-                        skill2Label.Text = "Purify";
-
-                        EventHandler handlerHeal = (s, e) => { cleric.Heal(); };
-                        EventHandler handlerPurify = (s, e) => {
+                        else
+                        {
+                            skill1Label.Text = "Ambush";
+                        }
+                        if (cooldowns.ContainsKey("CritAndDodgeBuff"))
+                        {
+                            cooldowns.TryGetValue("CritAndDodgeBuff", out int tury);
+                            skill2Label.Text = "CritAndDodgeBuff" + Environment.NewLine + "Odnawianie: " + tury + " tur";
+                        }
+                        else
+                        {
+                            skill2Label.Text = "CritAndDodgeBuff";
+                        }
+                        EventHandler handlerBassicAttack = (s, e) => {
                             if (target != null)
                             {
-                                target.TakeDamage(cleric.Purify());
+                                target.TakeDamage(rogue.BasicAttack());
+                                playerActionTaken = true;
+
+                            }
+
+                        };
+
+
+                        EventHandler handlerAmbush = (s, e) => {
+                            if (target != null)
+                            {
+                                if (cooldowns.ContainsKey("Ambush"))
+                                {
+
+                                    cooldowns.TryGetValue("Ambush", out int tury);
+                                    MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    rogue.Ambush((Monster)target);
+                                    cooldowns.Add("Ambush", 3);
+                                    playerActionTaken = true;
+                                }
+                            }
+
+                        };
+
+                        EventHandler handlerCritAndDodgeBuff = (s, e) =>
+                        {
+                            if (cooldowns.ContainsKey("CritAndDodgeBuff"))
+                            {
+
+                                cooldowns.TryGetValue("CritAndDodgeBuff", out int tury);
+                                MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+
+                                rogue.CritAndDodgeBuff();
+                                cooldowns.Add("CritAndDodgeBuff", 3);
                                 playerActionTaken = true;
 
                             }
                         };
 
-                        skill1Label.Click += handlerHeal;
-                        skill2Label.Click += handlerPurify;
-
+                        skill1Label.Click += handlerAmbush;
+                        skill2Label.Click += handlerCritAndDodgeBuff;
+                        basicAttackLabel.Click += handlerBassicAttack;
 
                         while (!playerActionTaken)
+                        {
                             await Task.Delay(200);
+                            if (target is Character)
+                                skill1Label.Enabled = false;
+                            else
+                                skill1Label.Enabled = true;
+                        }
+                        skill1Label.Click -= handlerAmbush;
+                        skill2Label.Click -= handlerCritAndDodgeBuff;
+                        basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.Enabled = true;
+                        skill2Label.Enabled = true;
+
+                    }
+                    else if (postac is Cleric)
+                    {
+                        Cleric cleric = (Cleric)postac;
+                        if (cooldowns.ContainsKey("Heal"))
+                        {
+                            cooldowns.TryGetValue("Heal", out int tury);
+                            skill1Label.Text = "Heal" + Environment.NewLine + "Odnawianie: " + tury + " tur";
+                        }
+                        else
+                        {
+                            skill1Label.Text = "Heal";
+                        }
+                        if (cooldowns.ContainsKey("AoeHeal"))
+                        {
+                            cooldowns.TryGetValue("AoeHeal", out int tury);
+                            skill2Label.Text = "AoeHeal" + Environment.NewLine + "Odnawianie: " + tury + " tur";
+                        }
+                        else
+                        {
+                            skill2Label.Text = "AoeHeal";
+                        }
+                        EventHandler handlerBassicAttack = (s, e) => {
+                            if (target != null)
+                            {
+                                target.TakeDamage(cleric.BasicAttack());
+                                playerActionTaken = true;
+
+                            }
+
+                        };
+                        EventHandler handlerHeal = (s, e) => {
+                            if (cooldowns.ContainsKey("Heal"))
+                            {
+
+                                cooldowns.TryGetValue("Heal", out int tury);
+                                MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                cleric.Heal((Character)target);
+                                cooldowns.Add("Heal", 3);
+                                playerActionTaken = true;
+                            }
+                        };
+
+                        EventHandler handlerAoeHeal = (s, e) =>
+                        {
+                            if (cooldowns.ContainsKey("AoeHeal"))
+                            {
+
+                                cooldowns.TryGetValue("AoeHeal", out int tury);
+                                MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                cleric.AoeHeal(characters);
+                                cooldowns.Add("AoeHeal", 3);
+                                playerActionTaken = true;
+                            }
+                            
+                        };
+
+                        skill1Label.Click += handlerHeal;
+                        skill2Label.Click += handlerAoeHeal;
+                        basicAttackLabel.Click += handlerBassicAttack;
+
+                        while (!playerActionTaken)
+                        {
+                            await Task.Delay(200);
+                            if(target is Character) 
+                                skill1Label.Enabled = true;
+                            else
+                                skill1Label.Enabled = false;
+                        }
+                            
 
                         skill1Label.Click -= handlerHeal;
-                        skill2Label.Click -= handlerPurify;
+                        skill2Label.Click -= handlerAoeHeal;
+                        basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.Enabled = true;
+                        skill2Label.Enabled = true;
                     }
                     else if (postac is Joker)
                     {
                         Joker joker = (Joker)postac;
-                        playerActionTaken = true;
-                        while (!playerActionTaken)
+                        if (cooldowns.ContainsKey("AoeBuff"))
                         {
-
+                            cooldowns.TryGetValue("AoeBuff", out int tury);
+                            skill1Label.Text = "AoeBuff" + Environment.NewLine + "Odnawianie: " + tury + " tur";
                         }
+                        else
+                        {
+                            skill1Label.Text = "AoeBuff";
+                        }
+                        if (cooldowns.ContainsKey("AoeDeBuff"))
+                        {
+                            cooldowns.TryGetValue("AoeDeBuff", out int tury);
+                            skill2Label.Text = "AoeDeBuff" + Environment.NewLine + "Odnawianie: " + tury + " tur";
+                        }
+                        else
+                        {
+                            skill2Label.Text = "AoeDeBuff";
+                        }
+                        EventHandler handlerBassicAttack = (s, e) => {
+                            if (target != null)
+                            {
+
+                                target.TakeDamage(joker.BasicAttack());
+                                playerActionTaken = true;
+
+                            }
+
+                        };
+                        EventHandler handlerAoeBuff = (s, e) => {
+                            if (cooldowns.ContainsKey("AoeBuff"))
+                            {
+
+                                cooldowns.TryGetValue("AoeBuff", out int tury);
+                                MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                joker.AoeBuff(characters);
+                                cooldowns.Add("AoeBuff", 3);
+                                playerActionTaken = true;
+                            }
+                        };
+
+                        EventHandler handlerAoeDeBuff = (s, e) =>
+                        {
+                            if (cooldowns.ContainsKey("AoeDeBuff"))
+                            {
+
+                                cooldowns.TryGetValue("AoeDeBuff", out int tury);
+                                MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + tury + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                joker.AoeDeBuff(expedition.Monsters);
+                                cooldowns.Add("AoeDeBuff", 3);
+                                playerActionTaken = true;
+
+                            }
+                        };
+
+                        skill1Label.Click += handlerAoeBuff;
+                        skill2Label.Click += handlerAoeDeBuff;
+                        basicAttackLabel.Click += handlerBassicAttack;
+
+                        while (!playerActionTaken)
+                            await Task.Delay(200);
+
+                        skill1Label.Click -= handlerAoeBuff;
+                        skill2Label.Click -= handlerAoeDeBuff;
+                        basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.Enabled = true;
+                        skill2Label.Enabled = true;
                     }
                     else
                     {
 
                         Monster monster = (Monster)postac;
-   
-                    }
-                
-                   
-                }
 
+                    }
+
+                  
+                }
+                foreach (var key in cooldowns.Keys.ToList())
+                {
+                    cooldowns[key]--;
+
+                    // Jeśli wartość spadła do zera, usuń klucz ze słownika
+                    if (cooldowns[key] == 0)
+                    {
+                        cooldowns.Remove(key);
+                    }
+                }
 
             };
         }
@@ -140,22 +438,25 @@ namespace Hopeless
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
             knightHealth.Value = characters[0].CurrentHP;
             knightHealth.Maximum = characters[0].MaxHP;
+            knightName.Click += Enemy_Click;
 
             rogueName.Text = characters[1].Name;
             rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
             rogueHealth.Value = characters[1].CurrentHP;
             rogueHealth.Maximum = characters[1].MaxHP;
+            rogueName.Click += Enemy_Click;
 
             clericName.Text = characters[2].Name;
             clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
             clericHealth.Value = characters[2].CurrentHP;
             clericHealth.Maximum = characters[2].MaxHP;
+            clericName.Click += Enemy_Click;
 
             jokerName.Text = characters[3].Name;
             jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
             jokerHealth.Value = characters[3].CurrentHP;
             jokerHealth.Maximum = characters[3].MaxHP;
-
+            jokerName.Click += Enemy_Click;
 
             if (expedition.Monsters.Count > 1)
             {
@@ -183,7 +484,6 @@ namespace Hopeless
                 enemy4Health.Value = expedition.Monsters[3].CurrentHP;
                 enemy4Name.Click += Enemy_Click;
 
-
             }
             else
             {
@@ -205,26 +505,75 @@ namespace Hopeless
                 enemy4HealthText.Visible = false;
             }
 
-            //Kolejnosc Tur
+                //Kolejnosc Tur
 
-            fightOrder.AddRange(expedition.Monsters);
-            fightOrder.AddRange(characters);
-            fightOrder = fightOrder.OrderByDescending(x=>x.Initiative).ToList();
+                fightOrder.AddRange(expedition.Monsters);
+                fightOrder.AddRange(characters);
+                fightOrder = fightOrder.OrderByDescending(x => x.Initiative).ToList();
 
-        }
-
-        private void Enemy_Click(object? sender, EventArgs e)
-        {
-            var label = sender as Label;
-            if (label != null)
-            {
-               if(label.Name.Equals("enemy1Name"))
-                {
-                    target = expedition.Monsters[0];
-                }
             }
-           
-        }
+
+            private void Enemy_Click(object? sender, EventArgs e)
+            {
+                enemy1Name.BackColor = Color.White;
+                enemy2Name.BackColor = Color.White;
+                enemy3Name.BackColor = Color.White;
+                enemy4Name.BackColor = Color.White;
+
+                knightName.BackColor = Color.White;
+                rogueName.BackColor = Color.White;
+                clericName.BackColor = Color.White;
+                jokerName.BackColor = Color.White;
+                var label = sender as Label;
+                if (label != null)
+                {
+                    if (label.Name.Equals("enemy1Name"))
+                    {
+                        target = expedition.Monsters[0];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("enemy2Name"))
+                    {
+                        target = expedition.Monsters[1];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("enemy3Name"))
+                    {
+                        target = expedition.Monsters[2];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("enemy4Name"))
+                    {
+                        target = expedition.Monsters[3];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("knightName"))
+                    {
+                        target = characters[0];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("rogueName"))
+                    {
+                        target = characters[1];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("clericName"))
+                    {
+                        target = characters[2];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else if (label.Name.Equals("jokerName"))
+                    {
+                        target = characters[3];
+                        label.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        target = null;
+                    }
+                }
+
+            }
 
         public event EventHandler FinishButtonClicked;
         private void loseButton_Click(object sender, EventArgs e)
@@ -239,6 +588,6 @@ namespace Hopeless
             //FinishButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
-   
+
     }
 }
