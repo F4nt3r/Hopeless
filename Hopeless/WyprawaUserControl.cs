@@ -580,8 +580,6 @@ namespace Hopeless
             if (expedition.Monsters.All(monster => monster.IsDead()))
             {
 
-                MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                InitializeAfterFight();
                 eventFirst?.Invoke(true, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
 
