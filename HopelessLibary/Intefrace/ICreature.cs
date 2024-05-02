@@ -10,6 +10,8 @@ public interface ICreature
     public int MaxHP { get; set; }
     public int CurrentHP { get; set; }
     public int Initiative { get; set; }
+    public bool IsDead();
+    
     public void TakeDamage(int damage);
-    public int BasicAttack();
+    public void BasicAttack<T>(T target) where T : ICreature;
 }

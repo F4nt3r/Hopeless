@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HopelessLibary.Intefrace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,11 @@ namespace HopelessLibary
             double finalDmg;
             if (new Random().Next(1, 101) > BlockChance)
             {
-                finalDmg = damage * ((1 - (double)Resistance) / 100);
+                finalDmg = damage * ((100 - (double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
-                CurrentHP -= (int)finalDmg;
+                if ((int)finalDmg < CurrentHP)
+                    CurrentHP -= (int)finalDmg;
+                else CurrentHP = 0;
             }
             else
             {
@@ -40,7 +43,7 @@ namespace HopelessLibary
           
         }
 
-        public override int BasicAttack()
+        public override void BasicAttack<T>(T target)
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -52,9 +55,9 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-            return dmg;
+            target.TakeDamage(dmg);
         }
-        public void Purify(Monster monster)
+        public void Purify(List<Monster> monsters)
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -66,23 +69,19 @@ namespace HopelessLibary
                 dmg = Intelligence  * 2;
             }
 
-            monster.TakeDamage(dmg);
+            foreach (Monster monster in monsters)
+            {
+                monster.TakeDamage(dmg);
+            }
+            
 
         }
-        public void Slash(Monster monster)
+        public void Provoke(bool stan)
         {
-            int dmg;
-            if (new Random().Next(1, 101) > CritChance)
-            {
-                dmg = Strength ;
-            }
-            else
-            {
-                dmg = Strength  * 2;
-            }
-
-            monster.TakeDamage(dmg);
-
+            if (stan)
+            Resistance += 20;
+            else 
+            Resistance -= 20;
         }
     }
 }

@@ -351,8 +351,11 @@ namespace Hopeless
             }
             else
             {
-               var boss = monsters.Where(monster => monster.Type == DifficultyType.Boss).OrderBy(x => r.Next()).Take(1).ToList(); 
-               wybrane.AddRange(boss);
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
+                wybrane.Add(new Monster (monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
+                
             }
 
             return wybrane;

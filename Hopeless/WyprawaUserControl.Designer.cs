@@ -39,8 +39,6 @@
             enemy2Name = new Label();
             enemy3Name = new Label();
             enemy4Name = new Label();
-            winButton = new Button();
-            loseButton = new Button();
             jokerHealth = new ProgressBar();
             clericHealth = new ProgressBar();
             rogueHealth = new ProgressBar();
@@ -62,6 +60,7 @@
             basicAttackLabel = new Label();
             toolTip = new ToolTip(components);
             logBattleBox = new TextBox();
+            startButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -146,26 +145,6 @@
             enemy4Name.Size = new Size(36, 15);
             enemy4Name.TabIndex = 19;
             enemy4Name.Text = "Imie: ";
-            // 
-            // winButton
-            // 
-            winButton.Location = new Point(718, 811);
-            winButton.Name = "winButton";
-            winButton.Size = new Size(109, 23);
-            winButton.TabIndex = 20;
-            winButton.Text = "Zwycięstwo";
-            winButton.UseVisualStyleBackColor = true;
-            winButton.Click += winButton_Click;
-            // 
-            // loseButton
-            // 
-            loseButton.Location = new Point(508, 811);
-            loseButton.Name = "loseButton";
-            loseButton.Size = new Size(109, 23);
-            loseButton.TabIndex = 21;
-            loseButton.Text = "Porażka";
-            loseButton.UseVisualStyleBackColor = true;
-            loseButton.Click += loseButton_Click;
             // 
             // jokerHealth
             // 
@@ -313,7 +292,6 @@
             skill2Label.Name = "skill2Label";
             skill2Label.Size = new Size(80, 80);
             skill2Label.TabIndex = 38;
-            skill2Label.Text = "label1";
             // 
             // skill1Label
             // 
@@ -323,7 +301,6 @@
             skill1Label.Name = "skill1Label";
             skill1Label.Size = new Size(80, 80);
             skill1Label.TabIndex = 39;
-            skill1Label.Text = "label2";
             // 
             // basicAttackLabel
             // 
@@ -333,7 +310,6 @@
             basicAttackLabel.Name = "basicAttackLabel";
             basicAttackLabel.Size = new Size(80, 80);
             basicAttackLabel.TabIndex = 40;
-            basicAttackLabel.Text = "label3";
             // 
             // toolTip
             // 
@@ -345,7 +321,7 @@
             // logBattleBox
             // 
             logBattleBox.Enabled = false;
-            logBattleBox.Location = new Point(557, 30);
+            logBattleBox.Location = new Point(536, 58);
             logBattleBox.MaximumSize = new Size(270, 160);
             logBattleBox.Multiline = true;
             logBattleBox.Name = "logBattleBox";
@@ -354,10 +330,21 @@
             logBattleBox.TabIndex = 41;
             logBattleBox.TextAlign = HorizontalAlignment.Center;
             // 
+            // startButton
+            // 
+            startButton.Location = new Point(512, 368);
+            startButton.Name = "startButton";
+            startButton.Size = new Size(335, 101);
+            startButton.TabIndex = 42;
+            startButton.Text = "Walka";
+            startButton.UseVisualStyleBackColor = true;
+            startButton.Click += startButton_Click;
+            // 
             // WyprawaUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(startButton);
             Controls.Add(logBattleBox);
             Controls.Add(basicAttackLabel);
             Controls.Add(skill1Label);
@@ -378,8 +365,6 @@
             Controls.Add(rogueHealth);
             Controls.Add(clericHealth);
             Controls.Add(jokerHealth);
-            Controls.Add(loseButton);
-            Controls.Add(winButton);
             Controls.Add(enemy4Name);
             Controls.Add(enemy3Name);
             Controls.Add(enemy2Name);
@@ -407,8 +392,6 @@
         private Label enemy2Name;
         private Label enemy3Name;
         private Label enemy4Name;
-        private Button winButton;
-        private Button loseButton;
         private ProgressBar jokerHealth;
         private ProgressBar clericHealth;
         private ProgressBar rogueHealth;
@@ -430,5 +413,6 @@
         private Label basicAttackLabel;
         private ToolTip toolTip;
         private TextBox logBattleBox;
+        private Button startButton;
     }
 }

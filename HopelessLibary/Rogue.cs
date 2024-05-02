@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HopelessLibary.Intefrace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
@@ -40,19 +41,28 @@ namespace HopelessLibary
 
             monster.TakeDamage(dmg);
         }
-        public void CritAndDodgeBuff()
+        public void CritAndDodgeBuff(bool stan)
         {
+            if (stan) { 
             DodgeChance += 100;
             CritChance += 100;
+            }
+            else
+            {
+                DodgeChance -= 100;
+                CritChance -= 100;
+            }
         }
         public override void TakeDamage(int damage)
         {
             double finalDmg;
             if (new Random().Next(1, 101) > DodgeChance)
             {
-                finalDmg = damage * ((1 - (double)Resistance) / 100);
+                finalDmg = damage * ((100 - (double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
-                CurrentHP -= (int)finalDmg;
+                if ((int)finalDmg < CurrentHP)
+                    CurrentHP -= (int)finalDmg;
+                else CurrentHP = 0;
             }
             else
             {
@@ -60,7 +70,7 @@ namespace HopelessLibary
             }
         }
 
-        public override int BasicAttack()
+        public override void BasicAttack<T>(T target) 
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -72,7 +82,7 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-            return dmg;
+            target.TakeDamage(dmg);
         }
     }
 }

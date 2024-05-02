@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HopelessLibary.Intefrace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ namespace HopelessLibary
 
         }
 
-        
 
 
 
-        public override int BasicAttack()
+
+        public override void BasicAttack<T>(T target) 
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
@@ -32,7 +33,7 @@ namespace HopelessLibary
                 dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-            return dmg;
+            target.TakeDamage(dmg);
         }
 
         public override void LevelUp()
@@ -43,26 +44,46 @@ namespace HopelessLibary
         public override void TakeDamage(int damage)
         {
 
-                double finalDmg = damage * ((1 - (double)Resistance) / 100);
+                double finalDmg = damage * ((100 - (double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
+
+                if((int)finalDmg<CurrentHP)
                 CurrentHP -= (int)finalDmg;
-            
+                else CurrentHP = 0;
            
         }
 
-        public void AoeBuff(List<Character> characters)
+        public void AoeBuff(List<Character> characters,bool stan)
         {
             
             foreach (Character character in characters)
             {
+                if (stan)
+                {
+                    character.MinDmg += 3;
+                    character.MaxDmg += 3;
+                }
+                else
+                {
+                    character.MinDmg -= 3;
+                    character.MaxDmg -= 3;
+                }
                
             }
         }
-        public void AoeDeBuff(List<Monster> monsters)
+        public void AoeDeBuff(List<Monster> monsters, bool stan)
         {
 
             foreach (Monster monster in monsters)
             {
+                if (stan)
+                {
+                    monster.Resistance -= 10;
+                }
+                else
+                {
+                    monster.Resistance += 10;
+                }
 
             }
         }

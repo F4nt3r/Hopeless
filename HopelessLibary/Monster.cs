@@ -51,19 +51,19 @@ namespace HopelessLibary
             DodgeChance = monster.DodgeChance;
             Type = monster.Type;
         }
-        public int BasicAttack()
+        public void BasicAttack<T>(T target) where T : ICreature
         {
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
             {
-                dmg = new Random().Next(MinDmg, MaxDmg+1);
+                dmg = new Random().Next(MinDmg, MaxDmg + 1);
             }
             else
             {
-                dmg = new Random().Next(MinDmg, MaxDmg + 1)*2;
+                dmg = new Random().Next(MinDmg, MaxDmg + 1) * 2;
             }
 
-          return dmg;
+            target.TakeDamage(dmg);
         }
 
         public void TakeDamage(int damage)
@@ -71,9 +71,11 @@ namespace HopelessLibary
             double finalDmg;
             if (new Random().Next(1, 101) > DodgeChance)
             {
-                finalDmg = damage * ((1-(double)Resistance) / 100);
+                finalDmg = damage * ((100-(double)Resistance) / 100);
                 finalDmg = Math.Round(finalDmg);
-                CurrentHP -= (int)finalDmg;
+                if ((int)finalDmg < CurrentHP)
+                    CurrentHP -= (int)finalDmg;
+                else CurrentHP = 0;
             }
             else
             {
@@ -90,5 +92,7 @@ namespace HopelessLibary
         {
             return Name;
         }
+
+      
     }
 }
