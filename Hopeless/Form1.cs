@@ -123,9 +123,8 @@ namespace Hopeless
             Monster sleeperGuard = new Monster("Stra¿nk Œni¹cego",100,100,100,40,15,40,10,15,10,DifficultyType.Boss);
             Monster gaunter = new Monster("Gaunter o'Dim", 100, 200, 200, 50, 20, 50, 17, 21, 15, DifficultyType.Boss);
 
-            List<Monster> monsters = new List<Monster> { sleeperGuard, sleeper,gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
-            
-            List<Monster> monsters = new List<Monster> { arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
+           
+            List<Monster> monsters = new List<Monster> { sleeperGuard, arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
             wyborWyprawyUserControl.monsters = monsters;
             // Inicjalizacja Wypraw
 
