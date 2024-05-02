@@ -36,33 +36,54 @@ namespace Hopeless
 
             // Inicjalizacja broni
 
-            Weapon sword = new Weapon("Miecz Stalowy", "Opis Miecza", 5, 12,20,new List<CharacterType> {CharacterType.Knight},Rarity.Common);
-            Weapon axe = new Weapon("Topor Bojowy", "Opis Topora", 8, 13,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Common);
-            Weapon gun = new Weapon("Pistolet Skalkowy", "Opis Pistoletu", 5, 12,20, new List<CharacterType> { CharacterType.Rogue }, Rarity.Common);
-            Weapon greatsword = new Weapon("Wielki Miecz Stalowy", "Opis Miecza", 7, 15,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Common);
+            Weapon sword = new Weapon("Miecz Stalowy", "Zwyczajny stalowy miecz", 5, 7,20,new List<CharacterType> {CharacterType.Knight},Rarity.Common);
+            Weapon axe = new Weapon("Topor Bojowy", "Opis Topora", 6, 7,20, new List<CharacterType> { CharacterType.Joker }, Rarity.Common);
+            Weapon gun = new Weapon("Pistolet Skalkowy", "Opis Pistoletu", 5, 7,20, new List<CharacterType> { CharacterType.Rogue }, Rarity.Common);
+            Weapon ritual_knife = new Weapon("Noz Rytualny", "Opis noza", 3, 5, 20, new List<CharacterType> { CharacterType.Cleric }, Rarity.Common);
+
+
+            Weapon greatsword = new Weapon("Wielki Miecz Stalowy", "Opis Miecza", 5, 8,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Rare);
+            Weapon crossbow = new Weapon("Kusza", "Opis", 4, 7, 250, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Rare);
             Weapon glaive = new Weapon("Glewia", "Prosta Bron Drzewcowa", 3, 9,100, new List<CharacterType> { CharacterType.Knight, CharacterType.Cleric }, Rarity.Rare);
             Weapon metal_cudge = new Weapon("Metalowa Palka", "Piekna w swojej prostocie", 2, 6,100, new List<CharacterType> { CharacterType.Joker, CharacterType.Cleric }, Rarity.Rare);
             Weapon sharpened_sickle = new Weapon("Zaostrzony Sierp", "Brakuje tylko mlota do zestawu", 4, 8,100, new List<CharacterType> { CharacterType.Joker}, Rarity.Rare);
-            Weapon gilded_mace = new Weapon("Z³oty Buzdygan", "Midas to jednak zna sie na robocie", 7, 15,100, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Rare);
+            Weapon gilded_mace = new Weapon("Z³oty Buzdygan", "Midas to jednak zna sie na robocie", 7, 12,100, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Rare);
             Weapon scarlet_flail = new Weapon("Szkarlatny Cep", "Chodz, pomacam Cie moim cepikiem", 6, 11,100, new List<CharacterType> { CharacterType.Rogue }, Rarity.Rare);
             Weapon dagger = new Weapon("Sztylet", "Maly, ale wariat", 5, 9,100, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Rare);
-            Weapon spearofdestiny = new Weapon("Wlocznia Przeznaczenia", "Podobno zdolna zabijac Bogow", 9, 15,250, new List<CharacterType> { CharacterType.Knight, CharacterType.Cleric }, Rarity.Epic);
-            Weapon crossbow = new Weapon("Kusza", "Opis", 4, 7,250, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Epic);
-            Weapon heavy_crossbow = new Weapon("Ciezka Kusza", "Opis", 7, 10,250, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Epic);
-            Weapon ulumulu = new Weapon("Ulu-Mulu", "Orkowy Znak Przyjazni", 9, 15,500, new List<CharacterType> { CharacterType.Knight }, Rarity.Legendary);
+
+            Weapon musket = new Weapon("Muszkiet", "Kultowa bron wojny secesyjskiej", 9, 11, 250, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker }, Rarity.Epic);
+            Weapon spearofdestiny = new Weapon("Wlocznia Przeznaczenia", "Podobno zdolna zabijac Bogow", 9, 13,250, new List<CharacterType> { CharacterType.Knight, CharacterType.Cleric }, Rarity.Epic);
+            Weapon heavy_crossbow = new Weapon("Ciezka Kusza", "Opis", 8, 12,250, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Epic);
+            Weapon claw_of_beliar = new Weapon("Szpon Beliara", "Stworzony przez samego Beliara", 10, 12, 250, new List<CharacterType> { CharacterType.Knight }, Rarity.Epic);
+
+            Weapon ulumulu = new Weapon("Ulu-Mulu", "Orkowy Znak Przyjazni", 14, 19,500, new List<CharacterType> { CharacterType.Knight }, Rarity.Legendary);
+            Weapon hiddenblade = new Weapon("Ukryte Ostrze", "Cicha, szybka robota", 15, 18, 500, new List<CharacterType> { CharacterType.Rogue,CharacterType.Joker }, Rarity.Legendary);
+            Weapon pieceofeden = new Weapon("Rajskie Jablko", "Stworzone przez tych co byli przed nami", 18, 21, 1000, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker, CharacterType.Knight, CharacterType.Cleric }, Rarity.Legendary);
 
             // Inicjalizacja armora
-            Armor paladinarmor = new Armor("Pancerz Paladyna", "Niegdys zbroja magicznych wojownikow", 11,500, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
-            Armor mercenaryarmor = new Armor("Pancerz Najemnika", "Pospolity pancerz najemnych zbirow", 6,250, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight, CharacterType.Rogue, CharacterType.Joker }, Rarity.Epic);
-            Armor lightweightarmour = new Armor("Lekka Zbroja", "Nie wiem czy wogole mo¿na to nazwaæ zbroj¹", 4,20, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker }, Rarity.Common);
-            Armor mediumweightarmour = new Armor("Œredni Pancerz", "Handlarz p³aka³ jak oddawa³", 7,20, new List<CharacterType> { CharacterType.Cleric }, Rarity.Common);
-            Armor armour = new Armor("Ciezka Zbroja", "W takiej to juz tylko na Jerozolime", 12,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Common);
-            Armor leatherarmor = new Armor("Skorzana Zbroja", "Zrobiona z pierwszorzêdnej skóry Cieniostworów", 7,150, new List<CharacterType> { CharacterType.Cleric, CharacterType.Joker, CharacterType.Rogue }, Rarity.Rare);
-            Armor durableovercoat = new Armor("Wytrzymaly Plaszcz", "Zapewni podstawow¹ ochrone. Ale nieprzeciêtny wygl¹d", 6,150, new List<CharacterType> { CharacterType.Rogue }, Rarity.Rare);
-            Armor bronzedchestplate = new Armor("Napiersnik z Brazu", "A¿ mo¿na poczuæ sie jak Rzymianin", 9,150, new List<CharacterType> { CharacterType.Rogue, CharacterType.Knight }, Rarity.Rare);
-            List<IEkwipunek> pulaEkwipunku = new List<IEkwipunek> { crossbow, mercenaryarmor, paladinarmor, heavy_crossbow, ulumulu, sword, gun, durableovercoat, bronzedchestplate, leatherarmor, armour, axe, lightweightarmour, mediumweightarmour, greatsword , glaive , metal_cudge , sharpened_sickle , gilded_mace , scarlet_flail , dagger , spearofdestiny ,};
 
-            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { new Weapon(sword), new Weapon(gun), new Armor(armour), new Weapon(axe), new Armor(lightweightarmour), new Armor(lightweightarmour) };
+
+            Armor lightweightarmour = new Armor("Lekka Zbroja", "Nie wiem czy wogole mo¿na to nazwaæ zbroj¹", 3,20, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker }, Rarity.Common);
+            Armor mediumweightarmour = new Armor("Œredni Pancerz", "Handlarz p³aka³ jak oddawa³", 5,20, new List<CharacterType> { CharacterType.Cleric }, Rarity.Common);
+            Armor armour = new Armor("Ciezka Zbroja", "W takiej to juz tylko na Jerozolime", 6,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Common);
+
+            Armor leatherarmor = new Armor("Skorzana Zbroja", "Zrobiona z pierwszorzêdnej skóry Cieniostworów", 11,150, new List<CharacterType> { CharacterType.Cleric, CharacterType.Joker, CharacterType.Rogue }, Rarity.Rare);
+            Armor durableovercoat = new Armor("Wytrzymaly Plaszcz", "Zapewni podstawow¹ ochrone. Ale nieprzeciêtny wygl¹d", 9,150, new List<CharacterType> { CharacterType.Rogue }, Rarity.Rare);
+            Armor bronzedchestplate = new Armor("Napiersnik z Brazu", "A¿ mo¿na poczuæ sie jak Rzymianin", 10,150, new List<CharacterType> { CharacterType.Rogue, CharacterType.Knight }, Rarity.Rare);
+
+            Armor mercenaryarmor = new Armor("Pancerz Najemnika", "Pospolity pancerz najemnych zbirow", 13, 250, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight, CharacterType.Rogue, CharacterType.Joker }, Rarity.Epic);
+            Armor temeriaarmor = new Armor("Pancerz Niebieskich Pasow", "Dla prawdziwych patriotow", 14, 250, new List<CharacterType> { CharacterType.Joker, CharacterType.Rogue}, Rarity.Epic);
+            Armor magicorearmor = new Armor("Zbroja z Magicznej Rudy","Przesiaknieta Magia",13,250, new List<CharacterType> { CharacterType.Knight, CharacterType.Cleric}, Rarity.Epic);
+
+
+            Armor paladinarmor = new Armor("Pancerz Paladyna", "Niegdys zbroja magicznych wojownikow", 18, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
+            Armor saskiaarmor = new Armor("Pancerz Saski", "Pancerz Smokobojczyni", 19, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
+            Armor zorro = new Armor("Stroj Zorro","Maskuje tak dobrze jak wyglada",17,1000, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Legendary);
+
+            List<IEkwipunek> pulaEkwipunku = new List<IEkwipunek> { magicorearmor,zorro,claw_of_beliar,crossbow, mercenaryarmor, paladinarmor, heavy_crossbow, ulumulu, sword, gun, durableovercoat, bronzedchestplate, leatherarmor, armour, axe, lightweightarmour, mediumweightarmour, greatsword , glaive , metal_cudge , sharpened_sickle , gilded_mace , scarlet_flail , dagger , spearofdestiny , temeriaarmor , saskiaarmor, hiddenblade,
+            musket, ritual_knife, pieceofeden};
+
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { new Weapon(sword), new Weapon(gun), new Weapon(axe), new Weapon(ritual_knife), new Armor(armour),  new Armor(lightweightarmour), new Armor(lightweightarmour), new Armor(mediumweightarmour) };
             fazaPrzygotowaniaUserControl.pulaEkwipunku = pulaEkwipunku;
             wyborWyprawyUserControl.pulaEkwipunku = pulaEkwipunku;
 
@@ -76,6 +97,10 @@ namespace Hopeless
             Monster floutist = new Monster("Flecista",30,30,30,25,20,19,5,10,20, DifficultyType.Easy);
             Monster goblin = new Monster("Goblin", 20, 25, 25, 10, 15, 25, 3, 6, 30, DifficultyType.Easy);
             Monster scierwojad = new Monster("Scierwojad", 15, 15, 15, 10, 10, 10, 2, 3, 25, DifficultyType.Easy);
+            Monster nekker = new Monster("Nekker", 15, 10, 10, 10, 10, 25, 4, 5, 30, DifficultyType.Easy);
+            Monster bear = new Monster("Niedzwiedz", 10, 20, 20, 15, 15, 10, 5, 6, 10, DifficultyType.Easy);
+
+
             Monster kretoszczur = new Monster("Kretoszczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Medium);
             Monster gargoyle = new Monster("Gargulec", 45, 40, 40, 15, 15, 10, 7, 10, 25, DifficultyType.Medium);
             Monster boneSoldier = new Monster("Szkielet Wojownik", 45, 30, 30, 10, 15, 15, 5, 11, 10, DifficultyType.Medium);
@@ -83,14 +108,24 @@ namespace Hopeless
             Monster ghoul = new Monster("Ghoul", 45, 35, 35, 25, 15, 10, 8, 12, 20, DifficultyType.Medium);
             Monster rattler = new Monster("Grzechotnik", 40, 30, 30, 10, 25, 40, 5, 9, 45, DifficultyType.Medium);
             Monster pelzacz = new Monster("Pelzacz", 45, 35, 35, 15, 15, 10, 7, 10, 15, DifficultyType.Medium);
+            Monster orkwarrior = new Monster("Ork Wojownik", 40, 35, 35, 15, 20, 10, 8, 10, 20, DifficultyType.Medium);
+            Monster pokutnik = new Monster("Pokutnik", 35, 40, 40, 15, 15, 15, 7, 9, 15, DifficultyType.Medium);
+            Monster arachas = new Monster("Krabopajak", 40, 55, 55, 35, 10, 10, 6, 7, 10, DifficultyType.Medium);
+
             Monster giant = new Monster("Gigant", 75, 55, 55, 30, 20, 10, 12, 16, 5, DifficultyType.Hard);
             Monster golem = new Monster("Golem", 75, 50, 50, 40, 15, 10, 10, 13, 5, DifficultyType.Hard);
             Monster dragon = new Monster("Smok", 80, 60, 60, 20, 15, 20, 11, 16, 20, DifficultyType.Hard);
             Monster darkKnight = new Monster("Mroczny Rycerz", 75, 55, 55, 15, 15, 15, 9, 14, 10, DifficultyType.Hard);
+            Monster przeraza = new Monster("Przeraza", 70, 55, 55, 25, 15, 15, 10, 16, 10, DifficultyType.Hard);
+            Monster vampire = new Monster("Wampir Wyzszy", 50, 45, 45, 30, 10, 15, 11, 15, 20, DifficultyType.Hard);
+
             Monster sleeper = new Monster("Œni¹cy",100,200,200,50,15,50,15,22,15, DifficultyType.Boss);
             Monster sleeperGuard = new Monster("Stra¿nk Œni¹cego",100,100,100,40,15,40,10,15,10,DifficultyType.Boss);
+            Monster gaunter = new Monster("Gaunter o'Dim", 100, 200, 200, 50, 20, 50, 17, 21, 15, DifficultyType.Boss);
 
             List<Monster> monsters = new List<Monster> { sleeperGuard, sleeper,gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
+            
+            List<Monster> monsters = new List<Monster> { arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
             wyborWyprawyUserControl.monsters = monsters;
             // Inicjalizacja Wypraw
 
