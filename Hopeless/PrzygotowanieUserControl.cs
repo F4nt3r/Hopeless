@@ -44,6 +44,7 @@ namespace Hopeless
                     RefreshStats();
                     RefreshInventory();
                     RefreshShop();
+                    SaveGameState();
                 }
 
 
@@ -364,6 +365,16 @@ namespace Hopeless
         {
 
             WyruszButtonClicked?.Invoke(this, EventArgs.Empty);
+            SaveGameState();
+
+
+
+
+        }
+
+
+        public void SaveGameState()
+        {
 
             GameState gameState = new GameState();
             gameState.rogue = rogue;
@@ -424,16 +435,6 @@ namespace Hopeless
             gameState.shopArmors = shopArmors;
             gameState.expeditions = Expeditons;
             gameState.gold = gold;
-            SaveGameState(gameState);
-
-
-        }
-
-
-        public void SaveGameState(GameState gameState)
-        {
-
-
             string json = JsonConvert.SerializeObject(gameState);
             File.WriteAllText("game_state.json", json);
         }

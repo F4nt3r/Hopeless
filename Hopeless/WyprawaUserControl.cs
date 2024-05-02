@@ -432,8 +432,16 @@ namespace Hopeless
                         if (!postac.IsDead())
                         {
                             Monster monster = (Monster)postac;
-                            int i = new Random().Next(0, 4);
-                            target = characters[i];
+                            if (effects.ContainsKey("Provoke"))
+                            {
+                                target = characters[0];
+                            }
+                            else
+                            {
+                                int i = new Random().Next(0, 4);
+                                target = characters[i];
+                            }
+                           
                             monster.BasicAttack(target);
                             CheckStatus();
                         }

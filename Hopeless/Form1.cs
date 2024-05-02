@@ -1,5 +1,7 @@
 using HopelessLibary;
 using Newtonsoft.Json;
+using System.Media;
+using System.Reflection;
 
 namespace Hopeless
 {
@@ -141,13 +143,19 @@ namespace Hopeless
             wyprawaUserControl.Visible = false;
             wyborWyprawyUserControl.Visible = false;
 
+
+            SoundPlayer backgroundMusicPlayer = new SoundPlayer(Properties.Resources.menuSong); // Dostêp do zasobu dŸwiêkowego
+            SoundPlayer fightMusicPlayer = new SoundPlayer(Properties.Resources.normalFight);
+            SoundPlayer bossFightMusicPlayer = new SoundPlayer(Properties.Resources.bossFight);
+            backgroundMusicPlayer.PlayLooping();
+
             menuUserControl.NowaGraButtonClicked += (sender, args) =>
             {
                 fazaPrzygotowaniaUserControl.Characters = characters;
                 fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
                 wyborWyprawyUserControl.expeditions = expeditons;
                 fazaPrzygotowaniaUserControl.gold = 100;
-
+                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
                 fazaPrzygotowaniaUserControl.Visible = true;
                 fazaPrzygotowaniaUserControl.GenerateShop();
                 menuUserControl.Visible = false;
@@ -165,7 +173,7 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.WyruszButtonClicked += (sender, args) =>
             {
 
-                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
+               
                 fazaPrzygotowaniaUserControl.Visible = false;
                 wyborWyprawyUserControl.Visible = true;
 
@@ -184,12 +192,22 @@ namespace Hopeless
                 wyborWyprawyUserControl.Visible = false;
 
                 wyprawaUserControl.expedition = wyborWyprawyUserControl.selectedExpedition;
-                wyprawaUserControl.Visible = true;
+
+                backgroundMusicPlayer.Stop();
+                if (wyprawaUserControl.expedition.Type == DifficultyType.Boss)
+                    bossFightMusicPlayer.PlayLooping();
+                else
+                    fightMusicPlayer.PlayLooping();
+
+               wyprawaUserControl.Visible = true;
                 
             };
             wyprawaUserControl.FinishButtonClicked += (sender, args) =>
             {
-                wyprawaUserControl.Visible = false;
+                bossFightMusicPlayer.Stop();
+                fightMusicPlayer.Stop();
+                backgroundMusicPlayer.PlayLooping();
+               wyprawaUserControl.Visible = false;
                 fazaPrzygotowaniaUserControl.Visible = true;
             };
 
@@ -226,6 +244,7 @@ namespace Hopeless
             shopItems.AddRange(gameState.shopWeapons);
             shopItems.AddRange(gameState.shopArmors);
 
+            fazaPrzygotowaniaUserControl.Expeditons = expeditons;
             fazaPrzygotowaniaUserControl.Characters = characters;
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
             fazaPrzygotowaniaUserControl.equipedItems = equippedEkwipunek;
@@ -233,6 +252,11 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.gold = gameState.gold;
             fazaPrzygotowaniaUserControl.shopItems = shopItems;
         }
-
+        private Stream GetResourceStream(string resourceName)
+        {
+            // Uzyskanie strumienia zasobu na podstawie jego nazwy
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            return assembly.GetManifestResourceStream(resourceName);
+        }
     }
 }
