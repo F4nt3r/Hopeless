@@ -1,5 +1,6 @@
 using HopelessLibary;
 using Newtonsoft.Json;
+using System.DirectoryServices.ActiveDirectory;
 using System.Media;
 using System.Reflection;
 
@@ -26,13 +27,14 @@ namespace Hopeless
             Controls.Add(wyprawaUserControl);
             Controls.Add(wyborWyprawyUserControl);
 
+
             wyprawaUserControl.eventFirst += wyborWyprawyUserControl.AfterExpedition;
             wyprawaUserControl.eventFirst += fazaPrzygotowaniaUserControl.AfterExpedition;
             // Inicjalizacja postaci
-            Knight knight = new Knight("Lancelot",0,10,5,2,50,50,50,50,10,34,1,2,33,CharacterType.Knight);
-            Rogue rogue = new Rogue("Astarion",0,2,10,5,35,35,30,30,50,70,1,2,33, CharacterType.Rogue);
-            Cleric cleric = new Cleric("Melitele",0,2,5,10,45,45,40,40,30,30,1,2, CharacterType.Cleric);
-            Joker joker = new Joker("Jaskier",0,2,7,8,30,30,30,30,50,50,1,2, CharacterType.Joker);
+            Knight knight = new Knight("Knight",0,10,5,2,50,50,50,50,10,34,1,2,33,CharacterType.Knight);
+            Rogue rogue = new Rogue("Rogue",0,2,10,5,35,35,30,30,50,70,1,2,33, CharacterType.Rogue);
+            Cleric cleric = new Cleric("Cleric",0,2,5,10,45,45,40,40,30,30,1,2, CharacterType.Cleric);
+            Joker joker = new Joker("Joker",0,2,7,8,30,30,30,30,50,50,1,2, CharacterType.Joker);
             characters = new List<Character> { knight,rogue,cleric,joker };
             
 
@@ -144,7 +146,7 @@ namespace Hopeless
             wyborWyprawyUserControl.Visible = false;
 
 
-            SoundPlayer backgroundMusicPlayer = new SoundPlayer(Properties.Resources.menuSong); // Dostêp do zasobu dŸwiêkowego
+            SoundPlayer backgroundMusicPlayer = new SoundPlayer(Properties.Resources.menuSong);
             SoundPlayer fightMusicPlayer = new SoundPlayer(Properties.Resources.normalFight);
             SoundPlayer bossFightMusicPlayer = new SoundPlayer(Properties.Resources.bossFight);
             backgroundMusicPlayer.PlayLooping();
@@ -169,7 +171,7 @@ namespace Hopeless
                 fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
-
+         
 
             fazaPrzygotowaniaUserControl.WyruszButtonClicked += (sender, args) =>
             {

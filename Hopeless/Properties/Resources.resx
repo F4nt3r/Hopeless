@@ -139,4 +139,19 @@
   <data name="normalFight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\normalFight.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="equipArmor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\equipArmor.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="equipWeapon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\equipWeapon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="loseSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loseSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sellandbuySound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sellandbuySound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="winSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

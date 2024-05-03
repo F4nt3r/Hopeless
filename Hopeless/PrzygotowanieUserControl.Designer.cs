@@ -47,6 +47,7 @@
             clericDexterity = new Label();
             clericIntelligence = new Label();
             clericEkwipunek = new TabPage();
+            label3 = new Label();
             clericArmor = new Label();
             clericWeapon = new Label();
             tabControl5 = new TabControl();
@@ -66,6 +67,7 @@
             rogueLevel = new Label();
             rogueName = new Label();
             rogueEkwipunek = new TabPage();
+            label2 = new Label();
             rogueArmor = new Label();
             rogueWeapon = new Label();
             tabControl1 = new TabControl();
@@ -85,6 +87,7 @@
             knightLevel = new Label();
             knightName = new Label();
             knightEkwipunek = new TabPage();
+            label1 = new Label();
             knightArmor = new Label();
             knightWeapon = new Label();
             tabControl2 = new TabControl();
@@ -103,6 +106,7 @@
             jokerDexterity = new Label();
             jokerIntelligence = new Label();
             jokerEkwipunek = new TabPage();
+            label4 = new Label();
             jokerArmor = new Label();
             jokerWeapon = new Label();
             Inventory = new FlowLayoutPanel();
@@ -111,6 +115,7 @@
             toolTip1 = new ToolTip(components);
             Shop = new FlowLayoutPanel();
             Roll = new Button();
+            exitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -138,7 +143,7 @@
             // 
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1382, 861);
+            pictureBox1.Size = new Size(1424, 861);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -177,6 +182,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.BackColor = Color.LightCyan;
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Location = new Point(3, 3);
             pictureBox2.Name = "pictureBox2";
@@ -187,6 +193,7 @@
             // 
             // clericStatystyki
             // 
+            clericStatystyki.BackColor = Color.LightCyan;
             clericStatystyki.Controls.Add(clericDmg);
             clericStatystyki.Controls.Add(clericName);
             clericStatystyki.Controls.Add(clericInitiative);
@@ -204,7 +211,6 @@
             clericStatystyki.Size = new Size(192, 308);
             clericStatystyki.TabIndex = 1;
             clericStatystyki.Text = "Statystyki";
-            clericStatystyki.UseVisualStyleBackColor = true;
             // 
             // clericDmg
             // 
@@ -307,6 +313,8 @@
             // 
             // clericEkwipunek
             // 
+            clericEkwipunek.BackColor = Color.LightCyan;
+            clericEkwipunek.Controls.Add(label3);
             clericEkwipunek.Controls.Add(clericArmor);
             clericEkwipunek.Controls.Add(clericWeapon);
             clericEkwipunek.Location = new Point(4, 24);
@@ -315,7 +323,15 @@
             clericEkwipunek.Size = new Size(192, 308);
             clericEkwipunek.TabIndex = 2;
             clericEkwipunek.Text = "Ekwipunek";
-            clericEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(73, 3);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Cleric";
             // 
             // clericArmor
             // 
@@ -362,6 +378,7 @@
             // 
             // pictureBox4
             // 
+            pictureBox4.BackColor = Color.DarkGray;
             pictureBox4.Dock = DockStyle.Fill;
             pictureBox4.Location = new Point(3, 3);
             pictureBox4.Name = "pictureBox4";
@@ -372,6 +389,7 @@
             // 
             // rogueStatystyki
             // 
+            rogueStatystyki.BackColor = Color.DarkGray;
             rogueStatystyki.Controls.Add(rogueDodge);
             rogueStatystyki.Controls.Add(rogueDmg);
             rogueStatystyki.Controls.Add(rogueInitiative);
@@ -390,7 +408,6 @@
             rogueStatystyki.Size = new Size(192, 308);
             rogueStatystyki.TabIndex = 1;
             rogueStatystyki.Text = "Statystyki";
-            rogueStatystyki.UseVisualStyleBackColor = true;
             // 
             // rogueDodge
             // 
@@ -502,6 +519,8 @@
             // 
             // rogueEkwipunek
             // 
+            rogueEkwipunek.BackColor = Color.DarkGray;
+            rogueEkwipunek.Controls.Add(label2);
             rogueEkwipunek.Controls.Add(rogueArmor);
             rogueEkwipunek.Controls.Add(rogueWeapon);
             rogueEkwipunek.Location = new Point(4, 24);
@@ -510,7 +529,15 @@
             rogueEkwipunek.Size = new Size(192, 308);
             rogueEkwipunek.TabIndex = 2;
             rogueEkwipunek.Text = "Ekwipunek";
-            rogueEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(73, 3);
+            label2.Name = "label2";
+            label2.Size = new Size(41, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Rogue";
             // 
             // rogueArmor
             // 
@@ -557,6 +584,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.BackColor = Color.RosyBrown;
             pictureBox3.Dock = DockStyle.Fill;
             pictureBox3.Location = new Point(3, 3);
             pictureBox3.Name = "pictureBox3";
@@ -567,6 +595,7 @@
             // 
             // knightStatystyki
             // 
+            knightStatystyki.BackColor = Color.RosyBrown;
             knightStatystyki.Controls.Add(knightBlock);
             knightStatystyki.Controls.Add(knightDmg);
             knightStatystyki.Controls.Add(knightInitiative);
@@ -585,7 +614,6 @@
             knightStatystyki.Size = new Size(192, 308);
             knightStatystyki.TabIndex = 1;
             knightStatystyki.Text = "Statystyki";
-            knightStatystyki.UseVisualStyleBackColor = true;
             // 
             // knightBlock
             // 
@@ -697,6 +725,8 @@
             // 
             // knightEkwipunek
             // 
+            knightEkwipunek.BackColor = Color.RosyBrown;
+            knightEkwipunek.Controls.Add(label1);
             knightEkwipunek.Controls.Add(knightArmor);
             knightEkwipunek.Controls.Add(knightWeapon);
             knightEkwipunek.Location = new Point(4, 24);
@@ -705,7 +735,15 @@
             knightEkwipunek.Size = new Size(192, 308);
             knightEkwipunek.TabIndex = 2;
             knightEkwipunek.Text = "Ekwipunek";
-            knightEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(68, 3);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Knight";
             // 
             // knightArmor
             // 
@@ -752,6 +790,7 @@
             // 
             // pictureBox5
             // 
+            pictureBox5.BackColor = Color.Beige;
             pictureBox5.Dock = DockStyle.Fill;
             pictureBox5.Location = new Point(3, 3);
             pictureBox5.Name = "pictureBox5";
@@ -762,6 +801,7 @@
             // 
             // jokerStatystyki
             // 
+            jokerStatystyki.BackColor = Color.Beige;
             jokerStatystyki.Controls.Add(jokerDmg);
             jokerStatystyki.Controls.Add(jokerName);
             jokerStatystyki.Controls.Add(jokerInitiative);
@@ -779,7 +819,6 @@
             jokerStatystyki.Size = new Size(192, 308);
             jokerStatystyki.TabIndex = 1;
             jokerStatystyki.Text = "Statystyki";
-            jokerStatystyki.UseVisualStyleBackColor = true;
             // 
             // jokerDmg
             // 
@@ -882,6 +921,8 @@
             // 
             // jokerEkwipunek
             // 
+            jokerEkwipunek.BackColor = Color.Beige;
+            jokerEkwipunek.Controls.Add(label4);
             jokerEkwipunek.Controls.Add(jokerArmor);
             jokerEkwipunek.Controls.Add(jokerWeapon);
             jokerEkwipunek.Location = new Point(4, 24);
@@ -890,7 +931,15 @@
             jokerEkwipunek.Size = new Size(192, 308);
             jokerEkwipunek.TabIndex = 2;
             jokerEkwipunek.Text = "Ekwipunek";
-            jokerEkwipunek.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(71, 3);
+            label4.Name = "label4";
+            label4.Size = new Size(34, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Joker";
             // 
             // jokerArmor
             // 
@@ -916,6 +965,7 @@
             // Inventory
             // 
             Inventory.AllowDrop = true;
+            Inventory.BackColor = Color.Bisque;
             Inventory.Location = new Point(67, 578);
             Inventory.Name = "Inventory";
             Inventory.Size = new Size(320, 203);
@@ -943,6 +993,7 @@
             // Shop
             // 
             Shop.AllowDrop = true;
+            Shop.BackColor = Color.PeachPuff;
             Shop.Location = new Point(1039, 526);
             Shop.Name = "Shop";
             Shop.Size = new Size(320, 203);
@@ -958,10 +1009,21 @@
             Roll.UseVisualStyleBackColor = true;
             Roll.Click += Roll_Click;
             // 
+            // exitButton
+            // 
+            exitButton.Location = new Point(13, 800);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(150, 50);
+            exitButton.TabIndex = 27;
+            exitButton.Text = "Wyjdź z Gry";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(exitButton);
             Controls.Add(Roll);
             Controls.Add(Shop);
             Controls.Add(goldLabel);
@@ -981,24 +1043,28 @@
             clericStatystyki.ResumeLayout(false);
             clericStatystyki.PerformLayout();
             clericEkwipunek.ResumeLayout(false);
+            clericEkwipunek.PerformLayout();
             tabControl5.ResumeLayout(false);
             roguePostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             rogueStatystyki.ResumeLayout(false);
             rogueStatystyki.PerformLayout();
             rogueEkwipunek.ResumeLayout(false);
+            rogueEkwipunek.PerformLayout();
             tabControl1.ResumeLayout(false);
             knightPostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             knightStatystyki.ResumeLayout(false);
             knightStatystyki.PerformLayout();
             knightEkwipunek.ResumeLayout(false);
+            knightEkwipunek.PerformLayout();
             tabControl2.ResumeLayout(false);
             jokerPostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             jokerStatystyki.ResumeLayout(false);
             jokerStatystyki.PerformLayout();
             jokerEkwipunek.ResumeLayout(false);
+            jokerEkwipunek.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1087,5 +1153,10 @@
         private ToolTip toolTip1;
         private FlowLayoutPanel Shop;
         private Button Roll;
+        private Button exitButton;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Label label4;
     }
 }

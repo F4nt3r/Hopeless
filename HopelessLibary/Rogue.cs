@@ -32,11 +32,11 @@ namespace HopelessLibary
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
             {
-                dmg = Dexterity;
+                dmg = new Random().Next(Dexterity, Dexterity + 6);
             }
             else
             {
-                dmg = Dexterity * 2;
+                dmg = new Random().Next(Dexterity, Dexterity + 6) * 2;
             }
 
             monster.TakeDamage(dmg);

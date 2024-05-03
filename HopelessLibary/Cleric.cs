@@ -28,11 +28,12 @@ namespace HopelessLibary
             int heal;
             if (new Random().Next(1, 100) > CritChance)
             {
-                heal = Intelligence * 3;
+               
+                heal = new Random().Next(Intelligence, Intelligence + 6) ;
             }
             else
             {
-                heal = Intelligence * 3 * 2;
+                heal = new Random().Next(Intelligence, Intelligence + 6) * 2;
             }
             if (heal < character.MaxHP - character.CurrentHP)
                 character.CurrentHP += heal;
@@ -46,12 +47,12 @@ namespace HopelessLibary
             int heal;
             if (new Random().Next(1, 100) > CritChance)
             {
-                heal = Intelligence;
+                heal = new Random().Next(Intelligence, Intelligence + 3);
                
             }
             else
             {
-                heal = Intelligence * 2;
+                heal = new Random().Next(Intelligence, Intelligence + 3) * 2;
             }
             foreach (Character character in characters)
             {

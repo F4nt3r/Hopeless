@@ -1,5 +1,6 @@
 ﻿using HopelessLibary;
 using HopelessLibary.Intefrace;
+using NAudio.Wave;
 using System.Data;
 
 namespace Hopeless
@@ -586,6 +587,7 @@ namespace Hopeless
             if (expedition.Monsters.All(monster => monster.IsDead()))
             {
                 InitializeAfterFight();
+                PlayWinSound();
                 MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
                
                 eventFirst?.Invoke(true, expedition);
@@ -596,6 +598,7 @@ namespace Hopeless
             if (characters.All(character => character.IsDead()))
             {
                 InitializeAfterFight();
+                PlayLoseSound();
                 MessageBox.Show("Porażka!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 
                 eventFirst?.Invoke(false, expedition);
@@ -790,6 +793,40 @@ namespace Hopeless
             Fight();
             startButton.Enabled = false;
             startButton.Visible = false;
+        }
+        private void PlayWinSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.winSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayLoseSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.loseSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
         }
     }
 }

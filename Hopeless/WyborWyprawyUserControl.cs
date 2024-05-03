@@ -34,7 +34,7 @@ namespace Hopeless
                     InitializeExpeditions();
                     InitializeMouseEvents();
                 }
-              
+
             }
         }
 
@@ -113,7 +113,7 @@ namespace Hopeless
                         break;
                     case DifficultyType.Boss:
                         label.BackColor = Color.Black; // Dostosuj kolor do poziomu
-                        label.ForeColor = Color.White; 
+                        label.ForeColor = Color.White;
                         break;
                     default:
                         break;
@@ -139,30 +139,30 @@ namespace Hopeless
         }
         private void InitializeMouseEvents()
         {
-            
-                foreach (Control control in easyExpeditions.Controls)
-                {
 
-                    control.MouseHover += ExpeditionMouseHover;
-                    control.MouseClick += ExpeditionMouseClick;
-                }
-                foreach (Control control in mediumExpeditions.Controls)
-                {
-                    control.MouseHover += ExpeditionMouseHover;
-                    control.MouseClick += ExpeditionMouseClick;
-                }
-                foreach (Control control in hardExpeditions.Controls)
-                {
-                    control.MouseHover += ExpeditionMouseHover;
-                    control.MouseClick += ExpeditionMouseClick;
-                }
-                foreach (Control control in bossExpeditions.Controls)
-                {
-                    control.MouseHover += ExpeditionMouseHover;
-                    control.MouseClick += ExpeditionMouseClick;
-                }
-            
-           
+            foreach (Control control in easyExpeditions.Controls)
+            {
+
+                control.MouseHover += ExpeditionMouseHover;
+                control.MouseClick += ExpeditionMouseClick;
+            }
+            foreach (Control control in mediumExpeditions.Controls)
+            {
+                control.MouseHover += ExpeditionMouseHover;
+                control.MouseClick += ExpeditionMouseClick;
+            }
+            foreach (Control control in hardExpeditions.Controls)
+            {
+                control.MouseHover += ExpeditionMouseHover;
+                control.MouseClick += ExpeditionMouseClick;
+            }
+            foreach (Control control in bossExpeditions.Controls)
+            {
+                control.MouseHover += ExpeditionMouseHover;
+                control.MouseClick += ExpeditionMouseClick;
+            }
+
+
 
         }
         private void ExpeditionMouseHover(object sender, EventArgs e)
@@ -216,16 +216,17 @@ namespace Hopeless
                 }
                 while (expeditions.Any(expedition => expedition.Name == selectedQuest.Key));
 
-               
+
 
                 Expedition newExpedition2;
 
                 if (wyprawa.Type == DifficultyType.Easy)
                 {
 
-                    if (expeditions.Count(exp => exp.Type == DifficultyType.Medium) < 3) { 
-                    newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Medium), DifficultyType.Medium, GenerateMonsters(DifficultyType.Medium), GenerateRandomGold(DifficultyType.Medium), GenerateWeapons(DifficultyType.Medium), GenerateArmors(DifficultyType.Medium));
-                    expeditions.Add(newExpedition2);
+                    if (expeditions.Count(exp => exp.Type == DifficultyType.Medium) < 3)
+                    {
+                        newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Medium), DifficultyType.Medium, GenerateMonsters(DifficultyType.Medium), GenerateRandomGold(DifficultyType.Medium), GenerateWeapons(DifficultyType.Medium), GenerateArmors(DifficultyType.Medium));
+                        expeditions.Add(newExpedition2);
                     }
                 }
                 else if (wyprawa.Type == DifficultyType.Medium)
@@ -249,7 +250,7 @@ namespace Hopeless
 
                 }
 
-                
+
 
             }
             else
@@ -336,26 +337,27 @@ namespace Hopeless
 
             List<Monster> wybrane = new List<Monster>();
             Random r = new Random();
-           
-            if (difficulty != DifficultyType.Boss) { 
-            while (wybrane.Count != 4)
+
+            if (difficulty != DifficultyType.Boss)
             {
-                int i = r.Next(0, monsters.Count);
-               
+                while (wybrane.Count != 4)
+                {
+                    int i = r.Next(0, monsters.Count);
+
                     if (monsters[i].Type == difficulty)
                     {
                         wybrane.Add(new Monster(monsters[i]));
                     }
-              
-            }
+
+                }
             }
             else
             {
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
-                wybrane.Add(new Monster (monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
-                
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
+
             }
 
             return wybrane;
@@ -365,17 +367,17 @@ namespace Hopeless
         private List<Weapon> GenerateWeapons(DifficultyType difficulty)
         {
 
-          
-           
+
+
 
             // Konwersja Enumów na wartości liczbowe (int) i porównanie
-           
+
             List<Weapon> wybrane = new List<Weapon>();
             Random r = new Random();
             do
             {
                 int i = r.Next(0, pulaEkwipunku.Count);
-               
+
                 if (pulaEkwipunku[i] is Weapon)
                 {
                     Weapon weapon = (Weapon)pulaEkwipunku[i];
@@ -383,8 +385,8 @@ namespace Hopeless
                     {
                         wybrane.Add((Weapon)pulaEkwipunku[i]);
                     }
-                   
-               
+
+
                 }
             } while (wybrane.Count == 0);
 
@@ -407,7 +409,7 @@ namespace Hopeless
                     {
                         wybrane.Add((Armor)pulaEkwipunku[i]);
                     }
-                        
+
                 }
             } while (wybrane.Count == 0);
 

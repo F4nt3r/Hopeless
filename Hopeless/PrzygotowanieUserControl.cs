@@ -1,7 +1,9 @@
 ﻿using HopelessLibary;
+using NAudio.Wave;
 using Newtonsoft.Json;
 using System.Data;
 using System.Diagnostics;
+using System.Media;
 using static HopelessLibary.Armor;
 using static HopelessLibary.Weapon;
 
@@ -521,11 +523,11 @@ namespace Hopeless
         private void ItemMouseHover(object sender, EventArgs e)
         {
             Label label = sender as Label;
-            if(label.AccessibleDescription != "  ")
+            if (label.AccessibleDescription != "  ")
             {
                 toolTip1.SetToolTip(label, label.AccessibleDescription);
             }
-            
+
         }
 
 
@@ -582,7 +584,7 @@ namespace Hopeless
                             knight.UpdateStats();
                             RefreshStats();
                         }
-
+                        PlayEquipWeaponSound();
                     }
 
                 }
@@ -642,7 +644,7 @@ namespace Hopeless
                             knight.UpdateStats();
                             RefreshStats();
                         }
-
+                        PlayEquipArmorSound();
                     }
 
                 }
@@ -706,7 +708,7 @@ namespace Hopeless
                             rogue.UpdateStats();
                             RefreshStats();
                         }
-
+                        PlayEquipWeaponSound();
                     }
 
                 }
@@ -766,7 +768,7 @@ namespace Hopeless
                             rogue.UpdateStats();
                             RefreshStats();
                         }
-
+                        PlayEquipArmorSound();
                     }
 
                 }
@@ -832,6 +834,7 @@ namespace Hopeless
                             cleric.UpdateStats();
                             RefreshStats();
                         }
+                        PlayEquipWeaponSound();
 
                     }
 
@@ -892,7 +895,7 @@ namespace Hopeless
                             cleric.UpdateStats();
                             RefreshStats();
                         }
-
+                        PlayEquipArmorSound();
                     }
 
                 }
@@ -957,7 +960,9 @@ namespace Hopeless
                             RefreshInventory();
                             joker.UpdateStats();
                             RefreshStats();
+
                         }
+                        PlayEquipWeaponSound();
 
                     }
 
@@ -1017,8 +1022,9 @@ namespace Hopeless
                             RefreshInventory();
                             joker.UpdateStats();
                             RefreshStats();
-                        }
 
+                        }
+                        PlayEquipArmorSound();
                     }
 
                 }
@@ -1065,14 +1071,54 @@ namespace Hopeless
             if (lastDraggedLabel != null && CheckLabel(lastDraggedLabel))
             {
                 lastDraggedLabel.Text = "Brak";
-                if (lastDraggedLabel == knightWeapon) knight.Weapon = null; knight.UpdateStats();
-                if (lastDraggedLabel == knightArmor) knight.Armor = null; knight.UpdateStats();
-                if (lastDraggedLabel == rogueWeapon) rogue.Weapon = null; rogue.UpdateStats();
-                if (lastDraggedLabel == rogueArmor) rogue.Armor = null; rogue.UpdateStats();
-                if (lastDraggedLabel == clericWeapon) cleric.Weapon = null; cleric.UpdateStats();
-                if (lastDraggedLabel == clericArmor) cleric.Armor = null; cleric.UpdateStats();
-                if (lastDraggedLabel == jokerWeapon) joker.Weapon = null; joker.UpdateStats();
-                if (lastDraggedLabel == jokerArmor) joker.Armor = null; joker.UpdateStats();
+                if (lastDraggedLabel == knightWeapon)
+                {
+                    knight.Weapon = null;
+                    PlayEquipWeaponSound();
+                }
+                knight.UpdateStats();
+                if (lastDraggedLabel == knightArmor)
+                {
+                    knight.Armor = null;
+                    PlayEquipArmorSound();
+                }
+                knight.UpdateStats();
+                if (lastDraggedLabel == rogueWeapon)
+                {
+                    rogue.Weapon = null;
+                    PlayEquipWeaponSound();
+                }
+                rogue.UpdateStats();
+                if (lastDraggedLabel == rogueArmor)
+                {
+                    rogue.Armor = null;
+                    PlayEquipArmorSound();
+                }
+                rogue.UpdateStats();
+                if (lastDraggedLabel == clericWeapon)
+                {
+                    cleric.Weapon = null;
+                    PlayEquipWeaponSound();
+                }
+                cleric.UpdateStats();
+                if (lastDraggedLabel == clericArmor)
+                {
+                    cleric.Armor = null;
+                    PlayEquipArmorSound();
+                }
+                cleric.UpdateStats();
+                if (lastDraggedLabel == jokerWeapon)
+                {
+                    joker.Weapon = null;
+                    PlayEquipWeaponSound();
+                }
+                joker.UpdateStats();
+                if (lastDraggedLabel == jokerArmor)
+                {
+                    joker.Armor = null;
+                    PlayEquipArmorSound();
+                }
+                joker.UpdateStats();
 
 
                 AddItemToInventory(draggedItemText, false);
@@ -1117,7 +1163,7 @@ namespace Hopeless
                     gold -= price;
                     RefreshInventory();
                     RefreshShop();
-
+                    PlaySellAndBuySound();
                 }
 
 
@@ -1236,53 +1282,53 @@ namespace Hopeless
         //Sklep generowanie towaru itp
         public void GenerateShop()
         {
-                shopItems.Clear();
-                //generowanie zawartosci sklepu
-                Random r = new Random();
-                do
+            shopItems.Clear();
+            //generowanie zawartosci sklepu
+            Random r = new Random();
+            do
+            {
+                int i = r.Next(0, pulaEkwipunku.Count);
+                if (pulaEkwipunku[i] is Armor)
                 {
-                    int i = r.Next(0, pulaEkwipunku.Count);
-                    if (pulaEkwipunku[i] is Armor)
+                    Armor armor = (Armor)pulaEkwipunku[i];
+                    if ((int)armor.Rarity == 1)
                     {
-                        Armor armor = (Armor)pulaEkwipunku[i];
-                        if ((int)armor.Rarity == 1)
-                        {
-                            shopItems.Add(new Armor ((Armor)pulaEkwipunku[i]));
-                        }
-
-                    }
-                    else
-                    {
-                        Weapon weapon = (Weapon)pulaEkwipunku[i];
-                        if ((int)weapon.Rarity == 1)
-                        {
-                            shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
-                        }
-                    }
-                } while (shopItems.Count != 4);
-                do
-                {
-                    int i = r.Next(0, pulaEkwipunku.Count);
-                    if (pulaEkwipunku[i] is Armor)
-                    {
-                        Armor armor = (Armor)pulaEkwipunku[i];
-                        if ((int)armor.Rarity == 2)
-                        {
-                            shopItems.Add(new Armor((Armor)pulaEkwipunku[i]));
+                        shopItems.Add(new Armor((Armor)pulaEkwipunku[i]));
                     }
 
-                    }
-                    else
+                }
+                else
+                {
+                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    if ((int)weapon.Rarity == 1)
                     {
-                        Weapon weapon = (Weapon)pulaEkwipunku[i];
-                        if ((int)weapon.Rarity == 2)
-                        {
-                            shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
+                        shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
                     }
+                }
+            } while (shopItems.Count != 4);
+            do
+            {
+                int i = r.Next(0, pulaEkwipunku.Count);
+                if (pulaEkwipunku[i] is Armor)
+                {
+                    Armor armor = (Armor)pulaEkwipunku[i];
+                    if ((int)armor.Rarity == 2)
+                    {
+                        shopItems.Add(new Armor((Armor)pulaEkwipunku[i]));
                     }
-                } while (shopItems.Count != 6);
-                RefreshShop();
-            
+
+                }
+                else
+                {
+                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    if ((int)weapon.Rarity == 2)
+                    {
+                        shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
+                    }
+                }
+            } while (shopItems.Count != 6);
+            RefreshShop();
+
         }
 
 
@@ -1299,7 +1345,7 @@ namespace Hopeless
             control.BackColor = SystemColors.Control;
         }
 
-        private void Shop_DragDrop(object sender, DragEventArgs e)
+        private async void Shop_DragDrop(object sender, DragEventArgs e)
         {
 
             if (lastDraggedLabel != null && !CheckLabel(lastDraggedLabel) && Inventory.Controls.Contains(lastDraggedLabel))
@@ -1323,6 +1369,7 @@ namespace Hopeless
                 RefreshInventory();
                 lastDraggedLabel = null;
 
+                PlaySellAndBuySound();
             }
 
         }
@@ -1455,6 +1502,67 @@ namespace Hopeless
 
         }
 
-        
+
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Czy aby napewno chcesz stad uciec?", "Straciłeś Nadzieje?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+        private void PlaySellAndBuySound()
+        {
+            Stream equipWeaponStream = Properties.Resources.sellandbuySound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayEquipWeaponSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.equipWeapon;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0; 
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new ();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose(); 
+            };
+
+        }
+        private void PlayEquipArmorSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.equipArmor;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
     }
 }

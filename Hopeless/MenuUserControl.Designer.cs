@@ -36,6 +36,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1424, 861);
@@ -46,7 +47,7 @@
             // kontynuujGreButton
             // 
             kontynuujGreButton.Enabled = false;
-            kontynuujGreButton.Location = new Point(638, 735);
+            kontynuujGreButton.Location = new Point(638, 693);
             kontynuujGreButton.Name = "kontynuujGreButton";
             kontynuujGreButton.Size = new Size(150, 50);
             kontynuujGreButton.TabIndex = 1;
@@ -56,10 +57,11 @@
             // 
             // nowaGraButton
             // 
+            nowaGraButton.Anchor = AnchorStyles.None;
             nowaGraButton.BackColor = Color.DodgerBlue;
             nowaGraButton.BackgroundImage = Properties.Resources.newgame;
             nowaGraButton.BackgroundImageLayout = ImageLayout.Stretch;
-            nowaGraButton.Location = new Point(638, 657);
+            nowaGraButton.Location = new Point(638, 626);
             nowaGraButton.Name = "nowaGraButton";
             nowaGraButton.Size = new Size(150, 50);
             nowaGraButton.TabIndex = 2;

@@ -17,7 +17,10 @@ namespace Hopeless
             InitializeComponent();
 
             pictureBox1.Image = Properties.Resources.hope;
-            UpdateKontynuujGreButtonState();
+            if (UpdateKontynuujGreButtonState())
+            {
+
+            }
         }
 
         public event EventHandler NowaGraButtonClicked;
@@ -26,14 +29,25 @@ namespace Hopeless
 
         private void nowaGraButton_Click(object sender, EventArgs e)
         {
-            NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
+
+            if (UpdateKontynuujGreButtonState())
+            {
+                DialogResult result = MessageBox.Show("Istnieje zapis gry. Czy chcesz go nadpisać i kontynuować?", "Zapis gry", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
+                }
+            }
+
+
+
         }
 
         private void kontynuujGreButton_Click(object sender, EventArgs e)
         {
             KontynuujGreButtonClicked?.Invoke(this, EventArgs.Empty);
         }
-        private void UpdateKontynuujGreButtonState()
+        private bool UpdateKontynuujGreButtonState()
         {
 
             string saveFilePath = "game_state.json";
@@ -41,6 +55,9 @@ namespace Hopeless
             bool fileExists = File.Exists(saveFilePath);
 
             kontynuujGreButton.Enabled = fileExists;
+            return fileExists;
         }
+
+
     }
 }

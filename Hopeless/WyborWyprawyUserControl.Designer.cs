@@ -84,7 +84,7 @@
             // 
             // powrotButton
             // 
-            powrotButton.Location = new Point(3, 808);
+            powrotButton.Location = new Point(13, 800);
             powrotButton.Name = "powrotButton";
             powrotButton.Size = new Size(150, 50);
             powrotButton.TabIndex = 14;

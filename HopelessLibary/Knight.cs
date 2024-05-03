@@ -62,11 +62,11 @@ namespace HopelessLibary
             int dmg;
             if (new Random().Next(1, 101) > CritChance)
             {
-                dmg = Intelligence ;
+               dmg = new Random().Next(Intelligence, Intelligence + 3); 
             }
             else
             {
-                dmg = Intelligence  * 2;
+                dmg = new Random().Next(Intelligence, Intelligence + 3) * 2;
             }
 
             foreach (Monster monster in monsters)
