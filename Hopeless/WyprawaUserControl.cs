@@ -39,7 +39,7 @@ namespace Hopeless
         }
         private async Task Fight()
         {
-            int value;
+
             bool fightStatus = true;
             bool playerActionTaken;
             
@@ -140,7 +140,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                        CheckStatus();
+                       
 
                     }
                     else if (postac is Rogue && !postac.IsDead())
@@ -239,7 +239,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                        CheckStatus();
+                        
 
                     }
                     else if (postac is Cleric && !postac.IsDead())
@@ -332,7 +332,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                        CheckStatus();
+                       
                     }
                     else if (postac is Joker && !postac.IsDead())
                     {
@@ -425,7 +425,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                        CheckStatus();
+                       
                     }
                     else
                     {
@@ -443,13 +443,19 @@ namespace Hopeless
                             }
                            
                             monster.BasicAttack(target);
-                            CheckStatus();
+                          
                         }
 
                     }
-
+                    if (CheckStatus())
+                    {
+                        fightStatus = false;
+                        break;
+                       
+                    }
 
                 }
+
                 foreach (var key in cooldowns.Keys.ToList())
                 {
                     cooldowns[key]--;
@@ -496,7 +502,7 @@ namespace Hopeless
 
             };
         }
-        private void CheckStatus()
+        private bool CheckStatus()
         {
             enemy1Health.Value = expedition.Monsters[0].CurrentHP;
             enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
@@ -579,18 +585,24 @@ namespace Hopeless
 
             if (expedition.Monsters.All(monster => monster.IsDead()))
             {
-
+                InitializeAfterFight();
+                MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
+               
                 eventFirst?.Invoke(true, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
+                return true;
 
             }
             if (characters.All(character => character.IsDead()))
             {
-                MessageBox.Show("Porażka!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 InitializeAfterFight();
+                MessageBox.Show("Porażka!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                
                 eventFirst?.Invoke(false, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
+                return true;
             }
+            return false;
         }
         private void InitializeAfterFight()
         {
@@ -635,9 +647,11 @@ namespace Hopeless
         private void InitializeBeforeFight()
         {
             fightOrder.Clear();
-
+            cooldowns.Clear();
             basicAttackLabel.Text = "Atak Bazowy";
-
+            skill1Label.Text = "";
+            skill2Label.Text = "";
+            
             knightName.Text = characters[0].Name;
             knightName.Enabled = true;
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;

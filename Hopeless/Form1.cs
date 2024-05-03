@@ -156,8 +156,9 @@ namespace Hopeless
                 wyborWyprawyUserControl.expeditions = expeditons;
                 fazaPrzygotowaniaUserControl.gold = 100;
                 fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
-                fazaPrzygotowaniaUserControl.Visible = true;
+                
                 fazaPrzygotowaniaUserControl.GenerateShop();
+                fazaPrzygotowaniaUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
 
