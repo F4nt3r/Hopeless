@@ -43,14 +43,18 @@ namespace Hopeless
 
             bool fightStatus = true;
             bool playerActionTaken;
-            
+            int tura = 0;
             while (fightStatus)
             {
+                tura++;
+                turaLabel.Text = "Tura: " + tura;
                 foreach (var postac in fightOrder)
                 {
+                    activeCharacterLabel.Text = "Aktywna Postać:" + postac.Name;
                     playerActionTaken = false;
                     if (postac is Knight && !postac.IsDead())
                     {
+
                         Knight knight = (Knight)postac;
                         if (cooldowns.ContainsKey("Provoke"))
                         {
@@ -75,7 +79,7 @@ namespace Hopeless
                             if (target != null)
                             {
                                 knight.BasicAttack(target);
-
+                                PlayBasicAttackSound();
                                 playerActionTaken = true;
 
                             }
@@ -94,6 +98,7 @@ namespace Hopeless
                             else
                             {
                                 knight.Provoke(true);
+                                PlayProvokeSound();
                                 cooldowns.Add("Provoke", 4);
                                 effects.Add("Provoke", 2);
                                 playerActionTaken = true;
@@ -117,6 +122,7 @@ namespace Hopeless
                             else
                             {
                                 knight.Purify(expedition.Monsters);
+                                PlayPurifySound();
                                 cooldowns.Add("Purify", 3);
                                 playerActionTaken = true;
                             }
@@ -141,7 +147,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                       
+
 
                     }
                     else if (postac is Rogue && !postac.IsDead())
@@ -170,7 +176,7 @@ namespace Hopeless
                             if (target != null)
                             {
                                 rogue.BasicAttack(target);
-
+                                PlayBasicAttackSound();
                                 playerActionTaken = true;
 
                             }
@@ -191,6 +197,7 @@ namespace Hopeless
                                 else
                                 {
                                     rogue.Ambush((Monster)target);
+                                    PlayAmbushSound();
                                     cooldowns.Add("Ambush", 3);
                                     playerActionTaken = true;
                                 }
@@ -210,6 +217,7 @@ namespace Hopeless
                             {
 
                                 rogue.CritAndDodgeBuff(true);
+                                PlayCritAndDodgeBuffSound();
                                 cooldowns.Add("CritAndDodgeBuff", 3);
                                 effects.Add("CritAndDodgeBuff", 2);
                                 playerActionTaken = true;
@@ -240,7 +248,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                        
+
 
                     }
                     else if (postac is Cleric && !postac.IsDead())
@@ -269,6 +277,7 @@ namespace Hopeless
                             if (target != null)
                             {
                                 cleric.BasicAttack(target);
+                                PlayBasicAttackSound();
                                 playerActionTaken = true;
 
                             }
@@ -285,6 +294,7 @@ namespace Hopeless
                             else
                             {
                                 cleric.Heal((Character)target);
+                                PlayHealSound();
                                 cooldowns.Add("Heal", 3);
                                 playerActionTaken = true;
                             }
@@ -301,6 +311,7 @@ namespace Hopeless
                             else
                             {
                                 cleric.AoeHeal(characters);
+                                PlayHealSound();
                                 cooldowns.Add("AoeHeal", 3);
                                 playerActionTaken = true;
                             }
@@ -333,7 +344,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                       
+
                     }
                     else if (postac is Joker && !postac.IsDead())
                     {
@@ -362,6 +373,7 @@ namespace Hopeless
                             {
 
                                 joker.BasicAttack(target);
+                                PlayBasicAttackSound();
                                 playerActionTaken = true;
 
                             }
@@ -378,6 +390,7 @@ namespace Hopeless
                             else
                             {
                                 joker.AoeBuff(characters, true);
+                                PlayAoeBuffSound();
                                 cooldowns.Add("AoeBuff", 5);
                                 effects.Add("AoeBuff", 3);
                                 playerActionTaken = true;
@@ -395,6 +408,7 @@ namespace Hopeless
                             else
                             {
                                 joker.AoeDeBuff(expedition.Monsters, true);
+                                PlayAoeDebuffSound();
                                 cooldowns.Add("AoeDeBuff", 5);
                                 effects.Add("AoeDeBuff", 3);
                                 playerActionTaken = true;
@@ -426,7 +440,7 @@ namespace Hopeless
                         basicAttackLabel.Click -= handlerBassicAttack;
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-                       
+
                     }
                     else
                     {
@@ -442,9 +456,9 @@ namespace Hopeless
                                 int i = new Random().Next(0, 4);
                                 target = characters[i];
                             }
-                           
+                            await Task.Delay(1000);
                             monster.BasicAttack(target);
-                          
+                            PlayBasicAttackSound();
                         }
 
                     }
@@ -452,8 +466,9 @@ namespace Hopeless
                     {
                         fightStatus = false;
                         break;
-                       
+
                     }
+                    RefreshEffectBox();
 
                 }
 
@@ -499,9 +514,22 @@ namespace Hopeless
 
 
                     }
+                    RefreshEffectBox();
                 }
 
             };
+        }
+        private void RefreshEffectBox()
+        {
+            effectBox.Clear();
+            effectBox.Text += "Aktywne Statusy" + Environment.NewLine;
+            
+            foreach (var key in effects.Keys.ToList())
+            {
+                effectBox.Text += key + " : " + effects[key] + Environment.NewLine;
+           
+                
+            }
         }
         private bool CheckStatus()
         {
@@ -589,7 +617,7 @@ namespace Hopeless
                 InitializeAfterFight();
                 PlayWinSound();
                 MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
-               
+
                 eventFirst?.Invoke(true, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -600,7 +628,7 @@ namespace Hopeless
                 InitializeAfterFight();
                 PlayLoseSound();
                 MessageBox.Show("Porażka!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                
+
                 eventFirst?.Invoke(false, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -609,36 +637,36 @@ namespace Hopeless
         }
         private void InitializeAfterFight()
         {
-           cooldowns.Clear();
-           
+            cooldowns.Clear();
+
             foreach (var key in effects.Keys.ToList())
             {
-           
 
-              
-                
-                    if (key.Equals("Provoke"))
-                    {
-                        Knight knight = (Knight)characters[0];
-                        knight.Provoke(false);
-                    }
-                    if (key.Equals("CritAndDodgeBuff"))
-                    {
-                        Rogue rogue = (Rogue)characters[1];
-                        rogue.CritAndDodgeBuff(false);
-                    }
-                    if (key.Equals("AoeBuff"))
-                    {
-                        Joker joker = (Joker)characters[3];
-                        joker.AoeBuff(characters, false);
-                    }
-                    if (key.Equals("AoeDeBuff"))
-                    {
-                        Joker joker = (Joker)characters[3];
-                        joker.AoeDeBuff(expedition.Monsters, false);
-                    }
 
-                   
+
+
+                if (key.Equals("Provoke"))
+                {
+                    Knight knight = (Knight)characters[0];
+                    knight.Provoke(false);
+                }
+                if (key.Equals("CritAndDodgeBuff"))
+                {
+                    Rogue rogue = (Rogue)characters[1];
+                    rogue.CritAndDodgeBuff(false);
+                }
+                if (key.Equals("AoeBuff"))
+                {
+                    Joker joker = (Joker)characters[3];
+                    joker.AoeBuff(characters, false);
+                }
+                if (key.Equals("AoeDeBuff"))
+                {
+                    Joker joker = (Joker)characters[3];
+                    joker.AoeDeBuff(expedition.Monsters, false);
+                }
+
+
 
             }
             effects.Clear();
@@ -654,7 +682,7 @@ namespace Hopeless
             basicAttackLabel.Text = "Atak Bazowy";
             skill1Label.Text = "";
             skill2Label.Text = "";
-            
+
             knightName.Text = characters[0].Name;
             knightName.Enabled = true;
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
@@ -683,37 +711,37 @@ namespace Hopeless
             jokerHealth.Maximum = characters[3].MaxHP;
             jokerName.Click += Enemy_Click;
 
-            
-                enemy1Name.Text = expedition.Monsters[0].Name;
+
+            enemy1Name.Text = expedition.Monsters[0].Name;
             enemy1Name.Enabled = true;
-                enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
-                enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
-                enemy1Health.Value = expedition.Monsters[0].CurrentHP;
-                enemy1Name.Click += Enemy_Click;
+            enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
+            enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
+            enemy1Health.Value = expedition.Monsters[0].CurrentHP;
+            enemy1Name.Click += Enemy_Click;
 
-                enemy2Name.Text = expedition.Monsters[1].Name;
+            enemy2Name.Text = expedition.Monsters[1].Name;
             enemy2Name.Enabled = true;
-                enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
-                enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
-                enemy2Health.Value = expedition.Monsters[1].CurrentHP;
-                enemy2Name.Click += Enemy_Click;
+            enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
+            enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
+            enemy2Health.Value = expedition.Monsters[1].CurrentHP;
+            enemy2Name.Click += Enemy_Click;
 
-                enemy3Name.Text = expedition.Monsters[2].Name;
+            enemy3Name.Text = expedition.Monsters[2].Name;
             enemy3Name.Enabled = true;
-                enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
-                enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
-                enemy3Health.Value = expedition.Monsters[2].CurrentHP;
-                enemy3Name.Click += Enemy_Click;
+            enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
+            enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
+            enemy3Health.Value = expedition.Monsters[2].CurrentHP;
+            enemy3Name.Click += Enemy_Click;
 
-                enemy4Name.Text = expedition.Monsters[3].Name;
+            enemy4Name.Text = expedition.Monsters[3].Name;
             enemy4Name.Enabled = true;
-                enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
-                enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
-                enemy4Health.Value = expedition.Monsters[3].CurrentHP;
-                enemy4Name.Click += Enemy_Click;
+            enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
+            enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
+            enemy4Health.Value = expedition.Monsters[3].CurrentHP;
+            enemy4Name.Click += Enemy_Click;
 
-            
-           
+
+
 
             //Kolejnosc Tur
 
@@ -814,6 +842,142 @@ namespace Hopeless
         private void PlayLoseSound()
         {
             Stream equipWeaponStream = Properties.Resources.loseSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayAmbushSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.ambushSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayCritAndDodgeBuffSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.critAndDodgeBuffSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayHealSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.healSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayProvokeSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.provokeSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayPurifySound()
+        {
+            Stream equipWeaponStream = Properties.Resources.purifySound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayAoeBuffSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.aoeBuffSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayAoeDebuffSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.aoeDebuffSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayBasicAttackSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.basicAttackSound;
             MemoryStream memoryStream = new MemoryStream();
             equipWeaponStream.CopyTo(memoryStream);
             memoryStream.Position = 0;

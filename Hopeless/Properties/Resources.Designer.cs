@@ -63,9 +63,54 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ambushSound {
+            get {
+                return ResourceManager.GetStream("ambushSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream aoeBuffSound {
+            get {
+                return ResourceManager.GetStream("aoeBuffSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream aoeDebuffSound {
+            get {
+                return ResourceManager.GetStream("aoeDebuffSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream basicAttackSound {
+            get {
+                return ResourceManager.GetStream("basicAttackSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream bossFight {
             get {
                 return ResourceManager.GetStream("bossFight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream critAndDodgeBuffSound {
+            get {
+                return ResourceManager.GetStream("critAndDodgeBuffSound", resourceCulture);
             }
         }
         
@@ -84,6 +129,15 @@ namespace Hopeless.Properties {
         internal static System.IO.UnmanagedMemoryStream equipWeapon {
             get {
                 return ResourceManager.GetStream("equipWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream healSound {
+            get {
+                return ResourceManager.GetStream("healSound", resourceCulture);
             }
         }
         
@@ -141,6 +195,24 @@ namespace Hopeless.Properties {
             get {
                 object obj = ResourceManager.GetObject("Prep", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream provokeSound {
+            get {
+                return ResourceManager.GetStream("provokeSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream purifySound {
+            get {
+                return ResourceManager.GetStream("purifySound", resourceCulture);
             }
         }
         

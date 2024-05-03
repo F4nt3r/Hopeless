@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace HopelessLibary.Intefrace;
 public interface ICreature
 {
+    string Name { get; }
     public int MaxHP { get; set; }
     public int CurrentHP { get; set; }
     public int Initiative { get; set; }

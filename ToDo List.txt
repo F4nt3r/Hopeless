@@ -1,13 +1,13 @@
 to do list w projekcie:
 
 Logi walki,
-Wskaznik czyja tura jest aktualnie,
-wskaznik ktora to tura,
-okno aktywnych efektow,
-wydluzenie troche tur przeciwnikow,
+(zrobione)Wskaznik czyja tura jest aktualnie,
+(zrobione)wskaznik ktora to tura,
+(zrobione)okno aktywnych efektow,
+(zrobione)wydluzenie troche tur przeciwnikow,
 
 Dodanie zdjec bohaterom i potworom,
-dodanie dzwiekow do poszczegolnych czynnosci(sprzedarz,zakup, zalozenie przedmiotu,uderzenie moba lub otrzymanie obrazen,dzwiek porazki i zwyciestwa)
+(zrobione)dodanie dzwiekow do poszczegolnych czynnosci(sprzedarz,zakup, zalozenie przedmiotu,uderzenie moba lub otrzymanie obrazen,dzwiek porazki i zwyciestwa)
 
 dodanie Clericowi stanu blogoslawienstwa,
 dodanie Jokerowi Szansy na podwojne uderzenie

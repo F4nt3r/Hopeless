@@ -61,6 +61,9 @@
             toolTip = new ToolTip(components);
             logBattleBox = new TextBox();
             startButton = new Button();
+            effectBox = new TextBox();
+            activeCharacterLabel = new Label();
+            turaLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -69,7 +72,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, -3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1372, 861);
+            pictureBox1.Size = new Size(1396, 861);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -321,7 +324,7 @@
             // logBattleBox
             // 
             logBattleBox.Enabled = false;
-            logBattleBox.Location = new Point(536, 58);
+            logBattleBox.Location = new Point(1089, 33);
             logBattleBox.MaximumSize = new Size(270, 160);
             logBattleBox.Multiline = true;
             logBattleBox.Name = "logBattleBox";
@@ -340,10 +343,45 @@
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += startButton_Click;
             // 
+            // effectBox
+            // 
+            effectBox.Enabled = false;
+            effectBox.Location = new Point(792, 33);
+            effectBox.MaximumSize = new Size(270, 160);
+            effectBox.Multiline = true;
+            effectBox.Name = "effectBox";
+            effectBox.ScrollBars = ScrollBars.Vertical;
+            effectBox.Size = new Size(270, 160);
+            effectBox.TabIndex = 43;
+            effectBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // activeCharacterLabel
+            // 
+            activeCharacterLabel.AutoSize = true;
+            activeCharacterLabel.BackColor = Color.Transparent;
+            activeCharacterLabel.Location = new Point(399, 57);
+            activeCharacterLabel.Name = "activeCharacterLabel";
+            activeCharacterLabel.Size = new Size(94, 15);
+            activeCharacterLabel.TabIndex = 44;
+            activeCharacterLabel.Text = "Aktywna Postać:";
+            // 
+            // turaLabel
+            // 
+            turaLabel.AutoSize = true;
+            turaLabel.BackColor = Color.Transparent;
+            turaLabel.Location = new Point(638, 57);
+            turaLabel.Name = "turaLabel";
+            turaLabel.Size = new Size(33, 15);
+            turaLabel.TabIndex = 45;
+            turaLabel.Text = "Tura:";
+            // 
             // WyprawaUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(turaLabel);
+            Controls.Add(activeCharacterLabel);
+            Controls.Add(effectBox);
             Controls.Add(startButton);
             Controls.Add(logBattleBox);
             Controls.Add(basicAttackLabel);
@@ -414,5 +452,8 @@
         private ToolTip toolTip;
         private TextBox logBattleBox;
         private Button startButton;
+        private TextBox effectBox;
+        private Label activeCharacterLabel;
+        private Label turaLabel;
     }
 }
