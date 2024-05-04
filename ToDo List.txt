@@ -9,7 +9,7 @@ to do list w projekcie:
 Dodanie zdjec bohaterom i potworom,
 (zrobione)dodanie dzwiekow do poszczegolnych czynnosci(sprzedarz,zakup, zalozenie przedmiotu,uderzenie moba lub otrzymanie obrazen,dzwiek porazki i zwyciestwa)
 
-dodanie Clericowi stanu blogoslawienstwa,
+(zrobione)dodanie Clericowi stanu blogoslawienstwa,
 (zrobione)dodanie Jokerowi Szansy na podwojne uderzenie
 (zrobione)implementacja Level Upa, zeby cos robil,
 balans skilli i wrogow,
