@@ -43,9 +43,9 @@ namespace HopelessLibary
           
         }
 
-        public override void BasicAttack<T>(T target)
+        public override void BasicAttack<T>(T target, out int dmg)
         {
-            int dmg;
+
             if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = new Random().Next(MinDmg, MaxDmg + 1);
@@ -57,9 +57,9 @@ namespace HopelessLibary
 
             target.TakeDamage(dmg);
         }
-        public void Purify(List<Monster> monsters)
+        public void Purify(List<Monster> monsters, out int dmg)
         {
-            int dmg;
+     
             if (new Random().Next(1, 101) > CritChance)
             {
                dmg = new Random().Next(Intelligence, Intelligence + 3); 

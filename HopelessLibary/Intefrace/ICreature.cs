@@ -14,5 +14,5 @@ public interface ICreature
     public bool IsDead();
     
     public void TakeDamage(int damage);
-    public void BasicAttack<T>(T target) where T : ICreature;
+    public void BasicAttack<T>(T target, out int dmg) where T : ICreature;
 }

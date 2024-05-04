@@ -27,9 +27,9 @@ namespace HopelessLibary
             Level++;
 
         }
-        public void Ambush(Monster monster)
+        public void Ambush(Monster monster, out int dmg)
         {
-            int dmg;
+     
             if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = new Random().Next(Dexterity, Dexterity + 6);
@@ -70,9 +70,9 @@ namespace HopelessLibary
             }
         }
 
-        public override void BasicAttack<T>(T target) 
+        public override void BasicAttack<T>(T target, out int dmg) 
         {
-            int dmg;
+          
             if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = new Random().Next(MinDmg, MaxDmg + 1);

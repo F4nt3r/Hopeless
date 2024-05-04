@@ -23,9 +23,9 @@ namespace HopelessLibary
 
 
 
-        public void Heal (Character character)
+        public void Heal (Character character, out int heal)
         {
-            int heal;
+       
             if (new Random().Next(1, 100) > CritChance)
             {
                
@@ -42,9 +42,9 @@ namespace HopelessLibary
 
         }
 
-        public void AoeHeal(List<Character> characters)
+        public void AoeHeal(List<Character> characters, out int heal)
         {
-            int heal;
+           
             if (new Random().Next(1, 100) > CritChance)
             {
                 heal = new Random().Next(Intelligence, Intelligence + 3);
@@ -66,9 +66,9 @@ namespace HopelessLibary
         }
 
 
-        public override void BasicAttack<T>(T target)
+        public override void BasicAttack<T>(T target, out int dmg)
         {
-            int dmg;
+           
             if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = new Random().Next(MinDmg, MaxDmg + 1);

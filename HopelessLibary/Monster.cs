@@ -51,9 +51,9 @@ namespace HopelessLibary
             DodgeChance = monster.DodgeChance;
             Type = monster.Type;
         }
-        public void BasicAttack<T>(T target) where T : ICreature
+        public void BasicAttack<T>(T target,out int dmg) where T : ICreature
         {
-            int dmg;
+     
             if (new Random().Next(1, 101) > CritChance)
             {
                 dmg = new Random().Next(MinDmg, MaxDmg + 1);

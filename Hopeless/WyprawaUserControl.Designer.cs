@@ -64,7 +64,9 @@
             effectBox = new TextBox();
             activeCharacterLabel = new Label();
             turaLabel = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -72,7 +74,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, -3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1396, 861);
+            pictureBox1.Size = new Size(1424, 864);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -290,7 +292,8 @@
             // skill2Label
             // 
             skill2Label.AutoSize = true;
-            skill2Label.Location = new Point(38, 33);
+            skill2Label.BackColor = Color.Lavender;
+            skill2Label.Location = new Point(27, 12);
             skill2Label.MinimumSize = new Size(80, 80);
             skill2Label.Name = "skill2Label";
             skill2Label.Size = new Size(80, 80);
@@ -299,7 +302,8 @@
             // skill1Label
             // 
             skill1Label.AutoSize = true;
-            skill1Label.Location = new Point(158, 33);
+            skill1Label.BackColor = Color.Lavender;
+            skill1Label.Location = new Point(148, 12);
             skill1Label.MinimumSize = new Size(80, 80);
             skill1Label.Name = "skill1Label";
             skill1Label.Size = new Size(80, 80);
@@ -308,7 +312,8 @@
             // basicAttackLabel
             // 
             basicAttackLabel.AutoSize = true;
-            basicAttackLabel.Location = new Point(274, 33);
+            basicAttackLabel.BackColor = Color.Lavender;
+            basicAttackLabel.Location = new Point(266, 12);
             basicAttackLabel.MinimumSize = new Size(80, 80);
             basicAttackLabel.Name = "basicAttackLabel";
             basicAttackLabel.Size = new Size(80, 80);
@@ -323,13 +328,14 @@
             // 
             // logBattleBox
             // 
-            logBattleBox.Enabled = false;
-            logBattleBox.Location = new Point(1089, 33);
+            logBattleBox.BackColor = Color.Lavender;
+            logBattleBox.Location = new Point(1089, 12);
             logBattleBox.MaximumSize = new Size(270, 160);
             logBattleBox.Multiline = true;
             logBattleBox.Name = "logBattleBox";
+            logBattleBox.ReadOnly = true;
             logBattleBox.ScrollBars = ScrollBars.Vertical;
-            logBattleBox.Size = new Size(270, 160);
+            logBattleBox.Size = new Size(270, 95);
             logBattleBox.TabIndex = 41;
             logBattleBox.TextAlign = HorizontalAlignment.Center;
             // 
@@ -345,13 +351,14 @@
             // 
             // effectBox
             // 
-            effectBox.Enabled = false;
-            effectBox.Location = new Point(792, 33);
+            effectBox.BackColor = Color.Lavender;
+            effectBox.Location = new Point(792, 12);
             effectBox.MaximumSize = new Size(270, 160);
             effectBox.Multiline = true;
             effectBox.Name = "effectBox";
+            effectBox.ReadOnly = true;
             effectBox.ScrollBars = ScrollBars.Vertical;
-            effectBox.Size = new Size(270, 160);
+            effectBox.Size = new Size(270, 95);
             effectBox.TabIndex = 43;
             effectBox.TextAlign = HorizontalAlignment.Center;
             // 
@@ -359,7 +366,7 @@
             // 
             activeCharacterLabel.AutoSize = true;
             activeCharacterLabel.BackColor = Color.Transparent;
-            activeCharacterLabel.Location = new Point(399, 57);
+            activeCharacterLabel.Location = new Point(399, 12);
             activeCharacterLabel.Name = "activeCharacterLabel";
             activeCharacterLabel.Size = new Size(94, 15);
             activeCharacterLabel.TabIndex = 44;
@@ -369,24 +376,33 @@
             // 
             turaLabel.AutoSize = true;
             turaLabel.BackColor = Color.Transparent;
-            turaLabel.Location = new Point(638, 57);
+            turaLabel.Location = new Point(636, 12);
             turaLabel.Name = "turaLabel";
             turaLabel.Size = new Size(33, 15);
             turaLabel.TabIndex = 45;
             turaLabel.Text = "Tura:";
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.AppWorkspace;
+            panel1.Controls.Add(logBattleBox);
+            panel1.Controls.Add(activeCharacterLabel);
+            panel1.Controls.Add(skill2Label);
+            panel1.Controls.Add(skill1Label);
+            panel1.Controls.Add(basicAttackLabel);
+            panel1.Controls.Add(turaLabel);
+            panel1.Controls.Add(effectBox);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1424, 119);
+            panel1.TabIndex = 46;
+            // 
             // WyprawaUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(turaLabel);
-            Controls.Add(activeCharacterLabel);
-            Controls.Add(effectBox);
+            Controls.Add(panel1);
             Controls.Add(startButton);
-            Controls.Add(logBattleBox);
-            Controls.Add(basicAttackLabel);
-            Controls.Add(skill1Label);
-            Controls.Add(skill2Label);
             Controls.Add(enemy4HealthText);
             Controls.Add(enemy3HealthText);
             Controls.Add(enemy2HealthText);
@@ -415,6 +431,8 @@
             Name = "WyprawaUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -455,5 +473,6 @@
         private TextBox effectBox;
         private Label activeCharacterLabel;
         private Label turaLabel;
+        private Panel panel1;
     }
 }

@@ -23,6 +23,7 @@ namespace Hopeless
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Wyprawa;
             this.VisibleChanged += WyprawaUserControl_VisibleChanged;
+
         }
 
         private void WyprawaUserControl_VisibleChanged(object? sender, EventArgs e)
@@ -78,10 +79,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                                knight.BasicAttack(target);
+                               
+                                knight.BasicAttack(target, out int dmg);
+                            
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-
+                                if (dmg != 0)
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając: " + dmg + " Obrażeń" + Environment.NewLine;
+                                else
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                             }
 
                         };
@@ -99,6 +105,7 @@ namespace Hopeless
                             {
                                 knight.Provoke(true);
                                 PlayProvokeSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności Provoke prowokując przeciwnikó" + Environment.NewLine;
                                 cooldowns.Add("Provoke", 4);
                                 effects.Add("Provoke", 2);
                                 playerActionTaken = true;
@@ -121,8 +128,10 @@ namespace Hopeless
                             }
                             else
                             {
-                                knight.Purify(expedition.Monsters);
+                            
+                                knight.Purify(expedition.Monsters,out int dmg);
                                 PlayPurifySound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności Purify na wrogów zadając " + dmg + " obrażeń" + Environment.NewLine;
                                 cooldowns.Add("Purify", 3);
                                 playerActionTaken = true;
                             }
@@ -175,10 +184,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                                rogue.BasicAttack(target);
+                               
+                                rogue.BasicAttack(target,out int dmg);
+                        
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-
+                                if (dmg != 0)
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                else
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                             }
 
                         };
@@ -196,7 +210,12 @@ namespace Hopeless
                                 }
                                 else
                                 {
-                                    rogue.Ambush((Monster)target);
+                                    rogue.Ambush((Monster)target, out int dmg);
+                                    if (dmg != 0)
+                                        logBattleBox.Text += postac.Name + " używa umiejętności Ambush na "+target.Name+" zadając " + dmg + " obrażeń" + Environment.NewLine;
+                                    else
+                                        logBattleBox.Text += postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine;
+
                                     PlayAmbushSound();
                                     cooldowns.Add("Ambush", 3);
                                     playerActionTaken = true;
@@ -218,6 +237,7 @@ namespace Hopeless
 
                                 rogue.CritAndDodgeBuff(true);
                                 PlayCritAndDodgeBuffSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności CritAndDodgeBuff na sobie" + Environment.NewLine;
                                 cooldowns.Add("CritAndDodgeBuff", 3);
                                 effects.Add("CritAndDodgeBuff", 2);
                                 playerActionTaken = true;
@@ -276,10 +296,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                                cleric.BasicAttack(target);
+                              
+                                cleric.BasicAttack(target,out int dmg);
+                               
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-
+                                if (dmg != 0)
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                else
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                             }
 
                         };
@@ -293,8 +318,10 @@ namespace Hopeless
                             }
                             else
                             {
-                                cleric.Heal((Character)target);
+                              
+                                cleric.Heal((Character)target,out int heal);
                                 PlayHealSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności Heal na "+target.Name +" lecząc za " + heal + " punktów zdrowia" + Environment.NewLine;
                                 cooldowns.Add("Heal", 3);
                                 playerActionTaken = true;
                             }
@@ -310,8 +337,10 @@ namespace Hopeless
                             }
                             else
                             {
-                                cleric.AoeHeal(characters);
+                             
+                                cleric.AoeHeal(characters,out int heal);
                                 PlayHealSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności AoeHeal na sojuszników lecząc za " + heal + " punktów zdrowia" + Environment.NewLine;
                                 cooldowns.Add("AoeHeal", 3);
                                 playerActionTaken = true;
                             }
@@ -371,11 +400,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-
-                                joker.BasicAttack(target);
+                               
+                                joker.BasicAttack(target, out int dmg);
+                              
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-
+                                if (dmg != 0)
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                else
+                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                             }
 
                         };
@@ -391,6 +424,7 @@ namespace Hopeless
                             {
                                 joker.AoeBuff(characters, true);
                                 PlayAoeBuffSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności AoeBuff na sojuszników" + Environment.NewLine;
                                 cooldowns.Add("AoeBuff", 5);
                                 effects.Add("AoeBuff", 3);
                                 playerActionTaken = true;
@@ -409,6 +443,7 @@ namespace Hopeless
                             {
                                 joker.AoeDeBuff(expedition.Monsters, true);
                                 PlayAoeDebuffSound();
+                                logBattleBox.Text += postac.Name + " używa umiejętności AoeDeBuff na wrogów" + Environment.NewLine;
                                 cooldowns.Add("AoeDeBuff", 5);
                                 effects.Add("AoeDeBuff", 3);
                                 playerActionTaken = true;
@@ -447,6 +482,7 @@ namespace Hopeless
                         if (!postac.IsDead())
                         {
                             Monster monster = (Monster)postac;
+                            await Task.Delay(1000);
                             if (effects.ContainsKey("Provoke"))
                             {
                                 target = characters[0];
@@ -456,10 +492,19 @@ namespace Hopeless
                                 int i = new Random().Next(0, 4);
                                 target = characters[i];
                             }
-                            await Task.Delay(1000);
-                            monster.BasicAttack(target);
+                            
+                            
+                            monster.BasicAttack(target,out int dmg);
+                            
                             PlayBasicAttackSound();
+                            if (dmg != 0)
+                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                            else if (dmg == 0 && target is Rogue)
+                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                            else
+                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zablokowal" + Environment.NewLine;
                         }
+
 
                     }
                     if (CheckStatus())
@@ -523,12 +568,12 @@ namespace Hopeless
         {
             effectBox.Clear();
             effectBox.Text += "Aktywne Statusy" + Environment.NewLine;
-            
+
             foreach (var key in effects.Keys.ToList())
             {
                 effectBox.Text += key + " : " + effects[key] + Environment.NewLine;
-           
-                
+
+
             }
         }
         private bool CheckStatus()

@@ -45,7 +45,7 @@ namespace HopelessLibary
             Armor = null;
         }
 
-        public abstract void BasicAttack<T>(T target) where T : ICreature;
+        public abstract void BasicAttack<T>(T target,out int dmg) where T : ICreature;
 
         public abstract void TakeDamage(int damage);
 
