@@ -38,6 +38,10 @@ namespace Hopeless
                     NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
                 }
             }
+            else
+            {
+                NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
+            }
 
 
 

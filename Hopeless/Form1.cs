@@ -255,11 +255,6 @@ namespace Hopeless
             fazaPrzygotowaniaUserControl.gold = gameState.gold;
             fazaPrzygotowaniaUserControl.shopItems = shopItems;
         }
-        private Stream GetResourceStream(string resourceName)
-        {
-            // Uzyskanie strumienia zasobu na podstawie jego nazwy
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            return assembly.GetManifestResourceStream(resourceName);
-        }
+      
     }
 }
