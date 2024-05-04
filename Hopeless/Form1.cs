@@ -34,7 +34,7 @@ namespace Hopeless
             Knight knight = new Knight("Knight",0,10,5,2,50,50,50,50,10,34,1,2,33,CharacterType.Knight);
             Rogue rogue = new Rogue("Rogue",0,2,10,5,35,35,30,30,50,70,1,2,33, CharacterType.Rogue);
             Cleric cleric = new Cleric("Cleric",0,2,5,10,45,45,40,40,30,30,1,2, CharacterType.Cleric);
-            Joker joker = new Joker("Joker",0,2,7,8,30,30,30,30,50,50,1,2, CharacterType.Joker);
+            Joker joker = new Joker("Joker",0,2,7,8,30,30,30,30,50,50,1,2,51, CharacterType.Joker);
             characters = new List<Character> { knight,rogue,cleric,joker };
             
 

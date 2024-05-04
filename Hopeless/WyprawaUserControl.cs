@@ -371,8 +371,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-
-                                joker.BasicAttack(target);
+                                if (new Random().Next(1, 101) > joker.DoubleAtackChance)
+                                {
+                                    joker.BasicAttack(target);
+                                }
+                                else
+                                {
+                                    joker.BasicAttack(target);
+                                    joker.BasicAttack(target);
+                                }
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
 
@@ -670,10 +677,7 @@ namespace Hopeless
 
             }
             effects.Clear();
-            characters[0].CurrentHP = characters[0].MaxHP;
-            characters[1].CurrentHP = characters[1].MaxHP;
-            characters[2].CurrentHP = characters[2].MaxHP;
-            characters[3].CurrentHP = characters[3].MaxHP;
+            
         }
         private void InitializeBeforeFight()
         {

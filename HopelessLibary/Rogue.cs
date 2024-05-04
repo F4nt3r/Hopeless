@@ -25,6 +25,8 @@ namespace HopelessLibary
         public override void LevelUp()
         {
             Level++;
+            Dexterity += 2;
+            DodgeChance += 1;
 
         }
         public void Ambush(Monster monster)
