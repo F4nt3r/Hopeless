@@ -335,6 +335,7 @@
             // 
             // clericArmor
             // 
+            clericArmor.BorderStyle = BorderStyle.FixedSingle;
             clericArmor.Location = new Point(115, 51);
             clericArmor.MinimumSize = new Size(60, 60);
             clericArmor.Name = "clericArmor";
@@ -346,6 +347,7 @@
             // clericWeapon
             // 
             clericWeapon.AllowDrop = true;
+            clericWeapon.BorderStyle = BorderStyle.FixedSingle;
             clericWeapon.Location = new Point(24, 51);
             clericWeapon.MinimumSize = new Size(60, 60);
             clericWeapon.Name = "clericWeapon";
@@ -541,6 +543,7 @@
             // 
             // rogueArmor
             // 
+            rogueArmor.BorderStyle = BorderStyle.FixedSingle;
             rogueArmor.Location = new Point(112, 51);
             rogueArmor.MinimumSize = new Size(60, 60);
             rogueArmor.Name = "rogueArmor";
@@ -552,6 +555,7 @@
             // rogueWeapon
             // 
             rogueWeapon.AllowDrop = true;
+            rogueWeapon.BorderStyle = BorderStyle.FixedSingle;
             rogueWeapon.Location = new Point(16, 51);
             rogueWeapon.MinimumSize = new Size(60, 60);
             rogueWeapon.Name = "rogueWeapon";
@@ -747,6 +751,7 @@
             // 
             // knightArmor
             // 
+            knightArmor.BorderStyle = BorderStyle.FixedSingle;
             knightArmor.Location = new Point(115, 51);
             knightArmor.MinimumSize = new Size(60, 60);
             knightArmor.Name = "knightArmor";
@@ -758,6 +763,7 @@
             // knightWeapon
             // 
             knightWeapon.AllowDrop = true;
+            knightWeapon.BorderStyle = BorderStyle.FixedSingle;
             knightWeapon.Location = new Point(6, 51);
             knightWeapon.MinimumSize = new Size(60, 60);
             knightWeapon.Name = "knightWeapon";
@@ -943,6 +949,7 @@
             // 
             // jokerArmor
             // 
+            jokerArmor.BorderStyle = BorderStyle.FixedSingle;
             jokerArmor.Location = new Point(110, 51);
             jokerArmor.MinimumSize = new Size(60, 60);
             jokerArmor.Name = "jokerArmor";
@@ -954,6 +961,7 @@
             // jokerWeapon
             // 
             jokerWeapon.AllowDrop = true;
+            jokerWeapon.BorderStyle = BorderStyle.FixedSingle;
             jokerWeapon.Location = new Point(19, 51);
             jokerWeapon.MinimumSize = new Size(60, 60);
             jokerWeapon.Name = "jokerWeapon";
@@ -968,7 +976,7 @@
             Inventory.BackColor = Color.Bisque;
             Inventory.Location = new Point(67, 578);
             Inventory.Name = "Inventory";
-            Inventory.Size = new Size(320, 203);
+            Inventory.Size = new Size(335, 205);
             Inventory.TabIndex = 8;
             // 
             // goldLabel

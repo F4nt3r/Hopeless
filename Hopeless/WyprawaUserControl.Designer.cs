@@ -487,7 +487,6 @@
             // enemy1Picture
             // 
             enemy1Picture.BorderStyle = BorderStyle.FixedSingle;
-            enemy1Picture.Image = (Image)resources.GetObject("enemy1Picture.Image");
             enemy1Picture.Location = new Point(777, 400);
             enemy1Picture.Name = "enemy1Picture";
             enemy1Picture.Size = new Size(150, 330);

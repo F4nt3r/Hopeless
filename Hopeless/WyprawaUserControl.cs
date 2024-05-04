@@ -737,6 +737,7 @@ namespace Hopeless
         }
         private void InitializeBeforeFight()
         {
+            logBattleBox.Clear();
             fightOrder.Clear();
             cooldowns.Clear();
             basicAttackLabel.Text = "Atak Bazowy";
@@ -744,43 +745,43 @@ namespace Hopeless
             skill2Label.Text = "";
 
             knightName.Text = characters[0].Name;
-            knightName.Enabled = true;
+            knightPicture.Enabled = true;
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
-            knightHealth.Value = characters[0].CurrentHP;
             knightHealth.Maximum = characters[0].MaxHP;
+            knightHealth.Value = characters[0].CurrentHP;         
             knightPicture.Click += Enemy_Click;
 
-            //knightPicture.Image = Properties.Resources.knightPicture;
+            knightPicture.Image = Properties.Resources.knightPicture;
 
             rogueName.Text = characters[1].Name;
-            rogueName.Enabled = true;
+            roguePicture.Enabled = true;
             rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
-            rogueHealth.Value = characters[1].CurrentHP;
             rogueHealth.Maximum = characters[1].MaxHP;
+            rogueHealth.Value = characters[1].CurrentHP;          
             roguePicture.Click += Enemy_Click;
 
-            //roguePicture.Image = Properties.Resources.roguePicture;
+            roguePicture.Image = Properties.Resources.roguePicture;
 
             clericName.Text = characters[2].Name;
-            clericName.Enabled = true;
+            clericPicture.Enabled = true;
             clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
-            clericHealth.Value = characters[2].CurrentHP;
             clericHealth.Maximum = characters[2].MaxHP;
+            clericHealth.Value = characters[2].CurrentHP;            
             clericPicture.Click += Enemy_Click;
 
-            //clericPicture.Image = Properties.Resources.clericPicture;
+            clericPicture.Image = Properties.Resources.clericPicture;
 
             jokerName.Text = characters[3].Name;
-            jokerName.Enabled = true;
+            jokerPicture.Enabled = true;
             jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
-            jokerHealth.Value = characters[3].CurrentHP;
             jokerHealth.Maximum = characters[3].MaxHP;
+            jokerHealth.Value = characters[3].CurrentHP;          
             jokerPicture.Click += Enemy_Click;
-            //jokerPicture.Image = Properties.Resources.jokerPicture;
+            jokerPicture.Image = Properties.Resources.jokerPicture;
 
 
             enemy1Name.Text = expedition.Monsters[0].Name;
-            enemy1Name.Enabled = true;
+            enemy1Picture.Enabled = true;
             enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
             enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
             enemy1Health.Value = expedition.Monsters[0].CurrentHP;
@@ -789,7 +790,7 @@ namespace Hopeless
             //knightPicture.Image = image;
 
             enemy2Name.Text = expedition.Monsters[1].Name;
-            enemy2Name.Enabled = true;
+            enemy2Picture.Enabled = true;
             enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
             enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
             enemy2Health.Value = expedition.Monsters[1].CurrentHP;
@@ -798,7 +799,7 @@ namespace Hopeless
             //knightPicture.Image = image;
 
             enemy3Name.Text = expedition.Monsters[2].Name;
-            enemy3Name.Enabled = true;
+            enemy3Picture.Enabled = true;
             enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
             enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
             enemy3Health.Value = expedition.Monsters[2].CurrentHP;
@@ -807,7 +808,7 @@ namespace Hopeless
             //knightPicture.Image = image;
 
             enemy4Name.Text = expedition.Monsters[3].Name;
-            enemy4Name.Enabled = true;
+            enemy4Picture.Enabled = true;
             enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
             enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
             enemy4Health.Value = expedition.Monsters[3].CurrentHP;

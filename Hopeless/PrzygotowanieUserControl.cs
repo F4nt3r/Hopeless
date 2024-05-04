@@ -28,10 +28,10 @@ namespace Hopeless
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
-            //knightPicture.Image= Properties.Resources.knightPicture;
-            //roguePicture.Image= Properties.Resources.roguePicture;
-            //clericPicture.Image= Properties.Resources.clericPicture;
-            //jokerPicture.Image= Properties.Resources.jokerPicture;
+            knightPicture.Image = Properties.Resources.knightPicture;
+            roguePicture.Image= Properties.Resources.roguePicture;
+            clericPicture.Image= Properties.Resources.clericPicture;
+            jokerPicture.Image= Properties.Resources.jokerPicture;
             InitializeCharactersDragDrop();
 
             this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
@@ -542,13 +542,13 @@ namespace Hopeless
 
         private void KnightWeapon_DragEnter(object sender, DragEventArgs e)
         {
-            knightWeapon.BackColor = Color.LightGray;
+            //knightWeapon.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void KnightWeapon_DragLeave(object sender, EventArgs e)
         {
-            knightWeapon.BackColor = SystemColors.Control;
+            //knightWeapon.BackColor = SystemColors.Control;
         }
 
         private void KnightWeapon_DragDrop(object sender, DragEventArgs e)
@@ -602,13 +602,13 @@ namespace Hopeless
         }
         private void KnightArmor_DragEnter(object sender, DragEventArgs e)
         {
-            knightArmor.BackColor = Color.LightGray;
+            //knightArmor.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void KnightArmor_DragLeave(object sender, EventArgs e)
         {
-            knightArmor.BackColor = SystemColors.Control;
+            //knightArmor.BackColor = SystemColors.Control;
         }
 
         private void KnightArmor_DragDrop(object sender, DragEventArgs e)
@@ -666,13 +666,13 @@ namespace Hopeless
 
         private void RogueWeapon_DragEnter(object sender, DragEventArgs e)
         {
-            rogueWeapon.BackColor = Color.LightGray;
+            //rogueWeapon.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void RogueWeapon_DragLeave(object sender, EventArgs e)
         {
-            rogueWeapon.BackColor = SystemColors.Control;
+            //rogueWeapon.BackColor = SystemColors.Control;
         }
 
         private void RogueWeapon_DragDrop(object sender, DragEventArgs e)
@@ -726,13 +726,13 @@ namespace Hopeless
         }
         private void RogueArmor_DragEnter(object sender, DragEventArgs e)
         {
-            rogueArmor.BackColor = Color.LightGray;
+            //rogueArmor.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void RogueArmor_DragLeave(object sender, EventArgs e)
         {
-            rogueArmor.BackColor = SystemColors.Control;
+            //rogueArmor.BackColor = SystemColors.Control;
         }
 
         private void RogueArmor_DragDrop(object sender, DragEventArgs e)
@@ -792,13 +792,13 @@ namespace Hopeless
 
         private void ClericWeapon_DragEnter(object sender, DragEventArgs e)
         {
-            clericWeapon.BackColor = Color.LightGray;
+            //clericWeapon.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void ClericWeapon_DragLeave(object sender, EventArgs e)
         {
-            clericWeapon.BackColor = SystemColors.Control;
+            //clericWeapon.BackColor = SystemColors.Control;
         }
 
         private void ClericWeapon_DragDrop(object sender, DragEventArgs e)
@@ -853,13 +853,13 @@ namespace Hopeless
         }
         private void ClericArmor_DragEnter(object sender, DragEventArgs e)
         {
-            clericArmor.BackColor = Color.LightGray;
+            //clericArmor.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void ClericArmor_DragLeave(object sender, EventArgs e)
         {
-            clericArmor.BackColor = SystemColors.Control;
+            //clericArmor.BackColor = SystemColors.Control;
         }
 
         private void ClericArmor_DragDrop(object sender, DragEventArgs e)
@@ -919,13 +919,13 @@ namespace Hopeless
 
         private void JokerWeapon_DragEnter(object sender, DragEventArgs e)
         {
-            jokerWeapon.BackColor = Color.LightGray;
+            //jokerWeapon.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void JokerWeapon_DragLeave(object sender, EventArgs e)
         {
-            jokerWeapon.BackColor = SystemColors.Control;
+            //jokerWeapon.BackColor = SystemColors.Control;
         }
 
         private void JokerWeapon_DragDrop(object sender, DragEventArgs e)
@@ -981,13 +981,13 @@ namespace Hopeless
         }
         private void JokerArmor_DragEnter(object sender, DragEventArgs e)
         {
-            jokerArmor.BackColor = Color.LightGray;
+            //jokerArmor.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void JokerArmor_DragLeave(object sender, EventArgs e)
         {
-            jokerArmor.BackColor = SystemColors.Control;
+            //jokerArmor.BackColor = SystemColors.Control;
         }
 
         private void JokerArmor_DragDrop(object sender, DragEventArgs e)
@@ -1054,20 +1054,20 @@ namespace Hopeless
         private void Inventory_DragEnter(object sender, DragEventArgs e)
         {
             Control control = (Control)sender;
-            control.BackColor = Color.LightGray;
+            //control.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void Inventory_DragLeave(object sender, EventArgs e)
         {
             Control control = (Control)sender;
-            control.BackColor = SystemColors.Control;
+            //control.BackColor = SystemColors.Control;
         }
 
         private void Inventory_DragDrop(object sender, DragEventArgs e)
         {
             Control control = (Control)sender;
-            control.BackColor = SystemColors.Control;
+            //control.BackColor = SystemColors.Control;
 
             string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
 
@@ -1217,7 +1217,7 @@ namespace Hopeless
                 Label label = new Label();
                 label.Text = item.Wypisz();
                 label.AutoSize = false;
-                label.Height = 30;
+                label.Height = 60;
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 if (item is Weapon)
@@ -1339,14 +1339,14 @@ namespace Hopeless
         private void Shop_DragEnter(object sender, DragEventArgs e)
         {
             Control control = (Control)sender;
-            control.BackColor = Color.LightGray;
+            //control.BackColor = Color.LightGray;
             e.Effect = DragDropEffects.Move;
         }
 
         private void Shop_DragLeave(object sender, EventArgs e)
         {
             Control control = (Control)sender;
-            control.BackColor = SystemColors.Control;
+            //control.BackColor = SystemColors.Control;
         }
 
         private async void Shop_DragDrop(object sender, DragEventArgs e)
@@ -1355,7 +1355,7 @@ namespace Hopeless
             if (lastDraggedLabel != null && !CheckLabel(lastDraggedLabel) && Inventory.Controls.Contains(lastDraggedLabel))
             {
                 Control control = (Control)sender;
-                control.BackColor = SystemColors.Control;
+                //control.BackColor = SystemColors.Control;
                 string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
                 IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText);
                 if (itemToSelect is Weapon)
@@ -1404,7 +1404,7 @@ namespace Hopeless
                 Label label = new Label();
                 label.Text = item.Wypisz();
                 label.AutoSize = false;
-                label.Height = 30;
+                label.Height = 60;
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 if (item is Weapon)

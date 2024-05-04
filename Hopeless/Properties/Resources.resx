@@ -178,4 +178,16 @@
   <data name="purifySound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\purifySound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="clericPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clericPicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jokerPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jokerPicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="knightPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\knightPicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="roguePicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roguePicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

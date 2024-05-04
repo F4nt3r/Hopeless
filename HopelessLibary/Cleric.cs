@@ -10,13 +10,13 @@ namespace HopelessLibary
     public class Cleric : Character
 
     {
+        public int BlessingChance { get; set; }
 
 
 
-
-        public Cleric(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, CharacterType type) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg, type)
+        public Cleric(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int blessingChance, CharacterType type) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg, type)
         {
-
+            BlessingChance = blessingChance;
         }
 
 
@@ -35,11 +35,36 @@ namespace HopelessLibary
             {
                 heal = new Random().Next(Intelligence, Intelligence + 6) * 2;
             }
-            if (heal < character.MaxHP - character.CurrentHP)
-                character.CurrentHP += heal;
-            else
-                character.CurrentHP = character.MaxHP;
 
+            if (new Random().Next(1, 100) > BlessingChance)
+            {
+                if (heal < character.MaxHP - character.CurrentHP)
+                    character.CurrentHP += heal;
+                else
+                    character.CurrentHP = character.MaxHP;
+            }
+            else
+            {
+                if(character is Cleric)
+                {
+                    if (heal < character.MaxHP - character.CurrentHP)
+                        character.CurrentHP += heal;
+                    else
+                        character.CurrentHP = character.MaxHP;
+                }
+                else
+                {
+                    if (heal < character.MaxHP - character.CurrentHP)
+                        character.CurrentHP += heal;
+                    else
+                        character.CurrentHP = character.MaxHP;
+
+                    if (heal < this.MaxHP - this.CurrentHP)
+                        this.CurrentHP += heal;
+                    else
+                        this.CurrentHP = this.MaxHP;
+                }              
+            }
         }
 
         public void AoeHeal(List<Character> characters, out int heal)
