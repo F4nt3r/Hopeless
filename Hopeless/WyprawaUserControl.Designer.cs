@@ -65,8 +65,24 @@
             activeCharacterLabel = new Label();
             turaLabel = new Label();
             panel1 = new Panel();
+            jokerPicture = new PictureBox();
+            clericPicture = new PictureBox();
+            roguePicture = new PictureBox();
+            knightPicture = new PictureBox();
+            enemy4Picture = new PictureBox();
+            enemy3Picture = new PictureBox();
+            enemy2Picture = new PictureBox();
+            enemy1Picture = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)jokerPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)clericPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)roguePicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)knightPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)enemy4Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)enemy3Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)enemy2Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)enemy1Picture).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -82,7 +98,7 @@
             // jokerName
             // 
             jokerName.AutoSize = true;
-            jokerName.Location = new Point(71, 741);
+            jokerName.Location = new Point(27, 400);
             jokerName.Name = "jokerName";
             jokerName.Size = new Size(36, 15);
             jokerName.TabIndex = 12;
@@ -91,7 +107,7 @@
             // clericName
             // 
             clericName.AutoSize = true;
-            clericName.Location = new Point(192, 741);
+            clericName.Location = new Point(183, 400);
             clericName.Name = "clericName";
             clericName.Size = new Size(36, 15);
             clericName.TabIndex = 13;
@@ -100,7 +116,7 @@
             // rogueName
             // 
             rogueName.AutoSize = true;
-            rogueName.Location = new Point(310, 741);
+            rogueName.Location = new Point(338, 400);
             rogueName.Name = "rogueName";
             rogueName.Size = new Size(36, 15);
             rogueName.TabIndex = 14;
@@ -109,7 +125,7 @@
             // knightName
             // 
             knightName.AutoSize = true;
-            knightName.Location = new Point(430, 741);
+            knightName.Location = new Point(495, 400);
             knightName.Name = "knightName";
             knightName.Size = new Size(36, 15);
             knightName.TabIndex = 15;
@@ -118,7 +134,7 @@
             // enemy1Name
             // 
             enemy1Name.AutoSize = true;
-            enemy1Name.Location = new Point(877, 741);
+            enemy1Name.Location = new Point(777, 400);
             enemy1Name.Name = "enemy1Name";
             enemy1Name.Size = new Size(36, 15);
             enemy1Name.TabIndex = 16;
@@ -127,7 +143,7 @@
             // enemy2Name
             // 
             enemy2Name.AutoSize = true;
-            enemy2Name.Location = new Point(994, 741);
+            enemy2Name.Location = new Point(933, 400);
             enemy2Name.Name = "enemy2Name";
             enemy2Name.Size = new Size(36, 15);
             enemy2Name.TabIndex = 17;
@@ -136,7 +152,7 @@
             // enemy3Name
             // 
             enemy3Name.AutoSize = true;
-            enemy3Name.Location = new Point(1124, 741);
+            enemy3Name.Location = new Point(1089, 400);
             enemy3Name.Name = "enemy3Name";
             enemy3Name.Size = new Size(36, 15);
             enemy3Name.TabIndex = 18;
@@ -145,7 +161,7 @@
             // enemy4Name
             // 
             enemy4Name.AutoSize = true;
-            enemy4Name.Location = new Point(1253, 741);
+            enemy4Name.Location = new Point(1247, 400);
             enemy4Name.Name = "enemy4Name";
             enemy4Name.Size = new Size(36, 15);
             enemy4Name.TabIndex = 19;
@@ -153,67 +169,67 @@
             // 
             // jokerHealth
             // 
-            jokerHealth.Location = new Point(38, 759);
+            jokerHealth.Location = new Point(27, 736);
             jokerHealth.Name = "jokerHealth";
-            jokerHealth.Size = new Size(100, 23);
+            jokerHealth.Size = new Size(150, 23);
             jokerHealth.TabIndex = 22;
             // 
             // clericHealth
             // 
-            clericHealth.Location = new Point(158, 759);
+            clericHealth.Location = new Point(183, 736);
             clericHealth.Name = "clericHealth";
-            clericHealth.Size = new Size(100, 23);
+            clericHealth.Size = new Size(150, 23);
             clericHealth.TabIndex = 23;
             // 
             // rogueHealth
             // 
-            rogueHealth.Location = new Point(274, 759);
+            rogueHealth.Location = new Point(338, 736);
             rogueHealth.Name = "rogueHealth";
-            rogueHealth.Size = new Size(100, 23);
+            rogueHealth.Size = new Size(151, 23);
             rogueHealth.TabIndex = 24;
             // 
             // knightHealth
             // 
-            knightHealth.Location = new Point(399, 759);
+            knightHealth.Location = new Point(495, 736);
             knightHealth.Name = "knightHealth";
-            knightHealth.Size = new Size(100, 23);
+            knightHealth.Size = new Size(150, 23);
             knightHealth.TabIndex = 25;
             // 
             // enemy1Health
             // 
             enemy1Health.BackColor = SystemColors.ActiveCaptionText;
             enemy1Health.ForeColor = SystemColors.HotTrack;
-            enemy1Health.Location = new Point(841, 759);
+            enemy1Health.Location = new Point(777, 736);
             enemy1Health.Name = "enemy1Health";
-            enemy1Health.Size = new Size(100, 23);
+            enemy1Health.Size = new Size(150, 23);
             enemy1Health.TabIndex = 26;
             // 
             // enemy2Health
             // 
-            enemy2Health.Location = new Point(962, 759);
+            enemy2Health.Location = new Point(933, 736);
             enemy2Health.Name = "enemy2Health";
-            enemy2Health.Size = new Size(100, 23);
+            enemy2Health.Size = new Size(150, 23);
             enemy2Health.TabIndex = 27;
             // 
             // enemy3Health
             // 
-            enemy3Health.Location = new Point(1089, 759);
+            enemy3Health.Location = new Point(1089, 736);
             enemy3Health.Name = "enemy3Health";
-            enemy3Health.Size = new Size(100, 23);
+            enemy3Health.Size = new Size(150, 23);
             enemy3Health.TabIndex = 28;
             // 
             // enemy4Health
             // 
-            enemy4Health.Location = new Point(1221, 759);
+            enemy4Health.Location = new Point(1247, 736);
             enemy4Health.Name = "enemy4Health";
-            enemy4Health.Size = new Size(100, 23);
+            enemy4Health.Size = new Size(150, 23);
             enemy4Health.TabIndex = 29;
             // 
             // knightHealthText
             // 
             knightHealthText.AutoSize = true;
             knightHealthText.BackColor = Color.Transparent;
-            knightHealthText.Location = new Point(428, 785);
+            knightHealthText.Location = new Point(545, 759);
             knightHealthText.Name = "knightHealthText";
             knightHealthText.Size = new Size(38, 15);
             knightHealthText.TabIndex = 30;
@@ -223,7 +239,7 @@
             // 
             rogueHealthText.AutoSize = true;
             rogueHealthText.BackColor = Color.Transparent;
-            rogueHealthText.Location = new Point(308, 785);
+            rogueHealthText.Location = new Point(399, 762);
             rogueHealthText.Name = "rogueHealthText";
             rogueHealthText.Size = new Size(38, 15);
             rogueHealthText.TabIndex = 31;
@@ -233,7 +249,7 @@
             // 
             clericHealthText.AutoSize = true;
             clericHealthText.BackColor = Color.Transparent;
-            clericHealthText.Location = new Point(190, 785);
+            clericHealthText.Location = new Point(238, 762);
             clericHealthText.Name = "clericHealthText";
             clericHealthText.Size = new Size(38, 15);
             clericHealthText.TabIndex = 32;
@@ -243,7 +259,7 @@
             // 
             jokerHealthText.AutoSize = true;
             jokerHealthText.BackColor = Color.Transparent;
-            jokerHealthText.Location = new Point(71, 785);
+            jokerHealthText.Location = new Point(79, 762);
             jokerHealthText.Name = "jokerHealthText";
             jokerHealthText.Size = new Size(38, 15);
             jokerHealthText.TabIndex = 33;
@@ -253,7 +269,7 @@
             // 
             enemy1HealthText.AutoSize = true;
             enemy1HealthText.BackColor = Color.Transparent;
-            enemy1HealthText.Location = new Point(877, 785);
+            enemy1HealthText.Location = new Point(842, 762);
             enemy1HealthText.Name = "enemy1HealthText";
             enemy1HealthText.Size = new Size(38, 15);
             enemy1HealthText.TabIndex = 34;
@@ -263,7 +279,7 @@
             // 
             enemy2HealthText.AutoSize = true;
             enemy2HealthText.BackColor = Color.Transparent;
-            enemy2HealthText.Location = new Point(994, 785);
+            enemy2HealthText.Location = new Point(987, 762);
             enemy2HealthText.Name = "enemy2HealthText";
             enemy2HealthText.Size = new Size(38, 15);
             enemy2HealthText.TabIndex = 35;
@@ -273,7 +289,7 @@
             // 
             enemy3HealthText.AutoSize = true;
             enemy3HealthText.BackColor = Color.Transparent;
-            enemy3HealthText.Location = new Point(1122, 785);
+            enemy3HealthText.Location = new Point(1141, 762);
             enemy3HealthText.Name = "enemy3HealthText";
             enemy3HealthText.Size = new Size(38, 15);
             enemy3HealthText.TabIndex = 36;
@@ -283,7 +299,7 @@
             // 
             enemy4HealthText.AutoSize = true;
             enemy4HealthText.BackColor = Color.Transparent;
-            enemy4HealthText.Location = new Point(1253, 785);
+            enemy4HealthText.Location = new Point(1305, 762);
             enemy4HealthText.Name = "enemy4HealthText";
             enemy4HealthText.Size = new Size(38, 15);
             enemy4HealthText.TabIndex = 37;
@@ -341,7 +357,7 @@
             // 
             // startButton
             // 
-            startButton.Location = new Point(512, 368);
+            startButton.Location = new Point(545, 293);
             startButton.Name = "startButton";
             startButton.Size = new Size(335, 101);
             startButton.TabIndex = 42;
@@ -397,10 +413,108 @@
             panel1.Size = new Size(1424, 119);
             panel1.TabIndex = 46;
             // 
+            // jokerPicture
+            // 
+            jokerPicture.BorderStyle = BorderStyle.FixedSingle;
+            jokerPicture.Location = new Point(27, 400);
+            jokerPicture.Name = "jokerPicture";
+            jokerPicture.Size = new Size(150, 330);
+            jokerPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            jokerPicture.TabIndex = 47;
+            jokerPicture.TabStop = false;
+            // 
+            // clericPicture
+            // 
+            clericPicture.BorderStyle = BorderStyle.FixedSingle;
+            clericPicture.Location = new Point(183, 400);
+            clericPicture.Name = "clericPicture";
+            clericPicture.Size = new Size(150, 330);
+            clericPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            clericPicture.TabIndex = 48;
+            clericPicture.TabStop = false;
+            // 
+            // roguePicture
+            // 
+            roguePicture.BorderStyle = BorderStyle.FixedSingle;
+            roguePicture.Location = new Point(339, 400);
+            roguePicture.Name = "roguePicture";
+            roguePicture.Size = new Size(150, 330);
+            roguePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            roguePicture.TabIndex = 49;
+            roguePicture.TabStop = false;
+            // 
+            // knightPicture
+            // 
+            knightPicture.BackColor = Color.Transparent;
+            knightPicture.BorderStyle = BorderStyle.FixedSingle;
+            knightPicture.Location = new Point(495, 400);
+            knightPicture.Name = "knightPicture";
+            knightPicture.Size = new Size(150, 330);
+            knightPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            knightPicture.TabIndex = 50;
+            knightPicture.TabStop = false;
+            // 
+            // enemy4Picture
+            // 
+            enemy4Picture.BorderStyle = BorderStyle.FixedSingle;
+            enemy4Picture.Location = new Point(1247, 400);
+            enemy4Picture.Name = "enemy4Picture";
+            enemy4Picture.Size = new Size(150, 330);
+            enemy4Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            enemy4Picture.TabIndex = 51;
+            enemy4Picture.TabStop = false;
+            // 
+            // enemy3Picture
+            // 
+            enemy3Picture.BorderStyle = BorderStyle.FixedSingle;
+            enemy3Picture.Location = new Point(1089, 400);
+            enemy3Picture.Name = "enemy3Picture";
+            enemy3Picture.Size = new Size(150, 330);
+            enemy3Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            enemy3Picture.TabIndex = 52;
+            enemy3Picture.TabStop = false;
+            // 
+            // enemy2Picture
+            // 
+            enemy2Picture.BorderStyle = BorderStyle.FixedSingle;
+            enemy2Picture.Location = new Point(933, 400);
+            enemy2Picture.Name = "enemy2Picture";
+            enemy2Picture.Size = new Size(150, 330);
+            enemy2Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            enemy2Picture.TabIndex = 53;
+            enemy2Picture.TabStop = false;
+            // 
+            // enemy1Picture
+            // 
+            enemy1Picture.BorderStyle = BorderStyle.FixedSingle;
+            enemy1Picture.Image = (Image)resources.GetObject("enemy1Picture.Image");
+            enemy1Picture.Location = new Point(777, 400);
+            enemy1Picture.Name = "enemy1Picture";
+            enemy1Picture.Size = new Size(150, 330);
+            enemy1Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            enemy1Picture.TabIndex = 54;
+            enemy1Picture.TabStop = false;
+            // 
             // WyprawaUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(enemy4Name);
+            Controls.Add(enemy3Name);
+            Controls.Add(enemy2Name);
+            Controls.Add(enemy1Name);
+            Controls.Add(knightName);
+            Controls.Add(rogueName);
+            Controls.Add(clericName);
+            Controls.Add(jokerName);
+            Controls.Add(enemy1Picture);
+            Controls.Add(enemy2Picture);
+            Controls.Add(enemy3Picture);
+            Controls.Add(enemy4Picture);
+            Controls.Add(knightPicture);
+            Controls.Add(roguePicture);
+            Controls.Add(clericPicture);
+            Controls.Add(jokerPicture);
             Controls.Add(panel1);
             Controls.Add(startButton);
             Controls.Add(enemy4HealthText);
@@ -419,20 +533,20 @@
             Controls.Add(rogueHealth);
             Controls.Add(clericHealth);
             Controls.Add(jokerHealth);
-            Controls.Add(enemy4Name);
-            Controls.Add(enemy3Name);
-            Controls.Add(enemy2Name);
-            Controls.Add(enemy1Name);
-            Controls.Add(knightName);
-            Controls.Add(rogueName);
-            Controls.Add(clericName);
-            Controls.Add(jokerName);
             Controls.Add(pictureBox1);
             Name = "WyprawaUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)jokerPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)clericPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)roguePicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)knightPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)enemy4Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)enemy3Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)enemy2Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)enemy1Picture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -474,5 +588,13 @@
         private Label activeCharacterLabel;
         private Label turaLabel;
         private Panel panel1;
+        private PictureBox jokerPicture;
+        private PictureBox clericPicture;
+        private PictureBox roguePicture;
+        private PictureBox knightPicture;
+        private PictureBox enemy4Picture;
+        private PictureBox enemy3Picture;
+        private PictureBox enemy2Picture;
+        private PictureBox enemy1Picture;
     }
 }

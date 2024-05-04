@@ -79,15 +79,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                               
+
                                 knight.BasicAttack(target, out int dmg);
-                            
+
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
                                 if (dmg != 0)
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając: " + dmg + " Obrażeń" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając: " + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
 
                         };
@@ -105,7 +105,7 @@ namespace Hopeless
                             {
                                 knight.Provoke(true);
                                 PlayProvokeSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności Provoke prowokując przeciwnikó" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności Provoke prowokując przeciwnikó" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("Provoke", 4);
                                 effects.Add("Provoke", 2);
                                 playerActionTaken = true;
@@ -128,10 +128,10 @@ namespace Hopeless
                             }
                             else
                             {
-                            
-                                knight.Purify(expedition.Monsters,out int dmg);
+
+                                knight.Purify(expedition.Monsters, out int dmg);
                                 PlayPurifySound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności Purify na wrogów zadając " + dmg + " obrażeń" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności Purify na wrogów zadając " + dmg + " obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("Purify", 3);
                                 playerActionTaken = true;
                             }
@@ -184,15 +184,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                               
-                                rogue.BasicAttack(target,out int dmg);
-                        
+
+                                rogue.BasicAttack(target, out int dmg);
+
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
                                 if (dmg != 0)
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
 
                         };
@@ -212,9 +212,9 @@ namespace Hopeless
                                 {
                                     rogue.Ambush((Monster)target, out int dmg);
                                     if (dmg != 0)
-                                        logBattleBox.Text += postac.Name + " używa umiejętności Ambush na "+target.Name+" zadając " + dmg + " obrażeń" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text += postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine + logBattleBox.Text;
 
                                     PlayAmbushSound();
                                     cooldowns.Add("Ambush", 3);
@@ -237,7 +237,7 @@ namespace Hopeless
 
                                 rogue.CritAndDodgeBuff(true);
                                 PlayCritAndDodgeBuffSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności CritAndDodgeBuff na sobie" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności CritAndDodgeBuff na sobie" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("CritAndDodgeBuff", 3);
                                 effects.Add("CritAndDodgeBuff", 2);
                                 playerActionTaken = true;
@@ -296,15 +296,15 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-                              
-                                cleric.BasicAttack(target,out int dmg);
-                               
+
+                                cleric.BasicAttack(target, out int dmg);
+
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
                                 if (dmg != 0)
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
 
                         };
@@ -318,10 +318,10 @@ namespace Hopeless
                             }
                             else
                             {
-                              
-                                cleric.Heal((Character)target,out int heal);
+
+                                cleric.Heal((Character)target, out int heal);
                                 PlayHealSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności Heal na "+target.Name +" lecząc za " + heal + " punktów zdrowia" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności Heal na " + target.Name + " lecząc za " + heal + " punktów zdrowia" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("Heal", 3);
                                 playerActionTaken = true;
                             }
@@ -337,10 +337,10 @@ namespace Hopeless
                             }
                             else
                             {
-                             
-                                cleric.AoeHeal(characters,out int heal);
+
+                                cleric.AoeHeal(characters, out int heal);
                                 PlayHealSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności AoeHeal na sojuszników lecząc za " + heal + " punktów zdrowia" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności AoeHeal na sojuszników lecząc za " + heal + " punktów zdrowia" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("AoeHeal", 3);
                                 playerActionTaken = true;
                             }
@@ -404,29 +404,29 @@ namespace Hopeless
                                 {
                                     joker.BasicAttack(target, out int dmg);
                                     if (dmg != 0)
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                                 }
                                 else
                                 {
                                     joker.BasicAttack(target, out int dmg);
                                     if (dmg != 0)
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                                     joker.BasicAttack(target, out dmg);
                                     if (dmg != 0)
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                                 }
-                               
-                               
-                              
+
+
+
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-                                
+
                             }
 
                         };
@@ -442,7 +442,7 @@ namespace Hopeless
                             {
                                 joker.AoeBuff(characters, true);
                                 PlayAoeBuffSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności AoeBuff na sojuszników" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności AoeBuff na sojuszników" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("AoeBuff", 5);
                                 effects.Add("AoeBuff", 3);
                                 playerActionTaken = true;
@@ -461,7 +461,7 @@ namespace Hopeless
                             {
                                 joker.AoeDeBuff(expedition.Monsters, true);
                                 PlayAoeDebuffSound();
-                                logBattleBox.Text += postac.Name + " używa umiejętności AoeDeBuff na wrogów" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " używa umiejętności AoeDeBuff na wrogów" + Environment.NewLine + logBattleBox.Text;
                                 cooldowns.Add("AoeDeBuff", 5);
                                 effects.Add("AoeDeBuff", 3);
                                 playerActionTaken = true;
@@ -510,17 +510,17 @@ namespace Hopeless
                                 int i = new Random().Next(0, 4);
                                 target = characters[i];
                             }
-                            
-                            
-                            monster.BasicAttack(target,out int dmg);
-                            
+
+
+                            monster.BasicAttack(target, out int dmg);
+
                             PlayBasicAttackSound();
                             if (dmg != 0)
-                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                             else if (dmg == 0 && target is Rogue)
-                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             else
-                                logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zablokowal" + Environment.NewLine;
+                                logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zablokowal" + Environment.NewLine + logBattleBox.Text;
                         }
 
 
@@ -600,7 +600,7 @@ namespace Hopeless
             enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
             if (enemy1Health.Value == 0)
             {
-                enemy1Name.Enabled = false;
+                enemy1Picture.Enabled = false;
 
 
             }
@@ -608,21 +608,21 @@ namespace Hopeless
             enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
             if (enemy2Health.Value == 0)
             {
-                enemy2Name.Enabled = false;
+                enemy2Picture.Enabled = false;
 
             }
             enemy3Health.Value = expedition.Monsters[2].CurrentHP;
             enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
             if (enemy3Health.Value == 0)
             {
-                enemy3Name.Enabled = false;
+                enemy3Picture.Enabled = false;
 
             }
             enemy4Health.Value = expedition.Monsters[3].CurrentHP;
             enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
             if (enemy4Health.Value == 0)
             {
-                enemy4Name.Enabled = false;
+                enemy4Picture.Enabled = false;
 
             }
 
@@ -630,7 +630,7 @@ namespace Hopeless
             knightHealth.Value = characters[0].CurrentHP;
             if (knightHealth.Value == 0)
             {
-                knightName.Enabled = false;
+                knightPicture.Enabled = false;
 
             }
 
@@ -640,7 +640,7 @@ namespace Hopeless
             rogueHealth.Value = characters[1].CurrentHP;
             if (rogueHealth.Value == 0)
             {
-                rogueName.Enabled = false;
+                roguePicture.Enabled = false;
 
             }
 
@@ -650,7 +650,7 @@ namespace Hopeless
             clericHealth.Value = characters[2].CurrentHP;
             if (clericHealth.Value == 0)
             {
-                clericName.Enabled = false;
+                clericPicture.Enabled = false;
 
             }
 
@@ -659,21 +659,21 @@ namespace Hopeless
             jokerHealth.Value = characters[3].CurrentHP;
             if (jokerHealth.Value == 0)
             {
-                jokerName.Enabled = false;
+                jokerPicture.Enabled = false;
 
             }
 
 
             target = null;
-            enemy1Name.BackColor = Color.White;
-            enemy2Name.BackColor = Color.White;
-            enemy3Name.BackColor = Color.White;
-            enemy4Name.BackColor = Color.White;
+            enemy1Picture.BackColor = Color.White;
+            enemy2Picture.BackColor = Color.White;
+            enemy3Picture.BackColor = Color.White;
+            enemy4Picture.BackColor = Color.White;
 
-            knightName.BackColor = Color.White;
-            rogueName.BackColor = Color.White;
-            clericName.BackColor = Color.White;
-            jokerName.BackColor = Color.White;
+            knightPicture.BackColor = Color.White;
+            roguePicture.BackColor = Color.White;
+            clericPicture.BackColor = Color.White;
+            jokerPicture.BackColor = Color.White;
 
             if (expedition.Monsters.All(monster => monster.IsDead()))
             {
@@ -733,7 +733,7 @@ namespace Hopeless
 
             }
             effects.Clear();
-            
+
         }
         private void InitializeBeforeFight()
         {
@@ -748,28 +748,35 @@ namespace Hopeless
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
             knightHealth.Value = characters[0].CurrentHP;
             knightHealth.Maximum = characters[0].MaxHP;
-            knightName.Click += Enemy_Click;
+            knightPicture.Click += Enemy_Click;
+
+            //knightPicture.Image = Properties.Resources.knightPicture;
 
             rogueName.Text = characters[1].Name;
             rogueName.Enabled = true;
             rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
             rogueHealth.Value = characters[1].CurrentHP;
             rogueHealth.Maximum = characters[1].MaxHP;
-            rogueName.Click += Enemy_Click;
+            roguePicture.Click += Enemy_Click;
+
+            //roguePicture.Image = Properties.Resources.roguePicture;
 
             clericName.Text = characters[2].Name;
             clericName.Enabled = true;
             clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
             clericHealth.Value = characters[2].CurrentHP;
             clericHealth.Maximum = characters[2].MaxHP;
-            clericName.Click += Enemy_Click;
+            clericPicture.Click += Enemy_Click;
+
+            //clericPicture.Image = Properties.Resources.clericPicture;
 
             jokerName.Text = characters[3].Name;
             jokerName.Enabled = true;
             jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
             jokerHealth.Value = characters[3].CurrentHP;
             jokerHealth.Maximum = characters[3].MaxHP;
-            jokerName.Click += Enemy_Click;
+            jokerPicture.Click += Enemy_Click;
+            //jokerPicture.Image = Properties.Resources.jokerPicture;
 
 
             enemy1Name.Text = expedition.Monsters[0].Name;
@@ -777,28 +784,36 @@ namespace Hopeless
             enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
             enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
             enemy1Health.Value = expedition.Monsters[0].CurrentHP;
-            enemy1Name.Click += Enemy_Click;
+            enemy1Picture.Click += Enemy_Click;
+            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[0].Name);
+            //knightPicture.Image = image;
 
             enemy2Name.Text = expedition.Monsters[1].Name;
             enemy2Name.Enabled = true;
             enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
             enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
             enemy2Health.Value = expedition.Monsters[1].CurrentHP;
-            enemy2Name.Click += Enemy_Click;
+            enemy2Picture.Click += Enemy_Click;
+            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[1].Name;);
+            //knightPicture.Image = image;
 
             enemy3Name.Text = expedition.Monsters[2].Name;
             enemy3Name.Enabled = true;
             enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
             enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
             enemy3Health.Value = expedition.Monsters[2].CurrentHP;
-            enemy3Name.Click += Enemy_Click;
+            enemy3Picture.Click += Enemy_Click;
+            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[2].Name);
+            //knightPicture.Image = image;
 
             enemy4Name.Text = expedition.Monsters[3].Name;
             enemy4Name.Enabled = true;
             enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
             enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
             enemy4Health.Value = expedition.Monsters[3].CurrentHP;
-            enemy4Name.Click += Enemy_Click;
+            enemy4Picture.Click += Enemy_Click;
+            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[3].Name;);
+            //knightPicture.Image = image;
 
 
 
@@ -816,57 +831,59 @@ namespace Hopeless
 
         private void Enemy_Click(object? sender, EventArgs e)
         {
-            enemy1Name.BackColor = Color.White;
-            enemy2Name.BackColor = Color.White;
-            enemy3Name.BackColor = Color.White;
-            enemy4Name.BackColor = Color.White;
+            enemy1Picture.BackColor = Color.White;
+            enemy2Picture.BackColor = Color.White;
+            enemy3Picture.BackColor = Color.White;
+            enemy4Picture.BackColor = Color.White;
 
-            knightName.BackColor = Color.White;
-            rogueName.BackColor = Color.White;
-            clericName.BackColor = Color.White;
-            jokerName.BackColor = Color.White;
-            var label = sender as Label;
-            if (label != null)
+            knightPicture.BackColor = Color.White;
+            roguePicture.BackColor = Color.White;
+            clericPicture.BackColor = Color.White;
+            jokerPicture.BackColor = Color.White;
+
+            var pictureBox = sender as PictureBox;
+
+            if (pictureBox != null)
             {
-                if (label.Name.Equals("enemy1Name"))
+                if (pictureBox.Name.Equals("enemy1Picture"))
                 {
                     target = expedition.Monsters[0];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("enemy2Name"))
+                else if (pictureBox.Name.Equals("enemy2Picture"))
                 {
                     target = expedition.Monsters[1];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("enemy3Name"))
+                else if (pictureBox.Name.Equals("enemy3Picture"))
                 {
                     target = expedition.Monsters[2];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("enemy4Name"))
+                else if (pictureBox.Name.Equals("enemy4Picture"))
                 {
                     target = expedition.Monsters[3];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("knightName"))
+                else if (pictureBox.Name.Equals("knightPicture"))
                 {
                     target = characters[0];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("rogueName"))
+                else if (pictureBox.Name.Equals("roguePicture"))
                 {
                     target = characters[1];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("clericName"))
+                else if (pictureBox.Name.Equals("clericPicture"))
                 {
                     target = characters[2];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
-                else if (label.Name.Equals("jokerName"))
+                else if (pictureBox.Name.Equals("jokerPicture"))
                 {
                     target = characters[3];
-                    label.BackColor = Color.Yellow;
+                    pictureBox.BackColor = Color.Yellow;
                 }
                 else
                 {

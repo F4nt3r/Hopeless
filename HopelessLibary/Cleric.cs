@@ -56,10 +56,12 @@ namespace HopelessLibary
             }
             foreach (Character character in characters)
             {
+                if (!character.IsDead()) { 
                 if (heal < character.MaxHP - character.CurrentHP)
                     character.CurrentHP += heal;
                 else
                     character.CurrentHP = character.MaxHP;
+                }
             }
 
 

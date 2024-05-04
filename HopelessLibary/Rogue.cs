@@ -27,7 +27,7 @@ namespace HopelessLibary
             Level++;
             Dexterity += 2;
             DodgeChance += 1;
-
+            MaxHP += 1;
         }
         public void Ambush(Monster monster, out int dmg)
         {

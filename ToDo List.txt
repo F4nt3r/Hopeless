@@ -1,6 +1,6 @@
 to do list w projekcie:
 
-Logi walki,
+(zrobione)Logi walki,
 (zrobione)Wskaznik czyja tura jest aktualnie,
 (zrobione)wskaznik ktora to tura,
 (zrobione)okno aktywnych efektow,
@@ -19,5 +19,6 @@ balans skilli i wrogow,
 
 jakis Easter egg (mam pomysl skoro dales tego Gauntera to niech bedzie szansa ze wylosuje sie quest z nim w losowym momencie i to on bedzie tym mobe ktorego mozesz zabic lub oszczedzic),
 
-Zadecydowac czy zabicie bossa to koniec gry czy nie.
+(zrobione)Zadecydowac czy zabicie bossa to koniec gry czy nie.
 Dodac opisy do skilli
+(zrobione)poprawic Logi

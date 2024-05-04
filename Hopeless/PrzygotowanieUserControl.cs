@@ -28,6 +28,10 @@ namespace Hopeless
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
+            //knightPicture.Image= Properties.Resources.knightPicture;
+            //roguePicture.Image= Properties.Resources.roguePicture;
+            //clericPicture.Image= Properties.Resources.clericPicture;
+            //jokerPicture.Image= Properties.Resources.jokerPicture;
             InitializeCharactersDragDrop();
 
             this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
@@ -1539,16 +1543,16 @@ namespace Hopeless
             Stream equipWeaponStream = Properties.Resources.equipWeapon;
             MemoryStream memoryStream = new MemoryStream();
             equipWeaponStream.CopyTo(memoryStream);
-            memoryStream.Position = 0; 
+            memoryStream.Position = 0;
             WaveStream waveStream = new WaveFileReader(memoryStream);
 
-            WaveOut out1 = new ();
+            WaveOut out1 = new();
             out1.Init(waveStream);
             out1.Play();
 
             out1.PlaybackStopped += (s, args) =>
             {
-                waveStream.Dispose(); 
+                waveStream.Dispose();
             };
 
         }

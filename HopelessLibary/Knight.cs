@@ -23,7 +23,7 @@ namespace HopelessLibary
         public override void LevelUp()
         {
             Level++;
-            MaxHP += 2;
+            MaxHP += 3;
             Strength += 2;
             Intelligence += 2;
         }
