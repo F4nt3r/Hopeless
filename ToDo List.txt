@@ -11,7 +11,7 @@ Dodanie zdjec bohaterom i potworom,
 
 dodanie Clericowi stanu blogoslawienstwa,
 (zrobione)dodanie Jokerowi Szansy na podwojne uderzenie
-implementacja Level Upa, zeby cos robil,
+(zrobione)implementacja Level Upa, zeby cos robil,
 balans skilli i wrogow,
 
 
