@@ -402,22 +402,31 @@ namespace Hopeless
                             {
                                 if (new Random().Next(1, 101) > joker.DoubleAtackChance)
                                 {
-                                    joker.BasicAttack(target);
+                                    joker.BasicAttack(target, out int dmg);
+                                    if (dmg != 0)
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                    else
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                                 }
                                 else
                                 {
-                                    joker.BasicAttack(target);
-                                    joker.BasicAttack(target);
+                                    joker.BasicAttack(target, out int dmg);
+                                    if (dmg != 0)
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                    else
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                    joker.BasicAttack(target, out dmg);
+                                    if (dmg != 0)
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
+                                    else
+                                        logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
                                 }
                                
-                                joker.BasicAttack(target, out int dmg);
+                               
                               
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-                                if (dmg != 0)
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine;
-                                else
-                                    logBattleBox.Text += postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine;
+                                
                             }
 
                         };
