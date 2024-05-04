@@ -1475,6 +1475,11 @@ namespace Hopeless
                 cleric.GainExperience(wyprawa.ExperienceGains);
                 joker.GainExperience(wyprawa.ExperienceGains);
 
+                knight.CurrentHP = knight.MaxHP;
+                rogue.CurrentHP = rogue.MaxHP;
+                cleric.CurrentHP = cleric.MaxHP;
+                joker.CurrentHP = joker.MaxHP;
+
                 gold += wyprawa.Gold;
                 foreach (Weapon weapon in wyprawa.WeaponRewards)
                 {

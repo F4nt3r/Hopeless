@@ -10,11 +10,11 @@ namespace HopelessLibary
     public class Joker : Character
     {
 
+        public int DoubleAtackChance { get; set; }
 
-
-        public Joker(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, CharacterType type) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg,type)
+        public Joker(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int doubleAtackChance, CharacterType type) : base(name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg,type)
         {
-
+            DoubleAtackChance = doubleAtackChance;
         }
 
 
@@ -39,6 +39,9 @@ namespace HopelessLibary
         public override void LevelUp()
         {
             Level++;
+            MaxHP += 1;
+            DoubleAtackChance += 1;
+
         }
 
         public override void TakeDamage(int damage)

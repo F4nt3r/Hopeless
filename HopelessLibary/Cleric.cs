@@ -84,6 +84,8 @@ namespace HopelessLibary
         public override void LevelUp()
         {
             Level++;
+            MaxHP += 2;
+            Intelligence += 2;
         }
 
         public override void TakeDamage(int damage)
