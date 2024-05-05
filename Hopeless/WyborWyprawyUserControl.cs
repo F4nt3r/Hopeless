@@ -184,6 +184,18 @@ namespace Hopeless
                 if (expedition.Name == label.Text)
                 {
                     selectedExpedition = expedition;
+                    if(selectedExpedition.Type == DifficultyType.Boss && eventResult)
+                    {
+                       
+                            foreach (var monster in selectedExpedition.Monsters)
+                            {
+                                if (monster.Name == "Strażnik Śniącego")
+                                {
+                                    monster.CurrentHP = 1;
+                                }
+                            }
+                        
+                    }
                 }
             }
 
@@ -211,12 +223,12 @@ namespace Hopeless
 
                 expeditions.Remove(wyprawa);
                 Expedition newExpedition1;
-                if (wyprawa.Type != DifficultyType.Event)
+                if (wyprawa.Type != DifficultyType.Event && wyprawa.Type != DifficultyType.Boss)
                 {
                     newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
                     expeditions.Add(newExpedition1);
                 }
-              
+
                 if (new Random().Next(1, 100) > 1 && !eventQuest)
                 {
                     List<Monster> wybrane = new List<Monster>();
@@ -282,8 +294,10 @@ namespace Hopeless
             else
             {
                 expeditions.Remove(wyprawa);
-                Expedition newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
+                if (wyprawa.Type != DifficultyType.Event && wyprawa.Type != DifficultyType.Boss) { 
+                    Expedition newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
                 expeditions.Add(newExpedition1);
+                }
             }
 
         }
@@ -383,7 +397,7 @@ namespace Hopeless
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
-                
+
                 if (eventResult)
                 {
                     foreach (var monster in wybrane)

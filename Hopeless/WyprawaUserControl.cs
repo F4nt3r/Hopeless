@@ -196,7 +196,7 @@ namespace Hopeless
                             skill2Label.Text = "CritAndDodgeBuff";
                         }
                         skill1Label.AccessibleDescription = "Uderzasz wybranego wroga w plecy" + Environment.NewLine + "Cooldown: 2 tury" + Environment.NewLine + "DMG: " + rogue.Dexterity + "-" + (rogue.Dexterity + 5);
-                        skill2Label.AccessibleDescription = "Sprawia, że nastepny atak Rogue bedzie krytyczny oraz uniknie ataków na czas trwania efektu" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
+                        skill2Label.AccessibleDescription = "Sprawia, że nastepny atak Rogue bedzie krytyczny oraz uniknie ataków na czas trwania efektu" + Environment.NewLine + "Cooldown: 4 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
 
                         basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + rogue.MinDmg + "-" + rogue.MaxDmg;
 
@@ -260,7 +260,7 @@ namespace Hopeless
                                 rogue.CritAndDodgeBuff(true);
                                 PlayCritAndDodgeBuffSound();
                                 logBattleBox.Text = postac.Name + " używa umiejętności CritAndDodgeBuff na sobie" + Environment.NewLine + logBattleBox.Text;
-                                cooldowns.Add("CritAndDodgeBuff", 3);
+                                cooldowns.Add("CritAndDodgeBuff", 4);
                                 effects.Add("CritAndDodgeBuff", 2);
                                 playerActionTaken = true;
 
@@ -319,8 +319,8 @@ namespace Hopeless
                             skill2Label.Text = "AoeHeal";
                         }
 
-                        skill1Label.AccessibleDescription = "Leczysz wybranego sojusznika mocą Swiatła, istnieje szansa że Cleric wyleczy również siebie" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 5);
-                        skill2Label.AccessibleDescription = "Leczysz wszystkich sojuszników mocą Swiatła" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 2);
+                        skill1Label.AccessibleDescription = "Leczysz wybranego sojusznika mocą Swiatła, istnieje szansa że Cleric wyleczy również siebie" + Environment.NewLine + "Cooldown: 6 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 5);
+                        skill2Label.AccessibleDescription = "Leczysz wszystkich sojuszników mocą Swiatła" + Environment.NewLine + "Cooldown: 4 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 2);
                         basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + cleric.MinDmg + "-" + cleric.MaxDmg;
 
 
@@ -354,7 +354,7 @@ namespace Hopeless
                                 cleric.Heal((Character)target, out int heal);
                                 PlayHealSound();
                                 logBattleBox.Text = postac.Name + " używa umiejętności Heal na " + target.Name + " lecząc za " + heal + " punktów zdrowia" + Environment.NewLine + logBattleBox.Text;
-                                cooldowns.Add("Heal", 3);
+                                cooldowns.Add("Heal", 4);
                                 playerActionTaken = true;
                             }
                         };
@@ -373,7 +373,7 @@ namespace Hopeless
                                 cleric.AoeHeal(characters, out int heal);
                                 PlayHealSound();
                                 logBattleBox.Text = postac.Name + " używa umiejętności AoeHeal na sojuszników lecząc za " + heal + " punktów zdrowia" + Environment.NewLine + logBattleBox.Text;
-                                cooldowns.Add("AoeHeal", 3);
+                                cooldowns.Add("AoeHeal", 6);
                                 playerActionTaken = true;
                             }
 
