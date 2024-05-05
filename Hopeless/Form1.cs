@@ -124,15 +124,15 @@ namespace Hopeless
             Monster vampire = new Monster("Wampir Wyzszy", 50, 45, 45, 30, 10, 15, 11, 15, 20, DifficultyType.Hard);
 
             Monster sleeper = new Monster("Œni¹cy",100,200,200,50,15,50,15,22,15, DifficultyType.Boss);
-            Monster sleeperGuard = new Monster("Stra¿nk Œni¹cego",100,100,100,40,15,40,10,15,10,DifficultyType.Boss);
-            Monster gaunter = new Monster("Gaunter o'Dim", 100, 200, 200, 50, 20, 50, 17, 21, 15, DifficultyType.Boss);
+            Monster sleeperGuard = new Monster("Stra¿nik Œni¹cego",100,100,100,40,15,40,10,15,10,DifficultyType.Boss);
+            Monster gaunter = new Monster("Gaunter o'Dim", 100, 2, 2, 50, 20, 50, 17, 21, 15, DifficultyType.Event);
+            Monster mirage = new Monster("Odbicie Lustrzane",100,1,1,40,20,40,14,18,15, DifficultyType.Event);
 
-           
-            List<Monster> monsters = new List<Monster> { sleeperGuard, arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
+            List<Monster> monsters = new List<Monster> { gaunter, mirage, sleeperGuard, arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
             wyborWyprawyUserControl.monsters = monsters;
             // Inicjalizacja Wypraw
 
-            Expedition expedition1 = new Expedition("Kana³y Pary¿a","Ale¿ tu œmierdzi... Serem?",50,DifficultyType.Easy,new List<Monster> { new Monster(rat), new Monster(rat), new Monster(rat), new Monster(rat) },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
+            Expedition expedition1 = new Expedition("Kana³y Nowigradu", "Ale¿ tu œmierdzi... zw³okami??", 50,DifficultyType.Easy,new List<Monster> { new Monster(rat), new Monster(rat), new Monster(rat), new Monster(rat) },100,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
             Expedition expedition2 = new Expedition("Opuszczony Magazyn", "Ponoæ kiedys sk³adowali tu Jabole", 50, DifficultyType.Easy, new List<Monster> { new Monster(rat), new Monster(rat), new Monster(webber), new Monster(webber) }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
             Expedition expedition3 = new Expedition("Flecista z Hameln", "Wiesz gdzie mo¿esz sobie wsadziæ ten flet...?", 50, DifficultyType.Easy, new List<Monster> { new Monster(rat), new Monster(rat), new Monster(rat), new Monster(floutist) }, 100, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
             Expedition expedition4 = new Expedition("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn", 50, DifficultyType.Easy, new List<Monster> { new Monster(webber),new Monster(webber), new Monster(webberSpitter), new Monster(webberSpitter) }, 100, new List<Weapon> { glaive }, new List<Armor> {  });
@@ -149,6 +149,7 @@ namespace Hopeless
             SoundPlayer backgroundMusicPlayer = new SoundPlayer(Properties.Resources.menuSong);
             SoundPlayer fightMusicPlayer = new SoundPlayer(Properties.Resources.normalFight);
             SoundPlayer bossFightMusicPlayer = new SoundPlayer(Properties.Resources.bossFight);
+            SoundPlayer eventFightMusicPlayer = new SoundPlayer(Properties.Resources.eventSong);
             backgroundMusicPlayer.PlayLooping();
 
             menuUserControl.NowaGraButtonClicked += (sender, args) =>
@@ -190,20 +191,38 @@ namespace Hopeless
                 fazaPrzygotowaniaUserControl.Visible = true;
                 wyborWyprawyUserControl.Visible = false;
             };
+
             wyborWyprawyUserControl.ExpeditionMouseClicked += (sender, args) =>
             {
                 wyborWyprawyUserControl.Visible = false;
 
                 wyprawaUserControl.expedition = wyborWyprawyUserControl.selectedExpedition;
 
+               
+
+
                 backgroundMusicPlayer.Stop();
                 if (wyprawaUserControl.expedition.Type == DifficultyType.Boss)
                     bossFightMusicPlayer.PlayLooping();
+                else if (wyprawaUserControl.expedition.Type == DifficultyType.Event)
+                {
+                    eventFightMusicPlayer.PlayLooping();
+                }
                 else
                     fightMusicPlayer.PlayLooping();
 
                wyprawaUserControl.Visible = true;
                 
+            };
+            wyborWyprawyUserControl.eventQuestExist += (sender, args) =>
+            {
+                fazaPrzygotowaniaUserControl.eventQuest = wyborWyprawyUserControl.eventQuest;
+            };
+            wyprawaUserControl.eventChoice += (sender, args) =>
+            {
+               wyborWyprawyUserControl.eventResult = true;
+               fazaPrzygotowaniaUserControl.eventResult = true;
+                wyprawaUserControl.eventResult = true;
             };
             wyprawaUserControl.FinishButtonClicked += (sender, args) =>
             {
@@ -247,6 +266,11 @@ namespace Hopeless
             shopItems.AddRange(gameState.shopWeapons);
             shopItems.AddRange(gameState.shopArmors);
 
+            fazaPrzygotowaniaUserControl.eventQuest=gameState.eventQuest;
+            fazaPrzygotowaniaUserControl.eventResult = gameState.eventResult;
+            wyborWyprawyUserControl.eventQuest=gameState.eventQuest;
+            wyborWyprawyUserControl.eventResult = gameState.eventResult;
+            wyprawaUserControl.eventResult=gameState.eventResult;
             fazaPrzygotowaniaUserControl.Expeditons = expeditons;
             fazaPrzygotowaniaUserControl.Characters = characters;
             fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;

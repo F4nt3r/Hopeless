@@ -145,6 +145,24 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream eventSong {
+            get {
+                return ResourceManager.GetStream("eventSong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream gaunterHelpSound {
+            get {
+                return ResourceManager.GetStream("gaunterHelpSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream healSound {
             get {
                 return ResourceManager.GetStream("healSound", resourceCulture);
@@ -168,6 +186,15 @@ namespace Hopeless.Properties {
             get {
                 object obj = ResourceManager.GetObject("jokerPicture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream killGaunterSound {
+            get {
+                return ResourceManager.GetStream("killGaunterSound", resourceCulture);
             }
         }
         
@@ -262,6 +289,15 @@ namespace Hopeless.Properties {
         internal static System.IO.UnmanagedMemoryStream rollSound {
             get {
                 return ResourceManager.GetStream("rollSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream saveGaunterSound {
+            get {
+                return ResourceManager.GetStream("saveGaunterSound", resourceCulture);
             }
         }
         

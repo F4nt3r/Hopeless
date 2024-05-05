@@ -2,6 +2,7 @@
 using HopelessLibary.Intefrace;
 using NAudio.Wave;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Hopeless
 {
@@ -16,8 +17,11 @@ namespace Hopeless
         public delegate void CustomDelegate(bool wynik, Expedition wyprawa);
         public event CustomDelegate eventFirst;
         public event EventHandler FinishButtonClicked;
+        public event EventHandler eventChoice;
         private Dictionary<string, int> cooldowns = new();
         private Dictionary<string, int> effects = new();
+        public bool eventResult;
+
         public WyprawaUserControl()
         {
             InitializeComponent();
@@ -86,13 +90,13 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-
+                                int hp = target.CurrentHP;
                                 knight.BasicAttack(target, out int dmg);
 
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-                                if (dmg != 0)
-                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając: " + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                if (target.CurrentHP != hp)
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając: " + (hp-target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
                                     logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
@@ -201,13 +205,13 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-
+                                int hp = target.CurrentHP;
                                 rogue.BasicAttack(target, out int dmg);
 
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-                                if (dmg != 0)
-                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                if (target.CurrentHP != hp)
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
                                     logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
@@ -227,11 +231,12 @@ namespace Hopeless
                                 }
                                 else
                                 {
+                                    int hp = target.CurrentHP;
                                     rogue.Ambush((Monster)target, out int dmg);
-                                    if (dmg != 0)
-                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                    if (target.CurrentHP != hp)
+                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + (hp - target.CurrentHP) + " obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " zadając " + dmg + " obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                        logBattleBox.Text = postac.Name + " używa umiejętności Ambush na " + target.Name + " lecz ten zrobił unik" + Environment.NewLine + logBattleBox.Text;
 
                                     PlayAmbushSound();
                                     cooldowns.Add("Ambush", 3);
@@ -323,13 +328,13 @@ namespace Hopeless
                         {
                             if (target != null)
                             {
-
+                                int hp = target.CurrentHP;
                                 cleric.BasicAttack(target, out int dmg);
 
                                 PlayBasicAttackSound();
                                 playerActionTaken = true;
-                                if (dmg != 0)
-                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                if (target.CurrentHP != hp)
+                                    logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                 else
                                     logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             }
@@ -439,22 +444,26 @@ namespace Hopeless
                             {
                                 if (new Random().Next(1, 101) > joker.DoubleAtackChance)
                                 {
+                                    int hp = target.CurrentHP;
                                     joker.BasicAttack(target, out int dmg);
-                                    if (dmg != 0)
-                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                    if (target.CurrentHP != hp)
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
                                         logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                                 }
                                 else
                                 {
+                                    int hp = target.CurrentHP;
                                     joker.BasicAttack(target, out int dmg);
-                                    if (dmg != 0)
-                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+
+                                    if (target.CurrentHP != hp)
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
                                         logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
+                                    hp = target.CurrentHP;
                                     joker.BasicAttack(target, out dmg);
-                                    if (dmg != 0)
-                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                    if (target.CurrentHP != hp)
+                                        logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
                                     else
                                         logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                                 }
@@ -541,23 +550,26 @@ namespace Hopeless
                         {
                             Monster monster = (Monster)postac;
                             await Task.Delay(1000);
-                            if (effects.ContainsKey("Provoke"))
-                            {
-                                target = characters[0];
-                            }
-                            else
-                            {
-                                int i = new Random().Next(0, 4);
-                                target = characters[i];
-                            }
+                            do {
+                                if (effects.ContainsKey("Provoke") && !characters[0].IsDead())
+                                {
+                                    target = characters[0];
+                                }
+                                else
+                                {
+                                    int i = new Random().Next(0, 4);
+                                    target = characters[i];
+                                }
 
-
+                            } while (target.IsDead());
+                                int hp = target.CurrentHP;
+                        
                             monster.BasicAttack(target, out int dmg);
 
                             PlayBasicAttackSound();
-                            if (dmg != 0)
-                                logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + dmg + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
-                            else if (dmg == 0 && target is Rogue)
+                            if (target.CurrentHP != hp)
+                                logBattleBox.Text = postac.Name + " atakuje " + target.Name + " zadając:" + (hp - target.CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                            else if (target.CurrentHP == hp && target is Rogue)
                                 logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
                             else
                                 logBattleBox.Text = postac.Name + " atakuje " + target.Name + " lecz zablokowal" + Environment.NewLine + logBattleBox.Text;
@@ -717,13 +729,37 @@ namespace Hopeless
 
             if (expedition.Monsters.All(monster => monster.IsDead()))
             {
-                InitializeAfterFight();
                 PlayWinSound();
-                MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
+                if (expedition.Type == DifficultyType.Event)
+                {
+                    
+
+                    
+                    DialogResult result = MessageBox.Show("Pokonałeś Gauntera'O Dima, Niebywałe!!! Zamierzasz go dobić?","Podejmij Decyzje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                   
+                    if (result == DialogResult.Yes)
+                    {
+                            PlayEventKillSound();
+                           
+                    }else
+                    {
+                            eventChoice?.Invoke(this, EventArgs.Empty);
+                            PlayEventSaveSound();
+                          
+                     }
+                 
+                    
+                }
+               
+                InitializeAfterFight();
+
+                
+                MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 eventFirst?.Invoke(true, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
+                
 
             }
             if (characters.All(character => character.IsDead()))
@@ -870,7 +906,11 @@ namespace Hopeless
 
             startButton.Enabled = true;
             startButton.Visible = true;
-
+            if(expedition.Type==DifficultyType.Boss && eventResult)
+            {
+                PlayEventHelpSound();
+                MessageBox.Show("Gaunter O'Dim przyszedł się odwdzięczyć za wcześniej!", "Wyrównanie Rachunków", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
         }
 
         private void Enemy_Click(object? sender, EventArgs e)
@@ -1113,6 +1153,58 @@ namespace Hopeless
                 waveStream.Dispose();
             };
         }
+        private void PlayEventKillSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.killGaunterSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayEventSaveSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.saveGaunterSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayEventHelpSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.gaunterHelpSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+
         private void SkillMouseHover(object sender, EventArgs e)
         {
             Label label = sender as Label;

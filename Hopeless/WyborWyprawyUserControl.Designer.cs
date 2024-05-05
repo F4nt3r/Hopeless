@@ -77,9 +77,9 @@
             // bossExpeditions
             // 
             bossExpeditions.AllowDrop = true;
-            bossExpeditions.Location = new Point(281, 608);
+            bossExpeditions.Location = new Point(202, 610);
             bossExpeditions.Name = "bossExpeditions";
-            bossExpeditions.Size = new Size(406, 160);
+            bossExpeditions.Size = new Size(610, 160);
             bossExpeditions.TabIndex = 13;
             // 
             // powrotButton

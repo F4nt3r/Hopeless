@@ -11,6 +11,7 @@ namespace HopelessLibary
         Easy,
         Medium,
         Hard,
-        Boss
+        Boss,
+        Event
     }
 }

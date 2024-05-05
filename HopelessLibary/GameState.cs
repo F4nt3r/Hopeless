@@ -20,6 +20,8 @@ namespace HopelessLibary
         public List<Armor> shopArmors { get; set; }
         public List<Expedition> expeditions { get; set; }
         public int gold { get; set; }
+        public bool eventQuest {  get; set; }
+        public bool eventResult {  get; set; }
         // Dodaj inne pola, jeśli potrzebujesz
     }
 }

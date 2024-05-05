@@ -12,8 +12,9 @@ namespace Hopeless
         public List<IEkwipunek> pulaEkwipunku { get; set; }
         public Expedition selectedExpedition { get; set; }
         Dictionary<string, string> questDescriptions = new Dictionary<string, string>();
-
-
+        public event EventHandler eventQuestExist;
+        public bool eventQuest;
+        public bool eventResult;
         public WyborWyprawyUserControl()
         {
             InitializeComponent();
@@ -43,18 +44,18 @@ namespace Hopeless
         private void InitializeExpeditonsNames()
         {
 
-            questDescriptions.Add("Zadanie 1", "Opis zadania 1.");
-            questDescriptions.Add("Zadanie 2", "Opis zadania 2.");
-            questDescriptions.Add("Zadanie 3", "Opis zadania 3.");
-            questDescriptions.Add("Zadanie 4", "Opis zadania 4.");
-            questDescriptions.Add("Zadanie 5", "Opis zadania 5.");
-            questDescriptions.Add("Zadanie 6", "Opis zadania 6.");
-            questDescriptions.Add("Zadanie 7", "Opis zadania 7.");
-            questDescriptions.Add("Zadanie 8", "Opis zadania 8.");
-            questDescriptions.Add("Zadanie 9", "Opis zadania 9.");
-            questDescriptions.Add("Zadanie 10", "Opis zadania 10.");
-            questDescriptions.Add("Zadanie 11", "Opis zadania 11.");
-            questDescriptions.Add("Zadanie 12", "Opis zadania 12.");
+            questDescriptions.Add("Kanały Nowigradu", "Ależ tu śmierdzi... zwłokami??");
+            questDescriptions.Add("Opuszczony Magazyn", "Ponoć kiedys składowali tu Jabole");
+            questDescriptions.Add("Flecista z Hameln", "Wiesz gdzie możesz sobie wsadzić ten flet...?");
+            questDescriptions.Add("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn");
+            questDescriptions.Add("Oboz na Bagnach", "Nielegalna plantacja bagiennego ziela");
+            questDescriptions.Add("Bar na przedmieściach", "Pełny pijaków i ... Potworów?!");
+            questDescriptions.Add("Stary Cmentarz", "Ciekawe czy mają tu jeszcze jakieś wolne kwatery?");
+            questDescriptions.Add("Zamek Beshamuntir", "Na jego końcu ponoć czeka Smok");
+            questDescriptions.Add("Czerwony Las", "Ładnie tu, drzewa, pniaki, driady ... Ale czemu mają noże?");
+            questDescriptions.Add("Góra Hyjal", "Należy oczyścić okolice Drzewa Świata z tym potworów");
+            questDescriptions.Add("Czarna Brama", "Sauron!!! Wyłaź, wiem, że tam jesteś!");
+            questDescriptions.Add("Pustkowia Mojave", "Przed atomowką też byla tu pustynia, ale nie tak niebezpieczna");
         }
 
         private void InitializeExpeditions()
@@ -101,18 +102,21 @@ namespace Hopeless
                 string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
                 switch (expediton.Type)
                 {
+                    case DifficultyType.Event:
+                        label.BackColor = Color.Gold;
+                        break;
                     case DifficultyType.Easy:
-                        label.BackColor = Color.Green; // Dostosuj kolor do poziomu Rarity
+                        label.BackColor = Color.Green;
                         break;
                     case DifficultyType.Medium:
-                        label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                        label.BackColor = Color.Orange;
                         break;
                     case DifficultyType.Hard:
-                        label.BackColor = Color.Red; // Dostosuj kolor do poziomu Rarity
+                        label.BackColor = Color.Red;
                         label.ForeColor = Color.White;
                         break;
                     case DifficultyType.Boss:
-                        label.BackColor = Color.Black; // Dostosuj kolor do poziomu
+                        label.BackColor = Color.Black;
                         label.ForeColor = Color.White;
                         break;
                     default:
@@ -206,9 +210,31 @@ namespace Hopeless
 
 
                 expeditions.Remove(wyprawa);
+                Expedition newExpedition1;
+                if (wyprawa.Type != DifficultyType.Event)
+                {
+                    newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
+                    expeditions.Add(newExpedition1);
+                }
+              
+                if (new Random().Next(1, 100) > 1 && !eventQuest)
+                {
+                    List<Monster> wybrane = new List<Monster>();
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Gaunter o'Dim")));
+                    newExpedition1 = new Expedition("???", "???????????????????????????????", 300, DifficultyType.Event, wybrane, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                    expeditions.Add(newExpedition1);
+                    eventQuest = true;
+                    eventQuestExist?.Invoke(this, EventArgs.Empty);
+                }
 
-                Expedition newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
-                expeditions.Add(newExpedition1);
+
+
+
+
+
 
                 do
                 {
@@ -241,7 +267,7 @@ namespace Hopeless
                 {
                     if (expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
                     {
-                        newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                        newExpedition2 = new Expedition("Jaskinia Śniącego", "A wiec w koncu się spotykamy", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                         expeditions.Add(newExpedition2);
                     }
                 }
@@ -353,11 +379,21 @@ namespace Hopeless
             }
             else
             {
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnk Śniącego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
                 wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
-
+                
+                if (eventResult)
+                {
+                    foreach (var monster in wybrane)
+                    {
+                        if (monster.Name == "Strażnik Śniącego")
+                        {
+                            monster.CurrentHP = 1;
+                        }
+                    }
+                }
             }
 
             return wybrane;

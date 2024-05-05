@@ -23,7 +23,8 @@ namespace Hopeless
         public Rogue rogue;
         public Cleric cleric;
         public Joker joker;
-
+        public bool eventQuest;
+        public bool eventResult;
         public PrzygotowanieUserControl()
         {
             InitializeComponent();
@@ -441,6 +442,9 @@ namespace Hopeless
             gameState.shopArmors = shopArmors;
             gameState.expeditions = Expeditons;
             gameState.gold = gold;
+            gameState.eventQuest = eventQuest;
+            gameState.eventResult = eventResult;
+            gameState.gold = gold;  
             string json = JsonConvert.SerializeObject(gameState);
             File.WriteAllText("game_state.json", json);
         }
@@ -1473,6 +1477,7 @@ namespace Hopeless
 
         public void AfterExpedition(bool wynik, Expedition wyprawa)
         {
+            
             if (wynik)
             {
                 knight.GainExperience(wyprawa.ExperienceGains);
@@ -1480,11 +1485,7 @@ namespace Hopeless
                 cleric.GainExperience(wyprawa.ExperienceGains);
                 joker.GainExperience(wyprawa.ExperienceGains);
 
-                knight.CurrentHP = knight.MaxHP;
-                rogue.CurrentHP = rogue.MaxHP;
-                cleric.CurrentHP = cleric.MaxHP;
-                joker.CurrentHP = joker.MaxHP;
-
+          
                 gold += wyprawa.Gold;
                 foreach (Weapon weapon in wyprawa.WeaponRewards)
                 {
@@ -1498,6 +1499,7 @@ namespace Hopeless
             }
             else
             {
+                
                 equipedItems.Clear();
                 knight.Weapon = null; knight.UpdateStats();
                 knight.Armor = null; knight.UpdateStats();
@@ -1509,7 +1511,10 @@ namespace Hopeless
                 joker.Armor = null; joker.UpdateStats();
                 RefreshStats();
             }
-
+            knight.CurrentHP = knight.MaxHP;
+            rogue.CurrentHP = rogue.MaxHP;
+            cleric.CurrentHP = cleric.MaxHP;
+            joker.CurrentHP = joker.MaxHP;
         }
 
 
