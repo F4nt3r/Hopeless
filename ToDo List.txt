@@ -1,0 +1,27 @@
+to do list w projekcie:
+
+(zrobione)Logi walki,
+(zrobione)Wskaznik czyja tura jest aktualnie,
+(zrobione)wskaznik ktora to tura,
+(zrobione)okno aktywnych efektow,
+(zrobione)wydluzenie troche tur przeciwnikow,
+
+
+(zrobione)dodanie dzwiekow do poszczegolnych czynnosci(sprzedarz,zakup, zalozenie przedmiotu,uderzenie moba lub otrzymanie obrazen,dzwiek porazki i zwyciestwa)
+
+(zrobione)dodanie Clericowi stanu blogoslawienstwa,
+(zrobione)dodanie Jokerowi Szansy na podwojne uderzenie
+(zrobione)implementacja Level Upa, zeby cos robil,
+balans skilli i wrogow,
+
+
+(zrobione)ostrzezenie przed zaczeciem nowej gry jezeli isnieje zapis ktory mozna kontynuowac.
+
+(zrobione)jakis Easter egg (mam pomysl skoro dales tego Gauntera to niech bedzie szansa ze wylosuje sie quest z nim w losowym momencie i to on bedzie tym mobe ktorego mozesz zabic lub oszczedzic),
+
+(zrobione)Zadecydowac czy zabicie bossa to koniec gry czy nie.
+(zrobione)Dodac opisy do skilli
+(zrobione)poprawic Logi
+
+(czesciowo)Dodanie zdjec bohaterom i potworom,
+Sortowanie ekwipunko pod daną klase
