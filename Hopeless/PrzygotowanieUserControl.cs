@@ -1389,6 +1389,7 @@ namespace Hopeless
                 gold -= 25;
                 RefreshInventory();
                 GenerateShop();
+                PlayRollShopSound();
             }
         }
 
@@ -1518,6 +1519,7 @@ namespace Hopeless
             DialogResult result = MessageBox.Show("Czy aby napewno chcesz stad uciec?", "Straciłeś Nadzieje?", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                SaveGameState();
                 Application.Exit();
             }
         }
@@ -1559,6 +1561,23 @@ namespace Hopeless
         private void PlayEquipArmorSound()
         {
             Stream equipWeaponStream = Properties.Resources.equipArmor;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOut out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        private void PlayRollShopSound()
+        {
+            Stream equipWeaponStream = Properties.Resources.rollSound;
             MemoryStream memoryStream = new MemoryStream();
             equipWeaponStream.CopyTo(memoryStream);
             memoryStream.Position = 0;

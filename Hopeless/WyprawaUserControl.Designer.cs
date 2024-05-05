@@ -98,6 +98,7 @@
             // jokerName
             // 
             jokerName.AutoSize = true;
+            jokerName.BackColor = Color.LightGray;
             jokerName.Location = new Point(27, 400);
             jokerName.Name = "jokerName";
             jokerName.Size = new Size(36, 15);
@@ -107,6 +108,7 @@
             // clericName
             // 
             clericName.AutoSize = true;
+            clericName.BackColor = Color.LightGray;
             clericName.Location = new Point(183, 400);
             clericName.Name = "clericName";
             clericName.Size = new Size(36, 15);
@@ -116,6 +118,7 @@
             // rogueName
             // 
             rogueName.AutoSize = true;
+            rogueName.BackColor = Color.LightGray;
             rogueName.Location = new Point(338, 400);
             rogueName.Name = "rogueName";
             rogueName.Size = new Size(36, 15);
@@ -125,6 +128,7 @@
             // knightName
             // 
             knightName.AutoSize = true;
+            knightName.BackColor = Color.LightGray;
             knightName.Location = new Point(495, 400);
             knightName.Name = "knightName";
             knightName.Size = new Size(36, 15);
@@ -134,6 +138,7 @@
             // enemy1Name
             // 
             enemy1Name.AutoSize = true;
+            enemy1Name.BackColor = Color.LightGray;
             enemy1Name.Location = new Point(777, 400);
             enemy1Name.Name = "enemy1Name";
             enemy1Name.Size = new Size(36, 15);
@@ -143,6 +148,7 @@
             // enemy2Name
             // 
             enemy2Name.AutoSize = true;
+            enemy2Name.BackColor = Color.LightGray;
             enemy2Name.Location = new Point(933, 400);
             enemy2Name.Name = "enemy2Name";
             enemy2Name.Size = new Size(36, 15);
@@ -152,6 +158,7 @@
             // enemy3Name
             // 
             enemy3Name.AutoSize = true;
+            enemy3Name.BackColor = Color.LightGray;
             enemy3Name.Location = new Point(1089, 400);
             enemy3Name.Name = "enemy3Name";
             enemy3Name.Size = new Size(36, 15);
@@ -161,6 +168,7 @@
             // enemy4Name
             // 
             enemy4Name.AutoSize = true;
+            enemy4Name.BackColor = Color.LightGray;
             enemy4Name.Location = new Point(1247, 400);
             enemy4Name.Name = "enemy4Name";
             enemy4Name.Size = new Size(36, 15);

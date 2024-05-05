@@ -55,8 +55,9 @@ namespace Hopeless
                     playerActionTaken = false;
                     if (postac is Knight && !postac.IsDead())
                     {
-
+                        knightName.BackColor = Color.Cyan;
                         Knight knight = (Knight)postac;
+
                         if (cooldowns.ContainsKey("Provoke"))
                         {
                             cooldowns.TryGetValue("Provoke", out int tury);
@@ -75,6 +76,12 @@ namespace Hopeless
                         {
                             skill2Label.Text = "Purify";
                         }
+
+                        skill1Label.AccessibleDescription = "Sprawia, że wszyscy wrogowie skupiają się na postaci Knight" + Environment.NewLine + "Cooldown: 4 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
+                        skill2Label.AccessibleDescription = "Uderzasz wszystkich wrogów mocą Swiatła" + Environment.NewLine + "Cooldown: 2 tury" + Environment.NewLine + "DMG: " + knight.Intelligence + "-" + (knight.Intelligence + 2);
+                        basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + knight.MinDmg + "-" + knight.MaxDmg;
+
+
                         EventHandler handlerBassicAttack = (s, e) =>
                         {
                             if (target != null)
@@ -154,14 +161,18 @@ namespace Hopeless
                         skill1Label.Click -= handlerProvoke;
                         skill2Label.Click -= handlerPurify;
                         basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.AccessibleDescription = "";
+                        skill2Label.AccessibleDescription = "";
+                        basicAttackLabel.AccessibleDescription = "";
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-
+                        knightName.BackColor = Color.LightGray;
 
                     }
                     else if (postac is Rogue && !postac.IsDead())
                     {
                         Rogue rogue = (Rogue)postac;
+                        rogueName.BackColor = Color.Cyan;
                         if (cooldowns.ContainsKey("Ambush"))
                         {
                             cooldowns.TryGetValue("Ambush", out int tury);
@@ -180,6 +191,12 @@ namespace Hopeless
                         {
                             skill2Label.Text = "CritAndDodgeBuff";
                         }
+                        skill1Label.AccessibleDescription = "Uderzasz wybranego wroga w plecy" + Environment.NewLine + "Cooldown: 2 tury" + Environment.NewLine + "DMG: " + rogue.Dexterity + "-" + (rogue.Dexterity + 5);
+                        skill2Label.AccessibleDescription = "Sprawia, że nastepny atak Rogue bedzie krytyczny oraz uniknie ataków na czas trwania efektu" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
+
+                        basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + rogue.MinDmg + "-" + rogue.MaxDmg;
+
+
                         EventHandler handlerBassicAttack = (s, e) =>
                         {
                             if (target != null)
@@ -266,14 +283,18 @@ namespace Hopeless
                         skill1Label.Click -= handlerAmbush;
                         skill2Label.Click -= handlerCritAndDodgeBuff;
                         basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.AccessibleDescription = "";
+                        skill2Label.AccessibleDescription = "";
+                        basicAttackLabel.AccessibleDescription = "";
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-
+                        rogueName.BackColor = Color.LightGray;
 
                     }
                     else if (postac is Cleric && !postac.IsDead())
                     {
                         Cleric cleric = (Cleric)postac;
+                        clericName.BackColor = Color.Cyan;
                         if (cooldowns.ContainsKey("Heal"))
                         {
                             cooldowns.TryGetValue("Heal", out int tury);
@@ -292,6 +313,12 @@ namespace Hopeless
                         {
                             skill2Label.Text = "AoeHeal";
                         }
+
+                        skill1Label.AccessibleDescription = "Leczysz wybranego sojusznika mocą Swiatła, istnieje szansa że Cleric wyleczy również siebie" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 5);
+                        skill2Label.AccessibleDescription = "Leczysz wszystkich sojuszników mocą Swiatła" + Environment.NewLine + "Cooldown: 3 tury" + Environment.NewLine + "heal: " + cleric.Intelligence + "-" + (cleric.Intelligence + 2);
+                        basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + cleric.MinDmg + "-" + cleric.MaxDmg;
+
+
                         EventHandler handlerBassicAttack = (s, e) =>
                         {
                             if (target != null)
@@ -371,13 +398,17 @@ namespace Hopeless
                         skill1Label.Click -= handlerHeal;
                         skill2Label.Click -= handlerAoeHeal;
                         basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.AccessibleDescription = "";
+                        skill2Label.AccessibleDescription = "";
+                        basicAttackLabel.AccessibleDescription = "";
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-
+                        clericName.BackColor = Color.LightGray;
                     }
                     else if (postac is Joker && !postac.IsDead())
                     {
                         Joker joker = (Joker)postac;
+                        jokerName.BackColor = Color.Cyan;
                         if (cooldowns.ContainsKey("AoeBuff"))
                         {
                             cooldowns.TryGetValue("AoeBuff", out int tury);
@@ -396,6 +427,12 @@ namespace Hopeless
                         {
                             skill2Label.Text = "AoeDeBuff";
                         }
+
+                        skill1Label.AccessibleDescription = "Błogosławisz wszystkich sojusznikow zwiększając ich DMG" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "Czas Trwania: 3 tury";
+                        skill2Label.AccessibleDescription = "Przeklinasz wszystkich wrogów zmniejszajac ich Odporność" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "Czas Trwania: 3 tury";
+                        basicAttackLabel.AccessibleDescription = "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + joker.MinDmg + "-" + joker.MaxDmg;
+
+
                         EventHandler handlerBassicAttack = (s, e) =>
                         {
                             if (target != null)
@@ -491,9 +528,12 @@ namespace Hopeless
                         skill1Label.Click -= handlerAoeBuff;
                         skill2Label.Click -= handlerAoeDeBuff;
                         basicAttackLabel.Click -= handlerBassicAttack;
+                        skill1Label.AccessibleDescription = "";
+                        skill2Label.AccessibleDescription = "";
+                        basicAttackLabel.AccessibleDescription = "";
                         skill1Label.Enabled = true;
                         skill2Label.Enabled = true;
-
+                        jokerName.BackColor = Color.LightGray;
                     }
                     else
                     {
@@ -743,12 +783,15 @@ namespace Hopeless
             basicAttackLabel.Text = "Atak Bazowy";
             skill1Label.Text = "";
             skill2Label.Text = "";
+            skill1Label.MouseHover += SkillMouseHover;
+            skill2Label.MouseHover += SkillMouseHover;
+            basicAttackLabel.MouseHover += SkillMouseHover;
 
             knightName.Text = characters[0].Name;
             knightPicture.Enabled = true;
             knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
             knightHealth.Maximum = characters[0].MaxHP;
-            knightHealth.Value = characters[0].CurrentHP;         
+            knightHealth.Value = characters[0].CurrentHP;
             knightPicture.Click += Enemy_Click;
 
             knightPicture.Image = Properties.Resources.knightPicture;
@@ -757,7 +800,7 @@ namespace Hopeless
             roguePicture.Enabled = true;
             rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
             rogueHealth.Maximum = characters[1].MaxHP;
-            rogueHealth.Value = characters[1].CurrentHP;          
+            rogueHealth.Value = characters[1].CurrentHP;
             roguePicture.Click += Enemy_Click;
 
             roguePicture.Image = Properties.Resources.roguePicture;
@@ -766,7 +809,7 @@ namespace Hopeless
             clericPicture.Enabled = true;
             clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
             clericHealth.Maximum = characters[2].MaxHP;
-            clericHealth.Value = characters[2].CurrentHP;            
+            clericHealth.Value = characters[2].CurrentHP;
             clericPicture.Click += Enemy_Click;
 
             clericPicture.Image = Properties.Resources.clericPicture;
@@ -775,7 +818,7 @@ namespace Hopeless
             jokerPicture.Enabled = true;
             jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
             jokerHealth.Maximum = characters[3].MaxHP;
-            jokerHealth.Value = characters[3].CurrentHP;          
+            jokerHealth.Value = characters[3].CurrentHP;
             jokerPicture.Click += Enemy_Click;
             jokerPicture.Image = Properties.Resources.jokerPicture;
 
@@ -1069,6 +1112,15 @@ namespace Hopeless
             {
                 waveStream.Dispose();
             };
+        }
+        private void SkillMouseHover(object sender, EventArgs e)
+        {
+            Label label = sender as Label;
+            if (label.AccessibleDescription != "  ")
+            {
+                toolTip.SetToolTip(label, label.AccessibleDescription);
+            }
+
         }
     }
 }
