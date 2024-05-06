@@ -865,8 +865,8 @@ namespace Hopeless
             enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
             enemy1Health.Value = expedition.Monsters[0].CurrentHP;
             enemy1Picture.Click += Enemy_Click;
-            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[0].Name);
-            //knightPicture.Image = image;
+
+            enemy1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[0].Name);
 
             enemy2Name.Text = expedition.Monsters[1].Name;
             enemy2Picture.Enabled = true;
@@ -874,8 +874,8 @@ namespace Hopeless
             enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
             enemy2Health.Value = expedition.Monsters[1].CurrentHP;
             enemy2Picture.Click += Enemy_Click;
-            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[1].Name;);
-            //knightPicture.Image = image;
+ 
+            enemy2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[1].Name);
 
             enemy3Name.Text = expedition.Monsters[2].Name;
             enemy3Picture.Enabled = true;
@@ -883,8 +883,8 @@ namespace Hopeless
             enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
             enemy3Health.Value = expedition.Monsters[2].CurrentHP;
             enemy3Picture.Click += Enemy_Click;
-            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[2].Name);
-            //knightPicture.Image = image;
+      
+            enemy3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[2].Name);
 
             enemy4Name.Text = expedition.Monsters[3].Name;
             enemy4Picture.Enabled = true;
@@ -892,8 +892,8 @@ namespace Hopeless
             enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
             enemy4Health.Value = expedition.Monsters[3].CurrentHP;
             enemy4Picture.Click += Enemy_Click;
-            //Image image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[3].Name;);
-            //knightPicture.Image = image;
+       
+            enemy4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[3].Name);
 
 
 

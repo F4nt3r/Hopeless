@@ -232,10 +232,10 @@ namespace Hopeless
                 if (new Random().Next(1, 100) > 1 && !eventQuest)
                 {
                     List<Monster> wybrane = new List<Monster>();
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Gaunter o'Dim")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
+                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Gaunter_oDim")));
                     newExpedition1 = new Expedition("???", "???????????????????????????????", 300, DifficultyType.Event, wybrane, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                     expeditions.Add(newExpedition1);
                     eventQuest = true;
@@ -279,7 +279,7 @@ namespace Hopeless
                 {
                     if (expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
                     {
-                        newExpedition2 = new Expedition("Jaskinia Śniącego", "A wiec w koncu się spotykamy", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                        newExpedition2 = new Expedition("Jaskinia Sniacego", "A wiec w koncu się spotykamy", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                         expeditions.Add(newExpedition2);
                     }
                 }
@@ -393,16 +393,16 @@ namespace Hopeless
             }
             else
             {
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Strażnik Śniącego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Śniący")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
+                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Sniacy")));
 
                 if (eventResult)
                 {
                     foreach (var monster in wybrane)
                     {
-                        if (monster.Name == "Strażnik Śniącego")
+                        if (monster.Name == "Straznik_Sniacego")
                         {
                             monster.CurrentHP = 1;
                         }
