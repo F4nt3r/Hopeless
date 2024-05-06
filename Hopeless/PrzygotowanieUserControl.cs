@@ -30,9 +30,9 @@ namespace Hopeless
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
             knightPicture.Image = Properties.Resources.knightPicture;
-            roguePicture.Image= Properties.Resources.roguePicture;
-            clericPicture.Image= Properties.Resources.clericPicture;
-            jokerPicture.Image= Properties.Resources.jokerPicture;
+            roguePicture.Image = Properties.Resources.roguePicture;
+            clericPicture.Image = Properties.Resources.clericPicture;
+            jokerPicture.Image = Properties.Resources.jokerPicture;
             InitializeCharactersDragDrop();
 
             this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
@@ -444,7 +444,7 @@ namespace Hopeless
             gameState.gold = gold;
             gameState.eventQuest = eventQuest;
             gameState.eventResult = eventResult;
-            gameState.gold = gold;  
+            gameState.gold = gold;
             string json = JsonConvert.SerializeObject(gameState);
             File.WriteAllText("game_state.json", json);
         }
@@ -1286,6 +1286,39 @@ namespace Hopeless
         }
 
 
+        //Sortowanie Ekwipunku
+
+        private void SortAll_Click(object sender, EventArgs e)
+        {
+            Ekwipunek = Ekwipunek.OrderBy(item => item.Wypisz()).ToList();
+            RefreshInventory();
+        }
+
+        private void SortKnight_Click(object sender, EventArgs e)
+        {
+            Ekwipunek = SortByAllowedCharacters(CharacterType.Knight);
+            RefreshInventory();
+        }
+
+        private void SortRogue_Click(object sender, EventArgs e)
+        {
+            Ekwipunek = SortByAllowedCharacters(CharacterType.Rogue);
+            RefreshInventory();
+        }
+
+
+        private void SortCleric_Click(object sender, EventArgs e)
+        {
+            Ekwipunek = SortByAllowedCharacters(CharacterType.Cleric);
+            RefreshInventory();
+        }
+
+        private void SortJoker_Click(object sender, EventArgs e)
+        {
+            Ekwipunek = SortByAllowedCharacters(CharacterType.Joker);
+            RefreshInventory();
+        }
+
 
         //Sklep generowanie towaru itp
         public void GenerateShop()
@@ -1477,7 +1510,7 @@ namespace Hopeless
 
         public void AfterExpedition(bool wynik, Expedition wyprawa)
         {
-            
+
             if (wynik)
             {
                 knight.GainExperience(wyprawa.ExperienceGains);
@@ -1485,7 +1518,7 @@ namespace Hopeless
                 cleric.GainExperience(wyprawa.ExperienceGains);
                 joker.GainExperience(wyprawa.ExperienceGains);
 
-          
+
                 gold += wyprawa.Gold;
                 foreach (Weapon weapon in wyprawa.WeaponRewards)
                 {
@@ -1499,7 +1532,7 @@ namespace Hopeless
             }
             else
             {
-                
+
                 equipedItems.Clear();
                 knight.Weapon = null; knight.UpdateStats();
                 knight.Armor = null; knight.UpdateStats();
@@ -1597,5 +1630,24 @@ namespace Hopeless
                 waveStream.Dispose();
             };
         }
+
+
+        private List<IEkwipunek> SortByAllowedCharacters(CharacterType characterType)
+        {
+            return Ekwipunek.OrderByDescending(item =>
+            {
+                if (item is Weapon weapon)
+                {
+                    return weapon.AllowedCharacters.Contains(characterType) ? 1 : 0;
+                }
+                else if (item is Armor armor)
+                {
+                    return armor.AllowedCharacters.Contains(characterType) ? 1 : 0;
+                }
+                return -1;
+            }).ToList();
+        }
+
+        
     }
 }

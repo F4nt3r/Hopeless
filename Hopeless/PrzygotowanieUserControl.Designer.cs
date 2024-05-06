@@ -116,6 +116,11 @@
             Shop = new FlowLayoutPanel();
             Roll = new Button();
             exitButton = new Button();
+            SortKnight = new Button();
+            SortRogue = new Button();
+            SortCleric = new Button();
+            SortJoker = new Button();
+            SortAll = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
@@ -1027,10 +1032,65 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
+            // SortKnight
+            // 
+            SortKnight.Location = new Point(125, 549);
+            SortKnight.Name = "SortKnight";
+            SortKnight.Size = new Size(63, 23);
+            SortKnight.TabIndex = 28;
+            SortKnight.Text = "Knight";
+            SortKnight.UseVisualStyleBackColor = true;
+            SortKnight.Click += SortKnight_Click;
+            // 
+            // SortRogue
+            // 
+            SortRogue.Location = new Point(197, 549);
+            SortRogue.Name = "SortRogue";
+            SortRogue.Size = new Size(63, 23);
+            SortRogue.TabIndex = 29;
+            SortRogue.Text = "Rogue";
+            SortRogue.UseVisualStyleBackColor = true;
+            SortRogue.Click += SortRogue_Click;
+            // 
+            // SortCleric
+            // 
+            SortCleric.Location = new Point(266, 549);
+            SortCleric.Name = "SortCleric";
+            SortCleric.Size = new Size(63, 23);
+            SortCleric.TabIndex = 30;
+            SortCleric.Text = "Cleric";
+            SortCleric.UseVisualStyleBackColor = true;
+            SortCleric.Click += SortCleric_Click;
+            // 
+            // SortJoker
+            // 
+            SortJoker.Location = new Point(339, 549);
+            SortJoker.Name = "SortJoker";
+            SortJoker.Size = new Size(63, 23);
+            SortJoker.TabIndex = 31;
+            SortJoker.Text = "Joker";
+            SortJoker.UseVisualStyleBackColor = true;
+            SortJoker.Click += SortJoker_Click;
+            // 
+            // SortAll
+            // 
+            SortAll.Location = new Point(56, 549);
+            SortAll.Name = "SortAll";
+            SortAll.Size = new Size(63, 23);
+            SortAll.TabIndex = 32;
+            SortAll.Text = "All";
+            SortAll.UseVisualStyleBackColor = true;
+            SortAll.Click += SortAll_Click;
+            // 
             // PrzygotowanieUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(SortAll);
+            Controls.Add(SortJoker);
+            Controls.Add(SortCleric);
+            Controls.Add(SortRogue);
+            Controls.Add(SortKnight);
             Controls.Add(exitButton);
             Controls.Add(Roll);
             Controls.Add(Shop);
@@ -1166,5 +1226,10 @@
         private Label label2;
         private Label label1;
         private Label label4;
+        private Button SortKnight;
+        private Button SortRogue;
+        private Button SortCleric;
+        private Button SortJoker;
+        private Button SortAll;
     }
 }
