@@ -93,48 +93,51 @@ namespace Hopeless
 
             // Inicjalizacja Potworów
 
-            Monster rat = new Monster("Szczur",20,20,20,10,10,20,2,4,33,DifficultyType.Easy);        
-            Monster webber = new Monster("Pajak",20,15,15,10,10,30,2,4,30,DifficultyType.Easy);  
-            Monster webberSpitter = new Monster("Pajak Trujacy",25,25,25,15,10,35,5,7,35, DifficultyType.Easy);         
-            Monster brigandTrainee = new Monster("Poczatkujacy Bandyta", 25, 20, 20, 15, 10, 10, 3, 5, 15, DifficultyType.Easy);
+            Monster maggot = new Monster("Robal", 20,20,20,10,10,20,5,8,33,DifficultyType.Easy);        
+            Monster webber = new Monster("Pajak",20,15,15,10,10,30,4,7,30,DifficultyType.Easy);  
+            Monster webberSpitter = new Monster("Pajak_Trujacy",25,25,25,15,10,35,6,8,35, DifficultyType.Easy);         
+            Monster brigandTrainee = new Monster("Poczatkujacy_Bandyta", 25, 20, 20, 15, 10, 10, 6, 9, 15, DifficultyType.Easy);
             Monster brigand = new Monster("Bandyta", 30, 25, 25, 20, 15, 15, 6, 9, 15, DifficultyType.Easy);
             Monster floutist = new Monster("Flecista",30,30,30,25,20,19,5,10,20, DifficultyType.Easy);
-            Monster goblin = new Monster("Goblin", 20, 25, 25, 10, 15, 25, 3, 6, 30, DifficultyType.Easy);
-            Monster scierwojad = new Monster("Scierwojad", 15, 15, 15, 10, 10, 10, 2, 3, 25, DifficultyType.Easy);
-            Monster nekker = new Monster("Nekker", 15, 10, 10, 10, 10, 25, 4, 5, 30, DifficultyType.Easy);
-            Monster bear = new Monster("Niedzwiedz", 10, 20, 20, 15, 15, 10, 5, 6, 10, DifficultyType.Easy);
+            Monster pijawka = new Monster("Pijawka", 20, 25, 25, 10, 15, 25, 5, 8, 30, DifficultyType.Easy);
+            Monster voider = new Monster("Otchlaniec", 15, 15, 15, 10, 10, 10, 6, 10, 25, DifficultyType.Easy);
+            Monster tentacles = new Monster("Macki_Otchlani", 15, 10, 10, 10, 10, 25, 6, 8, 30, DifficultyType.Easy);
+            Monster wildDog = new Monster("Dziki_Pies", 10, 20, 20, 15, 15, 10, 5, 8, 10, DifficultyType.Easy);
 
 
-            Monster kretoszczur = new Monster("Kretoszczur", 20, 20, 20, 10, 10, 20, 2, 4, 33, DifficultyType.Medium);
-            Monster gargoyle = new Monster("Gargulec", 45, 40, 40, 15, 15, 10, 7, 10, 25, DifficultyType.Medium);
-            Monster boneSoldier = new Monster("Szkielet Wojownik", 45, 30, 30, 10, 15, 15, 5, 11, 10, DifficultyType.Medium);
-            Monster boneArbalest = new Monster("Szkielet Kusznik", 40, 25, 25, 10, 20, 15, 6, 9, 10, DifficultyType.Medium);
-            Monster ghoul = new Monster("Ghoul", 45, 35, 35, 25, 15, 10, 8, 12, 20, DifficultyType.Medium);
-            Monster rattler = new Monster("Grzechotnik", 40, 30, 30, 10, 25, 40, 5, 9, 45, DifficultyType.Medium);
-            Monster pelzacz = new Monster("Pelzacz", 45, 35, 35, 15, 15, 10, 7, 10, 15, DifficultyType.Medium);
-            Monster orkwarrior = new Monster("Ork Wojownik", 40, 35, 35, 15, 20, 10, 8, 10, 20, DifficultyType.Medium);
-            Monster pokutnik = new Monster("Pokutnik", 35, 40, 40, 15, 15, 15, 7, 9, 15, DifficultyType.Medium);
-            Monster arachas = new Monster("Krabopajak", 40, 55, 55, 35, 10, 10, 6, 7, 10, DifficultyType.Medium);
+            Monster boneShielder = new Monster("Szkielet_Tarczownik", 20, 30, 30, 10, 10, 20, 9, 13, 33, DifficultyType.Medium);
+            Monster gargoyle = new Monster("Gargulec", 45, 40, 40, 15, 15, 10, 7, 13, 25, DifficultyType.Medium);
+            Monster boneSoldier = new Monster("Szkielet_Wojownik", 45, 30, 30, 10, 15, 15, 9, 13, 10, DifficultyType.Medium);
+            Monster boneArbalest = new Monster("Szkielet_Kusznik", 40, 25, 25, 10, 20, 15, 10, 12, 10, DifficultyType.Medium);
+            Monster ghoul = new Monster("Ghoul", 45, 35, 35, 25, 15, 10, 10, 15, 20, DifficultyType.Medium);
+            Monster rattler = new Monster("Grzechotnik", 40, 30, 30, 10, 25, 40, 10, 14, 45, DifficultyType.Medium);
+            Monster pelzacz = new Monster("Pelzacz", 45, 35, 35, 15, 15, 10, 9, 13, 15, DifficultyType.Medium);
+            Monster orkwarrior = new Monster("Ork_Wojownik", 40, 35, 35, 15, 20, 10, 11, 15, 20, DifficultyType.Medium);
+            Monster pokutnik = new Monster("Pokutnik", 35, 40, 40, 15, 15, 15, 8, 16, 15, DifficultyType.Medium);
+            Monster arachas = new Monster("Kultysta", 40, 55, 55, 35, 10, 10, 10, 17, 10, DifficultyType.Medium);
 
-            Monster giant = new Monster("Gigant", 75, 55, 55, 30, 20, 10, 12, 16, 5, DifficultyType.Hard);
-            Monster golem = new Monster("Golem", 75, 50, 50, 40, 15, 10, 10, 13, 5, DifficultyType.Hard);
-            Monster dragon = new Monster("Smok", 80, 60, 60, 20, 15, 20, 11, 16, 20, DifficultyType.Hard);
-            Monster darkKnight = new Monster("Mroczny Rycerz", 75, 55, 55, 15, 15, 15, 9, 14, 10, DifficultyType.Hard);
-            Monster przeraza = new Monster("Przeraza", 70, 55, 55, 25, 15, 15, 10, 16, 10, DifficultyType.Hard);
-            Monster vampire = new Monster("Wampir Wyzszy", 50, 45, 45, 30, 10, 15, 11, 15, 20, DifficultyType.Hard);
+            Monster giant = new Monster("Gigant", 75, 55, 55, 30, 20, 10, 15, 20, 5, DifficultyType.Hard);
 
-            Monster sleeper = new Monster("Œni¹cy",100,300,300,50,15,50,18,25,15, DifficultyType.Boss);
-            Monster sleeperGuard = new Monster("Stra¿nik Œni¹cego",100,150,150,40,15,40,12,17,10,DifficultyType.Boss);
-            Monster gaunter = new Monster("Gaunter o'Dim", 100, 2, 2, 50, 20, 50, 17, 22, 15, DifficultyType.Event);
-            Monster mirage = new Monster("Odbicie Lustrzane",100,2,2,40,20,40,14,19,15, DifficultyType.Event);
+            Monster armata = new Monster("Armata", 75, 55, 55, 40, 15, 10, 16, 25, 5, DifficultyType.Hard);
 
-            List<Monster> monsters = new List<Monster> { gaunter, mirage, sleeperGuard, arachas,vampire, bear, pokutnik, nekker, orkwarrior, przeraza, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, golem, darkKnight, dragon, giant, ghoul, rat, webber, webberSpitter, brigandTrainee, brigand, floutist, kretoszczur };
+            Monster ghost = new Monster("Widmo", 80, 50, 50, 20, 15, 20, 20, 26, 30, DifficultyType.Hard);
+
+            Monster bigCrab = new Monster("Wielki_Krab", 75, 55, 55, 15, 15, 15, 20, 25, 10, DifficultyType.Hard);
+            Monster Leszy = new Monster("Leszy", 70, 55, 55, 25, 15, 15, 19, 24, 10, DifficultyType.Hard);
+            Monster vampire = new Monster("Wampir_Wyzszy", 50, 45, 45, 30, 10, 15, 22, 26, 20, DifficultyType.Hard);
+
+            Monster sleeper = new Monster("Sniacy", 100,200,200,35,15,50,30,38,15, DifficultyType.Boss);
+            Monster sleeperGuard = new Monster("Straznik_Sniacego",100,150,150,35,15,40,13,20,10,DifficultyType.Boss);
+            Monster gaunter = new Monster("Gaunter_oDim", 100, 2, 2, 40, 20, 50, 25, 29, 15, DifficultyType.Event);
+            Monster mirage = new Monster("Odbicie_Lustrzane",100,2,2,40,20,30,18,24,15, DifficultyType.Event);
+
+            List<Monster> monsters = new List<Monster> { gaunter, mirage, sleeperGuard, arachas,vampire, wildDog, pokutnik, tentacles, orkwarrior, Leszy, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, pelzacz, armata, bigCrab, ghost, giant, ghoul, maggot, webber, webberSpitter, brigandTrainee, brigand, floutist, boneShielder };
             wyborWyprawyUserControl.monsters = monsters;
             // Inicjalizacja Wypraw
 
-            Expedition expedition1 = new Expedition("Kana³y Nowigradu", "Ale¿ tu œmierdzi... zw³okami??", 50,DifficultyType.Easy,new List<Monster> { new Monster(rat), new Monster(rat), new Monster(rat), new Monster(rat) },30,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
-            Expedition expedition2 = new Expedition("Opuszczony Magazyn", "Ponoæ kiedys sk³adowali tu Jabole", 50, DifficultyType.Easy, new List<Monster> { new Monster(rat), new Monster(rat), new Monster(webber), new Monster(webber) }, 30, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
-            Expedition expedition3 = new Expedition("Flecista z Hameln", "Wiesz gdzie mo¿esz sobie wsadziæ ten flet...?", 50, DifficultyType.Easy, new List<Monster> { new Monster(rat), new Monster(rat), new Monster(rat), new Monster(floutist) }, 30, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expedition expedition1 = new Expedition("Kana³y Nowigradu", "Ale¿ tu œmierdzi... zw³okami??", 50,DifficultyType.Easy,new List<Monster> { new Monster(maggot), new Monster(maggot), new Monster(maggot), new Monster(maggot) },30,new List<Weapon> { greatsword },new List<Armor> { mediumweightarmour });
+            Expedition expedition2 = new Expedition("Opuszczony Magazyn", "Ponoæ kiedys sk³adowali tu Jabole", 50, DifficultyType.Easy, new List<Monster> { new Monster(maggot), new Monster(maggot), new Monster(webber), new Monster(webber) }, 30, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
+            Expedition expedition3 = new Expedition("Flecista z Hameln", "Wiesz gdzie mo¿esz sobie wsadziæ ten flet...?", 50, DifficultyType.Easy, new List<Monster> { new Monster(maggot), new Monster(maggot), new Monster(maggot), new Monster(floutist) }, 30, new List<Weapon> { greatsword }, new List<Armor> { mediumweightarmour });
             Expedition expedition4 = new Expedition("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn", 50, DifficultyType.Easy, new List<Monster> { new Monster(webber),new Monster(webber), new Monster(webberSpitter), new Monster(webberSpitter) }, 30, new List<Weapon> { glaive }, new List<Armor> {  });
             Expedition expedition5 = new Expedition("Oboz na Bagnach", "Nielegalna plantacja bagiennego ziela", 50, DifficultyType.Easy, new List<Monster> { new Monster(brigandTrainee), new Monster(brigandTrainee), new Monster(brigandTrainee), new Monster(brigand) }, 30, new List<Weapon> { dagger }, new List<Armor> { leatherarmor });
             List<Expedition> expeditons = new List<Expedition> { expedition1, expedition2, expedition3, expedition4, expedition5 };
