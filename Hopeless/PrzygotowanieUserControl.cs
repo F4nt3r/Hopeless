@@ -384,68 +384,22 @@ namespace Hopeless
         {
 
             GameState gameState = new GameState();
-            gameState.rogue = rogue;
-            gameState.knight = knight;
-            gameState.cleric = cleric;
-            gameState.joker = joker;
+            gameState.chararacters = Characters;
 
-            List<Weapon> weapons = new List<Weapon>();
-            List<Weapon> equippedWeapons = new List<Weapon>();
-            List<Weapon> shopWeapons = new List<Weapon>();
-            List<Armor> armors = new List<Armor>();
-            List<Armor> equippedArmors = new List<Armor>();
-            List<Armor> shopArmors = new List<Armor>();
 
-            foreach (IEkwipunek item in Ekwipunek)
-            {
-                if (item is Weapon)
-                {
-                    weapons.Add((Weapon)item);
-                }
-                else
-                {
-                    armors.Add((Armor)item);
-
-                }
-            }
-
-            foreach (IEkwipunek item in equipedItems)
-            {
-                if (item is Weapon)
-                {
-                    equippedWeapons.Add((Weapon)item);
-                }
-                else
-                {
-                    equippedArmors.Add((Armor)item);
-
-                }
-            }
-
-            foreach (IEkwipunek item in shopItems)
-            {
-                if (item is Weapon)
-                {
-                    shopWeapons.Add((Weapon)item);
-                }
-                else
-                {
-                    shopArmors.Add((Armor)item);
-
-                }
-            }
-            gameState.armors = armors;
-            gameState.weapons = weapons;
-            gameState.equippedWeapons = equippedWeapons;
-            gameState.equippedArmors = equippedArmors;
-            gameState.shopWeapons = shopWeapons;
-            gameState.shopArmors = shopArmors;
+       
+            gameState.Ekwipunek = Ekwipunek;
+            gameState.Shop = shopItems;
+            gameState.Equiped = equipedItems;
             gameState.expeditions = Expeditons;
             gameState.gold = gold;
             gameState.eventQuest = eventQuest;
             gameState.eventResult = eventResult;
             gameState.gold = gold;
-            string json = JsonConvert.SerializeObject(gameState);
+            string json = JsonConvert.SerializeObject(gameState, Formatting.Indented, new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
             File.WriteAllText("game_state.json", json);
         }
 

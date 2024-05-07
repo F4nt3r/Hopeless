@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
+    [Serializable]
     public class Joker : Character
     {
 
@@ -17,9 +18,7 @@ namespace HopelessLibary
             DoubleAtackChance = doubleAtackChance;
         }
 
-
-
-
+     
 
         public override void BasicAttack<T>(T target, out int dmg) 
         {

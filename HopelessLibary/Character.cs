@@ -2,7 +2,7 @@
 
 namespace HopelessLibary
 {
-    public abstract class Character: ICreature
+    [Serializable] public abstract class Character: ICreature
     {
         public string Name { get; set; }
         public int Level { get; set; }

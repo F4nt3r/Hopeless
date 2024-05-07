@@ -243,31 +243,24 @@ namespace Hopeless
             string jsonData = File.ReadAllText("game_state.json");
 
 
-            GameState gameState = new GameState();
-            List<Weapon> weapons = new List<Weapon>();
-            List<Weapon> equippedWeapons = new List<Weapon>();
-            List<Armor> armors = new List<Armor>();
-            List<Armor> equippedArmors = new List<Armor>();
             List<IEkwipunek> equippedEkwipunek = new List<IEkwipunek>();
             List<IEkwipunek> shopItems = new List<IEkwipunek>();
             List<Character> characters = new List<Character>();
             List<IEkwipunek> ekwipunek = new List<IEkwipunek>();
             List<Expedition> expeditons = new List<Expedition>();
 
-            gameState = JsonConvert.DeserializeObject<GameState>(jsonData);
+            GameState gameState = JsonConvert.DeserializeObject<GameState>(jsonData, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
 
 
-            characters.Add(gameState.knight);
-            characters.Add(gameState.rogue);
-            characters.Add(gameState.cleric);
-            characters.Add(gameState.joker);
-            equippedEkwipunek.AddRange(gameState.equippedWeapons);
-            equippedEkwipunek.AddRange(gameState.equippedArmors);
-            ekwipunek.AddRange(gameState.weapons);
-            ekwipunek.AddRange(gameState.armors);
+            characters.AddRange(gameState.chararacters);
+            equippedEkwipunek.AddRange(gameState.Equiped);
+            ekwipunek.AddRange(gameState.Ekwipunek);           
             expeditons.AddRange(gameState.expeditions);
-            shopItems.AddRange(gameState.shopWeapons);
-            shopItems.AddRange(gameState.shopArmors);
+            shopItems.AddRange(gameState.Shop);
+  
 
             fazaPrzygotowaniaUserControl.eventQuest=gameState.eventQuest;
             fazaPrzygotowaniaUserControl.eventResult = gameState.eventResult;

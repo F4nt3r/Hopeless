@@ -8,16 +8,11 @@ namespace HopelessLibary
 {
     public class GameState
     {
-        public Knight knight {  get; set; }
-        public Cleric cleric { get; set; }
-        public Joker joker { get; set; }    
-        public Rogue rogue { get; set; }    
-        public List<Weapon> weapons { get; set; }
-        public List<Weapon> equippedWeapons { get; set; }
-        public List<Weapon> shopWeapons { get; set; }
-        public List<Armor> armors { get; set; }
-        public List<Armor> equippedArmors { get; set; }
-        public List<Armor> shopArmors { get; set; }
+        public List<Character> chararacters { get; set; }
+        public List<IEkwipunek> Ekwipunek {  get; set; }
+        public List<IEkwipunek> Equiped { get; set; }
+        public List<IEkwipunek> Shop { get; set; }
+      
         public List<Expedition> expeditions { get; set; }
         public int gold { get; set; }
         public bool eventQuest {  get; set; }

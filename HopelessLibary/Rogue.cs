@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
+    [Serializable]
     public class Rogue :Character
     {
 
@@ -20,8 +21,6 @@ namespace HopelessLibary
         }
 
        
-        
-
         public override void LevelUp()
         {
             Level++;

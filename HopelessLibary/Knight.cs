@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
+    [Serializable]
     public class Knight : Character {
 
-
+        [JsonPropertyName("BlockChance")]
         public int BlockChance { get; set; }
         
 
@@ -19,6 +21,7 @@ namespace HopelessLibary
             BlockChance = blockChance;
 
         }
+
 
         public override void LevelUp()
         {

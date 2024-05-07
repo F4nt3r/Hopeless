@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
+    [Serializable]
     public class Cleric : Character
 
     {
@@ -19,9 +20,7 @@ namespace HopelessLibary
             BlessingChance = blessingChance;
         }
 
-
-
-
+      
 
         public void Heal (Character character, out int heal)
         {
