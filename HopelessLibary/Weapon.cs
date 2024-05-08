@@ -56,7 +56,7 @@ namespace HopelessLibary
         }
         public void Equip(Character target)
         {
-            if (!AllowedCharacters.Contains(target.Type))
+            if (!AllowedCharacters.Contains(target.CharacterType))
             {
                 throw new ClassWeaponException("Ta postac nie moze uzywac tej broni.");
             }

@@ -1,6 +1,7 @@
 ﻿using HopelessLibary;
 using NAudio.Wave;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Data;
 using System.Diagnostics;
 using System.Media;
@@ -396,11 +397,14 @@ namespace Hopeless
             gameState.eventQuest = eventQuest;
             gameState.eventResult = eventResult;
             gameState.gold = gold;
-            string json = JsonConvert.SerializeObject(gameState, Formatting.Indented, new JsonSerializerSettings()
-            {
-                TypeNameHandling = TypeNameHandling.Auto
-            });
-            File.WriteAllText("game_state.json", json);
+
+             string json = JsonConvert.SerializeObject(gameState, Formatting.Indented, new JsonSerializerSettings()
+           {
+                TypeNameHandling = TypeNameHandling.Auto,
+          
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+             });
+           File.WriteAllText("game_state.json", json);
         }
 
         //Inicjalizacja Przeciagania

@@ -53,7 +53,7 @@ namespace HopelessLibary
         }
         public void Equip(Character target)
         {
-            if (!AllowedCharacters.Contains(target.Type))
+            if (!AllowedCharacters.Contains(target.CharacterType))
             {
                 throw new ClassArmorException("Ta postac nie moze uzywac tego armora.");
             }
