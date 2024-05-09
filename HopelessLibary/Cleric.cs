@@ -164,18 +164,20 @@ namespace HopelessLibary
 
                 caster.Skill2.Cooldown = 5;
                 int heal = 0;
+                if (new Random().Next(1, 100) > cleric.CritChance)
+                {
+                    heal = new Random().Next(cleric.Intelligence, cleric.Intelligence + 3);
+
+                }
+                else
+                {
+                    heal = new Random().Next(cleric.Intelligence, cleric.Intelligence + 3) * 2;
+                }
+
                 foreach (var item in creatures)
                 {
                     if (item.CharacterType == CharacterType.Monster) continue;
-                    if (new Random().Next(1, 100) > cleric.CritChance)
-                    {
-                        heal = new Random().Next(cleric.Intelligence, cleric.Intelligence + 3);
-
-                    }
-                    else
-                    {
-                        heal = new Random().Next(cleric.Intelligence, cleric.Intelligence + 3) * 2;
-                    }
+                  
                     
                         if (!item.IsDead())
                         {

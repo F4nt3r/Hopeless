@@ -331,18 +331,18 @@ namespace Hopeless
                 foreach (var kvp in buffCount)
                 {
                     if (kvp.Value > 1)
-                        effectBox.Text += item.Name + "-" + kvp.Key + " x" + kvp.Value + "-" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
+                        effectBox.Text += item.Name + "|" + kvp.Key + " x" + kvp.Value + "|" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
                     else
-                        effectBox.Text += item.Name + "-" + kvp.Key + "-" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
+                        effectBox.Text += item.Name + "|" + kvp.Key + "|" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
                 }
 
                 // Wyświetl nazwy debuffów i ich liczby dla aktualnej postaci
                 foreach (var kvp in debuffCount)
                 {
                     if (kvp.Value > 1)
-                    effectBox.Text += item.Name + "-" + kvp.Key + " x" + kvp.Value + "-" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+                    effectBox.Text += item.Name + "|" + kvp.Key + " x" + kvp.Value + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
                     else
-                    effectBox.Text += item.Name + "-" + kvp.Key + "-" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+                    effectBox.Text += item.Name + "|" + kvp.Key + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
 
                 }
             }
