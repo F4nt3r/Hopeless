@@ -33,82 +33,84 @@
             wyruszButton = new Button();
             tabControl3 = new TabControl();
             clericPostac = new TabPage();
-            clericPicture = new PictureBox();
+            character3Picture = new PictureBox();
             clericStatystyki = new TabPage();
-            clericDmg = new Label();
-            clericName = new Label();
-            clericInitiative = new Label();
-            clericLevel = new Label();
-            clericCrit = new Label();
-            clericExp = new Label();
-            clericResistance = new Label();
-            clericStrength = new Label();
-            clericHp = new Label();
-            clericDexterity = new Label();
-            clericIntelligence = new Label();
+            character3Block = new Label();
+            character3Dmg = new Label();
+            character3Name = new Label();
+            character3Initiative = new Label();
+            character3Level = new Label();
+            character3Crit = new Label();
+            character3Exp = new Label();
+            character3Resistance = new Label();
+            character3Strength = new Label();
+            character3Hp = new Label();
+            character3Dexterity = new Label();
+            character3Intelligence = new Label();
             clericEkwipunek = new TabPage();
-            label3 = new Label();
-            clericArmor = new Label();
-            clericWeapon = new Label();
+            character3ClassName = new Label();
+            character3Armor = new Label();
+            character3Weapon = new Label();
             tabControl5 = new TabControl();
             roguePostac = new TabPage();
-            roguePicture = new PictureBox();
+            character2Picture = new PictureBox();
             rogueStatystyki = new TabPage();
-            rogueDodge = new Label();
-            rogueDmg = new Label();
-            rogueInitiative = new Label();
-            rogueCrit = new Label();
-            rogueResistance = new Label();
-            rogueHp = new Label();
-            rogueIntelligence = new Label();
-            rogueDexterity = new Label();
-            rogueStrength = new Label();
-            rogueExp = new Label();
-            rogueLevel = new Label();
-            rogueName = new Label();
+            character2Block = new Label();
+            character2Dmg = new Label();
+            character2Initiative = new Label();
+            character2Crit = new Label();
+            character2Resistance = new Label();
+            character2Hp = new Label();
+            character2Intelligence = new Label();
+            character2Dexterity = new Label();
+            character2Strength = new Label();
+            character2Exp = new Label();
+            character2Level = new Label();
+            character2Name = new Label();
             rogueEkwipunek = new TabPage();
-            label2 = new Label();
-            rogueArmor = new Label();
-            rogueWeapon = new Label();
+            character2ClassName = new Label();
+            character2Armor = new Label();
+            character2Weapon = new Label();
             tabControl1 = new TabControl();
             knightPostac = new TabPage();
-            knightPicture = new PictureBox();
+            character1Picture = new PictureBox();
             knightStatystyki = new TabPage();
-            knightBlock = new Label();
-            knightDmg = new Label();
-            knightInitiative = new Label();
-            knightCrit = new Label();
-            knightResistance = new Label();
-            knightHp = new Label();
-            knightIntelligence = new Label();
-            knightDexterity = new Label();
-            knightStrength = new Label();
-            knightExp = new Label();
-            knightLevel = new Label();
-            knightName = new Label();
+            character1Block = new Label();
+            character1Dmg = new Label();
+            character1Initiative = new Label();
+            character1Crit = new Label();
+            character1Resistance = new Label();
+            character1Hp = new Label();
+            character1Intelligence = new Label();
+            character1Dexterity = new Label();
+            character1Strength = new Label();
+            character1Exp = new Label();
+            character1Level = new Label();
+            character1Name = new Label();
             knightEkwipunek = new TabPage();
-            label1 = new Label();
-            knightArmor = new Label();
-            knightWeapon = new Label();
+            character1ClassName = new Label();
+            character1Armor = new Label();
+            character1Weapon = new Label();
             tabControl2 = new TabControl();
             jokerPostac = new TabPage();
-            jokerPicture = new PictureBox();
+            character4Picture = new PictureBox();
             jokerStatystyki = new TabPage();
-            jokerDmg = new Label();
-            jokerName = new Label();
-            jokerInitiative = new Label();
-            jokerLevel = new Label();
-            jokerCrit = new Label();
-            jokerExp = new Label();
-            jokerResistance = new Label();
-            jokerStrength = new Label();
-            jokerHp = new Label();
-            jokerDexterity = new Label();
-            jokerIntelligence = new Label();
+            character4Block = new Label();
+            character4Dmg = new Label();
+            character4Name = new Label();
+            character4Initiative = new Label();
+            character4Level = new Label();
+            character4Crit = new Label();
+            character4Exp = new Label();
+            character4Resistance = new Label();
+            character4Strength = new Label();
+            character4Hp = new Label();
+            character4Dexterity = new Label();
+            character4Intelligence = new Label();
             jokerEkwipunek = new TabPage();
-            label4 = new Label();
-            jokerArmor = new Label();
-            jokerWeapon = new Label();
+            character4ClassName = new Label();
+            character4Armor = new Label();
+            character4Weapon = new Label();
             Inventory = new FlowLayoutPanel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             goldLabel = new Label();
@@ -124,22 +126,22 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl3.SuspendLayout();
             clericPostac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)clericPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character3Picture).BeginInit();
             clericStatystyki.SuspendLayout();
             clericEkwipunek.SuspendLayout();
             tabControl5.SuspendLayout();
             roguePostac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)roguePicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character2Picture).BeginInit();
             rogueStatystyki.SuspendLayout();
             rogueEkwipunek.SuspendLayout();
             tabControl1.SuspendLayout();
             knightPostac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)knightPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character1Picture).BeginInit();
             knightStatystyki.SuspendLayout();
             knightEkwipunek.SuspendLayout();
             tabControl2.SuspendLayout();
             jokerPostac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)jokerPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character4Picture).BeginInit();
             jokerStatystyki.SuspendLayout();
             jokerEkwipunek.SuspendLayout();
             SuspendLayout();
@@ -177,7 +179,7 @@
             // clericPostac
             // 
             clericPostac.BackColor = Color.Transparent;
-            clericPostac.Controls.Add(clericPicture);
+            clericPostac.Controls.Add(character3Picture);
             clericPostac.Location = new Point(4, 24);
             clericPostac.Name = "clericPostac";
             clericPostac.Padding = new Padding(3);
@@ -185,31 +187,32 @@
             clericPostac.TabIndex = 0;
             clericPostac.Text = "Postac";
             // 
-            // clericPicture
+            // character3Picture
             // 
-            clericPicture.BackColor = Color.LightCyan;
-            clericPicture.Dock = DockStyle.Fill;
-            clericPicture.Location = new Point(3, 3);
-            clericPicture.Name = "clericPicture";
-            clericPicture.Size = new Size(186, 302);
-            clericPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            clericPicture.TabIndex = 0;
-            clericPicture.TabStop = false;
+            character3Picture.BackColor = Color.LightCyan;
+            character3Picture.Dock = DockStyle.Fill;
+            character3Picture.Location = new Point(3, 3);
+            character3Picture.Name = "character3Picture";
+            character3Picture.Size = new Size(186, 302);
+            character3Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character3Picture.TabIndex = 0;
+            character3Picture.TabStop = false;
             // 
             // clericStatystyki
             // 
             clericStatystyki.BackColor = Color.LightCyan;
-            clericStatystyki.Controls.Add(clericDmg);
-            clericStatystyki.Controls.Add(clericName);
-            clericStatystyki.Controls.Add(clericInitiative);
-            clericStatystyki.Controls.Add(clericLevel);
-            clericStatystyki.Controls.Add(clericCrit);
-            clericStatystyki.Controls.Add(clericExp);
-            clericStatystyki.Controls.Add(clericResistance);
-            clericStatystyki.Controls.Add(clericStrength);
-            clericStatystyki.Controls.Add(clericHp);
-            clericStatystyki.Controls.Add(clericDexterity);
-            clericStatystyki.Controls.Add(clericIntelligence);
+            clericStatystyki.Controls.Add(character3Block);
+            clericStatystyki.Controls.Add(character3Dmg);
+            clericStatystyki.Controls.Add(character3Name);
+            clericStatystyki.Controls.Add(character3Initiative);
+            clericStatystyki.Controls.Add(character3Level);
+            clericStatystyki.Controls.Add(character3Crit);
+            clericStatystyki.Controls.Add(character3Exp);
+            clericStatystyki.Controls.Add(character3Resistance);
+            clericStatystyki.Controls.Add(character3Strength);
+            clericStatystyki.Controls.Add(character3Hp);
+            clericStatystyki.Controls.Add(character3Dexterity);
+            clericStatystyki.Controls.Add(character3Intelligence);
             clericStatystyki.Location = new Point(4, 24);
             clericStatystyki.Name = "clericStatystyki";
             clericStatystyki.Padding = new Padding(3);
@@ -217,111 +220,120 @@
             clericStatystyki.TabIndex = 1;
             clericStatystyki.Text = "Statystyki";
             // 
-            // clericDmg
+            // character3Block
             // 
-            clericDmg.AutoSize = true;
-            clericDmg.Location = new Point(6, 250);
-            clericDmg.Name = "clericDmg";
-            clericDmg.Size = new Size(103, 15);
-            clericDmg.TabIndex = 32;
-            clericDmg.Text = "Obrażenia Ataku:  ";
+            character3Block.AutoSize = true;
+            character3Block.Location = new Point(8, 275);
+            character3Block.Name = "character3Block";
+            character3Block.Size = new Size(10, 15);
+            character3Block.TabIndex = 33;
+            character3Block.Text = " ";
             // 
-            // clericName
+            // character3Dmg
             // 
-            clericName.AutoSize = true;
-            clericName.Location = new Point(6, 3);
-            clericName.Name = "clericName";
-            clericName.Size = new Size(36, 15);
-            clericName.TabIndex = 22;
-            clericName.Text = "Imie: ";
+            character3Dmg.AutoSize = true;
+            character3Dmg.Location = new Point(6, 250);
+            character3Dmg.Name = "character3Dmg";
+            character3Dmg.Size = new Size(103, 15);
+            character3Dmg.TabIndex = 32;
+            character3Dmg.Text = "Obrażenia Ataku:  ";
             // 
-            // clericInitiative
+            // character3Name
             // 
-            clericInitiative.AutoSize = true;
-            clericInitiative.Location = new Point(6, 224);
-            clericInitiative.Name = "clericInitiative";
-            clericInitiative.Size = new Size(69, 15);
-            clericInitiative.TabIndex = 31;
-            clericInitiative.Text = "Inicjatywa:  ";
+            character3Name.AutoSize = true;
+            character3Name.Location = new Point(6, 3);
+            character3Name.Name = "character3Name";
+            character3Name.Size = new Size(36, 15);
+            character3Name.TabIndex = 22;
+            character3Name.Text = "Imie: ";
             // 
-            // clericLevel
+            // character3Initiative
             // 
-            clericLevel.AutoSize = true;
-            clericLevel.Location = new Point(6, 27);
-            clericLevel.Name = "clericLevel";
-            clericLevel.Size = new Size(40, 15);
-            clericLevel.TabIndex = 23;
-            clericLevel.Text = "Level: ";
+            character3Initiative.AutoSize = true;
+            character3Initiative.Location = new Point(6, 224);
+            character3Initiative.Name = "character3Initiative";
+            character3Initiative.Size = new Size(69, 15);
+            character3Initiative.TabIndex = 31;
+            character3Initiative.Text = "Inicjatywa:  ";
             // 
-            // clericCrit
+            // character3Level
             // 
-            clericCrit.AutoSize = true;
-            clericCrit.Location = new Point(6, 200);
-            clericCrit.Name = "clericCrit";
-            clericCrit.Size = new Size(97, 15);
-            clericCrit.TabIndex = 30;
-            clericCrit.Text = "Szansa na Kryta:  ";
+            character3Level.AutoSize = true;
+            character3Level.Location = new Point(6, 27);
+            character3Level.Name = "character3Level";
+            character3Level.Size = new Size(40, 15);
+            character3Level.TabIndex = 23;
+            character3Level.Text = "Level: ";
             // 
-            // clericExp
+            // character3Crit
             // 
-            clericExp.AutoSize = true;
-            clericExp.Location = new Point(6, 52);
-            clericExp.Name = "clericExp";
-            clericExp.Size = new Size(73, 15);
-            clericExp.TabIndex = 24;
-            clericExp.Text = "Punkty EXP: ";
+            character3Crit.AutoSize = true;
+            character3Crit.Location = new Point(6, 200);
+            character3Crit.Name = "character3Crit";
+            character3Crit.Size = new Size(97, 15);
+            character3Crit.TabIndex = 30;
+            character3Crit.Text = "Szansa na Kryta:  ";
             // 
-            // clericResistance
+            // character3Exp
             // 
-            clericResistance.AutoSize = true;
-            clericResistance.Location = new Point(6, 175);
-            clericResistance.Name = "clericResistance";
-            clericResistance.Size = new Size(75, 15);
-            clericResistance.TabIndex = 29;
-            clericResistance.Text = "Odpornosc:  ";
+            character3Exp.AutoSize = true;
+            character3Exp.Location = new Point(6, 52);
+            character3Exp.Name = "character3Exp";
+            character3Exp.Size = new Size(73, 15);
+            character3Exp.TabIndex = 24;
+            character3Exp.Text = "Punkty EXP: ";
             // 
-            // clericStrength
+            // character3Resistance
             // 
-            clericStrength.AutoSize = true;
-            clericStrength.Location = new Point(8, 77);
-            clericStrength.Name = "clericStrength";
-            clericStrength.Size = new Size(31, 15);
-            clericStrength.TabIndex = 25;
-            clericStrength.Text = "Siła: ";
+            character3Resistance.AutoSize = true;
+            character3Resistance.Location = new Point(6, 175);
+            character3Resistance.Name = "character3Resistance";
+            character3Resistance.Size = new Size(75, 15);
+            character3Resistance.TabIndex = 29;
+            character3Resistance.Text = "Odpornosc:  ";
             // 
-            // clericHp
+            // character3Strength
             // 
-            clericHp.AutoSize = true;
-            clericHp.Location = new Point(6, 151);
-            clericHp.Name = "clericHp";
-            clericHp.Size = new Size(32, 15);
-            clericHp.TabIndex = 28;
-            clericHp.Text = "HP:  ";
+            character3Strength.AutoSize = true;
+            character3Strength.Location = new Point(8, 77);
+            character3Strength.Name = "character3Strength";
+            character3Strength.Size = new Size(31, 15);
+            character3Strength.TabIndex = 25;
+            character3Strength.Text = "Siła: ";
             // 
-            // clericDexterity
+            // character3Hp
             // 
-            clericDexterity.AutoSize = true;
-            clericDexterity.Location = new Point(6, 102);
-            clericDexterity.Name = "clericDexterity";
-            clericDexterity.Size = new Size(66, 15);
-            clericDexterity.TabIndex = 26;
-            clericDexterity.Text = "Zrecznosc: ";
+            character3Hp.AutoSize = true;
+            character3Hp.Location = new Point(6, 151);
+            character3Hp.Name = "character3Hp";
+            character3Hp.Size = new Size(32, 15);
+            character3Hp.TabIndex = 28;
+            character3Hp.Text = "HP:  ";
             // 
-            // clericIntelligence
+            // character3Dexterity
             // 
-            clericIntelligence.AutoSize = true;
-            clericIntelligence.Location = new Point(6, 126);
-            clericIntelligence.Name = "clericIntelligence";
-            clericIntelligence.Size = new Size(77, 15);
-            clericIntelligence.TabIndex = 27;
-            clericIntelligence.Text = "Inteligencja:  ";
+            character3Dexterity.AutoSize = true;
+            character3Dexterity.Location = new Point(6, 102);
+            character3Dexterity.Name = "character3Dexterity";
+            character3Dexterity.Size = new Size(66, 15);
+            character3Dexterity.TabIndex = 26;
+            character3Dexterity.Text = "Zrecznosc: ";
+            // 
+            // character3Intelligence
+            // 
+            character3Intelligence.AutoSize = true;
+            character3Intelligence.Location = new Point(6, 126);
+            character3Intelligence.Name = "character3Intelligence";
+            character3Intelligence.Size = new Size(77, 15);
+            character3Intelligence.TabIndex = 27;
+            character3Intelligence.Text = "Inteligencja:  ";
             // 
             // clericEkwipunek
             // 
             clericEkwipunek.BackColor = Color.LightCyan;
-            clericEkwipunek.Controls.Add(label3);
-            clericEkwipunek.Controls.Add(clericArmor);
-            clericEkwipunek.Controls.Add(clericWeapon);
+            clericEkwipunek.Controls.Add(character3ClassName);
+            clericEkwipunek.Controls.Add(character3Armor);
+            clericEkwipunek.Controls.Add(character3Weapon);
             clericEkwipunek.Location = new Point(4, 24);
             clericEkwipunek.Name = "clericEkwipunek";
             clericEkwipunek.Padding = new Padding(3);
@@ -329,37 +341,37 @@
             clericEkwipunek.TabIndex = 2;
             clericEkwipunek.Text = "Ekwipunek";
             // 
-            // label3
+            // character3ClassName
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(73, 3);
-            label3.Name = "label3";
-            label3.Size = new Size(37, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Cleric";
+            character3ClassName.AutoSize = true;
+            character3ClassName.Location = new Point(73, 3);
+            character3ClassName.Name = "character3ClassName";
+            character3ClassName.Size = new Size(10, 15);
+            character3ClassName.TabIndex = 4;
+            character3ClassName.Text = " ";
             // 
-            // clericArmor
+            // character3Armor
             // 
-            clericArmor.BorderStyle = BorderStyle.FixedSingle;
-            clericArmor.Location = new Point(115, 51);
-            clericArmor.MinimumSize = new Size(60, 60);
-            clericArmor.Name = "clericArmor";
-            clericArmor.Size = new Size(60, 60);
-            clericArmor.TabIndex = 3;
-            clericArmor.Text = "Armor";
-            clericArmor.TextAlign = ContentAlignment.MiddleCenter;
+            character3Armor.BorderStyle = BorderStyle.FixedSingle;
+            character3Armor.Location = new Point(115, 51);
+            character3Armor.MinimumSize = new Size(60, 60);
+            character3Armor.Name = "character3Armor";
+            character3Armor.Size = new Size(60, 60);
+            character3Armor.TabIndex = 3;
+            character3Armor.Text = "Armor";
+            character3Armor.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // clericWeapon
+            // character3Weapon
             // 
-            clericWeapon.AllowDrop = true;
-            clericWeapon.BorderStyle = BorderStyle.FixedSingle;
-            clericWeapon.Location = new Point(24, 51);
-            clericWeapon.MinimumSize = new Size(60, 60);
-            clericWeapon.Name = "clericWeapon";
-            clericWeapon.Size = new Size(60, 60);
-            clericWeapon.TabIndex = 2;
-            clericWeapon.Text = "Bron";
-            clericWeapon.TextAlign = ContentAlignment.MiddleCenter;
+            character3Weapon.AllowDrop = true;
+            character3Weapon.BorderStyle = BorderStyle.FixedSingle;
+            character3Weapon.Location = new Point(24, 51);
+            character3Weapon.MinimumSize = new Size(60, 60);
+            character3Weapon.Name = "character3Weapon";
+            character3Weapon.Size = new Size(60, 60);
+            character3Weapon.TabIndex = 2;
+            character3Weapon.Text = "Bron";
+            character3Weapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl5
             // 
@@ -374,7 +386,7 @@
             // 
             // roguePostac
             // 
-            roguePostac.Controls.Add(roguePicture);
+            roguePostac.Controls.Add(character2Picture);
             roguePostac.Location = new Point(4, 24);
             roguePostac.Name = "roguePostac";
             roguePostac.Padding = new Padding(3);
@@ -383,32 +395,32 @@
             roguePostac.Text = "Postac";
             roguePostac.UseVisualStyleBackColor = true;
             // 
-            // roguePicture
+            // character2Picture
             // 
-            roguePicture.BackColor = Color.DarkGray;
-            roguePicture.Dock = DockStyle.Fill;
-            roguePicture.Location = new Point(3, 3);
-            roguePicture.Name = "roguePicture";
-            roguePicture.Size = new Size(186, 302);
-            roguePicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            roguePicture.TabIndex = 0;
-            roguePicture.TabStop = false;
+            character2Picture.BackColor = Color.DarkGray;
+            character2Picture.Dock = DockStyle.Fill;
+            character2Picture.Location = new Point(3, 3);
+            character2Picture.Name = "character2Picture";
+            character2Picture.Size = new Size(186, 302);
+            character2Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character2Picture.TabIndex = 0;
+            character2Picture.TabStop = false;
             // 
             // rogueStatystyki
             // 
             rogueStatystyki.BackColor = Color.DarkGray;
-            rogueStatystyki.Controls.Add(rogueDodge);
-            rogueStatystyki.Controls.Add(rogueDmg);
-            rogueStatystyki.Controls.Add(rogueInitiative);
-            rogueStatystyki.Controls.Add(rogueCrit);
-            rogueStatystyki.Controls.Add(rogueResistance);
-            rogueStatystyki.Controls.Add(rogueHp);
-            rogueStatystyki.Controls.Add(rogueIntelligence);
-            rogueStatystyki.Controls.Add(rogueDexterity);
-            rogueStatystyki.Controls.Add(rogueStrength);
-            rogueStatystyki.Controls.Add(rogueExp);
-            rogueStatystyki.Controls.Add(rogueLevel);
-            rogueStatystyki.Controls.Add(rogueName);
+            rogueStatystyki.Controls.Add(character2Block);
+            rogueStatystyki.Controls.Add(character2Dmg);
+            rogueStatystyki.Controls.Add(character2Initiative);
+            rogueStatystyki.Controls.Add(character2Crit);
+            rogueStatystyki.Controls.Add(character2Resistance);
+            rogueStatystyki.Controls.Add(character2Hp);
+            rogueStatystyki.Controls.Add(character2Intelligence);
+            rogueStatystyki.Controls.Add(character2Dexterity);
+            rogueStatystyki.Controls.Add(character2Strength);
+            rogueStatystyki.Controls.Add(character2Exp);
+            rogueStatystyki.Controls.Add(character2Level);
+            rogueStatystyki.Controls.Add(character2Name);
             rogueStatystyki.Location = new Point(4, 24);
             rogueStatystyki.Name = "rogueStatystyki";
             rogueStatystyki.Padding = new Padding(3);
@@ -416,120 +428,120 @@
             rogueStatystyki.TabIndex = 1;
             rogueStatystyki.Text = "Statystyki";
             // 
-            // rogueDodge
+            // character2Block
             // 
-            rogueDodge.AutoSize = true;
-            rogueDodge.Location = new Point(6, 275);
-            rogueDodge.Name = "rogueDodge";
-            rogueDodge.Size = new Size(94, 15);
-            rogueDodge.TabIndex = 22;
-            rogueDodge.Text = "Szansa na Unik:  ";
+            character2Block.AutoSize = true;
+            character2Block.Location = new Point(6, 275);
+            character2Block.Name = "character2Block";
+            character2Block.Size = new Size(10, 15);
+            character2Block.TabIndex = 22;
+            character2Block.Text = " ";
             // 
-            // rogueDmg
+            // character2Dmg
             // 
-            rogueDmg.AutoSize = true;
-            rogueDmg.Location = new Point(6, 250);
-            rogueDmg.Name = "rogueDmg";
-            rogueDmg.Size = new Size(103, 15);
-            rogueDmg.TabIndex = 21;
-            rogueDmg.Text = "Obrażenia Ataku:  ";
+            character2Dmg.AutoSize = true;
+            character2Dmg.Location = new Point(6, 250);
+            character2Dmg.Name = "character2Dmg";
+            character2Dmg.Size = new Size(103, 15);
+            character2Dmg.TabIndex = 21;
+            character2Dmg.Text = "Obrażenia Ataku:  ";
             // 
-            // rogueInitiative
+            // character2Initiative
             // 
-            rogueInitiative.AutoSize = true;
-            rogueInitiative.Location = new Point(6, 224);
-            rogueInitiative.Name = "rogueInitiative";
-            rogueInitiative.Size = new Size(69, 15);
-            rogueInitiative.TabIndex = 20;
-            rogueInitiative.Text = "Inicjatywa:  ";
+            character2Initiative.AutoSize = true;
+            character2Initiative.Location = new Point(6, 224);
+            character2Initiative.Name = "character2Initiative";
+            character2Initiative.Size = new Size(69, 15);
+            character2Initiative.TabIndex = 20;
+            character2Initiative.Text = "Inicjatywa:  ";
             // 
-            // rogueCrit
+            // character2Crit
             // 
-            rogueCrit.AutoSize = true;
-            rogueCrit.Location = new Point(6, 200);
-            rogueCrit.Name = "rogueCrit";
-            rogueCrit.Size = new Size(97, 15);
-            rogueCrit.TabIndex = 19;
-            rogueCrit.Text = "Szansa na Kryta:  ";
+            character2Crit.AutoSize = true;
+            character2Crit.Location = new Point(6, 200);
+            character2Crit.Name = "character2Crit";
+            character2Crit.Size = new Size(97, 15);
+            character2Crit.TabIndex = 19;
+            character2Crit.Text = "Szansa na Kryta:  ";
             // 
-            // rogueResistance
+            // character2Resistance
             // 
-            rogueResistance.AutoSize = true;
-            rogueResistance.Location = new Point(6, 175);
-            rogueResistance.Name = "rogueResistance";
-            rogueResistance.Size = new Size(75, 15);
-            rogueResistance.TabIndex = 18;
-            rogueResistance.Text = "Odpornosc:  ";
+            character2Resistance.AutoSize = true;
+            character2Resistance.Location = new Point(6, 175);
+            character2Resistance.Name = "character2Resistance";
+            character2Resistance.Size = new Size(75, 15);
+            character2Resistance.TabIndex = 18;
+            character2Resistance.Text = "Odpornosc:  ";
             // 
-            // rogueHp
+            // character2Hp
             // 
-            rogueHp.AutoSize = true;
-            rogueHp.Location = new Point(6, 151);
-            rogueHp.Name = "rogueHp";
-            rogueHp.Size = new Size(32, 15);
-            rogueHp.TabIndex = 17;
-            rogueHp.Text = "HP:  ";
+            character2Hp.AutoSize = true;
+            character2Hp.Location = new Point(6, 151);
+            character2Hp.Name = "character2Hp";
+            character2Hp.Size = new Size(32, 15);
+            character2Hp.TabIndex = 17;
+            character2Hp.Text = "HP:  ";
             // 
-            // rogueIntelligence
+            // character2Intelligence
             // 
-            rogueIntelligence.AutoSize = true;
-            rogueIntelligence.Location = new Point(6, 126);
-            rogueIntelligence.Name = "rogueIntelligence";
-            rogueIntelligence.Size = new Size(77, 15);
-            rogueIntelligence.TabIndex = 16;
-            rogueIntelligence.Text = "Inteligencja:  ";
+            character2Intelligence.AutoSize = true;
+            character2Intelligence.Location = new Point(6, 126);
+            character2Intelligence.Name = "character2Intelligence";
+            character2Intelligence.Size = new Size(77, 15);
+            character2Intelligence.TabIndex = 16;
+            character2Intelligence.Text = "Inteligencja:  ";
             // 
-            // rogueDexterity
+            // character2Dexterity
             // 
-            rogueDexterity.AutoSize = true;
-            rogueDexterity.Location = new Point(6, 102);
-            rogueDexterity.Name = "rogueDexterity";
-            rogueDexterity.Size = new Size(66, 15);
-            rogueDexterity.TabIndex = 15;
-            rogueDexterity.Text = "Zrecznosc: ";
+            character2Dexterity.AutoSize = true;
+            character2Dexterity.Location = new Point(6, 102);
+            character2Dexterity.Name = "character2Dexterity";
+            character2Dexterity.Size = new Size(66, 15);
+            character2Dexterity.TabIndex = 15;
+            character2Dexterity.Text = "Zrecznosc: ";
             // 
-            // rogueStrength
+            // character2Strength
             // 
-            rogueStrength.AutoSize = true;
-            rogueStrength.Location = new Point(8, 77);
-            rogueStrength.Name = "rogueStrength";
-            rogueStrength.Size = new Size(31, 15);
-            rogueStrength.TabIndex = 14;
-            rogueStrength.Text = "Siła: ";
+            character2Strength.AutoSize = true;
+            character2Strength.Location = new Point(8, 77);
+            character2Strength.Name = "character2Strength";
+            character2Strength.Size = new Size(31, 15);
+            character2Strength.TabIndex = 14;
+            character2Strength.Text = "Siła: ";
             // 
-            // rogueExp
+            // character2Exp
             // 
-            rogueExp.AutoSize = true;
-            rogueExp.Location = new Point(6, 52);
-            rogueExp.Name = "rogueExp";
-            rogueExp.Size = new Size(73, 15);
-            rogueExp.TabIndex = 13;
-            rogueExp.Text = "Punkty EXP: ";
+            character2Exp.AutoSize = true;
+            character2Exp.Location = new Point(6, 52);
+            character2Exp.Name = "character2Exp";
+            character2Exp.Size = new Size(73, 15);
+            character2Exp.TabIndex = 13;
+            character2Exp.Text = "Punkty EXP: ";
             // 
-            // rogueLevel
+            // character2Level
             // 
-            rogueLevel.AutoSize = true;
-            rogueLevel.Location = new Point(6, 27);
-            rogueLevel.Name = "rogueLevel";
-            rogueLevel.Size = new Size(40, 15);
-            rogueLevel.TabIndex = 12;
-            rogueLevel.Text = "Level: ";
+            character2Level.AutoSize = true;
+            character2Level.Location = new Point(6, 27);
+            character2Level.Name = "character2Level";
+            character2Level.Size = new Size(40, 15);
+            character2Level.TabIndex = 12;
+            character2Level.Text = "Level: ";
             // 
-            // rogueName
+            // character2Name
             // 
-            rogueName.AutoSize = true;
-            rogueName.Location = new Point(6, 3);
-            rogueName.Name = "rogueName";
-            rogueName.Size = new Size(36, 15);
-            rogueName.TabIndex = 11;
-            rogueName.Text = "Imie: ";
+            character2Name.AutoSize = true;
+            character2Name.Location = new Point(6, 3);
+            character2Name.Name = "character2Name";
+            character2Name.Size = new Size(36, 15);
+            character2Name.TabIndex = 11;
+            character2Name.Text = "Imie: ";
             // 
             // rogueEkwipunek
             // 
             rogueEkwipunek.BackColor = Color.DarkGray;
-            rogueEkwipunek.Controls.Add(label2);
-            rogueEkwipunek.Controls.Add(rogueArmor);
-            rogueEkwipunek.Controls.Add(rogueWeapon);
+            rogueEkwipunek.Controls.Add(character2ClassName);
+            rogueEkwipunek.Controls.Add(character2Armor);
+            rogueEkwipunek.Controls.Add(character2Weapon);
             rogueEkwipunek.Location = new Point(4, 24);
             rogueEkwipunek.Name = "rogueEkwipunek";
             rogueEkwipunek.Padding = new Padding(3);
@@ -537,37 +549,37 @@
             rogueEkwipunek.TabIndex = 2;
             rogueEkwipunek.Text = "Ekwipunek";
             // 
-            // label2
+            // character2ClassName
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(73, 3);
-            label2.Name = "label2";
-            label2.Size = new Size(41, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Rogue";
+            character2ClassName.AutoSize = true;
+            character2ClassName.Location = new Point(73, 3);
+            character2ClassName.Name = "character2ClassName";
+            character2ClassName.Size = new Size(10, 15);
+            character2ClassName.TabIndex = 3;
+            character2ClassName.Text = " ";
             // 
-            // rogueArmor
+            // character2Armor
             // 
-            rogueArmor.BorderStyle = BorderStyle.FixedSingle;
-            rogueArmor.Location = new Point(112, 51);
-            rogueArmor.MinimumSize = new Size(60, 60);
-            rogueArmor.Name = "rogueArmor";
-            rogueArmor.Size = new Size(60, 60);
-            rogueArmor.TabIndex = 2;
-            rogueArmor.Text = "Armor";
-            rogueArmor.TextAlign = ContentAlignment.MiddleCenter;
+            character2Armor.BorderStyle = BorderStyle.FixedSingle;
+            character2Armor.Location = new Point(112, 51);
+            character2Armor.MinimumSize = new Size(60, 60);
+            character2Armor.Name = "character2Armor";
+            character2Armor.Size = new Size(60, 60);
+            character2Armor.TabIndex = 2;
+            character2Armor.Text = "Armor";
+            character2Armor.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // rogueWeapon
+            // character2Weapon
             // 
-            rogueWeapon.AllowDrop = true;
-            rogueWeapon.BorderStyle = BorderStyle.FixedSingle;
-            rogueWeapon.Location = new Point(16, 51);
-            rogueWeapon.MinimumSize = new Size(60, 60);
-            rogueWeapon.Name = "rogueWeapon";
-            rogueWeapon.Size = new Size(60, 60);
-            rogueWeapon.TabIndex = 1;
-            rogueWeapon.Text = "Bron";
-            rogueWeapon.TextAlign = ContentAlignment.MiddleCenter;
+            character2Weapon.AllowDrop = true;
+            character2Weapon.BorderStyle = BorderStyle.FixedSingle;
+            character2Weapon.Location = new Point(16, 51);
+            character2Weapon.MinimumSize = new Size(60, 60);
+            character2Weapon.Name = "character2Weapon";
+            character2Weapon.Size = new Size(60, 60);
+            character2Weapon.TabIndex = 1;
+            character2Weapon.Text = "Bron";
+            character2Weapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -582,7 +594,7 @@
             // 
             // knightPostac
             // 
-            knightPostac.Controls.Add(knightPicture);
+            knightPostac.Controls.Add(character1Picture);
             knightPostac.Location = new Point(4, 24);
             knightPostac.Name = "knightPostac";
             knightPostac.Padding = new Padding(3);
@@ -591,32 +603,32 @@
             knightPostac.Text = "Postac";
             knightPostac.UseVisualStyleBackColor = true;
             // 
-            // knightPicture
+            // character1Picture
             // 
-            knightPicture.BackColor = Color.RosyBrown;
-            knightPicture.Dock = DockStyle.Fill;
-            knightPicture.Location = new Point(3, 3);
-            knightPicture.Name = "knightPicture";
-            knightPicture.Size = new Size(186, 302);
-            knightPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            knightPicture.TabIndex = 0;
-            knightPicture.TabStop = false;
+            character1Picture.BackColor = Color.RosyBrown;
+            character1Picture.Dock = DockStyle.Fill;
+            character1Picture.Location = new Point(3, 3);
+            character1Picture.Name = "character1Picture";
+            character1Picture.Size = new Size(186, 302);
+            character1Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character1Picture.TabIndex = 0;
+            character1Picture.TabStop = false;
             // 
             // knightStatystyki
             // 
             knightStatystyki.BackColor = Color.RosyBrown;
-            knightStatystyki.Controls.Add(knightBlock);
-            knightStatystyki.Controls.Add(knightDmg);
-            knightStatystyki.Controls.Add(knightInitiative);
-            knightStatystyki.Controls.Add(knightCrit);
-            knightStatystyki.Controls.Add(knightResistance);
-            knightStatystyki.Controls.Add(knightHp);
-            knightStatystyki.Controls.Add(knightIntelligence);
-            knightStatystyki.Controls.Add(knightDexterity);
-            knightStatystyki.Controls.Add(knightStrength);
-            knightStatystyki.Controls.Add(knightExp);
-            knightStatystyki.Controls.Add(knightLevel);
-            knightStatystyki.Controls.Add(knightName);
+            knightStatystyki.Controls.Add(character1Block);
+            knightStatystyki.Controls.Add(character1Dmg);
+            knightStatystyki.Controls.Add(character1Initiative);
+            knightStatystyki.Controls.Add(character1Crit);
+            knightStatystyki.Controls.Add(character1Resistance);
+            knightStatystyki.Controls.Add(character1Hp);
+            knightStatystyki.Controls.Add(character1Intelligence);
+            knightStatystyki.Controls.Add(character1Dexterity);
+            knightStatystyki.Controls.Add(character1Strength);
+            knightStatystyki.Controls.Add(character1Exp);
+            knightStatystyki.Controls.Add(character1Level);
+            knightStatystyki.Controls.Add(character1Name);
             knightStatystyki.Location = new Point(4, 24);
             knightStatystyki.Name = "knightStatystyki";
             knightStatystyki.Padding = new Padding(3);
@@ -624,120 +636,120 @@
             knightStatystyki.TabIndex = 1;
             knightStatystyki.Text = "Statystyki";
             // 
-            // knightBlock
+            // character1Block
             // 
-            knightBlock.AutoSize = true;
-            knightBlock.Location = new Point(8, 282);
-            knightBlock.Name = "knightBlock";
-            knightBlock.Size = new Size(90, 15);
-            knightBlock.TabIndex = 11;
-            knightBlock.Text = "Szansa na Blok: ";
+            character1Block.AutoSize = true;
+            character1Block.Location = new Point(8, 282);
+            character1Block.Name = "character1Block";
+            character1Block.Size = new Size(10, 15);
+            character1Block.TabIndex = 11;
+            character1Block.Text = " ";
             // 
-            // knightDmg
+            // character1Dmg
             // 
-            knightDmg.AutoSize = true;
-            knightDmg.Location = new Point(6, 250);
-            knightDmg.Name = "knightDmg";
-            knightDmg.Size = new Size(103, 15);
-            knightDmg.TabIndex = 10;
-            knightDmg.Text = "Obrażenia Ataku:  ";
+            character1Dmg.AutoSize = true;
+            character1Dmg.Location = new Point(6, 250);
+            character1Dmg.Name = "character1Dmg";
+            character1Dmg.Size = new Size(103, 15);
+            character1Dmg.TabIndex = 10;
+            character1Dmg.Text = "Obrażenia Ataku:  ";
             // 
-            // knightInitiative
+            // character1Initiative
             // 
-            knightInitiative.AutoSize = true;
-            knightInitiative.Location = new Point(6, 224);
-            knightInitiative.Name = "knightInitiative";
-            knightInitiative.Size = new Size(69, 15);
-            knightInitiative.TabIndex = 9;
-            knightInitiative.Text = "Inicjatywa:  ";
+            character1Initiative.AutoSize = true;
+            character1Initiative.Location = new Point(6, 224);
+            character1Initiative.Name = "character1Initiative";
+            character1Initiative.Size = new Size(69, 15);
+            character1Initiative.TabIndex = 9;
+            character1Initiative.Text = "Inicjatywa:  ";
             // 
-            // knightCrit
+            // character1Crit
             // 
-            knightCrit.AutoSize = true;
-            knightCrit.Location = new Point(6, 200);
-            knightCrit.Name = "knightCrit";
-            knightCrit.Size = new Size(97, 15);
-            knightCrit.TabIndex = 8;
-            knightCrit.Text = "Szansa na Kryta:  ";
+            character1Crit.AutoSize = true;
+            character1Crit.Location = new Point(6, 200);
+            character1Crit.Name = "character1Crit";
+            character1Crit.Size = new Size(97, 15);
+            character1Crit.TabIndex = 8;
+            character1Crit.Text = "Szansa na Kryta:  ";
             // 
-            // knightResistance
+            // character1Resistance
             // 
-            knightResistance.AutoSize = true;
-            knightResistance.Location = new Point(6, 175);
-            knightResistance.Name = "knightResistance";
-            knightResistance.Size = new Size(75, 15);
-            knightResistance.TabIndex = 7;
-            knightResistance.Text = "Odpornosc:  ";
+            character1Resistance.AutoSize = true;
+            character1Resistance.Location = new Point(6, 175);
+            character1Resistance.Name = "character1Resistance";
+            character1Resistance.Size = new Size(75, 15);
+            character1Resistance.TabIndex = 7;
+            character1Resistance.Text = "Odpornosc:  ";
             // 
-            // knightHp
+            // character1Hp
             // 
-            knightHp.AutoSize = true;
-            knightHp.Location = new Point(6, 151);
-            knightHp.Name = "knightHp";
-            knightHp.Size = new Size(32, 15);
-            knightHp.TabIndex = 6;
-            knightHp.Text = "HP:  ";
+            character1Hp.AutoSize = true;
+            character1Hp.Location = new Point(6, 151);
+            character1Hp.Name = "character1Hp";
+            character1Hp.Size = new Size(32, 15);
+            character1Hp.TabIndex = 6;
+            character1Hp.Text = "HP:  ";
             // 
-            // knightIntelligence
+            // character1Intelligence
             // 
-            knightIntelligence.AutoSize = true;
-            knightIntelligence.Location = new Point(6, 126);
-            knightIntelligence.Name = "knightIntelligence";
-            knightIntelligence.Size = new Size(77, 15);
-            knightIntelligence.TabIndex = 5;
-            knightIntelligence.Text = "Inteligencja:  ";
+            character1Intelligence.AutoSize = true;
+            character1Intelligence.Location = new Point(6, 126);
+            character1Intelligence.Name = "character1Intelligence";
+            character1Intelligence.Size = new Size(77, 15);
+            character1Intelligence.TabIndex = 5;
+            character1Intelligence.Text = "Inteligencja:  ";
             // 
-            // knightDexterity
+            // character1Dexterity
             // 
-            knightDexterity.AutoSize = true;
-            knightDexterity.Location = new Point(6, 102);
-            knightDexterity.Name = "knightDexterity";
-            knightDexterity.Size = new Size(66, 15);
-            knightDexterity.TabIndex = 4;
-            knightDexterity.Text = "Zrecznosc: ";
+            character1Dexterity.AutoSize = true;
+            character1Dexterity.Location = new Point(6, 102);
+            character1Dexterity.Name = "character1Dexterity";
+            character1Dexterity.Size = new Size(66, 15);
+            character1Dexterity.TabIndex = 4;
+            character1Dexterity.Text = "Zrecznosc: ";
             // 
-            // knightStrength
+            // character1Strength
             // 
-            knightStrength.AutoSize = true;
-            knightStrength.Location = new Point(8, 77);
-            knightStrength.Name = "knightStrength";
-            knightStrength.Size = new Size(31, 15);
-            knightStrength.TabIndex = 3;
-            knightStrength.Text = "Siła: ";
+            character1Strength.AutoSize = true;
+            character1Strength.Location = new Point(8, 77);
+            character1Strength.Name = "character1Strength";
+            character1Strength.Size = new Size(31, 15);
+            character1Strength.TabIndex = 3;
+            character1Strength.Text = "Siła: ";
             // 
-            // knightExp
+            // character1Exp
             // 
-            knightExp.AutoSize = true;
-            knightExp.Location = new Point(6, 52);
-            knightExp.Name = "knightExp";
-            knightExp.Size = new Size(73, 15);
-            knightExp.TabIndex = 2;
-            knightExp.Text = "Punkty EXP: ";
+            character1Exp.AutoSize = true;
+            character1Exp.Location = new Point(6, 52);
+            character1Exp.Name = "character1Exp";
+            character1Exp.Size = new Size(73, 15);
+            character1Exp.TabIndex = 2;
+            character1Exp.Text = "Punkty EXP: ";
             // 
-            // knightLevel
+            // character1Level
             // 
-            knightLevel.AutoSize = true;
-            knightLevel.Location = new Point(6, 27);
-            knightLevel.Name = "knightLevel";
-            knightLevel.Size = new Size(40, 15);
-            knightLevel.TabIndex = 1;
-            knightLevel.Text = "Level: ";
+            character1Level.AutoSize = true;
+            character1Level.Location = new Point(6, 27);
+            character1Level.Name = "character1Level";
+            character1Level.Size = new Size(40, 15);
+            character1Level.TabIndex = 1;
+            character1Level.Text = "Level: ";
             // 
-            // knightName
+            // character1Name
             // 
-            knightName.AutoSize = true;
-            knightName.Location = new Point(6, 3);
-            knightName.Name = "knightName";
-            knightName.Size = new Size(36, 15);
-            knightName.TabIndex = 0;
-            knightName.Text = "Imie: ";
+            character1Name.AutoSize = true;
+            character1Name.Location = new Point(6, 3);
+            character1Name.Name = "character1Name";
+            character1Name.Size = new Size(36, 15);
+            character1Name.TabIndex = 0;
+            character1Name.Text = "Imie: ";
             // 
             // knightEkwipunek
             // 
             knightEkwipunek.BackColor = Color.RosyBrown;
-            knightEkwipunek.Controls.Add(label1);
-            knightEkwipunek.Controls.Add(knightArmor);
-            knightEkwipunek.Controls.Add(knightWeapon);
+            knightEkwipunek.Controls.Add(character1ClassName);
+            knightEkwipunek.Controls.Add(character1Armor);
+            knightEkwipunek.Controls.Add(character1Weapon);
             knightEkwipunek.Location = new Point(4, 24);
             knightEkwipunek.Name = "knightEkwipunek";
             knightEkwipunek.Padding = new Padding(3);
@@ -745,37 +757,37 @@
             knightEkwipunek.TabIndex = 2;
             knightEkwipunek.Text = "Ekwipunek";
             // 
-            // label1
+            // character1ClassName
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(68, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(42, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Knight";
+            character1ClassName.AutoSize = true;
+            character1ClassName.Location = new Point(68, 3);
+            character1ClassName.Name = "character1ClassName";
+            character1ClassName.Size = new Size(10, 15);
+            character1ClassName.TabIndex = 2;
+            character1ClassName.Text = " ";
             // 
-            // knightArmor
+            // character1Armor
             // 
-            knightArmor.BorderStyle = BorderStyle.FixedSingle;
-            knightArmor.Location = new Point(115, 51);
-            knightArmor.MinimumSize = new Size(60, 60);
-            knightArmor.Name = "knightArmor";
-            knightArmor.Size = new Size(60, 60);
-            knightArmor.TabIndex = 1;
-            knightArmor.Text = "Armor";
-            knightArmor.TextAlign = ContentAlignment.MiddleCenter;
+            character1Armor.BorderStyle = BorderStyle.FixedSingle;
+            character1Armor.Location = new Point(115, 51);
+            character1Armor.MinimumSize = new Size(60, 60);
+            character1Armor.Name = "character1Armor";
+            character1Armor.Size = new Size(60, 60);
+            character1Armor.TabIndex = 1;
+            character1Armor.Text = "Armor";
+            character1Armor.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // knightWeapon
+            // character1Weapon
             // 
-            knightWeapon.AllowDrop = true;
-            knightWeapon.BorderStyle = BorderStyle.FixedSingle;
-            knightWeapon.Location = new Point(6, 51);
-            knightWeapon.MinimumSize = new Size(60, 60);
-            knightWeapon.Name = "knightWeapon";
-            knightWeapon.Size = new Size(60, 60);
-            knightWeapon.TabIndex = 0;
-            knightWeapon.Text = "Bron";
-            knightWeapon.TextAlign = ContentAlignment.MiddleCenter;
+            character1Weapon.AllowDrop = true;
+            character1Weapon.BorderStyle = BorderStyle.FixedSingle;
+            character1Weapon.Location = new Point(6, 51);
+            character1Weapon.MinimumSize = new Size(60, 60);
+            character1Weapon.Name = "character1Weapon";
+            character1Weapon.Size = new Size(60, 60);
+            character1Weapon.TabIndex = 0;
+            character1Weapon.Text = "Bron";
+            character1Weapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl2
             // 
@@ -790,7 +802,7 @@
             // 
             // jokerPostac
             // 
-            jokerPostac.Controls.Add(jokerPicture);
+            jokerPostac.Controls.Add(character4Picture);
             jokerPostac.Location = new Point(4, 24);
             jokerPostac.Name = "jokerPostac";
             jokerPostac.Padding = new Padding(3);
@@ -799,31 +811,32 @@
             jokerPostac.Text = "Postac";
             jokerPostac.UseVisualStyleBackColor = true;
             // 
-            // jokerPicture
+            // character4Picture
             // 
-            jokerPicture.BackColor = Color.Beige;
-            jokerPicture.Dock = DockStyle.Fill;
-            jokerPicture.Location = new Point(3, 3);
-            jokerPicture.Name = "jokerPicture";
-            jokerPicture.Size = new Size(186, 302);
-            jokerPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            jokerPicture.TabIndex = 0;
-            jokerPicture.TabStop = false;
+            character4Picture.BackColor = Color.Beige;
+            character4Picture.Dock = DockStyle.Fill;
+            character4Picture.Location = new Point(3, 3);
+            character4Picture.Name = "character4Picture";
+            character4Picture.Size = new Size(186, 302);
+            character4Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character4Picture.TabIndex = 0;
+            character4Picture.TabStop = false;
             // 
             // jokerStatystyki
             // 
             jokerStatystyki.BackColor = Color.Beige;
-            jokerStatystyki.Controls.Add(jokerDmg);
-            jokerStatystyki.Controls.Add(jokerName);
-            jokerStatystyki.Controls.Add(jokerInitiative);
-            jokerStatystyki.Controls.Add(jokerLevel);
-            jokerStatystyki.Controls.Add(jokerCrit);
-            jokerStatystyki.Controls.Add(jokerExp);
-            jokerStatystyki.Controls.Add(jokerResistance);
-            jokerStatystyki.Controls.Add(jokerStrength);
-            jokerStatystyki.Controls.Add(jokerHp);
-            jokerStatystyki.Controls.Add(jokerDexterity);
-            jokerStatystyki.Controls.Add(jokerIntelligence);
+            jokerStatystyki.Controls.Add(character4Block);
+            jokerStatystyki.Controls.Add(character4Dmg);
+            jokerStatystyki.Controls.Add(character4Name);
+            jokerStatystyki.Controls.Add(character4Initiative);
+            jokerStatystyki.Controls.Add(character4Level);
+            jokerStatystyki.Controls.Add(character4Crit);
+            jokerStatystyki.Controls.Add(character4Exp);
+            jokerStatystyki.Controls.Add(character4Resistance);
+            jokerStatystyki.Controls.Add(character4Strength);
+            jokerStatystyki.Controls.Add(character4Hp);
+            jokerStatystyki.Controls.Add(character4Dexterity);
+            jokerStatystyki.Controls.Add(character4Intelligence);
             jokerStatystyki.Location = new Point(4, 24);
             jokerStatystyki.Name = "jokerStatystyki";
             jokerStatystyki.Padding = new Padding(3);
@@ -831,111 +844,120 @@
             jokerStatystyki.TabIndex = 1;
             jokerStatystyki.Text = "Statystyki";
             // 
-            // jokerDmg
+            // character4Block
             // 
-            jokerDmg.AutoSize = true;
-            jokerDmg.Location = new Point(3, 250);
-            jokerDmg.Name = "jokerDmg";
-            jokerDmg.Size = new Size(103, 15);
-            jokerDmg.TabIndex = 43;
-            jokerDmg.Text = "Obrażenia Ataku:  ";
+            character4Block.AutoSize = true;
+            character4Block.Location = new Point(6, 275);
+            character4Block.Name = "character4Block";
+            character4Block.Size = new Size(10, 15);
+            character4Block.TabIndex = 44;
+            character4Block.Text = " ";
             // 
-            // jokerName
+            // character4Dmg
             // 
-            jokerName.AutoSize = true;
-            jokerName.Location = new Point(3, 3);
-            jokerName.Name = "jokerName";
-            jokerName.Size = new Size(36, 15);
-            jokerName.TabIndex = 33;
-            jokerName.Text = "Imie: ";
+            character4Dmg.AutoSize = true;
+            character4Dmg.Location = new Point(3, 250);
+            character4Dmg.Name = "character4Dmg";
+            character4Dmg.Size = new Size(103, 15);
+            character4Dmg.TabIndex = 43;
+            character4Dmg.Text = "Obrażenia Ataku:  ";
             // 
-            // jokerInitiative
+            // character4Name
             // 
-            jokerInitiative.AutoSize = true;
-            jokerInitiative.Location = new Point(3, 224);
-            jokerInitiative.Name = "jokerInitiative";
-            jokerInitiative.Size = new Size(69, 15);
-            jokerInitiative.TabIndex = 42;
-            jokerInitiative.Text = "Inicjatywa:  ";
+            character4Name.AutoSize = true;
+            character4Name.Location = new Point(3, 3);
+            character4Name.Name = "character4Name";
+            character4Name.Size = new Size(36, 15);
+            character4Name.TabIndex = 33;
+            character4Name.Text = "Imie: ";
             // 
-            // jokerLevel
+            // character4Initiative
             // 
-            jokerLevel.AutoSize = true;
-            jokerLevel.Location = new Point(3, 27);
-            jokerLevel.Name = "jokerLevel";
-            jokerLevel.Size = new Size(40, 15);
-            jokerLevel.TabIndex = 34;
-            jokerLevel.Text = "Level: ";
+            character4Initiative.AutoSize = true;
+            character4Initiative.Location = new Point(3, 224);
+            character4Initiative.Name = "character4Initiative";
+            character4Initiative.Size = new Size(69, 15);
+            character4Initiative.TabIndex = 42;
+            character4Initiative.Text = "Inicjatywa:  ";
             // 
-            // jokerCrit
+            // character4Level
             // 
-            jokerCrit.AutoSize = true;
-            jokerCrit.Location = new Point(3, 200);
-            jokerCrit.Name = "jokerCrit";
-            jokerCrit.Size = new Size(97, 15);
-            jokerCrit.TabIndex = 41;
-            jokerCrit.Text = "Szansa na Kryta:  ";
+            character4Level.AutoSize = true;
+            character4Level.Location = new Point(3, 27);
+            character4Level.Name = "character4Level";
+            character4Level.Size = new Size(40, 15);
+            character4Level.TabIndex = 34;
+            character4Level.Text = "Level: ";
             // 
-            // jokerExp
+            // character4Crit
             // 
-            jokerExp.AutoSize = true;
-            jokerExp.Location = new Point(3, 52);
-            jokerExp.Name = "jokerExp";
-            jokerExp.Size = new Size(73, 15);
-            jokerExp.TabIndex = 35;
-            jokerExp.Text = "Punkty EXP: ";
+            character4Crit.AutoSize = true;
+            character4Crit.Location = new Point(3, 200);
+            character4Crit.Name = "character4Crit";
+            character4Crit.Size = new Size(97, 15);
+            character4Crit.TabIndex = 41;
+            character4Crit.Text = "Szansa na Kryta:  ";
             // 
-            // jokerResistance
+            // character4Exp
             // 
-            jokerResistance.AutoSize = true;
-            jokerResistance.Location = new Point(3, 175);
-            jokerResistance.Name = "jokerResistance";
-            jokerResistance.Size = new Size(75, 15);
-            jokerResistance.TabIndex = 40;
-            jokerResistance.Text = "Odpornosc:  ";
+            character4Exp.AutoSize = true;
+            character4Exp.Location = new Point(3, 52);
+            character4Exp.Name = "character4Exp";
+            character4Exp.Size = new Size(73, 15);
+            character4Exp.TabIndex = 35;
+            character4Exp.Text = "Punkty EXP: ";
             // 
-            // jokerStrength
+            // character4Resistance
             // 
-            jokerStrength.AutoSize = true;
-            jokerStrength.Location = new Point(5, 77);
-            jokerStrength.Name = "jokerStrength";
-            jokerStrength.Size = new Size(31, 15);
-            jokerStrength.TabIndex = 36;
-            jokerStrength.Text = "Siła: ";
+            character4Resistance.AutoSize = true;
+            character4Resistance.Location = new Point(3, 175);
+            character4Resistance.Name = "character4Resistance";
+            character4Resistance.Size = new Size(75, 15);
+            character4Resistance.TabIndex = 40;
+            character4Resistance.Text = "Odpornosc:  ";
             // 
-            // jokerHp
+            // character4Strength
             // 
-            jokerHp.AutoSize = true;
-            jokerHp.Location = new Point(3, 151);
-            jokerHp.Name = "jokerHp";
-            jokerHp.Size = new Size(32, 15);
-            jokerHp.TabIndex = 39;
-            jokerHp.Text = "HP:  ";
+            character4Strength.AutoSize = true;
+            character4Strength.Location = new Point(5, 77);
+            character4Strength.Name = "character4Strength";
+            character4Strength.Size = new Size(31, 15);
+            character4Strength.TabIndex = 36;
+            character4Strength.Text = "Siła: ";
             // 
-            // jokerDexterity
+            // character4Hp
             // 
-            jokerDexterity.AutoSize = true;
-            jokerDexterity.Location = new Point(3, 102);
-            jokerDexterity.Name = "jokerDexterity";
-            jokerDexterity.Size = new Size(66, 15);
-            jokerDexterity.TabIndex = 37;
-            jokerDexterity.Text = "Zrecznosc: ";
+            character4Hp.AutoSize = true;
+            character4Hp.Location = new Point(3, 151);
+            character4Hp.Name = "character4Hp";
+            character4Hp.Size = new Size(32, 15);
+            character4Hp.TabIndex = 39;
+            character4Hp.Text = "HP:  ";
             // 
-            // jokerIntelligence
+            // character4Dexterity
             // 
-            jokerIntelligence.AutoSize = true;
-            jokerIntelligence.Location = new Point(3, 126);
-            jokerIntelligence.Name = "jokerIntelligence";
-            jokerIntelligence.Size = new Size(77, 15);
-            jokerIntelligence.TabIndex = 38;
-            jokerIntelligence.Text = "Inteligencja:  ";
+            character4Dexterity.AutoSize = true;
+            character4Dexterity.Location = new Point(3, 102);
+            character4Dexterity.Name = "character4Dexterity";
+            character4Dexterity.Size = new Size(66, 15);
+            character4Dexterity.TabIndex = 37;
+            character4Dexterity.Text = "Zrecznosc: ";
+            // 
+            // character4Intelligence
+            // 
+            character4Intelligence.AutoSize = true;
+            character4Intelligence.Location = new Point(3, 126);
+            character4Intelligence.Name = "character4Intelligence";
+            character4Intelligence.Size = new Size(77, 15);
+            character4Intelligence.TabIndex = 38;
+            character4Intelligence.Text = "Inteligencja:  ";
             // 
             // jokerEkwipunek
             // 
             jokerEkwipunek.BackColor = Color.Beige;
-            jokerEkwipunek.Controls.Add(label4);
-            jokerEkwipunek.Controls.Add(jokerArmor);
-            jokerEkwipunek.Controls.Add(jokerWeapon);
+            jokerEkwipunek.Controls.Add(character4ClassName);
+            jokerEkwipunek.Controls.Add(character4Armor);
+            jokerEkwipunek.Controls.Add(character4Weapon);
             jokerEkwipunek.Location = new Point(4, 24);
             jokerEkwipunek.Name = "jokerEkwipunek";
             jokerEkwipunek.Padding = new Padding(3);
@@ -943,37 +965,37 @@
             jokerEkwipunek.TabIndex = 2;
             jokerEkwipunek.Text = "Ekwipunek";
             // 
-            // label4
+            // character4ClassName
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(71, 3);
-            label4.Name = "label4";
-            label4.Size = new Size(34, 15);
-            label4.TabIndex = 5;
-            label4.Text = "Joker";
+            character4ClassName.AutoSize = true;
+            character4ClassName.Location = new Point(71, 3);
+            character4ClassName.Name = "character4ClassName";
+            character4ClassName.Size = new Size(10, 15);
+            character4ClassName.TabIndex = 5;
+            character4ClassName.Text = " ";
             // 
-            // jokerArmor
+            // character4Armor
             // 
-            jokerArmor.BorderStyle = BorderStyle.FixedSingle;
-            jokerArmor.Location = new Point(110, 51);
-            jokerArmor.MinimumSize = new Size(60, 60);
-            jokerArmor.Name = "jokerArmor";
-            jokerArmor.Size = new Size(60, 60);
-            jokerArmor.TabIndex = 4;
-            jokerArmor.Text = "Armor";
-            jokerArmor.TextAlign = ContentAlignment.MiddleCenter;
+            character4Armor.BorderStyle = BorderStyle.FixedSingle;
+            character4Armor.Location = new Point(110, 51);
+            character4Armor.MinimumSize = new Size(60, 60);
+            character4Armor.Name = "character4Armor";
+            character4Armor.Size = new Size(60, 60);
+            character4Armor.TabIndex = 4;
+            character4Armor.Text = "Armor";
+            character4Armor.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // jokerWeapon
+            // character4Weapon
             // 
-            jokerWeapon.AllowDrop = true;
-            jokerWeapon.BorderStyle = BorderStyle.FixedSingle;
-            jokerWeapon.Location = new Point(19, 51);
-            jokerWeapon.MinimumSize = new Size(60, 60);
-            jokerWeapon.Name = "jokerWeapon";
-            jokerWeapon.Size = new Size(60, 60);
-            jokerWeapon.TabIndex = 3;
-            jokerWeapon.Text = "Bron";
-            jokerWeapon.TextAlign = ContentAlignment.MiddleCenter;
+            character4Weapon.AllowDrop = true;
+            character4Weapon.BorderStyle = BorderStyle.FixedSingle;
+            character4Weapon.Location = new Point(19, 51);
+            character4Weapon.MinimumSize = new Size(60, 60);
+            character4Weapon.Name = "character4Weapon";
+            character4Weapon.Size = new Size(60, 60);
+            character4Weapon.TabIndex = 3;
+            character4Weapon.Text = "Bron";
+            character4Weapon.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Inventory
             // 
@@ -1107,28 +1129,28 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl3.ResumeLayout(false);
             clericPostac.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)clericPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character3Picture).EndInit();
             clericStatystyki.ResumeLayout(false);
             clericStatystyki.PerformLayout();
             clericEkwipunek.ResumeLayout(false);
             clericEkwipunek.PerformLayout();
             tabControl5.ResumeLayout(false);
             roguePostac.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)roguePicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character2Picture).EndInit();
             rogueStatystyki.ResumeLayout(false);
             rogueStatystyki.PerformLayout();
             rogueEkwipunek.ResumeLayout(false);
             rogueEkwipunek.PerformLayout();
             tabControl1.ResumeLayout(false);
             knightPostac.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)knightPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character1Picture).EndInit();
             knightStatystyki.ResumeLayout(false);
             knightStatystyki.PerformLayout();
             knightEkwipunek.ResumeLayout(false);
             knightEkwipunek.PerformLayout();
             tabControl2.ResumeLayout(false);
             jokerPostac.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)jokerPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character4Picture).EndInit();
             jokerStatystyki.ResumeLayout(false);
             jokerStatystyki.PerformLayout();
             jokerEkwipunek.ResumeLayout(false);
@@ -1157,79 +1179,81 @@
         private TabPage jokerPostac;
         private TabPage jokerStatystyki;
         private TabPage jokerEkwipunek;
-        private Label knightName;
-        private Label knightInitiative;
-        private Label knightCrit;
-        private Label knightResistance;
-        private Label knightHp;
-        private Label knightIntelligence;
-        private Label knightDexterity;
-        private Label knightStrength;
-        private Label knightExp;
-        private Label knightLevel;
-        private Label knightDmg;
-        private Label clericDmg;
-        private Label clericName;
-        private Label clericInitiative;
-        private Label clericLevel;
-        private Label clericCrit;
-        private Label clericExp;
-        private Label clericResistance;
-        private Label clericStrength;
-        private Label clericHp;
-        private Label clericDexterity;
-        private Label clericIntelligence;
-        private Label rogueDmg;
-        private Label rogueInitiative;
-        private Label rogueCrit;
-        private Label rogueResistance;
-        private Label rogueHp;
-        private Label rogueIntelligence;
-        private Label rogueDexterity;
-        private Label rogueStrength;
-        private Label rogueExp;
-        private Label rogueLevel;
-        private Label rogueName;
-        private Label jokerDmg;
-        private Label jokerName;
-        private Label jokerInitiative;
-        private Label jokerLevel;
-        private Label jokerCrit;
-        private Label jokerExp;
-        private Label jokerResistance;
-        private Label jokerStrength;
-        private Label jokerHp;
-        private Label jokerDexterity;
-        private Label jokerIntelligence;
-        private PictureBox clericPicture;
-        private PictureBox roguePicture;
-        private PictureBox knightPicture;
-        private PictureBox jokerPicture;
+        private Label character1Name;
+        private Label character1Initiative;
+        private Label character1Crit;
+        private Label character1Resistance;
+        private Label character1Hp;
+        private Label character1Intelligence;
+        private Label character1Dexterity;
+        private Label character1Strength;
+        private Label character1Exp;
+        private Label character1Level;
+        private Label character1Dmg;
+        private Label character3Dmg;
+        private Label character3Name;
+        private Label character3Initiative;
+        private Label character3Level;
+        private Label character3Crit;
+        private Label character3Exp;
+        private Label character3Resistance;
+        private Label character3Strength;
+        private Label character3Hp;
+        private Label character3Dexterity;
+        private Label character3Intelligence;
+        private Label character2Dmg;
+        private Label character2Initiative;
+        private Label character2Crit;
+        private Label character2Resistance;
+        private Label character2Hp;
+        private Label character2Intelligence;
+        private Label character2Dexterity;
+        private Label character2Strength;
+        private Label character2Exp;
+        private Label character2Level;
+        private Label character2Name;
+        private Label character4Dmg;
+        private Label character4Name;
+        private Label character4Initiative;
+        private Label character4Level;
+        private Label character4Crit;
+        private Label character4Exp;
+        private Label character4Resistance;
+        private Label character4Strength;
+        private Label character4Hp;
+        private Label character4Dexterity;
+        private Label character4Intelligence;
+        private PictureBox character3Picture;
+        private PictureBox character2Picture;
+        private PictureBox character1Picture;
+        private PictureBox character4Picture;
         private FlowLayoutPanel Inventory;
-        private Label knightWeapon;
-        private Label knightArmor;
-        private Label knightBlock;
+        private Label character1Weapon;
+        private Label character1Armor;
+        private Label character1Block;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Label rogueDodge;
-        private Label rogueArmor;
-        private Label rogueWeapon;
-        private Label clericArmor;
-        private Label clericWeapon;
-        private Label jokerArmor;
-        private Label jokerWeapon;
+        private Label character2Block;
+        private Label character2Armor;
+        private Label character2Weapon;
+        private Label character3Armor;
+        private Label character3Weapon;
+        private Label character4Armor;
+        private Label character4Weapon;
         private Label goldLabel;
         private ToolTip toolTip1;
         private FlowLayoutPanel Shop;
         private Button Roll;
         private Button exitButton;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private Label label4;
+        private Label character3ClassName;
+        private Label character2ClassName;
+        private Label character1ClassName;
+        private Label character4ClassName;
         private Button SortKnight;
         private Button SortRogue;
         private Button SortCleric;
         private Button SortJoker;
         private Button SortAll;
+        private Label character3Block;
+        private Label character4Block;
     }
 }

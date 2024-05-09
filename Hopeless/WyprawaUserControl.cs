@@ -347,56 +347,56 @@ namespace Hopeless
                 enemy4Picture.BackColor = Color.White;
             }
 
-            knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
-            knightHealth.Value = characters[0].CurrentHP;
-            if (knightHealth.Value == 0)
+            character1HealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
+            character1Health.Value = characters[0].CurrentHP;
+            if (character1Health.Value == 0)
             {
-                knightPicture.Enabled = false;
+                character1Picture.Enabled = false;
 
-                knightPicture.BackColor = Color.Black;
+                character1Picture.BackColor = Color.Black;
             }
             else
             {
-                knightPicture.BackColor = Color.White;
+                character1Picture.BackColor = Color.White;
             }
 
 
-            rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
-            rogueHealth.Value = characters[1].CurrentHP;
-            if (rogueHealth.Value == 0)
+            character2HealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
+            character2Health.Value = characters[1].CurrentHP;
+            if (character2Health.Value == 0)
             {
-                roguePicture.Enabled = false;
-                roguePicture.BackColor = Color.Black;
-            }
-            else
-            {
-                roguePicture.BackColor = Color.White;
-            }
-
-
-            clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
-            clericHealth.Value = characters[2].CurrentHP;
-            if (clericHealth.Value == 0)
-            {
-                clericPicture.Enabled = false;
-                clericPicture.BackColor = Color.Black;
+                character2Picture.Enabled = false;
+                character2Picture.BackColor = Color.Black;
             }
             else
             {
-                clericPicture.BackColor = Color.White;
+                character2Picture.BackColor = Color.White;
             }
 
 
-            jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
-            jokerHealth.Value = characters[3].CurrentHP;
-            if (jokerHealth.Value == 0)
+            character3HealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
+            character3Health.Value = characters[2].CurrentHP;
+            if (character3Health.Value == 0)
             {
-                jokerPicture.Enabled = false;
-                jokerPicture.BackColor = Color.Black;
+                character3Picture.Enabled = false;
+                character3Picture.BackColor = Color.Black;
             }
             else
             {
-                jokerPicture.BackColor = Color.White;
+                character3Picture.BackColor = Color.White;
+            }
+
+
+            character4HealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
+            character4Health.Value = characters[3].CurrentHP;
+            if (character4Health.Value == 0)
+            {
+                character4Picture.Enabled = false;
+                character4Picture.BackColor = Color.Black;
+            }
+            else
+            {
+                character4Picture.BackColor = Color.White;
             }
 
 
@@ -474,10 +474,10 @@ namespace Hopeless
             enemy3Picture.BackColor = Color.White;
             enemy4Picture.BackColor = Color.White;
 
-            knightPicture.BackColor = Color.White;
-            roguePicture.BackColor = Color.White;
-            clericPicture.BackColor = Color.White;
-            jokerPicture.BackColor = Color.White;
+            character1Picture.BackColor = Color.White;
+            character2Picture.BackColor = Color.White;
+            character3Picture.BackColor = Color.White;
+            character4Picture.BackColor = Color.White;
             basicAttackLabel.Text = "Atak Bazowy";
             skill1Label.Text = "";
             skill2Label.Text = "";
@@ -485,40 +485,40 @@ namespace Hopeless
             skill2Label.MouseHover += SkillMouseHover;
             basicAttackLabel.MouseHover += SkillMouseHover;
 
-            knightName.Text = characters[0].Name;
-            knightPicture.Enabled = true;
-            knightHealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
-            knightHealth.Maximum = characters[0].MaxHP;
-            knightHealth.Value = characters[0].CurrentHP;
-            knightPicture.Click += Enemy_Click;
+            character1Name.Text = characters[0].Name;
+            character1Picture.Enabled = true;
+            character1HealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
+            character1Health.Maximum = characters[0].MaxHP;
+            character1Health.Value = characters[0].CurrentHP;
+            character1Picture.Click += Enemy_Click;
 
-            knightPicture.Image = Properties.Resources.knightPicture;
+            character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[0].CharacterType.ToString().ToLower() + "Picture");
 
-            rogueName.Text = characters[1].Name;
-            roguePicture.Enabled = true;
-            rogueHealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
-            rogueHealth.Maximum = characters[1].MaxHP;
-            rogueHealth.Value = characters[1].CurrentHP;
-            roguePicture.Click += Enemy_Click;
+            character2Name.Text = characters[1].Name;
+            character2Picture.Enabled = true;
+            character2HealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
+            character2Health.Maximum = characters[1].MaxHP;
+            character2Health.Value = characters[1].CurrentHP;
+            character2Picture.Click += Enemy_Click;
 
-            roguePicture.Image = Properties.Resources.roguePicture;
+            character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[1].CharacterType.ToString().ToLower() + "Picture");
 
-            clericName.Text = characters[2].Name;
-            clericPicture.Enabled = true;
-            clericHealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
-            clericHealth.Maximum = characters[2].MaxHP;
-            clericHealth.Value = characters[2].CurrentHP;
-            clericPicture.Click += Enemy_Click;
+            character3Name.Text = characters[2].Name;
+            character3Picture.Enabled = true;
+            character3HealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
+            character3Health.Maximum = characters[2].MaxHP;
+            character3Health.Value = characters[2].CurrentHP;
+            character3Picture.Click += Enemy_Click;
 
-            clericPicture.Image = Properties.Resources.clericPicture;
+            character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[2].CharacterType.ToString().ToLower() + "Picture");
 
-            jokerName.Text = characters[3].Name;
-            jokerPicture.Enabled = true;
-            jokerHealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
-            jokerHealth.Maximum = characters[3].MaxHP;
-            jokerHealth.Value = characters[3].CurrentHP;
-            jokerPicture.Click += Enemy_Click;
-            jokerPicture.Image = Properties.Resources.jokerPicture;
+            character4Name.Text = characters[3].Name;
+            character4Picture.Enabled = true;
+            character4HealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
+            character4Health.Maximum = characters[3].MaxHP;
+            character4Health.Value = characters[3].CurrentHP;
+            character4Picture.Click += Enemy_Click;
+            character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[3].CharacterType.ToString().ToLower() + "Picture");
 
 
             enemy1Name.Text = expedition.Monsters[0].Name;
@@ -618,50 +618,50 @@ namespace Hopeless
             }
 
           
-            if (knightHealth.Value == 0)
+            if (character1Health.Value == 0)
             {
-                knightPicture.Enabled = false;
+                character1Picture.Enabled = false;
 
-                knightPicture.BackColor = Color.Black;
+                character1Picture.BackColor = Color.Black;
             }
             else
             {
-                knightPicture.BackColor = Color.White;
+                character1Picture.BackColor = Color.White;
             }
 
 
          
-            if (rogueHealth.Value == 0)
+            if (character2Health.Value == 0)
             {
-                roguePicture.Enabled = false;
-                roguePicture.BackColor = Color.Black;
+                character2Picture.Enabled = false;
+                character2Picture.BackColor = Color.Black;
             }
             else
             {
-                roguePicture.BackColor = Color.White;
+                character2Picture.BackColor = Color.White;
             }
 
 
            
-            if (clericHealth.Value == 0)
+            if (character3Health.Value == 0)
             {
-                clericPicture.Enabled = false;
-                clericPicture.BackColor = Color.Black;
+                character3Picture.Enabled = false;
+                character3Picture.BackColor = Color.Black;
             }
             else
             {
-                clericPicture.BackColor = Color.White;
+                character3Picture.BackColor = Color.White;
             }
 
 
-            if (jokerHealth.Value == 0)
+            if (character4Health.Value == 0)
             {
-                jokerPicture.Enabled = false;
-                jokerPicture.BackColor = Color.Black;
+                character4Picture.Enabled = false;
+                character4Picture.BackColor = Color.Black;
             }
             else
             {
-                jokerPicture.BackColor = Color.White;
+                character4Picture.BackColor = Color.White;
             }
            
 
@@ -693,25 +693,25 @@ namespace Hopeless
                     target.Add(expedition.Monsters[3]);
                     pictureBox.BackColor = Color.Red;
                 }
-                else if (pictureBox.Name.Equals("knightPicture"))
+                else if (pictureBox.Name.Equals("character1Picture"))
                 {
                     target.Clear();
                     target.Add(characters[0]);
                     pictureBox.BackColor = Color.Green;
                 }
-                else if (pictureBox.Name.Equals("roguePicture"))
+                else if (pictureBox.Name.Equals("character2Picture"))
                 {
                     target.Clear();
                     target.Add(characters[1]);
                     pictureBox.BackColor = Color.Green;
                 }
-                else if (pictureBox.Name.Equals("clericPicture"))
+                else if (pictureBox.Name.Equals("character3Picture"))
                 {
                     target.Clear();
                     target.Add(characters[2]);
                     pictureBox.BackColor = Color.Green;
                 }
-                else if (pictureBox.Name.Equals("jokerPicture"))
+                else if (pictureBox.Name.Equals("character4Picture"))
                 {
                     target.Clear();
                     target.Add(characters[3]);

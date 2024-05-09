@@ -9,6 +9,7 @@ namespace Hopeless
     public partial class Form1 : Form
     {
         private MenuUserControl menuUserControl;
+        private KreatorUserControl kreatorUserControl;
         private PrzygotowanieUserControl fazaPrzygotowaniaUserControl;
         private WyprawaUserControl wyprawaUserControl;
         private WyborWyprawyUserControl wyborWyprawyUserControl;
@@ -19,10 +20,12 @@ namespace Hopeless
 
             // Inicjalizacja UserControl
             menuUserControl = new MenuUserControl();
+            kreatorUserControl = new KreatorUserControl();
             fazaPrzygotowaniaUserControl = new PrzygotowanieUserControl();
             wyprawaUserControl = new WyprawaUserControl();
             wyborWyprawyUserControl= new WyborWyprawyUserControl();
             Controls.Add(menuUserControl);
+            Controls.Add(kreatorUserControl);
             Controls.Add(fazaPrzygotowaniaUserControl);
             Controls.Add(wyprawaUserControl);
             Controls.Add(wyborWyprawyUserControl);
@@ -67,8 +70,8 @@ namespace Hopeless
             // Inicjalizacja armora
 
 
-            Armor lightweightarmour = new Armor("Lekka Zbroja", "Nie wiem czy wogole mo¿na to nazwaæ zbroj¹", 2,20, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker }, Rarity.Common);
-            Armor mediumweightarmour = new Armor("Œredni Pancerz", "Handlarz p³aka³ jak oddawa³", 4,20, new List<CharacterType> { CharacterType.Cleric }, Rarity.Common);
+            Armor lightweightarmour = new Armor("Lekka Zbroja", "Nie wiem czy wogole mozna to nazwac zbroja", 2,20, new List<CharacterType> { CharacterType.Rogue, CharacterType.Cleric, CharacterType.Joker }, Rarity.Common);
+            Armor mediumweightarmour = new Armor("Sredni Pancerz", "Handlarz plakal jak oddawal", 4,20, new List<CharacterType> { CharacterType.Cleric }, Rarity.Common);
             Armor armour = new Armor("Ciezka Zbroja", "W takiej to juz tylko na Jerozolime", 5,20, new List<CharacterType> { CharacterType.Knight }, Rarity.Common);
 
             Armor leatherarmor = new Armor("Skorzana Zbroja", "Zrobiona z pierwszorzêdnej skóry Cieniostworów", 6,150, new List<CharacterType> { CharacterType.Cleric, CharacterType.Joker, CharacterType.Rogue }, Rarity.Rare);
@@ -87,7 +90,8 @@ namespace Hopeless
             List<IEkwipunek> pulaEkwipunku = new List<IEkwipunek> { magicorearmor,zorro,claw_of_beliar,crossbow, mercenaryarmor, paladinarmor, heavy_crossbow, ulumulu, sword, gun, durableovercoat, bronzedchestplate, leatherarmor, armour, axe, lightweightarmour, mediumweightarmour, greatsword , glaive , metal_cudge , sharpened_sickle , gilded_mace , scarlet_flail , dagger , spearofdestiny , temeriaarmor , saskiaarmor, hiddenblade,
             musket, ritual_knife, pieceofeden};
 
-            List<IEkwipunek> ekwipunek = new List<IEkwipunek> { new Weapon(sword), new Weapon(gun), new Weapon(axe), new Weapon(ritual_knife), new Armor(armour),  new Armor(lightweightarmour), new Armor(lightweightarmour), new Armor(mediumweightarmour) };
+            List<IEkwipunek> ekwipunek = new List<IEkwipunek> {};
+            List<IEkwipunek> CommonIventory = new List<IEkwipunek> { new Weapon(sword),new Armor(armour), new Weapon(gun),new Armor(lightweightarmour), new Weapon(ritual_knife),new Armor(mediumweightarmour), new Weapon(axe),new Armor(lightweightarmour) };
             fazaPrzygotowaniaUserControl.pulaEkwipunku = pulaEkwipunku;
             wyborWyprawyUserControl.pulaEkwipunku = pulaEkwipunku;
 
@@ -144,6 +148,7 @@ namespace Hopeless
 
             // Ustawienie pocz¹tkowej widocznoœci UserControl
             menuUserControl.Visible = true;
+            kreatorUserControl.Visible = false;
             fazaPrzygotowaniaUserControl.Visible = false;
             wyprawaUserControl.Visible = false;
             wyborWyprawyUserControl.Visible = false;
@@ -157,15 +162,34 @@ namespace Hopeless
 
             menuUserControl.NowaGraButtonClicked += (sender, args) =>
             {
-                fazaPrzygotowaniaUserControl.Characters = characters;
+                //fazaPrzygotowaniaUserControl.Characters = characters;
+                //fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+                //wyborWyprawyUserControl.expeditions = expeditons;
+                //fazaPrzygotowaniaUserControl.gold = 100;
+                //fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
+
+                //fazaPrzygotowaniaUserControl.GenerateShop();
+                //fazaPrzygotowaniaUserControl.Visible = true;
+
+
+                kreatorUserControl.Characters = characters;
+                kreatorUserControl.CommonInventory = CommonIventory;
+                kreatorUserControl.Visible = true;
+                menuUserControl.Visible = false;
+            };
+
+            kreatorUserControl.RozpocznijButtonClicked += (sender, args) =>
+            {
+                ekwipunek = kreatorUserControl.StarterInventory.ToList();
+                fazaPrzygotowaniaUserControl.Characters = kreatorUserControl.ChooseCharacters;
                 fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
                 wyborWyprawyUserControl.expeditions = expeditons;
                 fazaPrzygotowaniaUserControl.gold = 100;
                 fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
-                
+
                 fazaPrzygotowaniaUserControl.GenerateShop();
                 fazaPrzygotowaniaUserControl.Visible = true;
-                menuUserControl.Visible = false;
+                kreatorUserControl.Visible = false;
             };
 
             menuUserControl.KontynuujGreButtonClicked += (sender, args) =>

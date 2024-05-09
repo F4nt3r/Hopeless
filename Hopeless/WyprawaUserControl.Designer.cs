@@ -31,26 +31,26 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WyprawaUserControl));
             pictureBox1 = new PictureBox();
-            jokerName = new Label();
-            clericName = new Label();
-            rogueName = new Label();
-            knightName = new Label();
+            character4Name = new Label();
+            character3Name = new Label();
+            character2Name = new Label();
+            character1Name = new Label();
             enemy1Name = new Label();
             enemy2Name = new Label();
             enemy3Name = new Label();
             enemy4Name = new Label();
-            jokerHealth = new ProgressBar();
-            clericHealth = new ProgressBar();
-            rogueHealth = new ProgressBar();
-            knightHealth = new ProgressBar();
+            character4Health = new ProgressBar();
+            character3Health = new ProgressBar();
+            character2Health = new ProgressBar();
+            character1Health = new ProgressBar();
             enemy1Health = new ProgressBar();
             enemy2Health = new ProgressBar();
             enemy3Health = new ProgressBar();
             enemy4Health = new ProgressBar();
-            knightHealthText = new Label();
-            rogueHealthText = new Label();
-            clericHealthText = new Label();
-            jokerHealthText = new Label();
+            character1HealthText = new Label();
+            character2HealthText = new Label();
+            character3HealthText = new Label();
+            character4HealthText = new Label();
             enemy1HealthText = new Label();
             enemy2HealthText = new Label();
             enemy3HealthText = new Label();
@@ -65,20 +65,20 @@
             activeCharacterLabel = new Label();
             turaLabel = new Label();
             panel1 = new Panel();
-            jokerPicture = new PictureBox();
-            clericPicture = new PictureBox();
-            roguePicture = new PictureBox();
-            knightPicture = new PictureBox();
+            character4Picture = new PictureBox();
+            character3Picture = new PictureBox();
+            character2Picture = new PictureBox();
+            character1Picture = new PictureBox();
             enemy4Picture = new PictureBox();
             enemy3Picture = new PictureBox();
             enemy2Picture = new PictureBox();
             enemy1Picture = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)jokerPicture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)clericPicture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)roguePicture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)knightPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character4Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character3Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character2Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)character1Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enemy4Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enemy3Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enemy2Picture).BeginInit();
@@ -95,45 +95,45 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // jokerName
+            // character4Name
             // 
-            jokerName.AutoSize = true;
-            jokerName.BackColor = Color.LightGray;
-            jokerName.Location = new Point(27, 400);
-            jokerName.Name = "jokerName";
-            jokerName.Size = new Size(36, 15);
-            jokerName.TabIndex = 12;
-            jokerName.Text = "Imie: ";
+            character4Name.AutoSize = true;
+            character4Name.BackColor = Color.LightGray;
+            character4Name.Location = new Point(27, 400);
+            character4Name.Name = "character4Name";
+            character4Name.Size = new Size(36, 15);
+            character4Name.TabIndex = 12;
+            character4Name.Text = "Imie: ";
             // 
-            // clericName
+            // character3Name
             // 
-            clericName.AutoSize = true;
-            clericName.BackColor = Color.LightGray;
-            clericName.Location = new Point(183, 400);
-            clericName.Name = "clericName";
-            clericName.Size = new Size(36, 15);
-            clericName.TabIndex = 13;
-            clericName.Text = "Imie: ";
+            character3Name.AutoSize = true;
+            character3Name.BackColor = Color.LightGray;
+            character3Name.Location = new Point(183, 400);
+            character3Name.Name = "character3Name";
+            character3Name.Size = new Size(36, 15);
+            character3Name.TabIndex = 13;
+            character3Name.Text = "Imie: ";
             // 
-            // rogueName
+            // character2Name
             // 
-            rogueName.AutoSize = true;
-            rogueName.BackColor = Color.LightGray;
-            rogueName.Location = new Point(338, 400);
-            rogueName.Name = "rogueName";
-            rogueName.Size = new Size(36, 15);
-            rogueName.TabIndex = 14;
-            rogueName.Text = "Imie: ";
+            character2Name.AutoSize = true;
+            character2Name.BackColor = Color.LightGray;
+            character2Name.Location = new Point(338, 400);
+            character2Name.Name = "character2Name";
+            character2Name.Size = new Size(36, 15);
+            character2Name.TabIndex = 14;
+            character2Name.Text = "Imie: ";
             // 
-            // knightName
+            // character1Name
             // 
-            knightName.AutoSize = true;
-            knightName.BackColor = Color.LightGray;
-            knightName.Location = new Point(495, 400);
-            knightName.Name = "knightName";
-            knightName.Size = new Size(36, 15);
-            knightName.TabIndex = 15;
-            knightName.Text = "Imie: ";
+            character1Name.AutoSize = true;
+            character1Name.BackColor = Color.LightGray;
+            character1Name.Location = new Point(495, 400);
+            character1Name.Name = "character1Name";
+            character1Name.Size = new Size(36, 15);
+            character1Name.TabIndex = 15;
+            character1Name.Text = "Imie: ";
             // 
             // enemy1Name
             // 
@@ -175,33 +175,33 @@
             enemy4Name.TabIndex = 19;
             enemy4Name.Text = "Imie: ";
             // 
-            // jokerHealth
+            // character4Health
             // 
-            jokerHealth.Location = new Point(27, 736);
-            jokerHealth.Name = "jokerHealth";
-            jokerHealth.Size = new Size(150, 23);
-            jokerHealth.TabIndex = 22;
+            character4Health.Location = new Point(27, 736);
+            character4Health.Name = "character4Health";
+            character4Health.Size = new Size(150, 23);
+            character4Health.TabIndex = 22;
             // 
-            // clericHealth
+            // character3Health
             // 
-            clericHealth.Location = new Point(183, 736);
-            clericHealth.Name = "clericHealth";
-            clericHealth.Size = new Size(150, 23);
-            clericHealth.TabIndex = 23;
+            character3Health.Location = new Point(183, 736);
+            character3Health.Name = "character3Health";
+            character3Health.Size = new Size(150, 23);
+            character3Health.TabIndex = 23;
             // 
-            // rogueHealth
+            // character2Health
             // 
-            rogueHealth.Location = new Point(338, 736);
-            rogueHealth.Name = "rogueHealth";
-            rogueHealth.Size = new Size(151, 23);
-            rogueHealth.TabIndex = 24;
+            character2Health.Location = new Point(338, 736);
+            character2Health.Name = "character2Health";
+            character2Health.Size = new Size(151, 23);
+            character2Health.TabIndex = 24;
             // 
-            // knightHealth
+            // character1Health
             // 
-            knightHealth.Location = new Point(495, 736);
-            knightHealth.Name = "knightHealth";
-            knightHealth.Size = new Size(150, 23);
-            knightHealth.TabIndex = 25;
+            character1Health.Location = new Point(495, 736);
+            character1Health.Name = "character1Health";
+            character1Health.Size = new Size(150, 23);
+            character1Health.TabIndex = 25;
             // 
             // enemy1Health
             // 
@@ -233,45 +233,45 @@
             enemy4Health.Size = new Size(150, 23);
             enemy4Health.TabIndex = 29;
             // 
-            // knightHealthText
+            // character1HealthText
             // 
-            knightHealthText.AutoSize = true;
-            knightHealthText.BackColor = Color.Transparent;
-            knightHealthText.Location = new Point(545, 759);
-            knightHealthText.Name = "knightHealthText";
-            knightHealthText.Size = new Size(38, 15);
-            knightHealthText.TabIndex = 30;
-            knightHealthText.Text = "label1";
+            character1HealthText.AutoSize = true;
+            character1HealthText.BackColor = Color.Transparent;
+            character1HealthText.Location = new Point(545, 759);
+            character1HealthText.Name = "character1HealthText";
+            character1HealthText.Size = new Size(38, 15);
+            character1HealthText.TabIndex = 30;
+            character1HealthText.Text = "label1";
             // 
-            // rogueHealthText
+            // character2HealthText
             // 
-            rogueHealthText.AutoSize = true;
-            rogueHealthText.BackColor = Color.Transparent;
-            rogueHealthText.Location = new Point(399, 762);
-            rogueHealthText.Name = "rogueHealthText";
-            rogueHealthText.Size = new Size(38, 15);
-            rogueHealthText.TabIndex = 31;
-            rogueHealthText.Text = "label1";
+            character2HealthText.AutoSize = true;
+            character2HealthText.BackColor = Color.Transparent;
+            character2HealthText.Location = new Point(399, 762);
+            character2HealthText.Name = "character2HealthText";
+            character2HealthText.Size = new Size(38, 15);
+            character2HealthText.TabIndex = 31;
+            character2HealthText.Text = "label1";
             // 
-            // clericHealthText
+            // character3HealthText
             // 
-            clericHealthText.AutoSize = true;
-            clericHealthText.BackColor = Color.Transparent;
-            clericHealthText.Location = new Point(238, 762);
-            clericHealthText.Name = "clericHealthText";
-            clericHealthText.Size = new Size(38, 15);
-            clericHealthText.TabIndex = 32;
-            clericHealthText.Text = "label1";
+            character3HealthText.AutoSize = true;
+            character3HealthText.BackColor = Color.Transparent;
+            character3HealthText.Location = new Point(238, 762);
+            character3HealthText.Name = "character3HealthText";
+            character3HealthText.Size = new Size(38, 15);
+            character3HealthText.TabIndex = 32;
+            character3HealthText.Text = "label1";
             // 
-            // jokerHealthText
+            // character4HealthText
             // 
-            jokerHealthText.AutoSize = true;
-            jokerHealthText.BackColor = Color.Transparent;
-            jokerHealthText.Location = new Point(79, 762);
-            jokerHealthText.Name = "jokerHealthText";
-            jokerHealthText.Size = new Size(38, 15);
-            jokerHealthText.TabIndex = 33;
-            jokerHealthText.Text = "label1";
+            character4HealthText.AutoSize = true;
+            character4HealthText.BackColor = Color.Transparent;
+            character4HealthText.Location = new Point(79, 762);
+            character4HealthText.Name = "character4HealthText";
+            character4HealthText.Size = new Size(38, 15);
+            character4HealthText.TabIndex = 33;
+            character4HealthText.Text = "label1";
             // 
             // enemy1HealthText
             // 
@@ -421,46 +421,46 @@
             panel1.Size = new Size(1424, 119);
             panel1.TabIndex = 46;
             // 
-            // jokerPicture
+            // character4Picture
             // 
-            jokerPicture.BorderStyle = BorderStyle.FixedSingle;
-            jokerPicture.Location = new Point(27, 400);
-            jokerPicture.Name = "jokerPicture";
-            jokerPicture.Size = new Size(150, 330);
-            jokerPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            jokerPicture.TabIndex = 47;
-            jokerPicture.TabStop = false;
+            character4Picture.BorderStyle = BorderStyle.FixedSingle;
+            character4Picture.Location = new Point(27, 400);
+            character4Picture.Name = "character4Picture";
+            character4Picture.Size = new Size(150, 330);
+            character4Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character4Picture.TabIndex = 47;
+            character4Picture.TabStop = false;
             // 
-            // clericPicture
+            // character3Picture
             // 
-            clericPicture.BorderStyle = BorderStyle.FixedSingle;
-            clericPicture.Location = new Point(183, 400);
-            clericPicture.Name = "clericPicture";
-            clericPicture.Size = new Size(150, 330);
-            clericPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            clericPicture.TabIndex = 48;
-            clericPicture.TabStop = false;
+            character3Picture.BorderStyle = BorderStyle.FixedSingle;
+            character3Picture.Location = new Point(183, 400);
+            character3Picture.Name = "character3Picture";
+            character3Picture.Size = new Size(150, 330);
+            character3Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character3Picture.TabIndex = 48;
+            character3Picture.TabStop = false;
             // 
-            // roguePicture
+            // character2Picture
             // 
-            roguePicture.BorderStyle = BorderStyle.FixedSingle;
-            roguePicture.Location = new Point(339, 400);
-            roguePicture.Name = "roguePicture";
-            roguePicture.Size = new Size(150, 330);
-            roguePicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            roguePicture.TabIndex = 49;
-            roguePicture.TabStop = false;
+            character2Picture.BorderStyle = BorderStyle.FixedSingle;
+            character2Picture.Location = new Point(339, 400);
+            character2Picture.Name = "character2Picture";
+            character2Picture.Size = new Size(150, 330);
+            character2Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character2Picture.TabIndex = 49;
+            character2Picture.TabStop = false;
             // 
-            // knightPicture
+            // character1Picture
             // 
-            knightPicture.BackColor = Color.Transparent;
-            knightPicture.BorderStyle = BorderStyle.FixedSingle;
-            knightPicture.Location = new Point(495, 400);
-            knightPicture.Name = "knightPicture";
-            knightPicture.Size = new Size(150, 330);
-            knightPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            knightPicture.TabIndex = 50;
-            knightPicture.TabStop = false;
+            character1Picture.BackColor = Color.Transparent;
+            character1Picture.BorderStyle = BorderStyle.FixedSingle;
+            character1Picture.Location = new Point(495, 400);
+            character1Picture.Name = "character1Picture";
+            character1Picture.Size = new Size(150, 330);
+            character1Picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            character1Picture.TabIndex = 50;
+            character1Picture.TabStop = false;
             // 
             // enemy4Picture
             // 
@@ -510,46 +510,46 @@
             Controls.Add(enemy3Name);
             Controls.Add(enemy2Name);
             Controls.Add(enemy1Name);
-            Controls.Add(knightName);
-            Controls.Add(rogueName);
-            Controls.Add(clericName);
-            Controls.Add(jokerName);
+            Controls.Add(character1Name);
+            Controls.Add(character2Name);
+            Controls.Add(character3Name);
+            Controls.Add(character4Name);
             Controls.Add(enemy1Picture);
             Controls.Add(enemy2Picture);
             Controls.Add(enemy3Picture);
             Controls.Add(enemy4Picture);
-            Controls.Add(knightPicture);
-            Controls.Add(roguePicture);
-            Controls.Add(clericPicture);
-            Controls.Add(jokerPicture);
+            Controls.Add(character1Picture);
+            Controls.Add(character2Picture);
+            Controls.Add(character3Picture);
+            Controls.Add(character4Picture);
             Controls.Add(panel1);
             Controls.Add(startButton);
             Controls.Add(enemy4HealthText);
             Controls.Add(enemy3HealthText);
             Controls.Add(enemy2HealthText);
             Controls.Add(enemy1HealthText);
-            Controls.Add(jokerHealthText);
-            Controls.Add(clericHealthText);
-            Controls.Add(rogueHealthText);
-            Controls.Add(knightHealthText);
+            Controls.Add(character4HealthText);
+            Controls.Add(character3HealthText);
+            Controls.Add(character2HealthText);
+            Controls.Add(character1HealthText);
             Controls.Add(enemy4Health);
             Controls.Add(enemy3Health);
             Controls.Add(enemy2Health);
             Controls.Add(enemy1Health);
-            Controls.Add(knightHealth);
-            Controls.Add(rogueHealth);
-            Controls.Add(clericHealth);
-            Controls.Add(jokerHealth);
+            Controls.Add(character1Health);
+            Controls.Add(character2Health);
+            Controls.Add(character3Health);
+            Controls.Add(character4Health);
             Controls.Add(pictureBox1);
             Name = "WyprawaUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)jokerPicture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)clericPicture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)roguePicture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)knightPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character4Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character3Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character2Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)character1Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)enemy4Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)enemy3Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)enemy2Picture).EndInit();
@@ -561,26 +561,26 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Label jokerName;
-        private Label clericName;
-        private Label rogueName;
-        private Label knightName;
+        private Label character4Name;
+        private Label character3Name;
+        private Label character2Name;
+        private Label character1Name;
         private Label enemy1Name;
         private Label enemy2Name;
         private Label enemy3Name;
         private Label enemy4Name;
-        private ProgressBar jokerHealth;
-        private ProgressBar clericHealth;
-        private ProgressBar rogueHealth;
-        private ProgressBar knightHealth;
+        private ProgressBar character4Health;
+        private ProgressBar character3Health;
+        private ProgressBar character2Health;
+        private ProgressBar character1Health;
         private ProgressBar enemy1Health;
         private ProgressBar enemy2Health;
         private ProgressBar enemy3Health;
         private ProgressBar enemy4Health;
-        private Label knightHealthText;
-        private Label rogueHealthText;
-        private Label clericHealthText;
-        private Label jokerHealthText;
+        private Label character1HealthText;
+        private Label character2HealthText;
+        private Label character3HealthText;
+        private Label character4HealthText;
         private Label enemy1HealthText;
         private Label enemy2HealthText;
         private Label enemy3HealthText;
@@ -595,10 +595,10 @@
         private Label activeCharacterLabel;
         private Label turaLabel;
         private Panel panel1;
-        private PictureBox jokerPicture;
-        private PictureBox clericPicture;
-        private PictureBox roguePicture;
-        private PictureBox knightPicture;
+        private PictureBox character4Picture;
+        private PictureBox character3Picture;
+        private PictureBox character2Picture;
+        private PictureBox character1Picture;
         private PictureBox enemy4Picture;
         private PictureBox enemy3Picture;
         private PictureBox enemy2Picture;

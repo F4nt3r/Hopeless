@@ -159,7 +159,7 @@ namespace HopelessLibary
                 foreach (var item in creatures)
                 {
                     if (item.CharacterType != CharacterType.Monster) continue;
-
+                    if(!item.IsDead())
                     item.TakeDamage(dmg);
                 }
                 return new(" używa umiejętności Purify na wrogów zadając " + dmg + " obrażeń" + Environment.NewLine, 0);
