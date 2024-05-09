@@ -31,8 +31,9 @@ namespace HopelessLibary
         public CharacterType CharacterType { get; set ; }
         public ICreature Target { get; set; }
 
-        public Character(string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)
+        public Character(int id,string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)
         {
+            Id = id;
             Name = name;
             Level = 1;
             ExperiencePoints = experiencePoints;

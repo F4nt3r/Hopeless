@@ -84,7 +84,7 @@ namespace Hopeless
 
                             EventHandler skillClick1 = (s, e) =>
                             {
-                                dynamic response;
+                                SkillHandlerResponse response;
                                 if (postac.Skill1.SkillType == SkillType.AoE)
                                 {
                                     response = postac.Skill1?
@@ -127,7 +127,7 @@ namespace Hopeless
                             };
                             EventHandler skillClick2 = (s, e) =>
                             {
-                                dynamic response;
+                                SkillHandlerResponse response;
                                 if (postac.Skill2.SkillType == SkillType.AoE)
                                 {
                                     response = postac.Skill2?
@@ -142,7 +142,7 @@ namespace Hopeless
                                     .SkillHandler
                                     .Invoke(postac, target);
                                     }
-                                    else if (target[0] != null && postac.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster)
+                                    else if (target[0] != null && postac.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster )
                                     {
                                         response = postac.Skill2?
                                          .SkillHandler
@@ -289,16 +289,97 @@ namespace Hopeless
             List<Buff> allBuffs = new();
             List<DeBuff> allDeBuffs = new();
             List<(string, int)> list = new(0);
-            foreach(var item in fightOrder)
+            foreach (var item in fightOrder)
             {
-                if(item.Buffs != null)
-                allBuffs.AddRange(item.Buffs);
+                // Utwórz słowniki dla buffów i debuffów oraz ich liczby na aktualnej postaci
+                Dictionary<string, int> buffCount = new Dictionary<string, int>();
+                Dictionary<string, int> debuffCount = new Dictionary<string, int>();
+
+                if (item.Buffs != null)
+                {
+                    foreach (Buff buff in item.Buffs)
+                    {
+                        // Aktualizuj liczbę buffów na postaci
+                        if (!buffCount.ContainsKey(buff.Name))
+                        {
+                            buffCount[buff.Name] = 1;
+                        }
+                        else
+                        {
+                            buffCount[buff.Name]++;
+                        }
+                    }
+                }
+
                 if (item.DeBuffs != null)
-                allDeBuffs.AddRange(item.DeBuffs);   
+                {
+                    foreach (DeBuff debuff in item.DeBuffs)
+                    {
+                        
+                        if (!debuffCount.ContainsKey(debuff.Name))
+                        {
+                            debuffCount[debuff.Name] = 1;
+                        }
+                        else
+                        {
+                            debuffCount[debuff.Name]++;
+                        }
+                    }
+                }
+
+                // Wyświetl nazwy buffów i ich liczby dla aktualnej postaci
+                foreach (var kvp in buffCount)
+                {
+                    if (kvp.Value > 1)
+                        effectBox.Text += item.Name + "-" + kvp.Key + " x" + kvp.Value + "-" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
+                    else
+                        effectBox.Text += item.Name + "-" + kvp.Key + "-" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
+                }
+
+                // Wyświetl nazwy debuffów i ich liczby dla aktualnej postaci
+                foreach (var kvp in debuffCount)
+                {
+                    if (kvp.Value > 1)
+                    effectBox.Text += item.Name + "-" + kvp.Key + " x" + kvp.Value + "-" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+                    else
+                    effectBox.Text += item.Name + "-" + kvp.Key + "-" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+
+                }
             }
-           
-           
+
+
         }
+        private int GetBuffUptime(List<Buff> buffs, string buffName)
+        {
+           
+            if (buffs != null)
+            {
+                foreach (Buff buff in buffs)
+                {
+                    if (buff.Name == buffName)
+                    {
+                        return buff.Uptime;
+                    }
+                }
+            }
+           return 0;
+        }
+        private int GetDeBuffUptime(List<DeBuff> debuffs, string debuffName)
+        {
+
+            if (debuffs != null)
+            {
+                foreach (DeBuff debuff in debuffs)
+                {
+                    if (debuff.Name == debuffName)
+                    {
+                        return debuff.Uptime;
+                    }
+                }
+            }
+            return 0;
+        }
+
         private bool CheckStatus()
         {
             enemy1Health.Value = expedition.Monsters[0].CurrentHP;

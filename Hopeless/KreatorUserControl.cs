@@ -368,7 +368,7 @@ namespace Hopeless
 
         private void checkTeam()
         {
-            if (character1.Text != "Character 1" && character2.Text != "Character 2" && character3.Text != "Character 3" && character4.Text != "Character 4")
+            if ((character1.Text != "Character 1" && character2.Text != "Character 2" && character3.Text != "Character 3" && character4.Text != "Character 4"))
             {
                 saveTeamButton.Enabled = true;
                 rozpocznijButton.Enabled = false;
@@ -377,22 +377,41 @@ namespace Hopeless
 
         private void saveTeamButton_Click(object sender, EventArgs e)
         {
-            ChooseCharacters.Clear();
-            StarterInventory.Clear();
-            checkClass(character1.Text,character1TextBox.Text);
-            checkClass(character2.Text,character2TextBox.Text);
-            checkClass(character3.Text,character3TextBox.Text);
-            checkClass(character4.Text,character4TextBox.Text);
-            rozpocznijButton.Enabled = true;
+            HashSet<string> uniqueTexts = new HashSet<string>();
+
+            
+            uniqueTexts.Add(character1TextBox.Text);
+            uniqueTexts.Add(character2TextBox.Text);
+            uniqueTexts.Add(character3TextBox.Text);
+            uniqueTexts.Add(character4TextBox.Text);
+
+          
+            if (uniqueTexts.Count == 4)
+            {
+                ChooseCharacters.Clear();
+                StarterInventory.Clear();
+                checkClass(character1.Text, character1TextBox.Text,1);
+                checkClass(character2.Text, character2TextBox.Text,2);
+                checkClass(character3.Text, character3TextBox.Text,3);
+                checkClass(character4.Text, character4TextBox.Text,4);
+                rozpocznijButton.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Imiona postaci muszą być unikalne", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+          
 
         }
 
-        private void checkClass(string name,string firstname)
+        private void checkClass(string name,string firstname, int id)
         {
             Character character = Characters.Find(c => c.Name == name);
             if (character.CharacterType == CharacterType.Knight)
             {
-                Knight knight = new Knight(firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
+                Knight knight = new Knight(id,firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
                 ChooseCharacters.Add(knight);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[0]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[1]));
@@ -400,21 +419,21 @@ namespace Hopeless
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
-                Rogue rogue = new Rogue(firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
+                Rogue rogue = new Rogue(id,firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
                 ChooseCharacters.Add(rogue);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[2]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[3]));
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
-                Cleric cleric = new Cleric(firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
+                Cleric cleric = new Cleric(id,firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
                 ChooseCharacters.Add(cleric);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[4]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[5]));
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
-                Joker joker = new Joker(firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
+                Joker joker = new Joker(id,firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
                 ChooseCharacters.Add(joker);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[6]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[7]));
