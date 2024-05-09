@@ -16,7 +16,7 @@ namespace Hopeless
 
         private List<ICreature> fightOrder = new();
         private List<ICreature> target = new();
-        public delegate void CustomDelegate(bool wynik, Expedition wyprawa);
+        public delegate void CustomDelegate(bool result, Expedition expedition);
         public event CustomDelegate eventFirst;
         public event EventHandler FinishButtonClicked;
         public event EventHandler eventChoice;
@@ -49,61 +49,61 @@ namespace Hopeless
             {
                 bool fightStatus = true;
                 bool playerActionTaken;
-                int tura = 0;
+                int turn = 0;
                 while (fightStatus)
                 {
-                    tura++;
-                    turaLabel.Text = "Tura: " + tura;
-                    foreach (var postac in fightOrder)
+                    turn++;
+                    turaLabel.Text = "Tura: " + turn;
+                    foreach (var figure in fightOrder)
                     {
                         target.Clear();
-                        activeCharacterLabel.Text = "Aktywna Postać:" + postac.Name;
+                        activeCharacterLabel.Text = "Active Character:" + figure.Name;
                         playerActionTaken = false;
-                        if (postac.CharacterType != CharacterType.Monster && !postac.IsDead())
+                        if (figure.CharacterType != CharacterType.Monster && !figure.IsDead())
                         {
                             skill1Label.Enabled = true;
                             skill2Label.Enabled = true;
                             basicAttackLabel.Enabled = true;
 
-                            if (postac.Skill1 != null)
+                            if (figure.Skill1 != null)
                             {
-                                skill1Label.Text = postac.Skill1.Name;
-                                if (postac.Skill1.Cooldown > 0)
-                                    skill1Label.Text += Environment.NewLine + "Odnawianie: " + postac.Skill1.Cooldown + " tur";
+                                skill1Label.Text = figure.Skill1.Name;
+                                if (figure.Skill1.Cooldown > 0)
+                                    skill1Label.Text += Environment.NewLine + "Cooldown: " + figure.Skill1.Cooldown + " turns";
                             }
-                            if (postac.Skill2 != null)
+                            if (figure.Skill2 != null)
                             {
-                                skill2Label.Text = postac.Skill2.Name;
-                                if (postac.Skill2.Cooldown > 0)
-                                    skill2Label.Text += Environment.NewLine + "Odnawianie: " + postac.Skill2.Cooldown + " tur";
+                                skill2Label.Text = figure.Skill2.Name;
+                                if (figure.Skill2.Cooldown > 0)
+                                    skill2Label.Text += Environment.NewLine + "Cooldown: " + figure.Skill2.Cooldown + " turns";
                             }
 
-                            skill1Label.AccessibleDescription = postac.Skill1?.Description;
-                            skill2Label.AccessibleDescription = postac.Skill2?.Description;
-                            basicAttackLabel.AccessibleDescription = postac.BasicAttackDescription;
+                            skill1Label.AccessibleDescription = figure.Skill1?.Description;
+                            skill2Label.AccessibleDescription = figure.Skill2?.Description;
+                            basicAttackLabel.AccessibleDescription = figure.BasicAttackDescription;
 
                             EventHandler skillClick1 = (s, e) =>
                             {
                                 SkillHandlerResponse response;
-                                if (postac.Skill1.SkillType == SkillType.AoE)
+                                if (figure.Skill1.SkillType == SkillType.AoE)
                                 {
-                                    response = postac.Skill1?
+                                    response = figure.Skill1?
                                     .SkillHandler
-                                    .Invoke(postac, fightOrder);
+                                    .Invoke(figure, fightOrder);
                                 }
                                 else
                                 {
-                                    if (target != null && postac.Skill1.TargetType == TargetType.Enemy && target.Any(x => x.CharacterType == CharacterType.Monster))
+                                    if (target != null && figure.Skill1.TargetType == TargetType.Enemy && target.Any(x => x.CharacterType == CharacterType.Monster))
                                     {
-                                        response = postac.Skill1?
+                                        response = figure.Skill1?
                                     .SkillHandler
-                                    .Invoke(postac, target);
+                                    .Invoke(figure, target);
                                     }
-                                    else if (target != null && postac.Skill1.TargetType == TargetType.Ally && target.Any(x => x.CharacterType != CharacterType.Monster))
+                                    else if (target != null && figure.Skill1.TargetType == TargetType.Ally && target.Any(x => x.CharacterType != CharacterType.Monster))
                                     {
-                                        response = postac.Skill1?
+                                        response = figure.Skill1?
                                          .SkillHandler
-                                         .Invoke(postac, target);
+                                         .Invoke(figure, target);
                                     }
                                     else
                                         response = null;
@@ -117,36 +117,36 @@ namespace Hopeless
 
                                 if (response.cd > 0)
                                 {
-                                    MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + response.cd + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("You can't use it right now, wait: " + response.cd + " turns", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     playerActionTaken = false;
                                     return;
                                 }
-                                logBattleBox.Text = postac.Name + response.logText + logBattleBox.Text;
+                                logBattleBox.Text = figure.Name + response.logText + logBattleBox.Text;
                                 playerActionTaken = true;
 
                             };
                             EventHandler skillClick2 = (s, e) =>
                             {
                                 SkillHandlerResponse response;
-                                if (postac.Skill2.SkillType == SkillType.AoE)
+                                if (figure.Skill2.SkillType == SkillType.AoE)
                                 {
-                                    response = postac.Skill2?
+                                    response = figure.Skill2?
                                     .SkillHandler
-                                    .Invoke(postac, fightOrder);
+                                    .Invoke(figure, fightOrder);
                                 }
                                 else
                                 {
-                                    if (target[0] != null && postac.Skill2.TargetType == TargetType.Enemy && target[0].CharacterType == CharacterType.Monster)
+                                    if (target[0] != null && figure.Skill2.TargetType == TargetType.Enemy && target[0].CharacterType == CharacterType.Monster)
                                     {
-                                        response = postac.Skill2?
+                                        response = figure.Skill2?
                                     .SkillHandler
-                                    .Invoke(postac, target);
+                                    .Invoke(figure, target);
                                     }
-                                    else if (target[0] != null && postac.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster )
+                                    else if (target[0] != null && figure.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster )
                                     {
-                                        response = postac.Skill2?
+                                        response = figure.Skill2?
                                          .SkillHandler
-                                         .Invoke(postac, target);
+                                         .Invoke(figure, target);
                                     }
                                     else
                                         response = null;
@@ -160,11 +160,11 @@ namespace Hopeless
 
                                 if (response.cd > 0)
                                 {
-                                    MessageBox.Show("Nie mozesz tego uzyc, poczekaj: " + response.cd + " tur", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("You can't use it right now, wait: " + response.cd + " turns", "Cooldown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     playerActionTaken = false;
                                     return;
                                 }
-                                logBattleBox.Text = postac.Name + response.logText + logBattleBox.Text;
+                                logBattleBox.Text = figure.Name + response.logText + logBattleBox.Text;
                                 playerActionTaken = true;
 
                             };
@@ -173,14 +173,14 @@ namespace Hopeless
                                 if (target.Count != 0)
                                 {
                                     int hp = target[0].CurrentHP;
-                                    postac.BasicAttack(target[0], out int dmg);
+                                    figure.BasicAttack(target[0], out int dmg);
 
                                     PlayBasicAttackSound();
                                     playerActionTaken = true;
                                     if (target[0].CurrentHP != hp)
-                                        logBattleBox.Text = postac.Name + " atakuje " + target[0].Name + " zadając: " + (hp - target[0].CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals: " + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
                                     else
-                                        logBattleBox.Text = postac.Name + " atakuje " + target[0].Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
+                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
                                 }
 
                             };
@@ -209,11 +209,11 @@ namespace Hopeless
                             skill2Label.Enabled = false;
                             basicAttackLabel.Enabled = false;
 
-                            postac.CheckSkillsCd();
+                            figure.CheckSkillsCd();
                         }
                         else
                         {
-                            if (!postac.IsDead())
+                            if (!figure.IsDead())
                             {
                                 await Task.Delay(1000);
                                
@@ -221,9 +221,9 @@ namespace Hopeless
                                 {
                                     target.Clear();
 
-                                    if (postac.DeBuffs != null && postac.DeBuffs.Count > 0)
+                                    if (figure.DeBuffs != null && figure.DeBuffs.Count > 0)
                                     {
-                                        var debuff = postac.DeBuffs.FirstOrDefault(x => x.Name.Equals("Provoke"));
+                                        var debuff = figure.DeBuffs.FirstOrDefault(x => x.Name.Equals("Provoke"));
                                         if (debuff != null)
                                         {
                                             target.Add(characters.FirstOrDefault(x => x.Id == debuff.Caster.Id));
@@ -245,14 +245,14 @@ namespace Hopeless
                                 } while (target[0].IsDead());
                                 int hp = target[0].CurrentHP;
 
-                                postac.BasicAttack(target[0], out int dmg);
+                                figure.BasicAttack(target[0], out int dmg);
                                 PlayBasicAttackSound();
                                 if (target[0].CurrentHP != hp)
-                                    logBattleBox.Text = postac.Name + " atakuje " + target[0].Name + " zadając:" + (hp - target[0].CurrentHP) + " Obrażeń" + Environment.NewLine + logBattleBox.Text;
+                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals:" + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
                                 else if (target[0].CurrentHP == hp && target is Rogue)
-                                    logBattleBox.Text = postac.Name + " atakuje " + target[0].Name + " lecz zrobił unik" + Environment.NewLine + logBattleBox.Text;
+                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
                                 else
-                                    logBattleBox.Text = postac.Name + " atakuje " + target[0].Name + " lecz zablokowal" + Environment.NewLine + logBattleBox.Text;
+                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he blocked" + Environment.NewLine + logBattleBox.Text;
 
 
                             }
@@ -285,13 +285,10 @@ namespace Hopeless
         private void RefreshEffectBox()
         {
             effectBox.Clear();
-            effectBox.Text += "Aktywne Statusy" + Environment.NewLine;
-            List<Buff> allBuffs = new();
-            List<DeBuff> allDeBuffs = new();
-            List<(string, int)> list = new(0);
+            effectBox.Text += "Active Statuses:" + Environment.NewLine;
             foreach (var item in fightOrder)
             {
-                // Utwórz słowniki dla buffów i debuffów oraz ich liczby na aktualnej postaci
+               
                 Dictionary<string, int> buffCount = new Dictionary<string, int>();
                 Dictionary<string, int> debuffCount = new Dictionary<string, int>();
 
@@ -299,7 +296,7 @@ namespace Hopeless
                 {
                     foreach (Buff buff in item.Buffs)
                     {
-                        // Aktualizuj liczbę buffów na postaci
+                       
                         if (!buffCount.ContainsKey(buff.Name))
                         {
                             buffCount[buff.Name] = 1;
@@ -327,7 +324,7 @@ namespace Hopeless
                     }
                 }
 
-                // Wyświetl nazwy buffów i ich liczby dla aktualnej postaci
+
                 foreach (var kvp in buffCount)
                 {
                     if (kvp.Value > 1)
@@ -336,7 +333,6 @@ namespace Hopeless
                         effectBox.Text += item.Name + "|" + kvp.Key + "|" + GetBuffUptime(item.Buffs, kvp.Key) + Environment.NewLine;
                 }
 
-                // Wyświetl nazwy debuffów i ich liczby dla aktualnej postaci
                 foreach (var kvp in debuffCount)
                 {
                     if (kvp.Value > 1)
@@ -493,11 +489,12 @@ namespace Hopeless
                     
 
                     
-                    DialogResult result = MessageBox.Show("Pokonałeś Gauntera'O Dima, Niebywałe!!! Zamierzasz go dobić?","Podejmij Decyzje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("You defeated Gaunter'O Dim, Amazing!!! Are You Going to Exile Him?", "Make Your Decisions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                    
                     if (result == DialogResult.Yes)
                     {
                             PlayEventKillSound();
+                        expedition.Gold += 150;
                            
                     }else
                     {
@@ -512,7 +509,7 @@ namespace Hopeless
                 InitializeAfterFight();
 
                 
-                MessageBox.Show("Zwyciestwo!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Win!", "Return to Base", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 eventFirst?.Invoke(true, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -523,7 +520,7 @@ namespace Hopeless
             {
                 InitializeAfterFight();
                 PlayLoseSound();
-                MessageBox.Show("Porażka!", "Powrot do Bazy", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Lose!", "Return to Base", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                 eventFirst?.Invoke(false, expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
@@ -559,7 +556,7 @@ namespace Hopeless
             character2Picture.BackColor = Color.White;
             character3Picture.BackColor = Color.White;
             character4Picture.BackColor = Color.White;
-            basicAttackLabel.Text = "Atak Bazowy";
+            basicAttackLabel.Text = "Base Attack";
             skill1Label.Text = "";
             skill2Label.Text = "";
             skill1Label.MouseHover += SkillMouseHover;
@@ -652,7 +649,7 @@ namespace Hopeless
             if(expedition.Type==DifficultyType.Boss && eventResult)
             {
                 PlayEventHelpSound();
-                MessageBox.Show("Gaunter O'Dim przyszedł się odwdzięczyć za wcześniej!", "Wyrównanie Rachunków", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Gaunter O'Dim came to return the favor from earlier!", "Settlement of Accounts", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
 
