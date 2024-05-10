@@ -12,13 +12,13 @@ namespace Hopeless
 {
     public partial class PrzygotowanieUserControl : UserControl
     {
-        public List<Character> Characters { get; set; }
-        public List<Expedition> Expeditons { get; set; }
-        public List<IEkwipunek> Ekwipunek { get; set; }
+        public List<Character> characters = new List<Character>();
+        public List<Expedition> expeditons= new List<Expedition>();
+        public List<IEkwipunek> inventory= new List<IEkwipunek>();
         public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
-        public List<IEkwipunek> pulaEkwipunku { get; set; }
+        public List<IEkwipunek> shopItemsPool=new List<IEkwipunek>();
         public List<IEkwipunek> shopItems = new List<IEkwipunek>();
-        public int gold { get; set; }
+        public int gold = 0;
         private Label lastDraggedLabel;
         public bool eventQuest;
         public bool eventResult;
@@ -45,10 +45,10 @@ namespace Hopeless
                     RefreshInventory();
                     RefreshShop();
                     SaveGameState();
-                    character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[0].CharacterType.ToString().ToLower()+"Picture");
-                    character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[1].CharacterType.ToString().ToLower() + "Picture");
-                    character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[2].CharacterType.ToString().ToLower() + "Picture");
-                    character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[3].CharacterType.ToString().ToLower() + "Picture");
+                    character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[0].CharacterType.ToString().ToLower()+"Picture");
+                    character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[1].CharacterType.ToString().ToLower() + "Picture");
+                    character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[2].CharacterType.ToString().ToLower() + "Picture");
+                    character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[3].CharacterType.ToString().ToLower() + "Picture");
                 }
 
 
@@ -60,64 +60,64 @@ namespace Hopeless
         private void RefreshStats()
         {
 
-            if (Characters != null && Characters.Any())
+            if (characters != null && characters.Any())
             {
 
-                character1Name.Text = "Imie: " + Characters[0].Name;
-                character1Level.Text = "Level: " + Characters[0].Level;
-                character1Exp.Text = "Punkty EXP: " + Characters[0].ExperiencePoints;
-                character1Strength.Text = "Sila: " + Characters[0].Strength;
-                character1Dexterity.Text = "Zrecznosc: " + Characters[0].Dexterity;
-                character1Intelligence.Text = "Inteligencja: " + Characters[0].Intelligence;
-                character1Hp.Text = "HP: " + Characters[0].CurrentHP + "/" + Characters[0].MaxHP;
-                character1Resistance.Text = "Odpornosc: " + Characters[0].Resistance;
-                character1Crit.Text = "Szansa na Kryta: " + Characters[0].CritChance + "%";
-                character1Initiative.Text = "Inicjatywa: " + Characters[0].Initiative;
-                character1Dmg.Text = "Obrazenia Ataku: " + Characters[0].MinDmg + "-" + Characters[0].MaxDmg;
-                if (Characters[0].CharacterType == CharacterType.Knight)
+                character1Name.Text = "Name: " + characters[0].Name;
+                character1Level.Text = "Level: " + characters[0].Level;
+                character1Exp.Text = "Experience Points: " + characters[0].ExperiencePoints;
+                character1Strength.Text = "Strength: " + characters[0].Strength;
+                character1Dexterity.Text = "Dexterity: " + characters[0].Dexterity;
+                character1Intelligence.Text = "Intelligence: " + characters[0].Intelligence;
+                character1Hp.Text = "HP: " + characters[0].CurrentHP + "/" + characters[0].MaxHP;
+                character1Resistance.Text = "Resistance: " + characters[0].Resistance;
+                character1Crit.Text = "Critical Chance: " + characters[0].CritChance + "%";
+                character1Initiative.Text = "Initiative: " + characters[0].Initiative;
+                character1Dmg.Text = "Attack Damage: " + characters[0].MinDmg + "-" + characters[0].MaxDmg;
+                if (characters[0].CharacterType == CharacterType.Knight)
                 {
-                    Knight knight = (Knight)Characters[0];
-                    character1Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                    Knight knight = (Knight)characters[0];
+                    character1Block.Text = "Block Chance: " + knight.BlockChance;
                 }
-                else if (Characters[0].CharacterType == CharacterType.Rogue)
+                else if (characters[0].CharacterType == CharacterType.Rogue)
                 {
-                    Rogue rogue = (Rogue)Characters[0];
-                    character1Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                    Rogue rogue = (Rogue)characters[0];
+                    character1Block.Text = "Dodge Chance: " + rogue.DodgeChance;
                 }
-                else if (Characters[0].CharacterType == CharacterType.Cleric)
+                else if (characters[0].CharacterType == CharacterType.Cleric)
                 {
-                    Cleric cleric = (Cleric)Characters[0];
-                    character1Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                    Cleric cleric = (Cleric)characters[0];
+                    character1Block.Text = "Blessing Chance: " + cleric.BlessingChance;
                 }
-                else if (Characters[0].CharacterType == CharacterType.Joker)
+                else if (characters[0].CharacterType == CharacterType.Joker)
                 {
-                    Joker joker = (Joker)Characters[0];
-                    character1Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                    Joker joker = (Joker)characters[0];
+                    character1Block.Text = "DoubleAttack Chance: " + joker.DoubleAtackChance;
                 }
                 else
                 {
                     character1Block.Text = " ";
                 }
 
-                if (Characters[0].Weapon != null)
+                if (characters[0].Weapon != null)
                 {
-                    character1Weapon.Text = Characters[0].Weapon.Name;
-                    character1Weapon.AccessibleDescription = Characters[0].Weapon.Name + Environment.NewLine + Characters[0].Weapon.Description + Environment.NewLine + Characters[0].Weapon.Rarity + Environment.NewLine + "MinDMG: " + Characters[0].Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + Characters[0].Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, Characters[0].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[0].Weapon.SalesPrice.ToString();
-                    switch (Characters[0].Weapon.Rarity)
+                    character1Weapon.Text = characters[0].Weapon.Name;
+                    character1Weapon.AccessibleDescription = characters[0].Weapon.Name + Environment.NewLine + characters[0].Weapon.Description + Environment.NewLine + characters[0].Weapon.Rarity + Environment.NewLine + "Min Damage: " + characters[0].Weapon.MinDmg.ToString() +
+                        Environment.NewLine + "Max Damage: " + characters[0].Weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, characters[0].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[0].Weapon.SalesPrice.ToString();
+                    switch (characters[0].Weapon.Rarity)
                     {
                         case Rarity.Common:
-                            character1Weapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character1Weapon.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character1Weapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character1Weapon.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character1Weapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character1Weapon.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character1Weapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character1Weapon.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -125,28 +125,28 @@ namespace Hopeless
                 }
                 else
                 {
-                    character1Weapon.Text = "Brak";
+                    character1Weapon.Text = "None";
                     character1Weapon.AccessibleDescription = "  ";
                 }
 
-                if (Characters[0].Armor != null)
+                if (characters[0].Armor != null)
                 {
-                    character1Armor.Text = Characters[0].Armor.Name;
-                    character1Armor.AccessibleDescription = Characters[0].Armor.Name + Environment.NewLine + Characters[0].Armor.Description + Environment.NewLine + Characters[0].Armor.Rarity + Environment.NewLine + "DmgReduction: " + Characters[0].Armor.DmgReduction.ToString()
-                        + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, Characters[0].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[0].Armor.SalesPrice.ToString();
-                    switch (Characters[0].Armor.Rarity)
+                    character1Armor.Text = characters[0].Armor.Name;
+                    character1Armor.AccessibleDescription = characters[0].Armor.Name + Environment.NewLine + characters[0].Armor.Description + Environment.NewLine + characters[0].Armor.Rarity + Environment.NewLine + "Damage Reduction: " + characters[0].Armor.DmgReduction.ToString()
+                        + Environment.NewLine + "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, characters[0].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[0].Armor.SalesPrice.ToString();
+                    switch (characters[0].Armor.Rarity)
                     {
                         case Rarity.Common:
-                            character1Armor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character1Armor.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character1Armor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character1Armor.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character1Armor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character1Armor.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character1Armor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character1Armor.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -154,69 +154,69 @@ namespace Hopeless
                 }
                 else
                 {
-                    character1Armor.Text = "Brak";
+                    character1Armor.Text = "None";
                     character1Armor.AccessibleDescription = "  ";
                 }
-                character1ClassName.Text = Characters[0].Name;
+                character1ClassName.Text = characters[0].Name;
 
 
 
 
 
-                character2Name.Text = "Imie: " + Characters[1].Name;
-                character2Level.Text = "Level: " + Characters[1].Level;
-                character2Exp.Text = "Punkty EXP: " + Characters[1].ExperiencePoints;
-                character2Strength.Text = "Sila: " + Characters[1].Strength;
-                character2Dexterity.Text = "Zrecznosc: " + Characters[1].Dexterity;
-                character2Intelligence.Text = "Inteligencja: " + Characters[1].Intelligence;
-                character2Hp.Text = "HP: " + Characters[1].CurrentHP + "/" + Characters[1].MaxHP;
-                character2Resistance.Text = "Odpornosc: " + Characters[1].Resistance;
-                character2Crit.Text = "Szansa na Kryta: " + Characters[1].CritChance + "%";
-                character2Initiative.Text = "Inicjatywa: " + Characters[1].Initiative;
-                character2Dmg.Text = "Obrazenia Ataku: " + Characters[1].MinDmg + "-" + Characters[1].MaxDmg;
-                if (Characters[1].CharacterType == CharacterType.Knight)
+                character2Name.Text = "Name: " + characters[1].Name;
+                character2Level.Text = "Level: " + characters[1].Level;
+                character2Exp.Text = "Experience Points: " + characters[1].ExperiencePoints;
+                character2Strength.Text = "Strength: " + characters[1].Strength;
+                character2Dexterity.Text = "Dexterity: " + characters[1].Dexterity;
+                character2Intelligence.Text = "Intelligence: " + characters[1].Intelligence;
+                character2Hp.Text = "HP: " + characters[1].CurrentHP + "/" + characters[1].MaxHP;
+                character2Resistance.Text = "Resistance: " + characters[1].Resistance;
+                character2Crit.Text = "Critical Chance: " + characters[1].CritChance + "%";
+                character2Initiative.Text = "Initiative: " + characters[1].Initiative;
+                character2Dmg.Text = "Attack Damage: " + characters[1].MinDmg + "-" + characters[1].MaxDmg;
+                if (characters[1].CharacterType == CharacterType.Knight)
                 {
-                    Knight knight = (Knight)Characters[1];
-                    character2Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                    Knight knight = (Knight)characters[1];
+                    character2Block.Text = "Block Chance: " + knight.BlockChance;
                 }
-                else if (Characters[1].CharacterType == CharacterType.Rogue)
+                else if (characters[1].CharacterType == CharacterType.Rogue)
                 {
-                    Rogue rogue = (Rogue)Characters[1];
-                    character2Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                    Rogue rogue = (Rogue)characters[1];
+                    character2Block.Text = "Dodge Chance: " + rogue.DodgeChance;
                 }
-                else if (Characters[1].CharacterType == CharacterType.Cleric)
+                else if (characters[1].CharacterType == CharacterType.Cleric)
                 {
-                    Cleric cleric = (Cleric)Characters[1];
-                    character2Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                    Cleric cleric = (Cleric)characters[1];
+                    character2Block.Text = "Blessing Chance: " + cleric.BlessingChance;
                 }
-                else if (Characters[1].CharacterType == CharacterType.Joker)
+                else if (characters[1].CharacterType == CharacterType.Joker)
                 {
-                    Joker joker = (Joker)Characters[1];
-                    character2Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                    Joker joker = (Joker)characters[1];
+                    character2Block.Text = "DoubleAttack Chance: " + joker.DoubleAtackChance;
                 }
                 else
                 {
                     character2Block.Text = " ";
                 }
-                if (Characters[1].Weapon != null)
+                if (characters[1].Weapon != null)
                 {
-                    character2Weapon.Text = Characters[1].Weapon.Name;
-                    character2Weapon.AccessibleDescription = Characters[1].Weapon.Name + Environment.NewLine + Characters[1].Weapon.Description + Environment.NewLine + Characters[1].Weapon.Rarity + Environment.NewLine + "MinDMG: " + Characters[1].Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + Characters[1].Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, Characters[1].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[1].Weapon.SalesPrice.ToString();
-                    switch (Characters[1].Weapon.Rarity)
+                    character2Weapon.Text = characters[1].Weapon.Name;
+                    character2Weapon.AccessibleDescription = characters[1].Weapon.Name + Environment.NewLine + characters[1].Weapon.Description + Environment.NewLine + characters[1].Weapon.Rarity + Environment.NewLine + "Min Damage: " + characters[1].Weapon.MinDmg.ToString() +
+                        Environment.NewLine + "Max Damage: " + characters[1].Weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, characters[1].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[1].Weapon.SalesPrice.ToString();
+                    switch (characters[1].Weapon.Rarity)
                     {
                         case Rarity.Common:
-                            character2Weapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character2Weapon.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character2Weapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character2Weapon.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character2Weapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character2Weapon.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character2Weapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character2Weapon.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -224,27 +224,27 @@ namespace Hopeless
                 }
                 else
                 {
-                    character2Weapon.Text = "Brak";
+                    character2Weapon.Text = "None";
                     character2Weapon.AccessibleDescription = "  ";
                 }
-                if (Characters[1].Armor != null)
+                if (characters[1].Armor != null)
                 {
-                    character2Armor.Text = Characters[1].Armor.Name;
-                    character2Armor.AccessibleDescription = Characters[1].Armor.Name + Environment.NewLine + Characters[1].Armor.Description + Environment.NewLine + Characters[1].Armor.Rarity + Environment.NewLine + "DmgReduction: " + Characters[1].Armor.DmgReduction.ToString()
-                        + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, Characters[1].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[1].Armor.SalesPrice.ToString();
-                    switch (Characters[1].Armor.Rarity)
+                    character2Armor.Text = characters[1].Armor.Name;
+                    character2Armor.AccessibleDescription = characters[1].Armor.Name + Environment.NewLine + characters[1].Armor.Description + Environment.NewLine + characters[1].Armor.Rarity + Environment.NewLine + "Damage Reduction: " + characters[1].Armor.DmgReduction.ToString()
+                        + Environment.NewLine + "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, characters[1].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[1].Armor.SalesPrice.ToString();
+                    switch (characters[1].Armor.Rarity)
                     {
                         case Rarity.Common:
-                            character2Armor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character2Armor.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character2Armor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character2Armor.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character2Armor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character2Armor.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character2Armor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character2Armor.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -252,67 +252,67 @@ namespace Hopeless
                 }
                 else
                 {
-                    character2Armor.Text = "Brak";
+                    character2Armor.Text = "None";
                     character2Armor.AccessibleDescription = "  ";
                 }
-                character2ClassName.Text = Characters[1].Name;
+                character2ClassName.Text = characters[1].Name;
 
 
 
-                character3Name.Text = "Imie: " + Characters[2].Name;
-                character3Level.Text = "Level: " + Characters[2].Level;
-                character3Exp.Text = "Punkty EXP: " + Characters[2].ExperiencePoints;
-                character3Strength.Text = "Sila: " + Characters[2].Strength;
-                character3Dexterity.Text = "Zrecznosc: " + Characters[2].Dexterity;
-                character3Intelligence.Text = "Inteligencja: " + Characters[2].Intelligence;
-                character3Hp.Text = "HP: " + Characters[2].CurrentHP + "/" + Characters[2].MaxHP;
-                character3Resistance.Text = "Odpornosc: " + Characters[2].Resistance;
-                character3Crit.Text = "Szansa na Kryta: " + Characters[2].CritChance + "%";
-                character3Initiative.Text = "Inicjatywa: " + Characters[2].Initiative;
-                character3Dmg.Text = "Obrazenia Ataku: " + Characters[2].MinDmg + "-" + Characters[2].MaxDmg;
-                if (Characters[2].CharacterType == CharacterType.Knight)
+                character3Name.Text = "Name: " + characters[2].Name;
+                character3Level.Text = "Level: " + characters[2].Level;
+                character3Exp.Text = "Experience Points: " + characters[2].ExperiencePoints;
+                character3Strength.Text = "Strength: " + characters[2].Strength;
+                character3Dexterity.Text = "Dexterity: " + characters[2].Dexterity;
+                character3Intelligence.Text = "Intelligence: " + characters[2].Intelligence;
+                character3Hp.Text = "HP: " + characters[2].CurrentHP + "/" + characters[2].MaxHP;
+                character3Resistance.Text = "Resistance: " + characters[2].Resistance;
+                character3Crit.Text = "Critical Chance: " + characters[2].CritChance + "%";
+                character3Initiative.Text = "Initiative: " + characters[2].Initiative;
+                character3Dmg.Text = "Attack Damage: " + characters[2].MinDmg + "-" + characters[2].MaxDmg;
+                if (characters[2].CharacterType == CharacterType.Knight)
                 {
-                    Knight knight = (Knight)Characters[2];
-                    character3Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                    Knight knight = (Knight)characters[2];
+                    character3Block.Text = "Block Chance: " + knight.BlockChance;
                 }
-                else if (Characters[2].CharacterType == CharacterType.Rogue)
+                else if (characters[2].CharacterType == CharacterType.Rogue)
                 {
-                    Rogue rogue = (Rogue)Characters[2];
-                    character3Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                    Rogue rogue = (Rogue)characters[2];
+                    character3Block.Text = "Dodge Chance: " + rogue.DodgeChance;
                 }
-                else if (Characters[2].CharacterType == CharacterType.Cleric)
+                else if (characters[2].CharacterType == CharacterType.Cleric)
                 {
-                    Cleric cleric = (Cleric)Characters[2];
-                    character3Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                    Cleric cleric = (Cleric)characters[2];
+                    character3Block.Text = "Blessing Chance: " + cleric.BlessingChance;
                 }
-                else if (Characters[2].CharacterType == CharacterType.Joker)
+                else if (characters[2].CharacterType == CharacterType.Joker)
                 {
-                    Joker joker = (Joker)Characters[2];
-                    character3Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                    Joker joker = (Joker)characters[2];
+                    character3Block.Text = "DoubleAttack Chance: " + joker.DoubleAtackChance;
                 }
                 else
                 {
                     character3Block.Text = " ";
                 }
-                if (Characters[2].Weapon != null)
+                if (characters[2].Weapon != null)
                 {
-                    character3Weapon.Text = Characters[2].Weapon.Name;
-                    character3Weapon.AccessibleDescription = Characters[2].Weapon.Name + Environment.NewLine + Characters[2].Weapon.Description + Environment.NewLine + Characters[2].Weapon.Rarity + Environment.NewLine + "MinDMG: " + Characters[2].Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + Characters[2].Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, Characters[2].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[2].Weapon.SalesPrice.ToString();
-                    switch (Characters[2].Weapon.Rarity)
+                    character3Weapon.Text = characters[2].Weapon.Name;
+                    character3Weapon.AccessibleDescription = characters[2].Weapon.Name + Environment.NewLine + characters[2].Weapon.Description + Environment.NewLine + characters[2].Weapon.Rarity + Environment.NewLine + "Min Damage: " + characters[2].Weapon.MinDmg.ToString() +
+                        Environment.NewLine + "Max Damage: " + characters[2].Weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, characters[2].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[2].Weapon.SalesPrice.ToString();
+                    switch (characters[2].Weapon.Rarity)
                     {
                         case Rarity.Common:
-                            character3Weapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character3Weapon.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character3Weapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character3Weapon.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character3Weapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character3Weapon.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character3Weapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character3Weapon.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -320,27 +320,27 @@ namespace Hopeless
                 }
                 else
                 {
-                    character3Weapon.Text = "Brak";
+                    character3Weapon.Text = "None";
                     character3Weapon.AccessibleDescription = "  ";
                 }
-                if (Characters[2].Armor != null)
+                if (characters[2].Armor != null)
                 {
-                    character3Armor.Text = Characters[2].Armor.Name;
-                    character3Armor.AccessibleDescription = Characters[2].Armor.Name + Environment.NewLine + Characters[2].Armor.Description + Environment.NewLine + Characters[2].Armor.Rarity + Environment.NewLine + "DmgReduction: " + Characters[2].Armor.DmgReduction.ToString()
-                    + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, Characters[2].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[2].Armor.SalesPrice.ToString();
-                    switch (Characters[2].Armor.Rarity)
+                    character3Armor.Text = characters[2].Armor.Name;
+                    character3Armor.AccessibleDescription = characters[2].Armor.Name + Environment.NewLine + characters[2].Armor.Description + Environment.NewLine + characters[2].Armor.Rarity + Environment.NewLine + "Damage Reduction: " + characters[2].Armor.DmgReduction.ToString()
+                    + Environment.NewLine + "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, characters[2].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[2].Armor.SalesPrice.ToString();
+                    switch (characters[2].Armor.Rarity)
                     {
                         case Rarity.Common:
-                            character3Armor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character3Armor.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character3Armor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character3Armor.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character3Armor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character3Armor.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character3Armor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character3Armor.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -348,68 +348,68 @@ namespace Hopeless
                 }
                 else
                 {
-                    character3Armor.Text = "Brak";
+                    character3Armor.Text = "None";
                     character3Armor.AccessibleDescription = "  ";
                 }
-                character3ClassName.Text = Characters[2].Name;
+                character3ClassName.Text = characters[2].Name;
 
 
 
 
-                character4Name.Text = "Imie: " + Characters[3].Name;
-                character4Level.Text = "Level: " + Characters[3].Level;
-                character4Exp.Text = "Punkty EXP: " + Characters[3].ExperiencePoints;
-                character4Strength.Text = "Sila: " + Characters[3].Strength;
-                character4Dexterity.Text = "Zrecznosc: " + Characters[3].Dexterity;
-                character4Intelligence.Text = "Inteligencja: " + Characters[3].Intelligence;
-                character4Hp.Text = "HP: " + Characters[3].CurrentHP + "/" + Characters[3].MaxHP;
-                character4Resistance.Text = "Odpornosc: " + Characters[3].Resistance;
-                character4Crit.Text = "Szansa na Kryta: " + Characters[3].CritChance + "%";
-                character4Initiative.Text = "Inicjatywa: " + Characters[3].Initiative;
-                character4Dmg.Text = "Obrazenia Ataku: " + Characters[3].MinDmg + "-" + Characters[3].MaxDmg;
-                if (Characters[3].CharacterType == CharacterType.Knight)
+                character4Name.Text = "Name: " + characters[3].Name;
+                character4Level.Text = "Level: " + characters[3].Level;
+                character4Exp.Text = "Experience Points: " + characters[3].ExperiencePoints;
+                character4Strength.Text = "Strength: " + characters[3].Strength;
+                character4Dexterity.Text = "Dexterity: " + characters[3].Dexterity;
+                character4Intelligence.Text = "Intelligence: " + characters[3].Intelligence;
+                character4Hp.Text = "HP: " + characters[3].CurrentHP + "/" + characters[3].MaxHP;
+                character4Resistance.Text = "Resistance: " + characters[3].Resistance;
+                character4Crit.Text = "Critical Chance: " + characters[3].CritChance + "%";
+                character4Initiative.Text = "Initiative: " + characters[3].Initiative;
+                character4Dmg.Text = "Attack Damage: " + characters[3].MinDmg + "-" + characters[3].MaxDmg;
+                if (characters[3].CharacterType == CharacterType.Knight)
                 {
-                    Knight knight = (Knight)Characters[3];
-                    character4Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                    Knight knight = (Knight)characters[3];
+                    character4Block.Text = "Block Chance: " + knight.BlockChance;
                 }
-                else if (Characters[3].CharacterType == CharacterType.Rogue)
+                else if (characters[3].CharacterType == CharacterType.Rogue)
                 {
-                    Rogue rogue = (Rogue)Characters[3];
-                    character4Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                    Rogue rogue = (Rogue)characters[3];
+                    character4Block.Text = "Dodge Chance: " + rogue.DodgeChance;
                 }
-                else if (Characters[3].CharacterType == CharacterType.Cleric)
+                else if (characters[3].CharacterType == CharacterType.Cleric)
                 {
-                    Cleric cleric = (Cleric)Characters[3];
-                    character4Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                    Cleric cleric = (Cleric)characters[3];
+                    character4Block.Text = "Blessing Chance: " + cleric.BlessingChance;
                 }
-                else if (Characters[3].CharacterType == CharacterType.Joker)
+                else if (characters[3].CharacterType == CharacterType.Joker)
                 {
-                    Joker joker = (Joker)Characters[3];
-                    character4Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                    Joker joker = (Joker)characters[3];
+                    character4Block.Text = "DoubleAttack Chance: " + joker.DoubleAtackChance;
                 }
                 else
                 {
                     character4Block.Text = " ";
                 }
-                if (Characters[3].Weapon != null)
+                if (characters[3].Weapon != null)
                 {
-                    character4Weapon.Text = Characters[3].Weapon.Name;
-                    character4Weapon.AccessibleDescription = Characters[3].Weapon.Name + Environment.NewLine + Characters[3].Weapon.Description + Environment.NewLine + Characters[3].Weapon.Rarity + Environment.NewLine + "MinDMG: " + Characters[3].Weapon.MinDmg.ToString() +
-                        Environment.NewLine + "MaxDMG: " + Characters[3].Weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, Characters[3].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[3].Weapon.SalesPrice.ToString();
-                    switch (Characters[3].Weapon.Rarity)
+                    character4Weapon.Text = characters[3].Weapon.Name;
+                    character4Weapon.AccessibleDescription = characters[3].Weapon.Name + Environment.NewLine + characters[3].Weapon.Description + Environment.NewLine + characters[3].Weapon.Rarity + Environment.NewLine + "Min Damage: " + characters[3].Weapon.MinDmg.ToString() +
+                        Environment.NewLine + "Max Damage: " + characters[3].Weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, characters[3].Weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[3].Weapon.SalesPrice.ToString();
+                    switch (characters[3].Weapon.Rarity)
                     {
                         case Rarity.Common:
-                            character4Weapon.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character4Weapon.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character4Weapon.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character4Weapon.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character4Weapon.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character4Weapon.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character4Weapon.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character4Weapon.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -417,27 +417,27 @@ namespace Hopeless
                 }
                 else
                 {
-                    character4Weapon.Text = "Brak";
+                    character4Weapon.Text = "None";
                     character4Weapon.AccessibleDescription = "  ";
                 }
-                if (Characters[3].Armor != null)
+                if (characters[3].Armor != null)
                 {
-                    character4Armor.Text = Characters[3].Armor.Name;
-                    character4Armor.AccessibleDescription = Characters[3].Armor.Name + Environment.NewLine + Characters[3].Armor.Description + Environment.NewLine + Characters[3].Armor.Rarity + Environment.NewLine + "DmgReduction: " + Characters[3].Armor.DmgReduction.ToString()
-                    + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, Characters[3].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + Characters[3].Armor.SalesPrice.ToString();
-                    switch (Characters[3].Armor.Rarity)
+                    character4Armor.Text = characters[3].Armor.Name;
+                    character4Armor.AccessibleDescription = characters[3].Armor.Name + Environment.NewLine + characters[3].Armor.Description + Environment.NewLine + characters[3].Armor.Rarity + Environment.NewLine + "Damage Reduction: " + characters[3].Armor.DmgReduction.ToString()
+                    + Environment.NewLine + "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, characters[3].Armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + characters[3].Armor.SalesPrice.ToString();
+                    switch (characters[3].Armor.Rarity)
                     {
                         case Rarity.Common:
-                            character4Armor.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            character4Armor.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            character4Armor.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            character4Armor.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            character4Armor.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            character4Armor.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            character4Armor.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            character4Armor.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -445,14 +445,15 @@ namespace Hopeless
                 }
                 else
                 {
-                    character4Armor.Text = "Brak";
+                    character4Armor.Text = "None";
                     character4Armor.AccessibleDescription = "  ";
                 }
-                character4ClassName.Text = Characters[3].Name;
+                character4ClassName.Text = characters[3].Name;
 
 
             }
         }
+
 
 
         public event EventHandler WyruszButtonClicked;
@@ -472,14 +473,14 @@ namespace Hopeless
         {
 
             GameState gameState = new GameState();
-            gameState.chararacters = Characters;
+            gameState.chararacters = characters;
 
 
        
-            gameState.Ekwipunek = Ekwipunek;
+            gameState.Ekwipunek = inventory;
             gameState.Shop = shopItems;
             gameState.Equiped = equipedItems;
-            gameState.expeditions = Expeditons;
+            gameState.expeditions = expeditons;
             gameState.gold = gold;
             gameState.eventQuest = eventQuest;
             gameState.eventResult = eventResult;
@@ -565,7 +566,7 @@ namespace Hopeless
             if (e.Button == MouseButtons.Left)
             {
                 Control control = (Control)sender;
-                if (control.Text != "Brak")
+                if (control.Text != "None")
                 {
                     lastDraggedLabel = (Label)control;
                     control.DoDragDrop(control.Text, DragDropEffects.Move);
@@ -607,34 +608,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
-                        if (character1Weapon.Text != "Brak")
+                        if (character1Weapon.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[0]);
+                            itemToSelect.Equip(characters[0]);
                             string oldItem = character1Weapon.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character1Weapon.Text = draggedItemText;
                             character1Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[0].UpdateStats();
+                            characters[0].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[0]);
+                            itemToSelect.Equip(characters[0]);
                             equipedItems.Add(itemToSelect);
                             character1Weapon.Text = draggedItemText;
                             character1Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[0].UpdateStats();
+                            characters[0].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipWeaponSound();
@@ -667,34 +668,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
-                        if (character1Armor.Text != "Brak")
+                        if (character1Armor.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[0]);
+                            itemToSelect.Equip(characters[0]);
                             string oldItem = character1Armor.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character1Armor.Text = draggedItemText;
                             character1Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[0].UpdateStats();
+                            characters[0].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[0]);
+                            itemToSelect.Equip(characters[0]);
                             equipedItems.Add(itemToSelect);
                             character1Armor.Text = draggedItemText;
                             character1Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[0].UpdateStats();
+                            characters[0].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipArmorSound();
@@ -731,34 +732,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
-                        if (character2Weapon.Text != "Brak")
+                        if (character2Weapon.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[1]);
+                            itemToSelect.Equip(characters[1]);
                             string oldItem = character2Weapon.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character2Weapon.Text = draggedItemText;
                             character2Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[1].UpdateStats();
+                            characters[1].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[1]);
+                            itemToSelect.Equip(characters[1]);
                             equipedItems.Add(itemToSelect);
                             character2Weapon.Text = draggedItemText;
                             character2Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[1].UpdateStats();
+                            characters[1].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipWeaponSound();
@@ -791,34 +792,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
-                        if (character2Armor.Text != "Brak")
+                        if (character2Armor.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[1]);
+                            itemToSelect.Equip(characters[1]);
                             string oldItem = character2Armor.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character2Armor.Text = draggedItemText;
                             character2Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[1].UpdateStats();
+                            characters[1].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[1]);
+                            itemToSelect.Equip(characters[1]);
                             equipedItems.Add(itemToSelect);
                             character2Armor.Text = draggedItemText;
                             character2Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[1].UpdateStats();
+                            characters[1].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipArmorSound();
@@ -857,34 +858,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
-                        if (character3Weapon.Text != "Brak")
+                        if (character3Weapon.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[2]);
+                            itemToSelect.Equip(characters[2]);
                             string oldItem = character3Weapon.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character3Weapon.Text = draggedItemText;
                             character3Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[2].UpdateStats();
+                            characters[2].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[2]);
+                            itemToSelect.Equip(characters[2]);
                             equipedItems.Add(itemToSelect);
                             character3Weapon.Text = draggedItemText;
                             character3Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[2].UpdateStats();
+                            characters[2].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipWeaponSound();
@@ -918,34 +919,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
-                        if (character3Armor.Text != "Brak")
+                        if (character3Armor.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[2]);
+                            itemToSelect.Equip(characters[2]);
                             string oldItem = character3Armor.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character3Armor.Text = draggedItemText;
                             character3Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[2].UpdateStats();
+                            characters[2].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[2]);
+                            itemToSelect.Equip(characters[2]);
                             equipedItems.Add(itemToSelect);
                             character3Armor.Text = draggedItemText;
                             character3Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[2].UpdateStats();
+                            characters[2].UpdateStats();
                             RefreshStats();
                         }
                         PlayEquipArmorSound();
@@ -984,34 +985,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
-                        if (character4Weapon.Text != "Brak")
+                        if (character4Weapon.Text != "None")
                         {
-                            itemToSelect.Equip(Characters[3]);
+                            itemToSelect.Equip(characters[3]);
                             string oldItem = character4Weapon.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character4Weapon.Text = draggedItemText;
                             character4Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[3].UpdateStats();
+                            characters[3].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[3]);
+                            itemToSelect.Equip(characters[3]);
                             equipedItems.Add(itemToSelect);
                             character4Weapon.Text = draggedItemText;
                             character4Weapon.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[3].UpdateStats();
+                            characters[3].UpdateStats();
                             RefreshStats();
 
                         }
@@ -1046,34 +1047,34 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
-                        if (character4Armor.Text != "Brak")
+                        if (character4Armor.Text !="None")
                         {
-                            itemToSelect.Equip(Characters[3]);
+                            itemToSelect.Equip(characters[3]);
                             string oldItem = character4Armor.Text;
                             AddItemToInventory(oldItem, false);
                             equipedItems.Add(itemToSelect);
                             character4Armor.Text = draggedItemText;
                             character4Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[3].UpdateStats();
+                            characters[3].UpdateStats();
                             RefreshStats();
                         }
                         else
                         {
-                            itemToSelect.Equip(Characters[3]);
+                            itemToSelect.Equip(characters[3]);
                             equipedItems.Add(itemToSelect);
                             character4Armor.Text = draggedItemText;
                             character4Armor.BackColor = SystemColors.Control;
 
-                            Ekwipunek.Remove(itemToSelect);
+                            inventory.Remove(itemToSelect);
                             RefreshInventory();
-                            Characters[3].UpdateStats();
+                            characters[3].UpdateStats();
                             RefreshStats();
 
                         }
@@ -1123,55 +1124,55 @@ namespace Hopeless
 
             if (lastDraggedLabel != null && CheckLabel(lastDraggedLabel))
             {
-                lastDraggedLabel.Text = "Brak";
+                lastDraggedLabel.Text = "None";
                 if (lastDraggedLabel == character1Weapon)
                 {
-                    Characters[0].Weapon = null;
+                    characters[0].Weapon = null;
                     PlayEquipWeaponSound();
                 }
-                Characters[0].UpdateStats();
+                characters[0].UpdateStats();
                 if (lastDraggedLabel == character1Armor)
                 {
-                    Characters[0].Armor = null;
+                    characters[0].Armor = null;
                     PlayEquipArmorSound();
                 }
-                Characters[0].UpdateStats();
+                characters[0].UpdateStats();
                 if (lastDraggedLabel == character2Weapon)
                 {
-                    Characters[1].Weapon = null;
+                    characters[1].Weapon = null;
                     PlayEquipWeaponSound();
                 }
-                Characters[1].UpdateStats();
+                characters[1].UpdateStats();
                 if (lastDraggedLabel == character2Armor)
                 {
-                    Characters[1].Armor = null;
+                    characters[1].Armor = null;
                     PlayEquipArmorSound();
                 }
-                Characters[1].UpdateStats();
+                characters[1].UpdateStats();
                 if (lastDraggedLabel == character3Weapon)
                 {
-                    Characters[2].Weapon = null;
+                    characters[2].Weapon = null;
                     PlayEquipWeaponSound();
                 }
-                Characters[2].UpdateStats();
+                characters[2].UpdateStats();
                 if (lastDraggedLabel == character3Armor)
                 {
-                    Characters[2].Armor = null;
+                    characters[2].Armor = null;
                     PlayEquipArmorSound();
                 }
-                Characters[2].UpdateStats();
+                characters[2].UpdateStats();
                 if (lastDraggedLabel == character4Weapon)
                 {
-                    Characters[3].Weapon = null;
+                    characters[3].Weapon = null;
                     PlayEquipWeaponSound();
                 }
-                Characters[3].UpdateStats();
+                characters[3].UpdateStats();
                 if (lastDraggedLabel == character4Armor)
                 {
-                    Characters[3].Armor = null;
+                    characters[3].Armor = null;
                     PlayEquipArmorSound();
                 }
-                Characters[3].UpdateStats();
+                characters[3].UpdateStats();
 
 
                 AddItemToInventory(draggedItemText, false);
@@ -1207,11 +1208,11 @@ namespace Hopeless
 
                 if (price > gold)
                 {
-                    MessageBox.Show("Brakuje ci " + (price - gold) + " golda", "Shop Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You are missing " + (price - gold) + " gold", "Shop Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    Ekwipunek.Add(itemToAdd);
+                    inventory.Add(itemToAdd);
                     shopItems.Remove(itemToAdd);
                     gold -= price;
                     RefreshInventory();
@@ -1226,7 +1227,7 @@ namespace Hopeless
                 IEkwipunek itemToAdd = equipedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
                 if (itemToAdd != null)
                 {
-                    Ekwipunek.Add(itemToAdd);
+                    inventory.Add(itemToAdd);
                     equipedItems.Remove(itemToAdd);
                     RefreshInventory();
                 }
@@ -1257,11 +1258,11 @@ namespace Hopeless
         private void RefreshInventory()
         {
 
-            goldLabel.Text = "Złoto: " + gold.ToString();
+            goldLabel.Text = "Gold: " + gold.ToString();
             Inventory.AutoScroll = true;
             Inventory.Controls.Clear();
 
-            foreach (IEkwipunek item in Ekwipunek)
+            foreach (IEkwipunek item in inventory)
             {
                 Label label = new Label();
                 label.Text = item.Wypisz();
@@ -1272,22 +1273,22 @@ namespace Hopeless
                 if (item is Weapon)
                 {
                     Weapon weapon = (Weapon)item;
-                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
-                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + weapon.SalesPrice.ToString();
+                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "Min Damage: " + weapon.MinDmg.ToString() +
+                    Environment.NewLine + "Max Damage: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + weapon.SalesPrice.ToString();
                     switch (weapon.Rarity)
                     {
                         case Rarity.Common:
-                            label.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            label.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            label.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -1296,21 +1297,21 @@ namespace Hopeless
                 if (item is Armor)
                 {
                     Armor armor = (Armor)item;
-                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
-                    "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Wartosc:" + Environment.NewLine + armor.SalesPrice.ToString();
+                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "Damage Reduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
+                    "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + armor.SalesPrice.ToString();
                     switch (armor.Rarity)
                     {
                         case Rarity.Common:
-                            label.BackColor = Color.LightGray; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.LightGray;
                             break;
                         case Rarity.Rare:
-                            label.BackColor = Color.LightBlue; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.LightBlue;
                             break;
                         case Rarity.Epic:
-                            label.BackColor = Color.DarkMagenta; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.DarkMagenta;
                             break;
                         case Rarity.Legendary:
-                            label.BackColor = Color.Orange; // Dostosuj kolor do poziomu Rarity
+                            label.BackColor = Color.Orange;
                             break;
                         default:
                             break;
@@ -1331,36 +1332,37 @@ namespace Hopeless
         }
 
 
+
         //Sortowanie Ekwipunku
 
         private void SortAll_Click(object sender, EventArgs e)
         {
-            Ekwipunek = Ekwipunek.OrderBy(item => item.Wypisz()).ToList();
+            inventory = inventory.OrderBy(item => item.Wypisz()).ToList();
             RefreshInventory();
         }
 
         private void SortKnight_Click(object sender, EventArgs e)
         {
-            Ekwipunek = SortByAllowedCharacters(CharacterType.Knight);
+            inventory = SortByAllowedCharacters(CharacterType.Knight);
             RefreshInventory();
         }
 
         private void SortRogue_Click(object sender, EventArgs e)
         {
-            Ekwipunek = SortByAllowedCharacters(CharacterType.Rogue);
+            inventory = SortByAllowedCharacters(CharacterType.Rogue);
             RefreshInventory();
         }
 
 
         private void SortCleric_Click(object sender, EventArgs e)
         {
-            Ekwipunek = SortByAllowedCharacters(CharacterType.Cleric);
+            inventory = SortByAllowedCharacters(CharacterType.Cleric);
             RefreshInventory();
         }
 
         private void SortJoker_Click(object sender, EventArgs e)
         {
-            Ekwipunek = SortByAllowedCharacters(CharacterType.Joker);
+            inventory = SortByAllowedCharacters(CharacterType.Joker);
             RefreshInventory();
         }
 
@@ -1373,43 +1375,43 @@ namespace Hopeless
             Random r = new Random();
             do
             {
-                int i = r.Next(0, pulaEkwipunku.Count);
-                if (pulaEkwipunku[i] is Armor)
+                int i = r.Next(0, shopItemsPool.Count);
+                if (shopItemsPool[i] is Armor)
                 {
-                    Armor armor = (Armor)pulaEkwipunku[i];
+                    Armor armor = (Armor)shopItemsPool[i];
                     if ((int)armor.Rarity == 1)
                     {
-                        shopItems.Add(new Armor((Armor)pulaEkwipunku[i]));
+                        shopItems.Add(new Armor((Armor)shopItemsPool[i]));
                     }
 
                 }
                 else
                 {
-                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    Weapon weapon = (Weapon)shopItemsPool[i];
                     if ((int)weapon.Rarity == 1)
                     {
-                        shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
+                        shopItems.Add(new Weapon((Weapon)shopItemsPool[i]));
                     }
                 }
             } while (shopItems.Count != 4);
             do
             {
-                int i = r.Next(0, pulaEkwipunku.Count);
-                if (pulaEkwipunku[i] is Armor)
+                int i = r.Next(0, shopItemsPool.Count);
+                if (shopItemsPool[i] is Armor)
                 {
-                    Armor armor = (Armor)pulaEkwipunku[i];
+                    Armor armor = (Armor)shopItemsPool[i];
                     if ((int)armor.Rarity == 2)
                     {
-                        shopItems.Add(new Armor((Armor)pulaEkwipunku[i]));
+                        shopItems.Add(new Armor((Armor)shopItemsPool[i]));
                     }
 
                 }
                 else
                 {
-                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    Weapon weapon = (Weapon)shopItemsPool[i];
                     if ((int)weapon.Rarity == 2)
                     {
-                        shopItems.Add(new Weapon((Weapon)pulaEkwipunku[i]));
+                        shopItems.Add(new Weapon((Weapon)shopItemsPool[i]));
                     }
                 }
             } while (shopItems.Count != 6);
@@ -1439,7 +1441,7 @@ namespace Hopeless
                 Control control = (Control)sender;
                 //control.BackColor = SystemColors.Control;
                 string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = Ekwipunek.FirstOrDefault(item => item.Wypisz() == draggedItemText);
+                IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText);
                 if (itemToSelect is Weapon)
                 {
                     Weapon weapon = (Weapon)itemToSelect;
@@ -1451,7 +1453,7 @@ namespace Hopeless
                     gold += (int)armor.SalesPrice;
                 }
 
-                Ekwipunek.Remove(itemToSelect);
+                inventory.Remove(itemToSelect);
                 RefreshInventory();
                 lastDraggedLabel = null;
 
@@ -1464,7 +1466,7 @@ namespace Hopeless
         {
             if (25 > gold)
             {
-                MessageBox.Show("Brakuje ci " + (25 - gold) + " golda", "Shop Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You are missing " + (25 - gold) + " gold", "Shop Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -1493,9 +1495,9 @@ namespace Hopeless
                 if (item is Weapon)
                 {
                     Weapon weapon = (Weapon)item;
-                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "MinDMG: " + weapon.MinDmg.ToString() +
-                    Environment.NewLine + "MaxDMG: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Dostepne dla Klas:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Cena:" + Environment.NewLine + weapon.Price.ToString();
+                    label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "Min Damage: " + weapon.MinDmg.ToString() +
+                    Environment.NewLine + "Max Damage: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
+                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + weapon.SalesPrice.ToString();
                     switch (weapon.Rarity)
                     {
                         case Rarity.Common:
@@ -1517,8 +1519,8 @@ namespace Hopeless
                 if (item is Armor)
                 {
                     Armor armor = (Armor)item;
-                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "DmgReduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
-                    "Dostepne dla Klas:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Cena:" + Environment.NewLine + armor.Price.ToString();
+                    label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "Damage Reduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
+                    "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + armor.SalesPrice.ToString();
                     switch (armor.Rarity)
                     {
                         case Rarity.Common:
@@ -1553,25 +1555,25 @@ namespace Hopeless
 
 
 
-        public void AfterExpedition(bool wynik, Expedition wyprawa)
+        public void AfterExpedition(bool result, Expedition expedition)
         {
 
-            if (wynik)
+            if (result)
             {
-                Characters[0].GainExperience(wyprawa.ExperienceGains);
-                Characters[1].GainExperience(wyprawa.ExperienceGains);
-                Characters[2].GainExperience(wyprawa.ExperienceGains);
-                Characters[3].GainExperience(wyprawa.ExperienceGains);
+                characters[0].GainExperience(expedition.ExperienceGains);
+                characters[1].GainExperience(expedition.ExperienceGains);
+                characters[2].GainExperience(expedition.ExperienceGains);
+                characters[3].GainExperience(expedition.ExperienceGains);
 
 
-                gold += wyprawa.Gold;
-                foreach (Weapon weapon in wyprawa.WeaponRewards)
+                gold += expedition.Gold;
+                foreach (Weapon weapon in expedition.WeaponRewards)
                 {
-                    Ekwipunek.Add(new Weapon(weapon));
+                    inventory.Add(new Weapon(weapon));
                 }
-                foreach (Armor armor in wyprawa.ArmorRewards)
+                foreach (Armor armor in expedition.ArmorRewards)
                 {
-                    Ekwipunek.Add(new Armor(armor));
+                    inventory.Add(new Armor(armor));
                 }
                 RefreshInventory();
             }
@@ -1579,27 +1581,27 @@ namespace Hopeless
             {
 
                 equipedItems.Clear();
-                Characters[0].Weapon = null; Characters[0].UpdateStats();
-                Characters[0].Armor = null; Characters[0].UpdateStats();
-                Characters[1].Weapon = null; Characters[1].UpdateStats();
-                Characters[1].Armor = null; Characters[1].UpdateStats();
-                Characters[2].Weapon = null; Characters[2].UpdateStats();
-                Characters[2].Armor = null; Characters[2].UpdateStats();
-                Characters[3].Weapon = null; Characters[3].UpdateStats();
-                Characters[3].Armor = null; Characters[3].UpdateStats();
+                characters[0].Weapon = null; characters[0].UpdateStats();
+                characters[0].Armor = null; characters[0].UpdateStats();
+                characters[1].Weapon = null; characters[1].UpdateStats();
+                characters[1].Armor = null; characters[1].UpdateStats();
+                characters[2].Weapon = null; characters[2].UpdateStats();
+                characters[2].Armor = null; characters[2].UpdateStats();
+                characters[3].Weapon = null; characters[3].UpdateStats();
+                characters[3].Armor = null; characters[3].UpdateStats();
                 RefreshStats();
             }
-            Characters[0].CurrentHP = Characters[0].MaxHP;
-            Characters[1].CurrentHP = Characters[1].MaxHP;
-            Characters[2].CurrentHP = Characters[2].MaxHP;
-            Characters[3].CurrentHP = Characters[3].MaxHP;
+            characters[0].CurrentHP = characters[0].MaxHP;
+            characters[1].CurrentHP = characters[1].MaxHP;
+            characters[2].CurrentHP = characters[2].MaxHP;
+            characters[3].CurrentHP = characters[3].MaxHP;
         }
 
 
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Czy aby napewno chcesz stad uciec?", "Straciłeś Nadzieje?", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Are you sure you want to escape from here?", "Have you lost hope?", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 SaveGameState();
@@ -1679,7 +1681,7 @@ namespace Hopeless
 
         private List<IEkwipunek> SortByAllowedCharacters(CharacterType characterType)
         {
-            return Ekwipunek.OrderByDescending(item =>
+            return inventory.OrderByDescending(item =>
             {
                 if (item is Weapon weapon)
                 {

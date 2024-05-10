@@ -92,7 +92,7 @@ namespace Hopeless
 
             List<IEkwipunek> ekwipunek = new List<IEkwipunek> {};
             List<IEkwipunek> CommonIventory = new List<IEkwipunek> { new Weapon(sword),new Armor(armour), new Weapon(gun),new Armor(lightweightarmour), new Weapon(ritual_knife),new Armor(mediumweightarmour), new Weapon(axe),new Armor(lightweightarmour) };
-            fazaPrzygotowaniaUserControl.pulaEkwipunku = pulaEkwipunku;
+            fazaPrzygotowaniaUserControl.shopItemsPool = pulaEkwipunku;
             wyborWyprawyUserControl.pulaEkwipunku = pulaEkwipunku;
 
             // Inicjalizacja Potworów
@@ -181,11 +181,11 @@ namespace Hopeless
             kreatorUserControl.RozpocznijButtonClicked += (sender, args) =>
             {
                 ekwipunek = kreatorUserControl.StarterInventory.ToList();
-                fazaPrzygotowaniaUserControl.Characters = kreatorUserControl.ChooseCharacters;
-                fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+                fazaPrzygotowaniaUserControl.characters = kreatorUserControl.ChooseCharacters;
+                fazaPrzygotowaniaUserControl.inventory = ekwipunek;
                 wyborWyprawyUserControl.expeditions = expeditons;
                 fazaPrzygotowaniaUserControl.gold = 100;
-                fazaPrzygotowaniaUserControl.Expeditons = wyborWyprawyUserControl.expeditions;
+                fazaPrzygotowaniaUserControl.expeditons = wyborWyprawyUserControl.expeditions;
 
                 fazaPrzygotowaniaUserControl.GenerateShop();
                 fazaPrzygotowaniaUserControl.Visible = true;
@@ -209,7 +209,7 @@ namespace Hopeless
                 wyborWyprawyUserControl.Visible = true;
 
 
-                wyprawaUserControl.characters = fazaPrzygotowaniaUserControl.Characters;
+                wyprawaUserControl.characters = fazaPrzygotowaniaUserControl.characters;
 
 
             };
@@ -291,9 +291,9 @@ namespace Hopeless
             wyborWyprawyUserControl.eventQuest=gameState.eventQuest;
             wyborWyprawyUserControl.eventResult = gameState.eventResult;
             wyprawaUserControl.eventResult=gameState.eventResult;
-            fazaPrzygotowaniaUserControl.Expeditons = expeditons;
-            fazaPrzygotowaniaUserControl.Characters = characters;
-            fazaPrzygotowaniaUserControl.Ekwipunek = ekwipunek;
+            fazaPrzygotowaniaUserControl.expeditons = expeditons;
+            fazaPrzygotowaniaUserControl.characters = characters;
+            fazaPrzygotowaniaUserControl.inventory = ekwipunek;
             fazaPrzygotowaniaUserControl.equipedItems = equippedEkwipunek;
             wyborWyprawyUserControl.expeditions = expeditons;
             fazaPrzygotowaniaUserControl.gold = gameState.gold;
