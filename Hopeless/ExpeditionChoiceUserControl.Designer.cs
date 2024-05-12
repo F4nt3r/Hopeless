@@ -1,6 +1,6 @@
 ﻿namespace Hopeless
 {
-    partial class WyborWyprawyUserControl
+    partial class ExpeditionChoiceUserControl
     {
         /// <summary> 
         /// Wymagana zmienna projektanta.
@@ -33,7 +33,7 @@
             mediumExpeditions = new FlowLayoutPanel();
             easyExpeditions = new FlowLayoutPanel();
             bossExpeditions = new FlowLayoutPanel();
-            powrotButton = new Button();
+            returnButton = new Button();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -82,15 +82,15 @@
             bossExpeditions.Size = new Size(620, 160);
             bossExpeditions.TabIndex = 13;
             // 
-            // powrotButton
+            // returnButton
             // 
-            powrotButton.Location = new Point(13, 800);
-            powrotButton.Name = "powrotButton";
-            powrotButton.Size = new Size(150, 50);
-            powrotButton.TabIndex = 14;
-            powrotButton.Text = "Powrót";
-            powrotButton.UseVisualStyleBackColor = true;
-            powrotButton.Click += powrotButton_Click;
+            returnButton.Location = new Point(13, 800);
+            returnButton.Name = "returnButton";
+            returnButton.Size = new Size(150, 50);
+            returnButton.TabIndex = 14;
+            returnButton.Text = "Return";
+            returnButton.UseVisualStyleBackColor = true;
+            returnButton.Click += returnButton_Click;
             // 
             // pictureBox1
             // 
@@ -102,18 +102,18 @@
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
             // 
-            // WyborWyprawyUserControl
+            // ExpeditionChoiceUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(powrotButton);
+            Controls.Add(returnButton);
             Controls.Add(bossExpeditions);
             Controls.Add(easyExpeditions);
             Controls.Add(mediumExpeditions);
             Controls.Add(hardExpeditions);
             Controls.Add(DescriptionBox);
             Controls.Add(pictureBox1);
-            Name = "WyborWyprawyUserControl";
+            Name = "ExpeditionChoiceUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -127,7 +127,7 @@
         private FlowLayoutPanel mediumExpeditions;
         private FlowLayoutPanel easyExpeditions;
         private FlowLayoutPanel bossExpeditions;
-        private Button powrotButton;
+        private Button returnButton;
         private PictureBox pictureBox1;
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HopelessLibary
 {
-    public class Weapon : IEkwipunek
+    public class Weapon : IInventory
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -45,7 +45,7 @@ namespace HopelessLibary
             Rarity = weapon.Rarity;
         }
 
-        public string Wypisz()
+        public string Display()
         {
             return this.Name;
         }
@@ -56,9 +56,9 @@ namespace HopelessLibary
         }
         public void Equip(Character target)
         {
-            if (!AllowedCharacters.Contains(target.Type))
+            if (!AllowedCharacters.Contains(target.CharacterType))
             {
-                throw new ClassWeaponException("Ta postac nie moze uzywac tej broni.");
+                throw new ClassWeaponException("This character cannot use this weapon.");
             }
             target.Weapon = this;
         }

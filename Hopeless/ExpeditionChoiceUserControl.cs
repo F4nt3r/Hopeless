@@ -5,27 +5,27 @@ using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 namespace Hopeless
 {
-    public partial class WyborWyprawyUserControl : UserControl
+    public partial class ExpeditionChoiceUserControl : UserControl
     {
-        public List<Expedition> expeditions { get; set; }
-        public List<Monster> monsters { get; set; }
-        public List<IEkwipunek> pulaEkwipunku { get; set; }
-        public Expedition selectedExpedition { get; set; }
-        Dictionary<string, string> questDescriptions = new Dictionary<string, string>();
-        public event EventHandler eventQuestExist;
-        public bool eventQuest;
-        public bool eventResult;
-        public WyborWyprawyUserControl()
+        public List<Expedition> Expeditions { get; set; }
+        public List<Monster> Monsters { get; set; }
+        public List<IInventory> EquipmentPool { get; set; }
+        public Expedition SelectedExpedition { get; set; }
+        Dictionary<string, string> QuestDescriptions = new Dictionary<string, string>();
+        public event EventHandler EventQuestExist;
+        public bool EventQuest;
+        public bool EventResult;
+        public ExpeditionChoiceUserControl()
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
             InitializeExpeditonsNames();
 
-            this.VisibleChanged += WyborWyprawyUserControl_VisibleChanged;
+            this.VisibleChanged += ExpeditionChoiceUserControl_VisibleChanged;
 
         }
 
-        private void WyborWyprawyUserControl_VisibleChanged(object? sender, EventArgs e)
+        private void ExpeditionChoiceUserControl_VisibleChanged(object? sender, EventArgs e)
         {
             var control = sender as UserControl;
             if (control != null)
@@ -44,18 +44,18 @@ namespace Hopeless
         private void InitializeExpeditonsNames()
         {
 
-            questDescriptions.Add("Kanały Nowigradu", "Ależ tu śmierdzi... zwłokami??");
-            questDescriptions.Add("Opuszczony Magazyn", "Ponoć kiedys składowali tu Jabole");
-            questDescriptions.Add("Flecista z Hameln", "Wiesz gdzie możesz sobie wsadzić ten flet...?");
-            questDescriptions.Add("Puszcza Kampinoska", "Wielki Ciemny Las, w ktorym roi sie od pajeczyn");
-            questDescriptions.Add("Oboz na Bagnach", "Nielegalna plantacja bagiennego ziela");
-            questDescriptions.Add("Bar na przedmieściach", "Pełny pijaków i ... Potworów?!");
-            questDescriptions.Add("Stary Cmentarz", "Ciekawe czy mają tu jeszcze jakieś wolne kwatery?");
-            questDescriptions.Add("Zamek Beshamuntir", "Na jego końcu ponoć czeka Smok");
-            questDescriptions.Add("Czerwony Las", "Ładnie tu, drzewa, pniaki, driady ... Ale czemu mają noże?");
-            questDescriptions.Add("Góra Hyjal", "Należy oczyścić okolice Drzewa Świata z tym potworów");
-            questDescriptions.Add("Czarna Brama", "Sauron!!! Wyłaź, wiem, że tam jesteś!");
-            questDescriptions.Add("Pustkowia Mojave", "Przed atomowką też byla tu pustynia, ale nie tak niebezpieczna");
+            QuestDescriptions.Add("Canals of Novigrad", "It smells... of corpses??");
+            QuestDescriptions.Add("Abandoned Warehouse", "Apparently they used to store apples here");
+            QuestDescriptions.Add("The Pied Piper of Hamelin", "Do you know where you can put this flute...?");
+            QuestDescriptions.Add("Puszcza Kampinoska", "Great Dark Forest, full of spiderwebs");
+            QuestDescriptions.Add("Swamp Camp", "Illegal swamp herb plantation");
+            QuestDescriptions.Add("A bar in the suburbs", "Full of drunks and... Monsters?!");
+            QuestDescriptions.Add("Old Cemetery", "I wonder if they still have any available quarters here?");
+            QuestDescriptions.Add("Beshamuntir Castle", "At its end there is said to be a Dragon waiting");
+            QuestDescriptions.Add("Red Forest", "Nice here, trees, stumps, dryads... But why do they have knives?");
+            QuestDescriptions.Add("Mount Hyjal", "You must clear the area around the World Tree of these monsters");
+            QuestDescriptions.Add("Black Gate", "Sauron!!! Get out, I know you're there!");
+            QuestDescriptions.Add("Mojave Wasteland", "Before the nukes there was a desert here too, but not as dangerous");
         }
 
         private void InitializeExpeditions()
@@ -70,17 +70,17 @@ namespace Hopeless
             bossExpeditions.Controls.Clear();
 
             //Losowanie 3 startowych misji
-            if (expeditions.Count(expedition => expedition.Type == DifficultyType.Easy) > 4)
+            if (Expeditions.Count(expedition => expedition.Type == DifficultyType.Easy) > 4)
             {
                 var random = new Random();
-                var randomExpeditions = expeditions.Where(expedition => expedition.Type == DifficultyType.Easy).OrderBy(x => random.Next()).Take(3).ToList();
-                expeditions.RemoveAll(expedition => expedition.Type == DifficultyType.Easy && !randomExpeditions.Contains(expedition));
+                var randomExpeditions = Expeditions.Where(expedition => expedition.Type == DifficultyType.Easy).OrderBy(x => random.Next()).Take(3).ToList();
+                Expeditions.RemoveAll(expedition => expedition.Type == DifficultyType.Easy && !randomExpeditions.Contains(expedition));
 
             }
 
 
 
-            foreach (Expedition expediton in expeditions)
+            foreach (Expedition expediton in Expeditions)
             {
                 Label label = new Label();
                 label.Text = expediton.Name;
@@ -92,14 +92,14 @@ namespace Hopeless
                 label.BorderStyle = BorderStyle.FixedSingle;
 
 
-                label.AccessibleDescription = expediton.Name + Environment.NewLine + expediton.Description + Environment.NewLine + "Złoto za wyprawe: " + expediton.Gold.ToString() +
-                Environment.NewLine + "EXP za wyprawe: " + expediton.ExperienceGains.ToString() + Environment.NewLine + Environment.NewLine +
-                "Możliwy Drop Broni:" + Environment.NewLine +
-                string.Join("," + Environment.NewLine, expediton.WeaponRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
-                "Możliwy Drop Zbroii:" + Environment.NewLine +
-                string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
-                 "Potwory:" + Environment.NewLine +
-                string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
+                label.AccessibleDescription = expediton.Name + Environment.NewLine + expediton.Description + Environment.NewLine + "Gold for the expedition: " + expediton.Gold.ToString() +
+                  Environment.NewLine + "EXP for Expedition: " + expediton.ExperienceGains.ToString() + Environment.NewLine + Environment.NewLine +
+                  "Possible Weapon Drop:" + Environment.NewLine +
+                  string.Join("," + Environment.NewLine, expediton.WeaponRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
+                  "Possible Armor Drop:" + Environment.NewLine +
+                  string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
+                   "Monsters:" + Environment.NewLine +
+                 string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
                 switch (expediton.Type)
                 {
                     case DifficultyType.Event:
@@ -179,22 +179,22 @@ namespace Hopeless
         private void ExpeditionMouseClick(object sender, EventArgs e)
         {
             Label label = sender as Label;
-            foreach (Expedition expedition in expeditions)
+            foreach (Expedition expedition in Expeditions)
             {
                 if (expedition.Name == label.Text)
                 {
-                    selectedExpedition = expedition;
-                    if(selectedExpedition.Type == DifficultyType.Boss && eventResult)
+                    SelectedExpedition = expedition;
+                    if (SelectedExpedition.Type == DifficultyType.Boss && EventResult)
                     {
-                       
-                            foreach (var monster in selectedExpedition.Monsters)
+
+                        foreach (var monster in SelectedExpedition.Monsters)
+                        {
+                            if (monster.Name == "The_Sleeper_Guardian")
                             {
-                                if (monster.Name == "Strażnik Śniącego")
-                                {
-                                    monster.CurrentHP = 1;
-                                }
+                                monster.CurrentHP = 1;
                             }
-                        
+                        }
+
                     }
                 }
             }
@@ -202,44 +202,44 @@ namespace Hopeless
 
             ExpeditionMouseClicked?.Invoke(this, EventArgs.Empty);
         }
-        public event EventHandler powrotButtonClicked;
-        private void powrotButton_Click(object sender, EventArgs e)
+        public event EventHandler returnButtonClicked;
+        private void returnButton_Click(object sender, EventArgs e)
         {
-            powrotButtonClicked?.Invoke(this, EventArgs.Empty);
+            returnButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        public void AfterExpedition(bool wynik, Expedition wyprawa)
+        public void AfterExpedition(bool result, Expedition expedition)
         {
             KeyValuePair<string, string> selectedQuest;
             do
             {
-                selectedQuest = RandomQuest(questDescriptions);
+                selectedQuest = RandomQuest(QuestDescriptions);
             }
-            while (expeditions.Any(expedition => expedition.Name == selectedQuest.Key));
+            while (Expeditions.Any(expedition => expedition.Name == selectedQuest.Key));
 
-            if (wynik)
+            if (result)
             {
 
 
-                expeditions.Remove(wyprawa);
+                Expeditions.Remove(expedition);
                 Expedition newExpedition1;
-                if (wyprawa.Type != DifficultyType.Event && wyprawa.Type != DifficultyType.Boss)
+                if (expedition.Type != DifficultyType.Event && expedition.Type != DifficultyType.Boss)
                 {
-                    newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
-                    expeditions.Add(newExpedition1);
+                    newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(expedition.Type), expedition.Type, GenerateMonsters(expedition.Type), GenerateRandomGold(expedition.Type), GenerateWeapons(expedition.Type), GenerateArmors(expedition.Type));
+                    Expeditions.Add(newExpedition1);
                 }
 
-                if (new Random().Next(1, 100) > 1 && !eventQuest)
+                if (new Random().Next(1, 100) > 1 && !EventQuest)
                 {
-                    List<Monster> wybrane = new List<Monster>();
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Odbicie_Lustrzane")));
-                    wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Gaunter_oDim")));
-                    newExpedition1 = new Expedition("???", "???????????????????????????????", 300, DifficultyType.Event, wybrane, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
-                    expeditions.Add(newExpedition1);
-                    eventQuest = true;
-                    eventQuestExist?.Invoke(this, EventArgs.Empty);
+                    List<Monster> chosen = new List<Monster>();
+                    chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Mirror_Reflection")));
+                    chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Mirror_Reflection")));
+                    chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Mirror_Reflection")));
+                    chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Gaunter_oDim")));
+                    newExpedition1 = new Expedition("???", "???????????????????????????????", 300, DifficultyType.Event, chosen, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                    Expeditions.Add(newExpedition1);
+                    EventQuest = true;
+                    EventQuestExist?.Invoke(this, EventArgs.Empty);
                 }
 
 
@@ -250,37 +250,37 @@ namespace Hopeless
 
                 do
                 {
-                    selectedQuest = RandomQuest(questDescriptions);
+                    selectedQuest = RandomQuest(QuestDescriptions);
                 }
-                while (expeditions.Any(expedition => expedition.Name == selectedQuest.Key));
+                while (Expeditions.Any(expedition => expedition.Name == selectedQuest.Key));
 
 
 
                 Expedition newExpedition2;
 
-                if (wyprawa.Type == DifficultyType.Easy)
+                if (expedition.Type == DifficultyType.Easy)
                 {
 
-                    if (expeditions.Count(exp => exp.Type == DifficultyType.Medium) < 3)
+                    if (Expeditions.Count(exp => exp.Type == DifficultyType.Medium) < 3)
                     {
                         newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Medium), DifficultyType.Medium, GenerateMonsters(DifficultyType.Medium), GenerateRandomGold(DifficultyType.Medium), GenerateWeapons(DifficultyType.Medium), GenerateArmors(DifficultyType.Medium));
-                        expeditions.Add(newExpedition2);
+                        Expeditions.Add(newExpedition2);
                     }
                 }
-                else if (wyprawa.Type == DifficultyType.Medium)
+                else if (expedition.Type == DifficultyType.Medium)
                 {
-                    if (expeditions.Count(exp => exp.Type == DifficultyType.Hard) < 3)
+                    if (Expeditions.Count(exp => exp.Type == DifficultyType.Hard) < 3)
                     {
                         newExpedition2 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(DifficultyType.Hard), DifficultyType.Hard, GenerateMonsters(DifficultyType.Hard), GenerateRandomGold(DifficultyType.Hard), GenerateWeapons(DifficultyType.Hard), GenerateArmors(DifficultyType.Hard));
-                        expeditions.Add(newExpedition2);
+                        Expeditions.Add(newExpedition2);
                     }
                 }
-                else if (wyprawa.Type == DifficultyType.Hard)
+                else if (expedition.Type == DifficultyType.Hard)
                 {
-                    if (expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
+                    if (Expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
                     {
-                        newExpedition2 = new Expedition("Jaskinia Sniacego", "A wiec w koncu się spotykamy", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
-                        expeditions.Add(newExpedition2);
+                        newExpedition2 = new Expedition("The Sleeper's Cave", "So We Meet at Last", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                        Expeditions.Add(newExpedition2);
                     }
                 }
                 else
@@ -293,10 +293,11 @@ namespace Hopeless
             }
             else
             {
-                expeditions.Remove(wyprawa);
-                if (wyprawa.Type != DifficultyType.Event && wyprawa.Type != DifficultyType.Boss) { 
-                    Expedition newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(wyprawa.Type), wyprawa.Type, GenerateMonsters(wyprawa.Type), GenerateRandomGold(wyprawa.Type), GenerateWeapons(wyprawa.Type), GenerateArmors(wyprawa.Type));
-                expeditions.Add(newExpedition1);
+                Expeditions.Remove(expedition);
+                if (expedition.Type != DifficultyType.Event && expedition.Type != DifficultyType.Boss)
+                {
+                    Expedition newExpedition1 = new Expedition(selectedQuest.Key, selectedQuest.Value, GenerateRandomExp(expedition.Type), expedition.Type, GenerateMonsters(expedition.Type), GenerateRandomGold(expedition.Type), GenerateWeapons(expedition.Type), GenerateArmors(expedition.Type));
+                    Expeditions.Add(newExpedition1);
                 }
             }
 
@@ -338,7 +339,7 @@ namespace Hopeless
                     maxRange = 150;
                     break;
                 default:
-                    throw new ArgumentException("Nieznany poziom trudności.");
+                    throw new ArgumentException("Unknown difficulty level.");
             }
 
             return rand.Next(minRange, maxRange + 1);
@@ -367,7 +368,7 @@ namespace Hopeless
                     maxRange = 300;
                     break;
                 default:
-                    throw new ArgumentException("Nieznany poziom trudności.");
+                    throw new ArgumentException("Unknown difficulty level.");
             }
 
             return rand.Next(minRange, maxRange + 1);
@@ -382,32 +383,23 @@ namespace Hopeless
             {
                 while (wybrane.Count != 4)
                 {
-                    int i = r.Next(0, monsters.Count);
+                    int i = r.Next(0, Monsters.Count);
 
-                    if (monsters[i].Type == difficulty)
+                    if (Monsters[i].Type == difficulty)
                     {
-                        wybrane.Add(new Monster(monsters[i]));
+                        wybrane.Add(new Monster(Monsters[i]));
                     }
 
                 }
             }
             else
             {
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Straznik_Sniacego")));
-                wybrane.Add(new Monster(monsters.FirstOrDefault(monster => monster.Name == "Sniacy")));
+                wybrane.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "The_Sleeper_Guardian")));
+                wybrane.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "The_Sleeper_Guardian")));
+                wybrane.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "The_Sleeper_Guardian")));
+                wybrane.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "The_Sleeper")));
 
-                if (eventResult)
-                {
-                    foreach (var monster in wybrane)
-                    {
-                        if (monster.Name == "Straznik_Sniacego")
-                        {
-                            monster.CurrentHP = 1;
-                        }
-                    }
-                }
+
             }
 
             return wybrane;
@@ -426,14 +418,14 @@ namespace Hopeless
             Random r = new Random();
             do
             {
-                int i = r.Next(0, pulaEkwipunku.Count);
+                int i = r.Next(0, EquipmentPool.Count);
 
-                if (pulaEkwipunku[i] is Weapon)
+                if (EquipmentPool[i] is Weapon)
                 {
-                    Weapon weapon = (Weapon)pulaEkwipunku[i];
+                    Weapon weapon = (Weapon)EquipmentPool[i];
                     if ((int)weapon.Rarity == (int)difficulty)
                     {
-                        wybrane.Add((Weapon)pulaEkwipunku[i]);
+                        wybrane.Add((Weapon)EquipmentPool[i]);
                     }
 
 
@@ -451,13 +443,13 @@ namespace Hopeless
             Random r = new Random();
             do
             {
-                int i = r.Next(0, pulaEkwipunku.Count);
-                if (pulaEkwipunku[i] is Armor)
+                int i = r.Next(0, EquipmentPool.Count);
+                if (EquipmentPool[i] is Armor)
                 {
-                    Armor armor = (Armor)pulaEkwipunku[i];
+                    Armor armor = (Armor)EquipmentPool[i];
                     if ((int)armor.Rarity == (int)difficulty)
                     {
-                        wybrane.Add((Armor)pulaEkwipunku[i]);
+                        wybrane.Add((Armor)EquipmentPool[i]);
                     }
 
                 }

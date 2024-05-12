@@ -127,9 +127,6 @@
   <data name="Wyprawa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Wyprawa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="newgame" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\newgame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="bossFight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bossFight.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -205,94 +202,94 @@
   <data name="saveGaunterSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveGaunterSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Armata" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Armata.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bandyta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bandyta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dziki_Pies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dziki_Pies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flecista" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flecista.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gargulec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gargulec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Gaunter_oDim" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gaunter_oDim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ghoul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ghoul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gigant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gigant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Abyss" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Abyss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Grzechotnik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grzechotnik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bandit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bandit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kultysta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Kultysta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Beginner_Bandy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beginner_Bandy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Leszy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Leszy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Big_Crab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Crab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Macki_Otchlani" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Macki_Otchlani.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Odbicie_Lustrzane" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Odbicie_Lustrzane.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Cannon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cannon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ork_Wojownik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ork_Wojownik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Creeper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Creeper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Otchlaniec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Otchlaniec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Cultist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cultist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pajak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pajak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Fluutist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fluutist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pajak_Trujacy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pajak_Trujacy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gargoyle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gargoyle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pelzacz" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pelzacz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ghost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pijawka" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pijawka.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Giant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Giant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Poczatkujacy_Bandyta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Poczatkujacy_Bandyta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Higher_Vampire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Higher_Vampire.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pokutnik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pokutnik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Leech" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Leech.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Robal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Robal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Leshy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Leshy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sniacy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sniacy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mirror_Reflection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mirror_Reflection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Straznik_Sniacego" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Straznik_Sniacego.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Orc_Warrior" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Orc_Warrior.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Szkielet_Kusznik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Szkielet_Kusznik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Penitent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Penitent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Szkielet_Tarczownik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Szkielet_Tarczownik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Poisonous_Spider" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Poisonous_Spider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Szkielet_Wojownik" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Szkielet_Wojownik.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Rattlesnake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rattlesnake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Wampir_Wyzszy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Wampir_Wyzszy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Skeleton_Arbalest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Skeleton_Arbalest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Widmo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Widmo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Skeleton_Shielder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Skeleton_Shielder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Wielki_Krab" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Wielki_Krab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Skeleton_Warrior" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Skeleton_Warrior.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Spider" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Spider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Sleeper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\The_Sleeper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="The_Sleeper_Guardian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\The_Sleeper_Guardian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Void_Tentacles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Void_Tentacles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wild_Dog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Wild_Dog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

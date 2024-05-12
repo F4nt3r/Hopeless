@@ -1,4 +1,5 @@
-﻿using HopelessLibary.Intefrace;
+﻿using HopelessLibary.Helpers;
+using HopelessLibary.Intefrace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,18 @@ namespace HopelessLibary
         public int MaxDmg { get; set; }
         public int DodgeChance { get; set; }
         public DifficultyType Type { get; set; }
+        public List<Buff> Buffs { get ; set; }
+        public List<DeBuff> DeBuffs { get; set ; }
+
+
+
+        public CharacterType CharacterType { get ; set; }
+
+        public Skill? Skill1 { get; } = null;
+
+        public Skill? Skill2 { get;  } = null;
+        public ICreature Target { get; set; }
+
         public Monster() { }
         [JsonConstructor]
         public Monster(string name, int experienceGains,  int currentHP, int maxHP, int resistance, int critChance, int initiative, int minDmg, int maxDmg, int dodgeChance, DifficultyType type)
@@ -37,6 +50,7 @@ namespace HopelessLibary
             MaxDmg = maxDmg;
             DodgeChance = dodgeChance;
             Type = type;
+            CharacterType = CharacterType.Monster;
         }
         public Monster(Monster monster){
             Name = monster.Name;
@@ -50,6 +64,7 @@ namespace HopelessLibary
             MaxDmg = monster.MaxDmg;
             DodgeChance = monster.DodgeChance;
             Type = monster.Type;
+            CharacterType = CharacterType.Monster;
         }
         public void BasicAttack<T>(T target,out int dmg) where T : ICreature
         {
@@ -75,14 +90,49 @@ namespace HopelessLibary
                 finalDmg = Math.Round(finalDmg);
                 if ((int)finalDmg < CurrentHP)
                     CurrentHP -= (int)finalDmg;
-                else CurrentHP = 0;
+                else
+                {
+                    CurrentHP = 0;
+                    SoundEffectHelper.PlayDeathSound();
+                }
             }
             else
             {
 
             }
         }
+        public void AddBuff(Buff buff)
+        {
+            if (buff == null)
+                return;
 
+            if (Buffs == null)
+                Buffs = new();
+
+            Buffs.Add(buff);
+
+            this.Resistance += buff.Resistance;
+            this.CritChance += buff.CritChance;
+            this.MinDmg += buff.MinDmg;
+            this.MaxDmg += buff.MaxDmg;
+
+        }
+        public void AddDeBuff(DeBuff debuff)
+        {
+            if (debuff == null)
+                return;
+
+            if (DeBuffs == null)
+                DeBuffs = new();
+
+            DeBuffs.Add(debuff);
+
+            this.Resistance -= debuff.Resistance;
+            this.CritChance -= debuff.CritChance;
+            this.MinDmg -= debuff.MinDmg;
+            this.MaxDmg -= debuff.MaxDmg;
+
+        }
         public bool IsDead()
         {
             return CurrentHP <= 0;
@@ -93,6 +143,88 @@ namespace HopelessLibary
             return Name;
         }
 
-      
+        public void CheckBuffsAndDebuffsAndRemoveIfNeeded()
+        {
+
+            if (Buffs != null)
+            {
+
+                for (int i = Buffs.Count; i > 0; i--)
+                {
+                    Buffs[i - 1].Uptime -= 1;
+                    if (Buffs[i - 1].Uptime > 0) continue;
+
+                    this.Resistance -= Buffs[i - 1].Resistance;
+                    this.CritChance -= Buffs[i - 1].CritChance;
+                    this.MinDmg -= Buffs[i - 1].MinDmg;
+                    this.MaxDmg -= Buffs[i - 1].MaxDmg;
+                    this.Resistance -= Buffs[i - 1].Resistance;
+                    Buffs.RemoveAt(i - 1);
+
+                }
+            }
+
+            if (DeBuffs != null)
+            {
+                for (int i = DeBuffs.Count; i > 0; i--)
+                {
+                    DeBuffs[i - 1].Uptime -= 1;
+                    if (DeBuffs[i - 1].Uptime > 0) continue;
+
+                    this.Resistance -= DeBuffs[i - 1].Resistance;
+                    this.CritChance -= DeBuffs[i - 1].CritChance;
+                    this.MinDmg -= DeBuffs[i - 1].MinDmg;
+                    this.MaxDmg -= DeBuffs[i - 1].MaxDmg;
+                    this.Resistance -= DeBuffs[i - 1].Resistance;
+                    DeBuffs.RemoveAt(i - 1);
+
+                }
+            }
+
+        }
+
+        public void ClearEffetsAfterBattle()
+        {
+            if (Buffs != null)
+            {
+
+                for (int i = Buffs.Count; i > 0; i--)
+                {
+
+
+                    this.Resistance -= Buffs[i - 1].Resistance;
+                    this.CritChance -= Buffs[i - 1].CritChance;
+                    this.MinDmg -= Buffs[i - 1].MinDmg;
+                    this.MaxDmg -= Buffs[i - 1].MaxDmg;
+                    this.Resistance -= Buffs[i - 1].Resistance;
+                    Buffs.RemoveAt(i - 1);
+
+                }
+            }
+
+            if (DeBuffs != null)
+            {
+                for (int i = DeBuffs.Count; i > 0; i--)
+                {
+
+
+                    this.Resistance -= DeBuffs[i - 1].Resistance;
+                    this.CritChance -= DeBuffs[i - 1].CritChance;
+                    this.MinDmg -= DeBuffs[i - 1].MinDmg;
+                    this.MaxDmg -= DeBuffs[i - 1].MaxDmg;
+                    this.Resistance -= DeBuffs[i - 1].Resistance;
+                    DeBuffs.RemoveAt(i - 1);
+
+                }
+            }
+        }
+
+        public void CheckSkillsCd()
+        {
+            if (Skill1 != null && Skill1.Cooldown != 0)
+                Skill1.Cooldown -= 1;
+            if (Skill2 != null && Skill2.Cooldown != 0)
+                Skill2.Cooldown -= 1;
+        }
     }
 }

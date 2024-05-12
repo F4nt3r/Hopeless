@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 namespace HopelessLibary
 {
 
-    public interface IEkwipunek
+    public interface IInventory
     {
-        string Wypisz();
+        string Name { get; set; }
+        string Display();
         void Equip(Character target);
 
     }

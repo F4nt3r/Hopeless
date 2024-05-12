@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HopelessLibary
+namespace HopelessLibary.Enums
 {
-    public enum CharacterType
+    public enum SkillType
     {
-        Knight,
-        Rogue,
-        Cleric,
-        Joker,
-        Monster
+        Single,
+        AoE
     }
 }

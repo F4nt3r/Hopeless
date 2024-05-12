@@ -46,27 +46,28 @@
             // 
             // kontynuujGreButton
             // 
+            kontynuujGreButton.BackColor = Color.White;
             kontynuujGreButton.Enabled = false;
             kontynuujGreButton.Location = new Point(638, 693);
             kontynuujGreButton.Name = "kontynuujGreButton";
             kontynuujGreButton.Size = new Size(150, 50);
             kontynuujGreButton.TabIndex = 1;
-            kontynuujGreButton.Text = "Kontynuuj Gre";
-            kontynuujGreButton.UseVisualStyleBackColor = true;
-            kontynuujGreButton.Click += kontynuujGreButton_Click;
+            kontynuujGreButton.Text = "Continue";
+            kontynuujGreButton.UseVisualStyleBackColor = false;
+            kontynuujGreButton.Click += countinueButton_Click;
             // 
             // nowaGraButton
             // 
             nowaGraButton.Anchor = AnchorStyles.None;
-            nowaGraButton.BackColor = Color.DodgerBlue;
-            nowaGraButton.BackgroundImage = Properties.Resources.newgame;
+            nowaGraButton.BackColor = Color.White;
             nowaGraButton.BackgroundImageLayout = ImageLayout.Stretch;
             nowaGraButton.Location = new Point(638, 626);
             nowaGraButton.Name = "nowaGraButton";
             nowaGraButton.Size = new Size(150, 50);
             nowaGraButton.TabIndex = 2;
+            nowaGraButton.Text = "New Game";
             nowaGraButton.UseVisualStyleBackColor = false;
-            nowaGraButton.Click += nowaGraButton_Click;
+            nowaGraButton.Click += newGameButton_Click;
             // 
             // MenuUserControl
             // 
