@@ -8,15 +8,15 @@ namespace HopelessLibary
 {
     public class GameState
     {
-        public List<Character> chararacters { get; set; }
-        public List<IEkwipunek> Ekwipunek {  get; set; }
-        public List<IEkwipunek> Equiped { get; set; }
-        public List<IEkwipunek> Shop { get; set; }
+        public List<Character> Chararacters { get; set; }
+        public List<IInventory> Inventory {  get; set; }
+        public List<IInventory> Equiped { get; set; }
+        public List<IInventory> Shop { get; set; }
       
-        public List<Expedition> expeditions { get; set; }
-        public int gold { get; set; }
-        public bool eventQuest {  get; set; }
-        public bool eventResult {  get; set; }
+        public List<Expedition> Expeditions { get; set; }
+        public int Gold { get; set; }
+        public bool EventQuest {  get; set; }
+        public bool EventResult {  get; set; }
         // Dodaj inne pola, jeśli potrzebujesz
     }
 }

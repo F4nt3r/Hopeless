@@ -12,24 +12,24 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Hopeless
 {
-    public partial class KreatorUserControl : UserControl
+    public partial class TeamCreatorUserControl : UserControl
     {
 
         public List<Character> Characters { get; set; }
         public List<Character> ChooseCharacters = new List<Character>();
-        public List<IEkwipunek> CommonInventory { get; set; }
-        public List<IEkwipunek> StarterInventory = new List<IEkwipunek>();
+        public List<IInventory> CommonInventory { get; set; }
+        public List<IInventory> StarterInventory = new List<IInventory>();
 
 
-        public KreatorUserControl()
+        public TeamCreatorUserControl()
         {
             InitializeComponent();
             pictureBox4.Image = Properties.Resources.Prep;
-            this.VisibleChanged += KreatorUserControl_VisibleChanged;
+            this.VisibleChanged += TeamCreatorUserControl_VisibleChanged;
         }
 
 
-        private void KreatorUserControl_VisibleChanged(object? sender, EventArgs e)
+        private void TeamCreatorUserControl_VisibleChanged(object? sender, EventArgs e)
         {
             var control = sender as UserControl;
             if (control != null)
@@ -123,37 +123,37 @@ namespace Hopeless
 
             Character character = Characters.Find(c => c.Name == draggedClassText);
             character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
-            character1Name.Text = "Imie: ";
+            character1Name.Text = "Name: ";
             character1TextBox.Text = character.Name;
             character1Level.Text = "Level: " + character.Level;
-            character1Exp.Text = "Punkty EXP: " + character.ExperiencePoints;
-            character1Strength.Text = "Sila: " + character.Strength;
-            character1Dexterity.Text = "Zrecznosc: " + character.Dexterity;
-            character1Intelligence.Text = "Inteligencja: " + character.Intelligence;
+            character1Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character1Strength.Text = "Strength: " + character.Strength;
+            character1Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character1Intelligence.Text = "Intelligence: " + character.Intelligence;
             character1Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
-            character1Resistance.Text = "Odpornosc: " + character.Resistance;
-            character1Crit.Text = "Szansa na Kryta: " + character.CritChance + "%";
-            character1Initiative.Text = "Inicjatywa: " + character.Initiative;
-            character1Dmg.Text = "Obrazenia Ataku: " + character.MinDmg + "-" + character.MaxDmg;
+            character1Resistance.Text = "Resistance: " + character.Resistance;
+            character1Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character1Initiative.Text = "Initiative: " + character.Initiative;
+            character1Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
             if (character.CharacterType == CharacterType.Knight)
             {
                 Knight knight = (Knight)character;
-                character1Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                character1Block.Text = "Block chance: " + knight.BlockChance;
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
                 Rogue rogue = (Rogue)character;
-                character1Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                character1Block.Text = "Dodge Chance: " + rogue.DodgeChance;
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
                 Cleric cleric = (Cleric)character;
-                character1Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                character1Block.Text = "Blessing Chance: " + cleric.BlessingChance;
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
                 Joker joker = (Joker)character;
-                character1Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                character1Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
             }
             else
             {
@@ -189,37 +189,37 @@ namespace Hopeless
 
             Character character = Characters.Find(c => c.Name == draggedClassText);
             character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
-            character2Name.Text = "Imie: ";
+            character2Name.Text = "Name: ";
             character2TextBox.Text = character.Name;
             character2Level.Text = "Level: " + character.Level;
-            character2Exp.Text = "Punkty EXP: " + character.ExperiencePoints;
-            character2Strength.Text = "Sila: " + character.Strength;
-            character2Dexterity.Text = "Zrecznosc: " + character.Dexterity;
-            character2Intelligence.Text = "Inteligencja: " + character.Intelligence;
+            character2Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character2Strength.Text = "Strength: " + character.Strength;
+            character2Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character2Intelligence.Text = "Intelligence: " + character.Intelligence;
             character2Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
-            character2Resistance.Text = "Odpornosc: " + character.Resistance;
-            character2Crit.Text = "Szansa na Kryta: " + character.CritChance + "%";
-            character2Initiative.Text = "Inicjatywa: " + character.Initiative;
-            character2Dmg.Text = "Obrazenia Ataku: " + character.MinDmg + "-" + character.MaxDmg;
+            character2Resistance.Text = "Resistance: " + character.Resistance;
+            character2Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character2Initiative.Text = "Initiative: " + character.Initiative;
+            character2Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
             if (character.CharacterType == CharacterType.Knight)
             {
                 Knight knight = (Knight)character;
-                character2Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                character2Block.Text = "Block chance: " + knight.BlockChance;
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
                 Rogue rogue = (Rogue)character;
-                character2Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                character2Block.Text = "Dodge Chance: " + rogue.DodgeChance;
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
                 Cleric cleric = (Cleric)character;
-                character2Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                character2Block.Text = "Blessing Chance: " + cleric.BlessingChance;
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
                 Joker joker = (Joker)character;
-                character2Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                character2Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
             }
             else
             {
@@ -253,37 +253,37 @@ namespace Hopeless
 
             Character character = Characters.Find(c => c.Name == draggedClassText);
             character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
-            character3Name.Text = "Imie: ";
+            character3Name.Text = "Name: ";
             character3TextBox.Text = character.Name;
             character3Level.Text = "Level: " + character.Level;
-            character3Exp.Text = "Punkty EXP: " + character.ExperiencePoints;
-            character3Strength.Text = "Sila: " + character.Strength;
-            character3Dexterity.Text = "Zrecznosc: " + character.Dexterity;
-            character3Intelligence.Text = "Inteligencja: " + character.Intelligence;
+            character3Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character3Strength.Text = "Strength: " + character.Strength;
+            character3Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character3Intelligence.Text = "Intelligence: " + character.Intelligence;
             character3Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
-            character3Resistance.Text = "Odpornosc: " + character.Resistance;
-            character3Crit.Text = "Szansa na Kryta: " + character.CritChance + "%";
-            character3Initiative.Text = "Inicjatywa: " + character.Initiative;
-            character3Dmg.Text = "Obrazenia Ataku: " + character.MinDmg + "-" + character.MaxDmg;
+            character3Resistance.Text = "Resistance: " + character.Resistance;
+            character3Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character3Initiative.Text = "Initiative: " + character.Initiative;
+            character3Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
             if (character.CharacterType == CharacterType.Knight)
             {
                 Knight knight = (Knight)character;
-                character3Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                character3Block.Text = "Block chance: " + knight.BlockChance;
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
                 Rogue rogue = (Rogue)character;
-                character3Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                character3Block.Text = "Dodge Chance: " + rogue.DodgeChance;
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
                 Cleric cleric = (Cleric)character;
-                character3Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                character3Block.Text = "Blessing Chance: " + cleric.BlessingChance;
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
                 Joker joker = (Joker)character;
-                character3Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                character3Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
             }
             else
             {
@@ -317,37 +317,37 @@ namespace Hopeless
 
             Character character = Characters.Find(c => c.Name == draggedClassText);
             character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
-            character4Name.Text = "Imie: ";
+            character4Name.Text = "Name: ";
             character4TextBox.Text = character.Name;
             character4Level.Text = "Level: " + character.Level;
-            character4Exp.Text = "Punkty EXP: " + character.ExperiencePoints;
-            character4Strength.Text = "Sila: " + character.Strength;
-            character4Dexterity.Text = "Zrecznosc: " + character.Dexterity;
-            character4Intelligence.Text = "Inteligencja: " + character.Intelligence;
+            character4Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character4Strength.Text = "Strength: " + character.Strength;
+            character4Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character4Intelligence.Text = "Intelligence: " + character.Intelligence;
             character4Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
-            character4Resistance.Text = "Odpornosc: " + character.Resistance;
-            character4Crit.Text = "Szansa na Kryta: " + character.CritChance + "%";
-            character4Initiative.Text = "Inicjatywa: " + character.Initiative;
-            character4Dmg.Text = "Obrazenia Ataku: " + character.MinDmg + "-" + character.MaxDmg;
+            character4Resistance.Text = "Resistance: " + character.Resistance;
+            character4Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character4Initiative.Text = "Initiative: " + character.Initiative;
+            character4Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
             if (character.CharacterType == CharacterType.Knight)
             {
                 Knight knight = (Knight)character;
-                character4Block.Text = "Szansa na Blok: " + knight.BlockChance;
+                character4Block.Text = "Block chance: " + knight.BlockChance;
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
                 Rogue rogue = (Rogue)character;
-                character4Block.Text = "Szansa na Unik: " + rogue.DodgeChance;
+                character4Block.Text = "Dodge Chance: " + rogue.DodgeChance;
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
                 Cleric cleric = (Cleric)character;
-                character4Block.Text = "Szansa na Blogoslawienstwo: " + cleric.BlessingChance;
+                character4Block.Text = "Blessing Chance: " + cleric.BlessingChance;
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
                 Joker joker = (Joker)character;
-                character4Block.Text = "Szansa na DoubleAttack: " + joker.DoubleAtackChance;
+                character4Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
             }
             else
             {
@@ -379,39 +379,39 @@ namespace Hopeless
         {
             HashSet<string> uniqueTexts = new HashSet<string>();
 
-            
+
             uniqueTexts.Add(character1TextBox.Text);
             uniqueTexts.Add(character2TextBox.Text);
             uniqueTexts.Add(character3TextBox.Text);
             uniqueTexts.Add(character4TextBox.Text);
 
-          
+
             if (uniqueTexts.Count == 4)
             {
                 ChooseCharacters.Clear();
                 StarterInventory.Clear();
-                checkClass(character1.Text, character1TextBox.Text,1);
-                checkClass(character2.Text, character2TextBox.Text,2);
-                checkClass(character3.Text, character3TextBox.Text,3);
-                checkClass(character4.Text, character4TextBox.Text,4);
+                checkClass(character1.Text, character1TextBox.Text, 1);
+                checkClass(character2.Text, character2TextBox.Text, 2);
+                checkClass(character3.Text, character3TextBox.Text, 3);
+                checkClass(character4.Text, character4TextBox.Text, 4);
                 rozpocznijButton.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Imiona postaci muszą być unikalne", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Character names must be unique", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
-          
+
 
         }
 
-        private void checkClass(string name,string firstname, int id)
+        private void checkClass(string name, string firstname, int id)
         {
             Character character = Characters.Find(c => c.Name == name);
             if (character.CharacterType == CharacterType.Knight)
             {
-                Knight knight = new Knight(id,firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
+                Knight knight = new Knight(id, firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
                 ChooseCharacters.Add(knight);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[0]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[1]));
@@ -419,31 +419,31 @@ namespace Hopeless
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
-                Rogue rogue = new Rogue(id,firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
+                Rogue rogue = new Rogue(id, firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
                 ChooseCharacters.Add(rogue);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[2]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[3]));
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
-                Cleric cleric = new Cleric(id,firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
+                Cleric cleric = new Cleric(id, firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
                 ChooseCharacters.Add(cleric);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[4]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[5]));
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
-                Joker joker = new Joker(id,firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
+                Joker joker = new Joker(id, firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
                 ChooseCharacters.Add(joker);
                 StarterInventory.Add(new Weapon((Weapon)CommonInventory[6]));
                 StarterInventory.Add(new Armor((Armor)CommonInventory[7]));
             }
         }
 
-        public event EventHandler RozpocznijButtonClicked;
-        private void rozpocznijButton_Click(object sender, EventArgs e)
+        public event EventHandler startButtonClicked;
+        private void startButton_Click(object sender, EventArgs e)
         {
-            RozpocznijButtonClicked?.Invoke(this, EventArgs.Empty);
+            startButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

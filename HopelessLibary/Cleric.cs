@@ -13,9 +13,8 @@ namespace HopelessLibary
     public class Cleric : Character
 
     {
-        private string SKILL_1_DESCRIPTION => "Leczysz wybranego sojusznika mocą Swiatła, istnieje szansa że Cleric wyleczy również siebie" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "heal: " + Intelligence + "-" + (Intelligence + 5);
-        private string SKILL_2_DESCRIPTION => "Leczysz wszystkich sojuszników mocą Swiatła" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "heal: " + Intelligence + "-" + (Intelligence + 2);
-
+        private string SKILL_1_DESCRIPTION => "You heal the selected ally with the power of Light, there is a chance that Cleric will also heal himself" + Environment.NewLine + "Cooldown: 5 turns" + Environment.NewLine + "heal: " + Intelligence + "-" + (Intelligence + 5);
+        private string SKILL_2_DESCRIPTION => "Heal all allies with the power of Light" + Environment.NewLine + "Cooldown: 5 turns" + Environment.NewLine + "heal: " + Intelligence + "-" + (Intelligence + 2);
 
         public int BlessingChance { get; set; }
         private Skill skill1;
@@ -139,8 +138,7 @@ namespace HopelessLibary
                     }
 
                 }
-                return new("  używa umiejętności Heal na lecząc za " + heal + " punktów zdrowia" + Environment.NewLine, 0);
-
+                return new(" uses the Heal skill to heal for " + heal + " health points" + Environment.NewLine, 0);
             }
             else
             {
@@ -190,8 +188,7 @@ namespace HopelessLibary
 
 
                 }
-                return new(" używa umiejętności AoeHeal na sojuszników lecząc za " + heal + " punktów zdrowia" + Environment.NewLine, 0);
-
+                return new(" uses the AoeHeal skill on allies, healing for " + heal + " health points" + Environment.NewLine, 0);
             }
             else
             {

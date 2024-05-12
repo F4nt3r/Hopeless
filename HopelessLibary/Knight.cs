@@ -14,9 +14,8 @@ namespace HopelessLibary
     [Serializable]
     public class Knight : Character {
 
-        private string SKILL_1_DESCRIPTION => "Sprawia, że wszyscy wrogowie skupiają się na postaci Knight" + Environment.NewLine + "Cooldown: 4 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
-        private string SKILL_2_DESCRIPTION => "Uderzasz wszystkich wrogów mocą Swiatła" + Environment.NewLine + "Cooldown: 2 tury" + Environment.NewLine + "DMG: " + Intelligence + "-" + (Intelligence + 2);
-        [JsonPropertyName("BlockChance")]
+        private string SKILL_1_DESCRIPTION => "Makes all enemies focus on Knight" + Environment.NewLine + "Cooldown: 4 turns" + Environment.NewLine + "Duration: 2 turns";
+        private string SKILL_2_DESCRIPTION => "You hit all enemies with the power of Light" + Environment.NewLine + "Cooldown: 2 turns" + Environment.NewLine + "DMG: " + Intelligence + "-" + (Intelligence + 2); [JsonPropertyName("BlockChance")]
         public int BlockChance { get; set; }
 
         private Skill skill1;
@@ -123,7 +122,7 @@ namespace HopelessLibary
                     }
                    
                 }
-                return new(" używa umiejętności Provoke prowokując przeciwników" + Environment.NewLine, 0);
+                return new(" uses the Provoke skill to provoke opponents" + Environment.NewLine, 0);
 
             }
             else
@@ -162,7 +161,7 @@ namespace HopelessLibary
                     if(!item.IsDead())
                     item.TakeDamage(dmg);
                 }
-                return new(" używa umiejętności Purify na wrogów zadając " + dmg + " obrażeń" + Environment.NewLine, 0);
+                return new(" uses the Purify skill on enemies, dealing " + dmg + " damage" + Environment.NewLine, 0);
 
             }
             else

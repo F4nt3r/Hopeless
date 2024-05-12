@@ -1,6 +1,6 @@
 ﻿namespace Hopeless
 {
-    partial class WyprawaUserControl
+    partial class ExpeditionUserControl
     {
         /// <summary> 
         /// Wymagana zmienna projektanta.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WyprawaUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpeditionUserControl));
             pictureBox1 = new PictureBox();
             character4Name = new Label();
             character3Name = new Label();
@@ -369,7 +369,7 @@
             startButton.Name = "startButton";
             startButton.Size = new Size(335, 101);
             startButton.TabIndex = 42;
-            startButton.Text = "Walka";
+            startButton.Text = "Fight";
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += startButton_Click;
             // 
@@ -392,9 +392,9 @@
             activeCharacterLabel.BackColor = Color.Transparent;
             activeCharacterLabel.Location = new Point(399, 12);
             activeCharacterLabel.Name = "activeCharacterLabel";
-            activeCharacterLabel.Size = new Size(94, 15);
+            activeCharacterLabel.Size = new Size(97, 15);
             activeCharacterLabel.TabIndex = 44;
-            activeCharacterLabel.Text = "Aktywna Postać:";
+            activeCharacterLabel.Text = "Active Character:";
             // 
             // turaLabel
             // 
@@ -402,9 +402,9 @@
             turaLabel.BackColor = Color.Transparent;
             turaLabel.Location = new Point(636, 12);
             turaLabel.Name = "turaLabel";
-            turaLabel.Size = new Size(33, 15);
+            turaLabel.Size = new Size(34, 15);
             turaLabel.TabIndex = 45;
-            turaLabel.Text = "Tura:";
+            turaLabel.Text = "Turn:";
             // 
             // panel1
             // 
@@ -502,7 +502,7 @@
             enemy1Picture.TabIndex = 54;
             enemy1Picture.TabStop = false;
             // 
-            // WyprawaUserControl
+            // ExpeditionUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -541,7 +541,7 @@
             Controls.Add(character3Health);
             Controls.Add(character4Health);
             Controls.Add(pictureBox1);
-            Name = "WyprawaUserControl";
+            Name = "ExpeditionUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);

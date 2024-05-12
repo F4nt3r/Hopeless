@@ -9,7 +9,7 @@ using static HopelessLibary.Weapon;
 
 namespace HopelessLibary
 {
-    public class Armor : IEkwipunek
+    public class Armor : IInventory
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -43,7 +43,7 @@ namespace HopelessLibary
             Rarity = armor.Rarity;
         }
 
-        public string Wypisz()
+        public string Display()
         {
             return this.Name;
         }
@@ -55,7 +55,7 @@ namespace HopelessLibary
         {
             if (!AllowedCharacters.Contains(target.CharacterType))
             {
-                throw new ClassArmorException("Ta postac nie moze uzywac tego armora.");
+                throw new ClassArmorException("This character cannot use this armor.");
             }
             target.Armor = this;
         }

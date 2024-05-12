@@ -17,41 +17,41 @@ namespace Hopeless
             InitializeComponent();
 
             pictureBox1.Image = Properties.Resources.hope;
-            if (UpdateKontynuujGreButtonState())
+            if (UpdateCountinueButtonState())
             {
 
             }
         }
 
-        public event EventHandler NowaGraButtonClicked;
+        public event EventHandler NewGameButtonClicked;
 
-        public event EventHandler KontynuujGreButtonClicked;
+        public event EventHandler ContinueGreButtonClicked;
 
-        private void nowaGraButton_Click(object sender, EventArgs e)
+        private void newGameButton_Click(object sender, EventArgs e)
         {
 
-            if (UpdateKontynuujGreButtonState())
+            if (UpdateCountinueButtonState())
             {
-                DialogResult result = MessageBox.Show("Istnieje zapis gry. Czy chcesz go nadpisać i kontynuować?", "Zapis gry", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("There is a save game. Do you want to overwrite it and continue?", "Override game", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
+                    NewGameButtonClicked?.Invoke(this, EventArgs.Empty);
                 }
             }
             else
             {
-                NowaGraButtonClicked?.Invoke(this, EventArgs.Empty);
+                NewGameButtonClicked?.Invoke(this, EventArgs.Empty);
             }
 
 
 
         }
 
-        private void kontynuujGreButton_Click(object sender, EventArgs e)
+        private void countinueButton_Click(object sender, EventArgs e)
         {
-            KontynuujGreButtonClicked?.Invoke(this, EventArgs.Empty);
+            ContinueGreButtonClicked?.Invoke(this, EventArgs.Empty);
         }
-        private bool UpdateKontynuujGreButtonState()
+        private bool UpdateCountinueButtonState()
         {
 
             string saveFilePath = "game_state.json";

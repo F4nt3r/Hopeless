@@ -19,7 +19,7 @@ public interface ICreature
     public Skill? Skill2 { get; }
     public CharacterType CharacterType { get; set; }
     public ICreature Target { get; set; }
-    string BasicAttackDescription => "Atakujesz Wroga za pomocą swojej broni" + Environment.NewLine + "DMG: " + MinDmg + "-" + MaxDmg;
+    string BasicAttackDescription => "You attack the enemy with your weapon" + Environment.NewLine + "DMG: " + MinDmg + "-" + MaxDmg;
     public void AddBuff(Buff buff);
     public void AddDeBuff(DeBuff debuff);
     public bool IsDead();

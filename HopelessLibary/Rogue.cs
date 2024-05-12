@@ -15,9 +15,8 @@ namespace HopelessLibary
     [Serializable]
     public class Rogue :Character
     {
-        private string SKILL_1_DESCRIPTION => "Uderzasz wybranego wroga w plecy" + Environment.NewLine + "Cooldown: 2 tury" + Environment.NewLine + "DMG: " + Dexterity + "-" + (Dexterity + 5);
-        private string SKILL_2_DESCRIPTION => "Sprawia, że nastepny atak Rogue bedzie krytyczny oraz uniknie ataków na czas trwania efektu" + Environment.NewLine + "Cooldown: 4 tury" + Environment.NewLine + "Czas Trwania: 2 tury";
-
+        private string SKILL_1_DESCRIPTION => "You hit the selected enemy in the back" + Environment.NewLine + "Cooldown: 2 turns" + Environment.NewLine + "DMG: " + Dexterity + "-" + (Dexterity + 5);
+        private string SKILL_2_DESCRIPTION => "Makes Rogue's next attack critical and more powerfull attacks for the duration of the effect" + Environment.NewLine + "Cooldown: 4 turns" + Environment.NewLine + "Duration: 2 turns";
         public int DodgeChance { get; set; }
 
         private Skill skill1;
@@ -39,7 +38,7 @@ namespace HopelessLibary
             get
             {
                 if (skill2 == null)
-                    skill2 = new("CritAndDodgeBuff", 0, TargetType.Ally, SkillType.AoE, handlerCritAndDodgeBuff, SKILL_2_DESCRIPTION);
+                    skill2 = new("CritAndDmgBuff", 0, TargetType.Ally, SkillType.AoE, handlerCritAndDmgBuff, SKILL_2_DESCRIPTION);
 
                 return skill2;
             }
@@ -128,9 +127,9 @@ namespace HopelessLibary
                     hpAfter = item.CurrentHP;
                 }
                 if (hp != hpAfter)
-                    return new(" używa umiejętności Ambush zadając " + (hp - hpAfter) + " obrażeń" + Environment.NewLine, 0);
+                    return new(" uses Ambush skill dealing " + (hp - hpAfter) + " damage" + Environment.NewLine, 0);
                 else
-                    return new(" używa umiejętności Ambush lecz ten zrobił unik" + Environment.NewLine, 0);
+                    return new(" uses Ambush skill but Ambush dodged" + Environment.NewLine, 0);
 
             }
             else
@@ -138,7 +137,7 @@ namespace HopelessLibary
                 return new(string.Empty, caster.Skill1.Cooldown);
             }
         };
-        private SkillHandlerEvent handlerCritAndDodgeBuff = (caster, creatures) =>
+        private SkillHandlerEvent handlerCritAndDmgBuff = (caster, creatures) =>
         {
             if (caster.Skill2 == null)
                 return null;
@@ -149,18 +148,18 @@ namespace HopelessLibary
 
             if (caster.Skill2.Cooldown == 0)
             {
-                SoundEffectHelper.PlayACritAndDodgeBuffSound();
+                SoundEffectHelper.PlayACritAndDmgBuffSound();
 
                 caster.Skill2.Cooldown = 3;
 
                 if (lotr.Buffs != null)
-                    lotr.AddBuff(new Buff(caster.Skill2.Name, 0, 100, 0, 0, 2, lotr));
+                    lotr.AddBuff(new Buff(caster.Skill2.Name, 0, 100, 2, 2, 2, lotr));
 
                 else {
                     lotr.Buffs = new List<Buff>();
-                    lotr.AddBuff(new Buff(caster.Skill2.Name, 0, 100, 0, 0, 2, lotr));
+                    lotr.AddBuff(new Buff(caster.Skill2.Name, 0, 100, 2, 2, 2, lotr));
                 }
-                return new(" używa umiejętności CritAndDodgeBuff na sobie" + Environment.NewLine, 0);
+                return new(" uses the CritAndDmgBuff skill on itself" + Environment.NewLine, 0);
               
 
             }

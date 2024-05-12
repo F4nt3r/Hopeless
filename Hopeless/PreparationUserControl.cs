@@ -10,31 +10,31 @@ using static HopelessLibary.Weapon;
 
 namespace Hopeless
 {
-    public partial class PrzygotowanieUserControl : UserControl
+    public partial class PreparationUserControl : UserControl
     {
         public List<Character> characters = new List<Character>();
-        public List<Expedition> expeditons= new List<Expedition>();
-        public List<IEkwipunek> inventory= new List<IEkwipunek>();
-        public List<IEkwipunek> equipedItems = new List<IEkwipunek>();
-        public List<IEkwipunek> shopItemsPool=new List<IEkwipunek>();
-        public List<IEkwipunek> shopItems = new List<IEkwipunek>();
+        public List<Expedition> expeditons = new List<Expedition>();
+        public List<IInventory> inventory = new List<IInventory>();
+        public List<IInventory> equipedItems = new List<IInventory>();
+        public List<IInventory> shopItemsPool = new List<IInventory>();
+        public List<IInventory> shopItems = new List<IInventory>();
         public int gold = 0;
         private Label lastDraggedLabel;
         public bool eventQuest;
         public bool eventResult;
-        public PrzygotowanieUserControl()
+        public PreparationUserControl()
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Prep;
             InitializeCharactersDragDrop();
 
-            this.VisibleChanged += PrzygotowanieUserControl_VisibleChanged;
+            this.VisibleChanged += PreparationUserControl_VisibleChanged;
 
 
 
         }
 
-        private void PrzygotowanieUserControl_VisibleChanged(object? sender, EventArgs e)
+        private void PreparationUserControl_VisibleChanged(object? sender, EventArgs e)
         {
             var control = sender as UserControl;
             if (control != null)
@@ -45,7 +45,7 @@ namespace Hopeless
                     RefreshInventory();
                     RefreshShop();
                     SaveGameState();
-                    character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[0].CharacterType.ToString().ToLower()+"Picture");
+                    character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[0].CharacterType.ToString().ToLower() + "Picture");
                     character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[1].CharacterType.ToString().ToLower() + "Picture");
                     character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[2].CharacterType.ToString().ToLower() + "Picture");
                     character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[3].CharacterType.ToString().ToLower() + "Picture");
@@ -473,26 +473,26 @@ namespace Hopeless
         {
 
             GameState gameState = new GameState();
-            gameState.chararacters = characters;
+            gameState.Chararacters = characters;
 
 
-       
-            gameState.Ekwipunek = inventory;
+
+            gameState.Inventory = inventory;
             gameState.Shop = shopItems;
             gameState.Equiped = equipedItems;
-            gameState.expeditions = expeditons;
-            gameState.gold = gold;
-            gameState.eventQuest = eventQuest;
-            gameState.eventResult = eventResult;
-            gameState.gold = gold;
+            gameState.Expeditions = expeditons;
+            gameState.Gold = gold;
+            gameState.EventQuest = eventQuest;
+            gameState.EventResult = eventResult;
+            gameState.Gold = gold;
 
-             string json = JsonConvert.SerializeObject(gameState, Formatting.Indented, new JsonSerializerSettings()
-           {
+            string json = JsonConvert.SerializeObject(gameState, Formatting.Indented, new JsonSerializerSettings()
+            {
                 TypeNameHandling = TypeNameHandling.Auto,
-          
-            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-             });
-           File.WriteAllText("game_state.json", json);
+
+                ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+            });
+            File.WriteAllText("game_state.json", json);
         }
 
         //Inicjalizacja Przeciagania
@@ -608,7 +608,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
@@ -668,7 +668,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
@@ -732,7 +732,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
@@ -792,7 +792,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
@@ -858,7 +858,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
@@ -919,7 +919,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
@@ -985,7 +985,7 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Weapon);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Weapon);
 
                     if (itemToSelect != null)
                     {
@@ -1047,11 +1047,11 @@ namespace Hopeless
                 try
                 {
                     string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                    IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText && item is Armor);
+                    IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText && item is Armor);
 
                     if (itemToSelect != null)
                     {
-                        if (character4Armor.Text !="None")
+                        if (character4Armor.Text != "None")
                         {
                             itemToSelect.Equip(characters[3]);
                             string oldItem = character4Armor.Text;
@@ -1194,7 +1194,7 @@ namespace Hopeless
             if (ShopItem)
             {
                 int price;
-                IEkwipunek itemToAdd = shopItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
+                IInventory itemToAdd = shopItems.FirstOrDefault(item => item != null && item.Display() == itemName);
                 if (itemToAdd is Weapon)
                 {
                     Weapon weapon = (Weapon)itemToAdd;
@@ -1224,7 +1224,7 @@ namespace Hopeless
             }
             else
             {
-                IEkwipunek itemToAdd = equipedItems.FirstOrDefault(item => item != null && item.Wypisz() == itemName);
+                IInventory itemToAdd = equipedItems.FirstOrDefault(item => item != null && item.Display() == itemName);
                 if (itemToAdd != null)
                 {
                     inventory.Add(itemToAdd);
@@ -1262,10 +1262,10 @@ namespace Hopeless
             Inventory.AutoScroll = true;
             Inventory.Controls.Clear();
 
-            foreach (IEkwipunek item in inventory)
+            foreach (IInventory item in inventory)
             {
                 Label label = new Label();
-                label.Text = item.Wypisz();
+                label.Text = item.Display();
                 label.AutoSize = false;
                 label.Height = 60;
                 label.TextAlign = ContentAlignment.MiddleCenter;
@@ -1337,7 +1337,7 @@ namespace Hopeless
 
         private void SortAll_Click(object sender, EventArgs e)
         {
-            inventory = inventory.OrderBy(item => item.Wypisz()).ToList();
+            inventory = inventory.OrderBy(item => item.Display()).ToList();
             RefreshInventory();
         }
 
@@ -1441,7 +1441,7 @@ namespace Hopeless
                 Control control = (Control)sender;
                 //control.BackColor = SystemColors.Control;
                 string draggedItemText = (string)e.Data.GetData(DataFormats.Text);
-                IEkwipunek itemToSelect = inventory.FirstOrDefault(item => item.Wypisz() == draggedItemText);
+                IInventory itemToSelect = inventory.FirstOrDefault(item => item.Display() == draggedItemText);
                 if (itemToSelect is Weapon)
                 {
                     Weapon weapon = (Weapon)itemToSelect;
@@ -1484,10 +1484,10 @@ namespace Hopeless
         {
             Shop.Controls.Clear();
 
-            foreach (IEkwipunek item in shopItems)
+            foreach (IInventory item in shopItems)
             {
                 Label label = new Label();
-                label.Text = item.Wypisz();
+                label.Text = item.Display();
                 label.AutoSize = false;
                 label.Height = 60;
                 label.TextAlign = ContentAlignment.MiddleCenter;
@@ -1497,7 +1497,7 @@ namespace Hopeless
                     Weapon weapon = (Weapon)item;
                     label.AccessibleDescription = weapon.Name + Environment.NewLine + weapon.Description + Environment.NewLine + weapon.Rarity + Environment.NewLine + "Min Damage: " + weapon.MinDmg.ToString() +
                     Environment.NewLine + "Max Damage: " + weapon.MaxDmg.ToString() + Environment.NewLine + "Available for Classes:" + Environment.NewLine +
-                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + weapon.SalesPrice.ToString();
+                    string.Join("," + Environment.NewLine, weapon.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + weapon.Price.ToString();
                     switch (weapon.Rarity)
                     {
                         case Rarity.Common:
@@ -1520,7 +1520,7 @@ namespace Hopeless
                 {
                     Armor armor = (Armor)item;
                     label.AccessibleDescription = armor.Name + Environment.NewLine + armor.Description + Environment.NewLine + armor.Rarity + Environment.NewLine + "Damage Reduction: " + armor.DmgReduction.ToString() + Environment.NewLine +
-                    "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + armor.SalesPrice.ToString();
+                    "Available for Classes:" + Environment.NewLine + string.Join("," + Environment.NewLine, armor.AllowedCharacters.Select(characterType => characterType.ToString())) + Environment.NewLine + "Value:" + Environment.NewLine + armor.Price.ToString();
                     switch (armor.Rarity)
                     {
                         case Rarity.Common:
@@ -1679,7 +1679,7 @@ namespace Hopeless
         }
 
 
-        private List<IEkwipunek> SortByAllowedCharacters(CharacterType characterType)
+        private List<IInventory> SortByAllowedCharacters(CharacterType characterType)
         {
             return inventory.OrderByDescending(item =>
             {
@@ -1695,6 +1695,6 @@ namespace Hopeless
             }).ToList();
         }
 
-        
+
     }
 }

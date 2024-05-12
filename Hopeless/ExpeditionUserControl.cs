@@ -8,29 +8,29 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Hopeless
 {
-    public partial class WyprawaUserControl : UserControl
+    public partial class ExpeditionUserControl : UserControl
     {
-        public List<Character> characters { get; set; }
-        public Expedition expedition { get; set; }
+        public List<Character> Characters { get; set; }
+        public Expedition Expedition { get; set; }
 
 
         private List<ICreature> fightOrder = new();
         private List<ICreature> target = new();
         public delegate void CustomDelegate(bool result, Expedition expedition);
-        public event CustomDelegate eventFirst;
+        public event CustomDelegate EventFirst;
         public event EventHandler FinishButtonClicked;
-        public event EventHandler eventChoice;
-        public bool eventResult;
+        public event EventHandler EventChoice;
+        public bool EventResult;
         private bool playerActionTaken = false;
-        public WyprawaUserControl()
+        public ExpeditionUserControl()
         {
             InitializeComponent();
             pictureBox1.Image = Properties.Resources.Wyprawa;
-            this.VisibleChanged += WyprawaUserControl_VisibleChanged;
+            this.VisibleChanged += ExpeditionUserControl_VisibleChanged;
 
         }
 
-        private void WyprawaUserControl_VisibleChanged(object? sender, EventArgs e)
+        private void ExpeditionUserControl_VisibleChanged(object? sender, EventArgs e)
         {
             var control = sender as UserControl;
             if (control != null)
@@ -53,7 +53,7 @@ namespace Hopeless
                 while (fightStatus)
                 {
                     turn++;
-                    turaLabel.Text = "Tura: " + turn;
+                    turaLabel.Text = "Turn: " + turn;
                     foreach (var figure in fightOrder)
                     {
                         target.Clear();
@@ -142,7 +142,7 @@ namespace Hopeless
                                     .SkillHandler
                                     .Invoke(figure, target);
                                     }
-                                    else if (target[0] != null && figure.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster )
+                                    else if (target[0] != null && figure.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster)
                                     {
                                         response = figure.Skill2?
                                          .SkillHandler
@@ -216,7 +216,7 @@ namespace Hopeless
                             if (!figure.IsDead())
                             {
                                 await Task.Delay(1000);
-                               
+
                                 do
                                 {
                                     target.Clear();
@@ -226,12 +226,12 @@ namespace Hopeless
                                         var debuff = figure.DeBuffs.FirstOrDefault(x => x.Name.Equals("Provoke"));
                                         if (debuff != null)
                                         {
-                                            target.Add(characters.FirstOrDefault(x => x.Id == debuff.Caster.Id));
+                                            target.Add(Characters.FirstOrDefault(x => x.Id == debuff.Caster.Id));
                                         }
                                         else
                                         {
                                             int i = new Random().Next(0, 4);
-                                            target.Add(characters[i]);
+                                            target.Add(Characters[i]);
                                         }
 
 
@@ -239,7 +239,7 @@ namespace Hopeless
                                     else
                                     {
                                         int i = new Random().Next(0, 4);
-                                        target.Add(characters[i]);
+                                        target.Add(Characters[i]);
                                     }
 
                                 } while (target[0].IsDead());
@@ -273,14 +273,14 @@ namespace Hopeless
 
 
                     RefreshEffectBox();
-                    
+
                 };
             }
             catch (Exception ex)
             {
 
             }
-          
+
         }
         private void RefreshEffectBox()
         {
@@ -288,7 +288,7 @@ namespace Hopeless
             effectBox.Text += "Active Statuses:" + Environment.NewLine;
             foreach (var item in fightOrder)
             {
-               
+
                 Dictionary<string, int> buffCount = new Dictionary<string, int>();
                 Dictionary<string, int> debuffCount = new Dictionary<string, int>();
 
@@ -296,7 +296,7 @@ namespace Hopeless
                 {
                     foreach (Buff buff in item.Buffs)
                     {
-                       
+
                         if (!buffCount.ContainsKey(buff.Name))
                         {
                             buffCount[buff.Name] = 1;
@@ -312,7 +312,7 @@ namespace Hopeless
                 {
                     foreach (DeBuff debuff in item.DeBuffs)
                     {
-                        
+
                         if (!debuffCount.ContainsKey(debuff.Name))
                         {
                             debuffCount[debuff.Name] = 1;
@@ -336,9 +336,9 @@ namespace Hopeless
                 foreach (var kvp in debuffCount)
                 {
                     if (kvp.Value > 1)
-                    effectBox.Text += item.Name + "|" + kvp.Key + " x" + kvp.Value + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+                        effectBox.Text += item.Name + "|" + kvp.Key + " x" + kvp.Value + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
                     else
-                    effectBox.Text += item.Name + "|" + kvp.Key + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
+                        effectBox.Text += item.Name + "|" + kvp.Key + "|" + GetDeBuffUptime(item.DeBuffs, kvp.Key) + Environment.NewLine;
 
                 }
             }
@@ -347,7 +347,7 @@ namespace Hopeless
         }
         private int GetBuffUptime(List<Buff> buffs, string buffName)
         {
-           
+
             if (buffs != null)
             {
                 foreach (Buff buff in buffs)
@@ -358,7 +358,7 @@ namespace Hopeless
                     }
                 }
             }
-           return 0;
+            return 0;
         }
         private int GetDeBuffUptime(List<DeBuff> debuffs, string debuffName)
         {
@@ -378,8 +378,8 @@ namespace Hopeless
 
         private bool CheckStatus()
         {
-            enemy1Health.Value = expedition.Monsters[0].CurrentHP;
-            enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
+            enemy1Health.Value = Expedition.Monsters[0].CurrentHP;
+            enemy1HealthText.Text = Expedition.Monsters[0].CurrentHP + "/" + Expedition.Monsters[0].MaxHP;
             if (enemy1Health.Value == 0)
             {
                 enemy1Picture.Enabled = false;
@@ -390,8 +390,8 @@ namespace Hopeless
             {
                 enemy1Picture.BackColor = Color.White;
             }
-            enemy2Health.Value = expedition.Monsters[1].CurrentHP;
-            enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
+            enemy2Health.Value = Expedition.Monsters[1].CurrentHP;
+            enemy2HealthText.Text = Expedition.Monsters[1].CurrentHP + "/" + Expedition.Monsters[1].MaxHP;
             if (enemy2Health.Value == 0)
             {
                 enemy2Picture.Enabled = false;
@@ -401,8 +401,8 @@ namespace Hopeless
             {
                 enemy2Picture.BackColor = Color.White;
             }
-            enemy3Health.Value = expedition.Monsters[2].CurrentHP;
-            enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
+            enemy3Health.Value = Expedition.Monsters[2].CurrentHP;
+            enemy3HealthText.Text = Expedition.Monsters[2].CurrentHP + "/" + Expedition.Monsters[2].MaxHP;
             if (enemy3Health.Value == 0)
             {
                 enemy3Picture.Enabled = false;
@@ -412,8 +412,8 @@ namespace Hopeless
             {
                 enemy3Picture.BackColor = Color.White;
             }
-            enemy4Health.Value = expedition.Monsters[3].CurrentHP;
-            enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
+            enemy4Health.Value = Expedition.Monsters[3].CurrentHP;
+            enemy4HealthText.Text = Expedition.Monsters[3].CurrentHP + "/" + Expedition.Monsters[3].MaxHP;
             if (enemy4Health.Value == 0)
             {
                 enemy4Picture.Enabled = false;
@@ -424,8 +424,8 @@ namespace Hopeless
                 enemy4Picture.BackColor = Color.White;
             }
 
-            character1HealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
-            character1Health.Value = characters[0].CurrentHP;
+            character1HealthText.Text = Characters[0].CurrentHP + "/" + Characters[0].MaxHP;
+            character1Health.Value = Characters[0].CurrentHP;
             if (character1Health.Value == 0)
             {
                 character1Picture.Enabled = false;
@@ -438,8 +438,8 @@ namespace Hopeless
             }
 
 
-            character2HealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
-            character2Health.Value = characters[1].CurrentHP;
+            character2HealthText.Text = Characters[1].CurrentHP + "/" + Characters[1].MaxHP;
+            character2Health.Value = Characters[1].CurrentHP;
             if (character2Health.Value == 0)
             {
                 character2Picture.Enabled = false;
@@ -451,8 +451,8 @@ namespace Hopeless
             }
 
 
-            character3HealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
-            character3Health.Value = characters[2].CurrentHP;
+            character3HealthText.Text = Characters[2].CurrentHP + "/" + Characters[2].MaxHP;
+            character3Health.Value = Characters[2].CurrentHP;
             if (character3Health.Value == 0)
             {
                 character3Picture.Enabled = false;
@@ -464,8 +464,8 @@ namespace Hopeless
             }
 
 
-            character4HealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
-            character4Health.Value = characters[3].CurrentHP;
+            character4HealthText.Text = Characters[3].CurrentHP + "/" + Characters[3].MaxHP;
+            character4Health.Value = Characters[3].CurrentHP;
             if (character4Health.Value == 0)
             {
                 character4Picture.Enabled = false;
@@ -477,52 +477,53 @@ namespace Hopeless
             }
 
 
-          
-  
 
-            if (expedition.Monsters.All(monster => monster.IsDead()))
+
+
+            if (Expedition.Monsters.All(monster => monster.IsDead()))
             {
                 PlayWinSound();
 
-                if (expedition.Type == DifficultyType.Event)
+                if (Expedition.Type == DifficultyType.Event)
                 {
-                    
 
-                    
+
+
                     DialogResult result = MessageBox.Show("You defeated Gaunter'O Dim, Amazing!!! Are You Going to Exile Him?", "Make Your Decisions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                   
+
                     if (result == DialogResult.Yes)
                     {
-                            PlayEventKillSound();
-                        expedition.Gold += 150;
-                           
-                    }else
+                        PlayEventKillSound();
+                        Expedition.Gold += 150;
+
+                    }
+                    else
                     {
-                            eventChoice?.Invoke(this, EventArgs.Empty);
-                            PlayEventSaveSound();
-                          
-                     }
-                 
-                    
+                        EventChoice?.Invoke(this, EventArgs.Empty);
+                        PlayEventSaveSound();
+
+                    }
+
+
                 }
-               
+
                 InitializeAfterFight();
 
-                
+
                 MessageBox.Show("Win!", "Return to Base", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                eventFirst?.Invoke(true, expedition);
+                EventFirst?.Invoke(true, Expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
-                
+
 
             }
-            if (characters.All(character => character.IsDead()))
+            if (Characters.All(character => character.IsDead()))
             {
                 InitializeAfterFight();
                 PlayLoseSound();
                 MessageBox.Show("Lose!", "Return to Base", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
-                eventFirst?.Invoke(false, expedition);
+                EventFirst?.Invoke(false, Expedition);
                 FinishButtonClicked?.Invoke(this, EventArgs.Empty);
                 return true;
             }
@@ -530,14 +531,15 @@ namespace Hopeless
         }
         private void InitializeAfterFight()
         {
-            
 
-            foreach (var item in fightOrder) { 
+
+            foreach (var item in fightOrder)
+            {
                 item.ClearEffetsAfterBattle();
-                if(item.Skill1 != null)
-                item.Skill1.Cooldown = 0;
+                if (item.Skill1 != null)
+                    item.Skill1.Cooldown = 0;
                 if (item.Skill2 != null)
-                item.Skill2.Cooldown = 0;
+                    item.Skill2.Cooldown = 0;
             }
 
 
@@ -563,90 +565,90 @@ namespace Hopeless
             skill2Label.MouseHover += SkillMouseHover;
             basicAttackLabel.MouseHover += SkillMouseHover;
 
-            character1Name.Text = characters[0].Name;
+            character1Name.Text = Characters[0].Name;
             character1Picture.Enabled = true;
-            character1HealthText.Text = characters[0].CurrentHP + "/" + characters[0].MaxHP;
-            character1Health.Maximum = characters[0].MaxHP;
-            character1Health.Value = characters[0].CurrentHP;
+            character1HealthText.Text = Characters[0].CurrentHP + "/" + Characters[0].MaxHP;
+            character1Health.Maximum = Characters[0].MaxHP;
+            character1Health.Value = Characters[0].CurrentHP;
             character1Picture.Click += Enemy_Click;
 
-            character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[0].CharacterType.ToString().ToLower() + "Picture");
+            character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[0].CharacterType.ToString().ToLower() + "Picture");
 
-            character2Name.Text = characters[1].Name;
+            character2Name.Text = Characters[1].Name;
             character2Picture.Enabled = true;
-            character2HealthText.Text = characters[1].CurrentHP + "/" + characters[1].MaxHP;
-            character2Health.Maximum = characters[1].MaxHP;
-            character2Health.Value = characters[1].CurrentHP;
+            character2HealthText.Text = Characters[1].CurrentHP + "/" + Characters[1].MaxHP;
+            character2Health.Maximum = Characters[1].MaxHP;
+            character2Health.Value = Characters[1].CurrentHP;
             character2Picture.Click += Enemy_Click;
 
-            character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[1].CharacterType.ToString().ToLower() + "Picture");
+            character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[1].CharacterType.ToString().ToLower() + "Picture");
 
-            character3Name.Text = characters[2].Name;
+            character3Name.Text = Characters[2].Name;
             character3Picture.Enabled = true;
-            character3HealthText.Text = characters[2].CurrentHP + "/" + characters[2].MaxHP;
-            character3Health.Maximum = characters[2].MaxHP;
-            character3Health.Value = characters[2].CurrentHP;
+            character3HealthText.Text = Characters[2].CurrentHP + "/" + Characters[2].MaxHP;
+            character3Health.Maximum = Characters[2].MaxHP;
+            character3Health.Value = Characters[2].CurrentHP;
             character3Picture.Click += Enemy_Click;
 
-            character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[2].CharacterType.ToString().ToLower() + "Picture");
+            character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[2].CharacterType.ToString().ToLower() + "Picture");
 
-            character4Name.Text = characters[3].Name;
+            character4Name.Text = Characters[3].Name;
             character4Picture.Enabled = true;
-            character4HealthText.Text = characters[3].CurrentHP + "/" + characters[3].MaxHP;
-            character4Health.Maximum = characters[3].MaxHP;
-            character4Health.Value = characters[3].CurrentHP;
+            character4HealthText.Text = Characters[3].CurrentHP + "/" + Characters[3].MaxHP;
+            character4Health.Maximum = Characters[3].MaxHP;
+            character4Health.Value = Characters[3].CurrentHP;
             character4Picture.Click += Enemy_Click;
-            character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(characters[3].CharacterType.ToString().ToLower() + "Picture");
+            character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Characters[3].CharacterType.ToString().ToLower() + "Picture");
 
 
-            enemy1Name.Text = expedition.Monsters[0].Name;
+            enemy1Name.Text = Expedition.Monsters[0].Name;
             enemy1Picture.Enabled = true;
-            enemy1HealthText.Text = expedition.Monsters[0].CurrentHP + "/" + expedition.Monsters[0].MaxHP;
-            enemy1Health.Maximum = expedition.Monsters[0].MaxHP;
-            enemy1Health.Value = expedition.Monsters[0].CurrentHP;
+            enemy1HealthText.Text = Expedition.Monsters[0].CurrentHP + "/" + Expedition.Monsters[0].MaxHP;
+            enemy1Health.Maximum = Expedition.Monsters[0].MaxHP;
+            enemy1Health.Value = Expedition.Monsters[0].CurrentHP;
             enemy1Picture.Click += Enemy_Click;
 
-            enemy1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[0].Name);
+            enemy1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Expedition.Monsters[0].Name);
 
-            enemy2Name.Text = expedition.Monsters[1].Name;
+            enemy2Name.Text = Expedition.Monsters[1].Name;
             enemy2Picture.Enabled = true;
-            enemy2HealthText.Text = expedition.Monsters[1].CurrentHP + "/" + expedition.Monsters[1].MaxHP;
-            enemy2Health.Maximum = expedition.Monsters[1].MaxHP;
-            enemy2Health.Value = expedition.Monsters[1].CurrentHP;
+            enemy2HealthText.Text = Expedition.Monsters[1].CurrentHP + "/" + Expedition.Monsters[1].MaxHP;
+            enemy2Health.Maximum = Expedition.Monsters[1].MaxHP;
+            enemy2Health.Value = Expedition.Monsters[1].CurrentHP;
             enemy2Picture.Click += Enemy_Click;
- 
-            enemy2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[1].Name);
 
-            enemy3Name.Text = expedition.Monsters[2].Name;
+            enemy2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Expedition.Monsters[1].Name);
+
+            enemy3Name.Text = Expedition.Monsters[2].Name;
             enemy3Picture.Enabled = true;
-            enemy3HealthText.Text = expedition.Monsters[2].CurrentHP + "/" + expedition.Monsters[2].MaxHP;
-            enemy3Health.Maximum = expedition.Monsters[2].MaxHP;
-            enemy3Health.Value = expedition.Monsters[2].CurrentHP;
+            enemy3HealthText.Text = Expedition.Monsters[2].CurrentHP + "/" + Expedition.Monsters[2].MaxHP;
+            enemy3Health.Maximum = Expedition.Monsters[2].MaxHP;
+            enemy3Health.Value = Expedition.Monsters[2].CurrentHP;
             enemy3Picture.Click += Enemy_Click;
-      
-            enemy3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[2].Name);
 
-            enemy4Name.Text = expedition.Monsters[3].Name;
+            enemy3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Expedition.Monsters[2].Name);
+
+            enemy4Name.Text = Expedition.Monsters[3].Name;
             enemy4Picture.Enabled = true;
-            enemy4HealthText.Text = expedition.Monsters[3].CurrentHP + "/" + expedition.Monsters[3].MaxHP;
-            enemy4Health.Maximum = expedition.Monsters[3].MaxHP;
-            enemy4Health.Value = expedition.Monsters[3].CurrentHP;
+            enemy4HealthText.Text = Expedition.Monsters[3].CurrentHP + "/" + Expedition.Monsters[3].MaxHP;
+            enemy4Health.Maximum = Expedition.Monsters[3].MaxHP;
+            enemy4Health.Value = Expedition.Monsters[3].CurrentHP;
             enemy4Picture.Click += Enemy_Click;
-       
-            enemy4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(expedition.Monsters[3].Name);
+
+            enemy4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(Expedition.Monsters[3].Name);
 
 
 
 
             //Kolejnosc Tur
 
-            fightOrder.AddRange(expedition.Monsters);
-            fightOrder.AddRange(characters);
+            fightOrder.AddRange(Expedition.Monsters);
+            fightOrder.AddRange(Characters);
             fightOrder = fightOrder.OrderByDescending(x => x.Initiative).ToList();
 
             startButton.Enabled = true;
             startButton.Visible = true;
-            if(expedition.Type==DifficultyType.Boss && eventResult)
+            if (Expedition.Type == DifficultyType.Boss && EventResult)
             {
                 PlayEventHelpSound();
                 MessageBox.Show("Gaunter O'Dim came to return the favor from earlier!", "Settlement of Accounts", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -665,7 +667,7 @@ namespace Hopeless
             {
                 enemy1Picture.BackColor = Color.White;
             }
-             if (enemy2Health.Value == 0)
+            if (enemy2Health.Value == 0)
             {
                 enemy2Picture.Enabled = false;
                 enemy2Picture.BackColor = Color.Black;
@@ -674,7 +676,7 @@ namespace Hopeless
             {
                 enemy2Picture.BackColor = Color.White;
             }
-            
+
             if (enemy3Health.Value == 0)
             {
                 enemy3Picture.Enabled = false;
@@ -684,7 +686,7 @@ namespace Hopeless
             {
                 enemy3Picture.BackColor = Color.White;
             }
-            
+
             if (enemy4Health.Value == 0)
             {
                 enemy4Picture.Enabled = false;
@@ -695,7 +697,7 @@ namespace Hopeless
                 enemy4Picture.BackColor = Color.White;
             }
 
-          
+
             if (character1Health.Value == 0)
             {
                 character1Picture.Enabled = false;
@@ -708,7 +710,7 @@ namespace Hopeless
             }
 
 
-         
+
             if (character2Health.Value == 0)
             {
                 character2Picture.Enabled = false;
@@ -720,7 +722,7 @@ namespace Hopeless
             }
 
 
-           
+
             if (character3Health.Value == 0)
             {
                 character3Picture.Enabled = false;
@@ -741,7 +743,7 @@ namespace Hopeless
             {
                 character4Picture.BackColor = Color.White;
             }
-           
+
 
             var pictureBox = sender as PictureBox;
 
@@ -750,49 +752,49 @@ namespace Hopeless
                 if (pictureBox.Name.Equals("enemy1Picture"))
                 {
                     target.Clear();
-                    target.Add(expedition.Monsters[0]); 
+                    target.Add(Expedition.Monsters[0]);
                     pictureBox.BackColor = Color.Red;
                 }
                 else if (pictureBox.Name.Equals("enemy2Picture"))
                 {
                     target.Clear();
-                    target.Add(expedition.Monsters[1]);
+                    target.Add(Expedition.Monsters[1]);
                     pictureBox.BackColor = Color.Red;
                 }
                 else if (pictureBox.Name.Equals("enemy3Picture"))
                 {
                     target.Clear();
-                    target.Add(expedition.Monsters[2]);
+                    target.Add(Expedition.Monsters[2]);
                     pictureBox.BackColor = Color.Red;
                 }
                 else if (pictureBox.Name.Equals("enemy4Picture"))
                 {
                     target.Clear();
-                    target.Add(expedition.Monsters[3]);
+                    target.Add(Expedition.Monsters[3]);
                     pictureBox.BackColor = Color.Red;
                 }
                 else if (pictureBox.Name.Equals("character1Picture"))
                 {
                     target.Clear();
-                    target.Add(characters[0]);
+                    target.Add(Characters[0]);
                     pictureBox.BackColor = Color.Green;
                 }
                 else if (pictureBox.Name.Equals("character2Picture"))
                 {
                     target.Clear();
-                    target.Add(characters[1]);
+                    target.Add(Characters[1]);
                     pictureBox.BackColor = Color.Green;
                 }
                 else if (pictureBox.Name.Equals("character3Picture"))
                 {
                     target.Clear();
-                    target.Add(characters[2]);
+                    target.Add(Characters[2]);
                     pictureBox.BackColor = Color.Green;
                 }
                 else if (pictureBox.Name.Equals("character4Picture"))
                 {
                     target.Clear();
-                    target.Add(characters[3]);
+                    target.Add(Characters[3]);
                     pictureBox.BackColor = Color.Green;
                 }
                 else

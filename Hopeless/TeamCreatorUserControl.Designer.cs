@@ -1,6 +1,6 @@
 ﻿namespace Hopeless
 {
-    partial class KreatorUserControl
+    partial class TeamCreatorUserControl
     {
         /// <summary> 
         /// Wymagana zmienna projektanta.
@@ -54,6 +54,7 @@
             tabPage1 = new TabPage();
             character2Picture = new PictureBox();
             tabPage2 = new TabPage();
+            character2TextBox = new TextBox();
             character2Block = new Label();
             character2Dmg = new Label();
             character2Initiative = new Label();
@@ -73,6 +74,7 @@
             tabPage4 = new TabPage();
             character3Picture = new PictureBox();
             tabPage5 = new TabPage();
+            character3TextBox = new TextBox();
             character3Block = new Label();
             character3Dmg = new Label();
             character3Initiative = new Label();
@@ -92,6 +94,7 @@
             tabPage7 = new TabPage();
             character4Picture = new PictureBox();
             tabPage8 = new TabPage();
+            character4TextBox = new TextBox();
             character4Block = new Label();
             character4Dmg = new Label();
             character4Initiative = new Label();
@@ -115,9 +118,6 @@
             saveTeamButton = new Button();
             pictureBox4 = new PictureBox();
             toolTip1 = new ToolTip(components);
-            character2TextBox = new TextBox();
-            character3TextBox = new TextBox();
-            character4TextBox = new TextBox();
             tabControl1.SuspendLayout();
             knightPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)character1Picture).BeginInit();
@@ -414,6 +414,13 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Statystyki";
             // 
+            // character2TextBox
+            // 
+            character2TextBox.Location = new Point(41, 4);
+            character2TextBox.Name = "character2TextBox";
+            character2TextBox.Size = new Size(100, 23);
+            character2TextBox.TabIndex = 13;
+            // 
             // character2Block
             // 
             character2Block.AutoSize = true;
@@ -615,6 +622,13 @@
             tabPage5.Size = new Size(192, 308);
             tabPage5.TabIndex = 1;
             tabPage5.Text = "Statystyki";
+            // 
+            // character3TextBox
+            // 
+            character3TextBox.Location = new Point(40, 3);
+            character3TextBox.Name = "character3TextBox";
+            character3TextBox.Size = new Size(100, 23);
+            character3TextBox.TabIndex = 13;
             // 
             // character3Block
             // 
@@ -818,6 +832,13 @@
             tabPage8.TabIndex = 1;
             tabPage8.Text = "Statystyki";
             // 
+            // character4TextBox
+            // 
+            character4TextBox.Location = new Point(41, 3);
+            character4TextBox.Name = "character4TextBox";
+            character4TextBox.Size = new Size(100, 23);
+            character4TextBox.TabIndex = 13;
+            // 
             // character4Block
             // 
             character4Block.AutoSize = true;
@@ -1019,9 +1040,9 @@
             rozpocznijButton.Name = "rozpocznijButton";
             rozpocznijButton.Size = new Size(150, 50);
             rozpocznijButton.TabIndex = 18;
-            rozpocznijButton.Text = "Rozpocznij";
+            rozpocznijButton.Text = "Start";
             rozpocznijButton.UseVisualStyleBackColor = true;
-            rozpocznijButton.Click += rozpocznijButton_Click;
+            rozpocznijButton.Click += startButton_Click;
             // 
             // saveTeamButton
             // 
@@ -1044,28 +1065,7 @@
             pictureBox4.TabIndex = 20;
             pictureBox4.TabStop = false;
             // 
-            // character2TextBox
-            // 
-            character2TextBox.Location = new Point(41, 4);
-            character2TextBox.Name = "character2TextBox";
-            character2TextBox.Size = new Size(100, 23);
-            character2TextBox.TabIndex = 13;
-            // 
-            // character3TextBox
-            // 
-            character3TextBox.Location = new Point(40, 3);
-            character3TextBox.Name = "character3TextBox";
-            character3TextBox.Size = new Size(100, 23);
-            character3TextBox.TabIndex = 13;
-            // 
-            // character4TextBox
-            // 
-            character4TextBox.Location = new Point(41, 3);
-            character4TextBox.Name = "character4TextBox";
-            character4TextBox.Size = new Size(100, 23);
-            character4TextBox.TabIndex = 13;
-            // 
-            // KreatorUserControl
+            // TeamCreatorUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1081,7 +1081,7 @@
             Controls.Add(tabControl1);
             Controls.Add(CharacterClass);
             Controls.Add(pictureBox4);
-            Name = "KreatorUserControl";
+            Name = "TeamCreatorUserControl";
             Size = new Size(1424, 861);
             tabControl1.ResumeLayout(false);
             knightPostac.ResumeLayout(false);

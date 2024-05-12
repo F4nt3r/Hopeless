@@ -61,6 +61,16 @@ namespace Hopeless.Properties {
         }
         
         /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Abyss {
+            get {
+                object obj = ResourceManager.GetObject("Abyss", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream ambushSound {
@@ -90,19 +100,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Armata {
+        internal static System.Drawing.Bitmap Bandit {
             get {
-                object obj = ResourceManager.GetObject("Armata", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Bandyta {
-            get {
-                object obj = ResourceManager.GetObject("Bandyta", resourceCulture);
+                object obj = ResourceManager.GetObject("Bandit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +113,26 @@ namespace Hopeless.Properties {
         internal static System.IO.UnmanagedMemoryStream basicAttackSound {
             get {
                 return ResourceManager.GetStream("basicAttackSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Beginner_Bandy {
+            get {
+                object obj = ResourceManager.GetObject("Beginner_Bandy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Crab {
+            get {
+                object obj = ResourceManager.GetObject("Big_Crab", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -128,9 +148,39 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bug {
+            get {
+                object obj = ResourceManager.GetObject("Bug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cannon {
+            get {
+                object obj = ResourceManager.GetObject("Cannon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clericPicture {
             get {
                 object obj = ResourceManager.GetObject("clericPicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Creeper {
+            get {
+                object obj = ResourceManager.GetObject("Creeper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -147,9 +197,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dziki_Pies {
+        internal static System.Drawing.Bitmap Cultist {
             get {
-                object obj = ResourceManager.GetObject("Dziki_Pies", resourceCulture);
+                object obj = ResourceManager.GetObject("Cultist", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -184,9 +234,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flecista {
+        internal static System.Drawing.Bitmap Fluutist {
             get {
-                object obj = ResourceManager.GetObject("Flecista", resourceCulture);
+                object obj = ResourceManager.GetObject("Fluutist", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -194,9 +244,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Gargulec {
+        internal static System.Drawing.Bitmap Gargoyle {
             get {
-                object obj = ResourceManager.GetObject("Gargulec", resourceCulture);
+                object obj = ResourceManager.GetObject("Gargoyle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,6 +273,16 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ghost {
+            get {
+                object obj = ResourceManager.GetObject("Ghost", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ghoul {
             get {
                 object obj = ResourceManager.GetObject("Ghoul", resourceCulture);
@@ -233,19 +293,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Gigant {
+        internal static System.Drawing.Bitmap Giant {
             get {
-                object obj = ResourceManager.GetObject("Gigant", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Grzechotnik {
-            get {
-                object obj = ResourceManager.GetObject("Grzechotnik", resourceCulture);
+                object obj = ResourceManager.GetObject("Giant", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +306,16 @@ namespace Hopeless.Properties {
         internal static System.IO.UnmanagedMemoryStream healSound {
             get {
                 return ResourceManager.GetStream("healSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Higher_Vampire {
+            get {
+                object obj = ResourceManager.GetObject("Higher_Vampire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -301,9 +361,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Kultysta {
+        internal static System.Drawing.Bitmap Leech {
             get {
-                object obj = ResourceManager.GetObject("Kultysta", resourceCulture);
+                object obj = ResourceManager.GetObject("Leech", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -311,9 +371,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Leszy {
+        internal static System.Drawing.Bitmap Leshy {
             get {
-                object obj = ResourceManager.GetObject("Leszy", resourceCulture);
+                object obj = ResourceManager.GetObject("Leshy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -324,16 +384,6 @@ namespace Hopeless.Properties {
         internal static System.IO.UnmanagedMemoryStream loseSound {
             get {
                 return ResourceManager.GetStream("loseSound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Macki_Otchlani {
-            get {
-                object obj = ResourceManager.GetObject("Macki_Otchlani", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -349,9 +399,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap newgame {
+        internal static System.Drawing.Bitmap Mirror_Reflection {
             get {
-                object obj = ResourceManager.GetObject("newgame", resourceCulture);
+                object obj = ResourceManager.GetObject("Mirror_Reflection", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -368,9 +418,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Odbicie_Lustrzane {
+        internal static System.Drawing.Bitmap Orc_Warrior {
             get {
-                object obj = ResourceManager.GetObject("Odbicie_Lustrzane", resourceCulture);
+                object obj = ResourceManager.GetObject("Orc_Warrior", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -378,9 +428,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ork_Wojownik {
+        internal static System.Drawing.Bitmap Penitent {
             get {
-                object obj = ResourceManager.GetObject("Ork_Wojownik", resourceCulture);
+                object obj = ResourceManager.GetObject("Penitent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -388,69 +438,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Otchlaniec {
+        internal static System.Drawing.Bitmap Poisonous_Spider {
             get {
-                object obj = ResourceManager.GetObject("Otchlaniec", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pajak {
-            get {
-                object obj = ResourceManager.GetObject("Pajak", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pajak_Trujacy {
-            get {
-                object obj = ResourceManager.GetObject("Pajak_Trujacy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pelzacz {
-            get {
-                object obj = ResourceManager.GetObject("Pelzacz", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pijawka {
-            get {
-                object obj = ResourceManager.GetObject("Pijawka", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Poczatkujacy_Bandyta {
-            get {
-                object obj = ResourceManager.GetObject("Poczatkujacy_Bandyta", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pokutnik {
-            get {
-                object obj = ResourceManager.GetObject("Pokutnik", resourceCulture);
+                object obj = ResourceManager.GetObject("Poisonous_Spider", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -486,9 +476,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Robal {
+        internal static System.Drawing.Bitmap Rattlesnake {
             get {
-                object obj = ResourceManager.GetObject("Robal", resourceCulture);
+                object obj = ResourceManager.GetObject("Rattlesnake", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,9 +523,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sniacy {
+        internal static System.Drawing.Bitmap Skeleton_Arbalest {
             get {
-                object obj = ResourceManager.GetObject("Sniacy", resourceCulture);
+                object obj = ResourceManager.GetObject("Skeleton_Arbalest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -543,9 +533,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Straznik_Sniacego {
+        internal static System.Drawing.Bitmap Skeleton_Shielder {
             get {
-                object obj = ResourceManager.GetObject("Straznik_Sniacego", resourceCulture);
+                object obj = ResourceManager.GetObject("Skeleton_Shielder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -553,9 +543,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Szkielet_Kusznik {
+        internal static System.Drawing.Bitmap Skeleton_Warrior {
             get {
-                object obj = ResourceManager.GetObject("Szkielet_Kusznik", resourceCulture);
+                object obj = ResourceManager.GetObject("Skeleton_Warrior", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -563,9 +553,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Szkielet_Tarczownik {
+        internal static System.Drawing.Bitmap Spider {
             get {
-                object obj = ResourceManager.GetObject("Szkielet_Tarczownik", resourceCulture);
+                object obj = ResourceManager.GetObject("Spider", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,9 +563,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Szkielet_Wojownik {
+        internal static System.Drawing.Bitmap The_Sleeper {
             get {
-                object obj = ResourceManager.GetObject("Szkielet_Wojownik", resourceCulture);
+                object obj = ResourceManager.GetObject("The_Sleeper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -583,9 +573,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Wampir_Wyzszy {
+        internal static System.Drawing.Bitmap The_Sleeper_Guardian {
             get {
-                object obj = ResourceManager.GetObject("Wampir_Wyzszy", resourceCulture);
+                object obj = ResourceManager.GetObject("The_Sleeper_Guardian", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,9 +583,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Widmo {
+        internal static System.Drawing.Bitmap Void_Tentacles {
             get {
-                object obj = ResourceManager.GetObject("Widmo", resourceCulture);
+                object obj = ResourceManager.GetObject("Void_Tentacles", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -603,9 +593,9 @@ namespace Hopeless.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Wielki_Krab {
+        internal static System.Drawing.Bitmap Wild_Dog {
             get {
-                object obj = ResourceManager.GetObject("Wielki_Krab", resourceCulture);
+                object obj = ResourceManager.GetObject("Wild_Dog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

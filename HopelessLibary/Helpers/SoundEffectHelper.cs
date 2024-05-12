@@ -36,7 +36,7 @@ namespace HopelessLibary.Helpers
             };
         }
 
-        internal static void PlayACritAndDodgeBuffSound()
+        internal static void PlayACritAndDmgBuffSound()
         {
             Stream equipWeaponStream = Resources.critAndDodgeBuffSound;
             MemoryStream memoryStream = new MemoryStream();

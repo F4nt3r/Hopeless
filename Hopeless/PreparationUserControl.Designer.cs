@@ -1,6 +1,6 @@
 ﻿namespace Hopeless
 {
-    partial class PrzygotowanieUserControl
+    partial class PreparationUserControl
     {
         /// <summary> 
         /// Wymagana zmienna projektanta.
@@ -161,7 +161,7 @@
             wyruszButton.Name = "wyruszButton";
             wyruszButton.Size = new Size(150, 50);
             wyruszButton.TabIndex = 0;
-            wyruszButton.Text = "Wyruszam";
+            wyruszButton.Text = "Missions";
             wyruszButton.UseVisualStyleBackColor = true;
             wyruszButton.Click += wyruszButton_Click;
             // 
@@ -185,7 +185,7 @@
             clericPostac.Padding = new Padding(3);
             clericPostac.Size = new Size(192, 308);
             clericPostac.TabIndex = 0;
-            clericPostac.Text = "Postac";
+            clericPostac.Text = "Character";
             // 
             // character3Picture
             // 
@@ -218,7 +218,7 @@
             clericStatystyki.Padding = new Padding(3);
             clericStatystyki.Size = new Size(192, 308);
             clericStatystyki.TabIndex = 1;
-            clericStatystyki.Text = "Statystyki";
+            clericStatystyki.Text = "Statistics";
             // 
             // character3Block
             // 
@@ -339,7 +339,7 @@
             clericEkwipunek.Padding = new Padding(3);
             clericEkwipunek.Size = new Size(192, 308);
             clericEkwipunek.TabIndex = 2;
-            clericEkwipunek.Text = "Ekwipunek";
+            clericEkwipunek.Text = "Inventory";
             // 
             // character3ClassName
             // 
@@ -392,7 +392,7 @@
             roguePostac.Padding = new Padding(3);
             roguePostac.Size = new Size(192, 308);
             roguePostac.TabIndex = 0;
-            roguePostac.Text = "Postac";
+            roguePostac.Text = "Character";
             roguePostac.UseVisualStyleBackColor = true;
             // 
             // character2Picture
@@ -426,7 +426,7 @@
             rogueStatystyki.Padding = new Padding(3);
             rogueStatystyki.Size = new Size(192, 308);
             rogueStatystyki.TabIndex = 1;
-            rogueStatystyki.Text = "Statystyki";
+            rogueStatystyki.Text = "Statistics";
             // 
             // character2Block
             // 
@@ -547,7 +547,7 @@
             rogueEkwipunek.Padding = new Padding(3);
             rogueEkwipunek.Size = new Size(192, 308);
             rogueEkwipunek.TabIndex = 2;
-            rogueEkwipunek.Text = "Ekwipunek";
+            rogueEkwipunek.Text = "Inventory";
             // 
             // character2ClassName
             // 
@@ -600,7 +600,7 @@
             knightPostac.Padding = new Padding(3);
             knightPostac.Size = new Size(192, 308);
             knightPostac.TabIndex = 0;
-            knightPostac.Text = "Postac";
+            knightPostac.Text = "Character";
             knightPostac.UseVisualStyleBackColor = true;
             // 
             // character1Picture
@@ -634,7 +634,7 @@
             knightStatystyki.Padding = new Padding(3);
             knightStatystyki.Size = new Size(192, 308);
             knightStatystyki.TabIndex = 1;
-            knightStatystyki.Text = "Statystyki";
+            knightStatystyki.Text = "Statistics";
             // 
             // character1Block
             // 
@@ -755,7 +755,7 @@
             knightEkwipunek.Padding = new Padding(3);
             knightEkwipunek.Size = new Size(192, 308);
             knightEkwipunek.TabIndex = 2;
-            knightEkwipunek.Text = "Ekwipunek";
+            knightEkwipunek.Text = "Inventory";
             // 
             // character1ClassName
             // 
@@ -808,7 +808,7 @@
             jokerPostac.Padding = new Padding(3);
             jokerPostac.Size = new Size(192, 308);
             jokerPostac.TabIndex = 0;
-            jokerPostac.Text = "Postac";
+            jokerPostac.Text = "Character";
             jokerPostac.UseVisualStyleBackColor = true;
             // 
             // character4Picture
@@ -842,7 +842,7 @@
             jokerStatystyki.Padding = new Padding(3);
             jokerStatystyki.Size = new Size(192, 308);
             jokerStatystyki.TabIndex = 1;
-            jokerStatystyki.Text = "Statystyki";
+            jokerStatystyki.Text = "Statistics";
             // 
             // character4Block
             // 
@@ -963,7 +963,7 @@
             jokerEkwipunek.Padding = new Padding(3);
             jokerEkwipunek.Size = new Size(192, 308);
             jokerEkwipunek.TabIndex = 2;
-            jokerEkwipunek.Text = "Ekwipunek";
+            jokerEkwipunek.Text = "Inventory";
             // 
             // character4ClassName
             // 
@@ -1014,9 +1014,9 @@
             goldLabel.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
             goldLabel.Location = new Point(1184, 94);
             goldLabel.Name = "goldLabel";
-            goldLabel.Size = new Size(84, 38);
+            goldLabel.Size = new Size(77, 38);
             goldLabel.TabIndex = 23;
-            goldLabel.Text = "Złoto:";
+            goldLabel.Text = "Gold:";
             // 
             // toolTip1
             // 
@@ -1050,7 +1050,7 @@
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(150, 50);
             exitButton.TabIndex = 27;
-            exitButton.Text = "Wyjdź z Gry";
+            exitButton.Text = "Exit";
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
@@ -1104,7 +1104,7 @@
             SortAll.UseVisualStyleBackColor = true;
             SortAll.Click += SortAll_Click;
             // 
-            // PrzygotowanieUserControl
+            // PreparationUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1124,7 +1124,7 @@
             Controls.Add(tabControl3);
             Controls.Add(wyruszButton);
             Controls.Add(pictureBox1);
-            Name = "PrzygotowanieUserControl";
+            Name = "PreparationUserControl";
             Size = new Size(1424, 861);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl3.ResumeLayout(false);

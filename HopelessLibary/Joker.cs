@@ -12,9 +12,8 @@ namespace HopelessLibary
     [Serializable]
     public class Joker : Character
     {
-        private string SKILL_1_DESCRIPTION => "Błogosławisz wszystkich sojusznikow zwiększając ich DMG" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "Czas Trwania: 3 tury";
-        private string SKILL_2_DESCRIPTION => "Przeklinasz wszystkich wrogów zmniejszajac ich Odporność" + Environment.NewLine + "Cooldown: 5 tury" + Environment.NewLine + "Czas Trwania: 3 tury";
-
+        private string SKILL_1_DESCRIPTION => "You bless all allies by increasing their DMG" + Environment.NewLine + "Cooldown: 5 turns" + Environment.NewLine + "Duration: 3 turns";
+        private string SKILL_2_DESCRIPTION => "You curse all enemies, reducing their Resistance" + Environment.NewLine + "Cooldown: 5 turns" + Environment.NewLine + "Duration: 3 turns";
         public int DoubleAtackChance { get; set; }
 
         private Skill skill1;
@@ -117,7 +116,7 @@ namespace HopelessLibary
                         item.AddBuff(new Buff(caster.Skill1.Name, 0, 10, 3, 3, 2, joker));
                     }
                 }
-                return new(" używa umiejętności AoeBuff na sojuszników" + Environment.NewLine, 0);
+                return new(" uses AoeBuff on allies" + Environment.NewLine, 0);
 
             }
             else
@@ -154,7 +153,7 @@ namespace HopelessLibary
                         item.AddDeBuff(new DeBuff(caster.Skill2.Name, 10, 0, 0, 0, 2, joker));
                     }
                 }
-                return new(" używa umiejętności AoeDeBuff na przeciwnikow" + Environment.NewLine, 0);
+                return new(" uses the AoeDeBuff skill on enemies" + Environment.NewLine, 0);
 
             }
             else
