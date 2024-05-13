@@ -95,9 +95,9 @@ namespace Hopeless
                 label.AccessibleDescription = expediton.Name + Environment.NewLine + expediton.Description + Environment.NewLine + "Gold for the expedition: " + expediton.Gold.ToString() +
                   Environment.NewLine + "EXP for Expedition: " + expediton.ExperienceGains.ToString() + Environment.NewLine + Environment.NewLine +
                   "Possible Weapon Drop:" + Environment.NewLine +
-                  string.Join("," + Environment.NewLine, expediton.WeaponRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
+                  string.Join("," + Environment.NewLine, expediton.WeaponRewards.Select(Name => Name.Display())) + Environment.NewLine + Environment.NewLine +
                   "Possible Armor Drop:" + Environment.NewLine +
-                  string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.ToString())) + Environment.NewLine + Environment.NewLine +
+                  string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.Display())) + Environment.NewLine + Environment.NewLine +
                    "Monsters:" + Environment.NewLine +
                  string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
                 switch (expediton.Type)

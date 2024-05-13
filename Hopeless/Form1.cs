@@ -80,9 +80,9 @@ namespace Hopeless
             Armor magicorearmor = new Armor("Armor of Magic Ore", "Infiltrated Magic", 12, 250, new List<CharacterType> { CharacterType.Knight, CharacterType.Cleric }, Rarity.Epic);
 
 
-            Armor paladinarmor = new Armor("Paladin Armor", "Once armor of magical warriors", 16, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
-            Armor saskiaarmor = new Armor("Saxon Armor", "Dragonwoman Armor", 14, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
-            Armor zorro = new Armor("Zorro Suit", "Conceals as good as it looks", 12, 1000, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Legendary);
+            Armor paladinarmor = new Armor("Paladin Armor", "Once armor of magical warriors", 18, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
+            Armor saskiaarmor = new Armor("Saxon Armor", "Dragonwoman Armor", 16, 1000, new List<CharacterType> { CharacterType.Cleric, CharacterType.Knight }, Rarity.Legendary);
+            Armor zorro = new Armor("Zorro Suit", "Conceals as good as it looks", 14, 1000, new List<CharacterType> { CharacterType.Rogue, CharacterType.Joker }, Rarity.Legendary);
 
             List<IInventory> pulaEkwipunku = new List<IInventory> { magicorearmor,zorro,claw_of_beliar,crossbow, mercenaryarmor, paladinarmor, heavy_crossbow, ulumulu, sword, gun, durableovercoat, bronzedchestplate, leatherarmor, armour, axe, lightweightarmour, mediumweightarmour, greatsword , glaive , metal_cudge , sharpened_sickle , gilded_mace , scarlet_flail , dagger , spearofdestiny , temeriaarmor , saskiaarmor, hiddenblade,
             musket, ritual_knife, pieceofeden};
@@ -125,10 +125,10 @@ namespace Hopeless
             Monster leszy = new Monster("Leshy", 70, 55, 55, 25, 15, 15, 19, 24, 10, DifficultyType.Hard);
             Monster vampire = new Monster("Higher_Vampire", 50, 45, 45, 30, 10, 15, 22, 26, 20, DifficultyType.Hard);
 
-            Monster sleeper = new Monster("The_Sleeper", 100, 200, 200, 35, 15, 50, 30, 38, 15, DifficultyType.Boss);
-            Monster sleeperGuard = new Monster("The_Sleeper_Guardian", 100, 150, 150, 35, 15, 40, 13, 20, 10, DifficultyType.Boss);
-            Monster gaunter = new Monster("Gaunter_oDim", 100, 2, 2, 40, 20, 50, 25, 29, 15, DifficultyType.Event);
-            Monster mirage = new Monster("Mirror_Reflection", 100, 2, 2, 40, 20, 30, 18, 24, 15, DifficultyType.Event);
+            Monster sleeper = new Monster("The_Sleeper", 100, 200, 200, 35, 15, 50, 28, 35, 15, DifficultyType.Boss);
+            Monster sleeperGuard = new Monster("The_Sleeper_Guardian", 100, 150, 150, 35, 15, 40, 13, 18, 10, DifficultyType.Boss);
+            Monster gaunter = new Monster("Gaunter_oDim", 100, 2, 2, 40, 20, 50, 21, 25, 15, DifficultyType.Event);
+            Monster mirage = new Monster("Mirror_Reflection", 100, 2, 2, 40, 20, 30, 15, 22, 15, DifficultyType.Event);
 
             List<Monster> monsters = new List<Monster> { gaunter, mirage, sleeperGuard, arachas,vampire, wildDog, penitent, tentacles, orkwarrior, leszy, sleeper, gargoyle, boneSoldier, boneArbalest, rattler, creeper, cannon, bigCrab, ghost, giant, ghoul, maggot, webber, webberSpitter, brigandTrainee, brigand, floutist, boneShielder };
             expeditionChoiceUserControl.Monsters = monsters;
