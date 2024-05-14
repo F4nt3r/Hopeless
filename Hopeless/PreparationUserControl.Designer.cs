@@ -117,7 +117,7 @@
             toolTip1 = new ToolTip(components);
             Shop = new FlowLayoutPanel();
             Roll = new Button();
-            exitButton = new Button();
+            backButton = new Button();
             SortKnight = new Button();
             SortRogue = new Button();
             SortCleric = new Button();
@@ -1044,15 +1044,15 @@
             Roll.UseVisualStyleBackColor = true;
             Roll.Click += Roll_Click;
             // 
-            // exitButton
+            // backButton
             // 
-            exitButton.Location = new Point(13, 800);
-            exitButton.Name = "exitButton";
-            exitButton.Size = new Size(150, 50);
-            exitButton.TabIndex = 27;
-            exitButton.Text = "Exit";
-            exitButton.UseVisualStyleBackColor = true;
-            exitButton.Click += exitButton_Click;
+            backButton.Location = new Point(13, 800);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(150, 50);
+            backButton.TabIndex = 27;
+            backButton.Text = "Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += returnButton_Click;
             // 
             // SortKnight
             // 
@@ -1113,7 +1113,7 @@
             Controls.Add(SortCleric);
             Controls.Add(SortRogue);
             Controls.Add(SortKnight);
-            Controls.Add(exitButton);
+            Controls.Add(backButton);
             Controls.Add(Roll);
             Controls.Add(Shop);
             Controls.Add(goldLabel);
@@ -1243,7 +1243,7 @@
         private ToolTip toolTip1;
         private FlowLayoutPanel Shop;
         private Button Roll;
-        private Button exitButton;
+        private Button backButton;
         private Label character3ClassName;
         private Label character2ClassName;
         private Label character1ClassName;

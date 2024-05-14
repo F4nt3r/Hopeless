@@ -62,6 +62,14 @@ namespace Hopeless
             return fileExists;
         }
 
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to escape from here?", "Have you lost hope?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+               Application.Exit();
 
+            }
+        }
     }
 }

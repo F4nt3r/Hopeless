@@ -1598,15 +1598,14 @@ namespace Hopeless
         }
 
 
-
-        private void exitButton_Click(object sender, EventArgs e)
+        public event EventHandler ReturnButtonClicked;
+        private void returnButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to escape from here?", "Have you lost hope?", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
+            ReturnButtonClicked?.Invoke(this, EventArgs.Empty);
+          
                 SaveGameState();
-                Application.Exit();
-            }
+                
+            
         }
         private void PlaySellAndBuySound()
         {
