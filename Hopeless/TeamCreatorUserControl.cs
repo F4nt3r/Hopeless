@@ -413,30 +413,26 @@ namespace Hopeless
             {
                 Knight knight = new Knight(id, firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
                 ChooseCharacters.Add(knight);
-                StarterInventory.Add(new Weapon((Weapon)CommonInventory[0]));
-                StarterInventory.Add(new Armor((Armor)CommonInventory[1]));
+                GenerateStarterInventory(character);
 
             }
             else if (character.CharacterType == CharacterType.Rogue)
             {
                 Rogue rogue = new Rogue(id, firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
                 ChooseCharacters.Add(rogue);
-                StarterInventory.Add(new Weapon((Weapon)CommonInventory[2]));
-                StarterInventory.Add(new Armor((Armor)CommonInventory[3]));
+                GenerateStarterInventory(character);
             }
             else if (character.CharacterType == CharacterType.Cleric)
             {
                 Cleric cleric = new Cleric(id, firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
                 ChooseCharacters.Add(cleric);
-                StarterInventory.Add(new Weapon((Weapon)CommonInventory[4]));
-                StarterInventory.Add(new Armor((Armor)CommonInventory[5]));
+                GenerateStarterInventory(character);
             }
             else if (character.CharacterType == CharacterType.Joker)
             {
                 Joker joker = new Joker(id, firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
                 ChooseCharacters.Add(joker);
-                StarterInventory.Add(new Weapon((Weapon)CommonInventory[6]));
-                StarterInventory.Add(new Armor((Armor)CommonInventory[7]));
+                GenerateStarterInventory(character);
             }
         }
 
@@ -444,6 +440,14 @@ namespace Hopeless
         private void startButton_Click(object sender, EventArgs e)
         {
             startButtonClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void GenerateStarterInventory(Character character)
+        {
+            IInventory weapon = CommonInventory.Find(x => x.AllowedCharacters.Contains(character.CharacterType) && x is Weapon);
+            IInventory armor = CommonInventory.Find(x => x.AllowedCharacters.Contains(character.CharacterType) && x is Armor);
+            StarterInventory.Add(new Weapon((Weapon)weapon));
+            StarterInventory.Add(new Armor((Armor)armor));
         }
     }
 }

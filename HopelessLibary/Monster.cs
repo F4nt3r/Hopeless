@@ -32,7 +32,7 @@ namespace HopelessLibary
         public Skill? Skill1 { get; } = null;
 
         public Skill? Skill2 { get;  } = null;
-        public ICreature Target { get; set; }
+        
 
         public Monster() { }
         [JsonConstructor]

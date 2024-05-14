@@ -13,6 +13,7 @@ namespace HopelessLibary
         string Name { get; set; }
         string Display();
         void Equip(Character target);
+        List<CharacterType> AllowedCharacters { get; set; }
 
     }
 }

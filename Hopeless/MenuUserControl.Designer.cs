@@ -31,6 +31,7 @@
             pictureBox1 = new PictureBox();
             kontynuujGreButton = new Button();
             nowaGraButton = new Button();
+            exitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -69,10 +70,22 @@
             nowaGraButton.UseVisualStyleBackColor = false;
             nowaGraButton.Click += newGameButton_Click;
             // 
+            // exitButton
+            // 
+            exitButton.BackColor = Color.White;
+            exitButton.Location = new Point(638, 762);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(150, 50);
+            exitButton.TabIndex = 3;
+            exitButton.Text = "Exit";
+            exitButton.UseVisualStyleBackColor = false;
+            exitButton.Click += exitButton_Click;
+            // 
             // MenuUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(exitButton);
             Controls.Add(nowaGraButton);
             Controls.Add(kontynuujGreButton);
             Controls.Add(pictureBox1);
@@ -87,5 +100,6 @@
         private PictureBox pictureBox1;
         private Button kontynuujGreButton;
         private Button nowaGraButton;
+        private Button exitButton;
     }
 }
