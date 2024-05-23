@@ -19,6 +19,10 @@ namespace Hopeless
         public List<Character> ChooseCharacters = new List<Character>();
         public List<IInventory> CommonInventory { get; set; }
         public List<IInventory> StarterInventory = new List<IInventory>();
+        private int index1 = 0;
+        private int index2 = 0;
+        private int index3 = 0;
+        private int index4 = 0;
 
 
         public TeamCreatorUserControl()
@@ -47,81 +51,9 @@ namespace Hopeless
 
         private void LoadClass()
         {
-            character1.AllowDrop = true;
-            character1.DragDrop += Character1_DragDrop;
-            character1.DragEnter += Character1_DragEnter;
-            character1.DragDrop += Character1_DragDrop;
 
-            character2.AllowDrop = true;
-            character2.DragDrop += Character2_DragDrop;
-            character2.DragEnter += Character2_DragEnter;
-            character2.DragDrop += Character2_DragDrop;
-
-            character3.AllowDrop = true;
-            character3.DragDrop += Character3_DragDrop;
-            character3.DragEnter += Character3_DragEnter;
-            character3.DragDrop += Character3_DragDrop;
-
-            character4.AllowDrop = true;
-            character4.DragDrop += Character4_DragDrop;
-            character4.DragEnter += Character4_DragEnter;
-            character4.DragDrop += Character4_DragDrop;
-
-            foreach (Character character in Characters)
-            {
-                Label label = new Label();
-                label.Text = character.Name;
-                label.AutoSize = false;
-                label.Height = 60;
-                label.TextAlign = ContentAlignment.MiddleCenter;
-                label.BorderStyle = BorderStyle.FixedSingle;
-                CharacterClass.Controls.Add(label);
-            }
-            foreach (Control control in CharacterClass.Controls)
-            {
-                control.MouseDown += ItemMouseDown;
-                control.MouseHover += ItemMouseHover;
-            }
-
-
-        }
-
-        private void ItemMouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Control control = (Control)sender;
-                control.DoDragDrop(control.Text, DragDropEffects.Move);
-
-            }
-        }
-
-        private void ItemMouseHover(object sender, EventArgs e)
-        {
-            Label label = sender as Label;
-            if (label.AccessibleDescription != "  ")
-            {
-                toolTip1.SetToolTip(label, label.AccessibleDescription);
-            }
-
-        }
-
-        private void Character1_DragEnter(object sender, DragEventArgs e)
-        {
-            //knightWeapon.BackColor = Color.LightGray;
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void Character1_DragLeave(object sender, EventArgs e)
-        {
-            //knightWeapon.BackColor = SystemColors.Control;
-        }
-        private void Character1_DragDrop(object sender, DragEventArgs e)
-        {
-            string draggedClassText = (string)e.Data.GetData(DataFormats.Text);
-            character1.Text = draggedClassText;
-
-            Character character = Characters.Find(c => c.Name == draggedClassText);
+            Character character = Characters[0];
+            character1.Text = Characters[0].Name;
             character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
             character1Name.Text = "Name: ";
             character1TextBox.Text = character.Name;
@@ -168,26 +100,8 @@ namespace Hopeless
             character1Skill2.MouseHover += ItemMouseHover;
             character1Skill2.AccessibleDescription = character.Skill2?.Description;
 
-            checkTeam();
 
-
-        }
-        private void Character2_DragEnter(object sender, DragEventArgs e)
-        {
-            //knightWeapon.BackColor = Color.LightGray;
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void Character2_DragLeave(object sender, EventArgs e)
-        {
-            //knightWeapon.BackColor = SystemColors.Control;
-        }
-        private void Character2_DragDrop(object sender, DragEventArgs e)
-        {
-            string draggedClassText = (string)e.Data.GetData(DataFormats.Text);
-            character2.Text = draggedClassText;
-
-            Character character = Characters.Find(c => c.Name == draggedClassText);
+            character2.Text = Characters[0].Name;
             character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
             character2Name.Text = "Name: ";
             character2TextBox.Text = character.Name;
@@ -233,25 +147,9 @@ namespace Hopeless
             character2Skill2.MouseHover += ItemMouseHover;
             character2Skill2.AccessibleDescription = character.Skill2?.Description;
 
-            checkTeam();
 
-        }
-        private void Character3_DragEnter(object sender, DragEventArgs e)
-        {
-            //knightWeapon.BackColor = Color.LightGray;
-            e.Effect = DragDropEffects.Move;
-        }
 
-        private void Character3_DragLeave(object sender, EventArgs e)
-        {
-            //knightWeapon.BackColor = SystemColors.Control;
-        }
-        private void Character3_DragDrop(object sender, DragEventArgs e)
-        {
-            string draggedClassText = (string)e.Data.GetData(DataFormats.Text);
-            character3.Text = draggedClassText;
-
-            Character character = Characters.Find(c => c.Name == draggedClassText);
+            character3.Text = Characters[0].Name;
             character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
             character3Name.Text = "Name: ";
             character3TextBox.Text = character.Name;
@@ -297,25 +195,9 @@ namespace Hopeless
             character3Skill2.MouseHover += ItemMouseHover;
             character3Skill2.AccessibleDescription = character.Skill2?.Description;
 
-            checkTeam();
 
-        }
-        private void Character4_DragEnter(object sender, DragEventArgs e)
-        {
-            //knightWeapon.BackColor = Color.LightGray;
-            e.Effect = DragDropEffects.Move;
-        }
 
-        private void Character4_DragLeave(object sender, EventArgs e)
-        {
-            //knightWeapon.BackColor = SystemColors.Control;
-        }
-        private void Character4_DragDrop(object sender, DragEventArgs e)
-        {
-            string draggedClassText = (string)e.Data.GetData(DataFormats.Text);
-            character4.Text = draggedClassText;
-
-            Character character = Characters.Find(c => c.Name == draggedClassText);
+            character4.Text = Characters[0].Name;
             character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
             character4Name.Text = "Name: ";
             character4TextBox.Text = character.Name;
@@ -363,7 +245,448 @@ namespace Hopeless
 
             checkTeam();
 
+
+
         }
+
+        private void character1left_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index1 = (index1 - 1 + Characters.Count) % Characters.Count;
+            Character character = Characters[index1];
+            character1.Text = character.Name;
+            character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character1Name.Text = "Name: ";
+            character1TextBox.Text = character.Name;
+            character1Level.Text = "Level: " + character.Level;
+            character1Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character1Strength.Text = "Strength: " + character.Strength;
+            character1Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character1Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character1Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character1Resistance.Text = "Resistance: " + character.Resistance;
+            character1Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character1Initiative.Text = "Initiative: " + character.Initiative;
+            character1Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character1Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character1Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character1Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character1Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character1Block.Text = " ";
+            }
+
+
+            character1Skill1.Text = character.Skill1.Name;
+            character1Skill1.MouseHover += ItemMouseHover;
+            character1Skill1.AccessibleDescription = character.Skill1?.Description;
+            character1Skill2.Text = character.Skill2.Name;
+            character1Skill2.MouseHover += ItemMouseHover;
+            character1Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+
+        }
+        private void character1right_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index1 = (index1 + 1) % Characters.Count;
+            Character character = Characters[index1];
+            character1.Text = character.Name;
+            character1Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character1Name.Text = "Name: ";
+            character1TextBox.Text = character.Name;
+            character1Level.Text = "Level: " + character.Level;
+            character1Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character1Strength.Text = "Strength: " + character.Strength;
+            character1Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character1Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character1Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character1Resistance.Text = "Resistance: " + character.Resistance;
+            character1Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character1Initiative.Text = "Initiative: " + character.Initiative;
+            character1Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character1Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character1Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character1Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character1Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character1Block.Text = " ";
+            }
+
+
+            character1Skill1.Text = character.Skill1.Name;
+            character1Skill1.MouseHover += ItemMouseHover;
+            character1Skill1.AccessibleDescription = character.Skill1?.Description;
+            character1Skill2.Text = character.Skill2.Name;
+            character1Skill2.MouseHover += ItemMouseHover;
+            character1Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+
+
+        private void character2left_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index2 = (index2 - 1 + Characters.Count) % Characters.Count;
+            Character character = Characters[index2];
+            character2.Text = character.Name;
+            character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character2Name.Text = "Name: ";
+            character2TextBox.Text = character.Name;
+            character2Level.Text = "Level: " + character.Level;
+            character2Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character2Strength.Text = "Strength: " + character.Strength;
+            character2Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character2Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character2Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character2Resistance.Text = "Resistance: " + character.Resistance;
+            character2Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character2Initiative.Text = "Initiative: " + character.Initiative;
+            character2Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character2Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character2Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character2Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character2Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character2Block.Text = " ";
+            }
+
+            character2Skill1.Text = character.Skill1.Name;
+            character2Skill1.MouseHover += ItemMouseHover;
+            character2Skill1.AccessibleDescription = character.Skill1?.Description;
+            character2Skill2.Text = character.Skill2.Name;
+            character2Skill2.MouseHover += ItemMouseHover;
+            character2Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+        private void character2right_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index2 = (index2 + 1) % Characters.Count;
+            Character character = Characters[index2];
+            character2.Text = character.Name;
+            character2Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character2Name.Text = "Name: ";
+            character2TextBox.Text = character.Name;
+            character2Level.Text = "Level: " + character.Level;
+            character2Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character2Strength.Text = "Strength: " + character.Strength;
+            character2Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character2Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character2Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character2Resistance.Text = "Resistance: " + character.Resistance;
+            character2Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character2Initiative.Text = "Initiative: " + character.Initiative;
+            character2Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character2Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character2Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character2Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character2Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character2Block.Text = " ";
+            }
+
+            character2Skill1.Text = character.Skill1.Name;
+            character2Skill1.MouseHover += ItemMouseHover;
+            character2Skill1.AccessibleDescription = character.Skill1?.Description;
+            character2Skill2.Text = character.Skill2.Name;
+            character2Skill2.MouseHover += ItemMouseHover;
+            character2Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+
+        private void character3left_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index3 = (index3 - 1 + Characters.Count) % Characters.Count;
+            Character character = Characters[index3];
+            character3.Text = character.Name;
+            character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character3Name.Text = "Name: ";
+            character3TextBox.Text = character.Name;
+            character3Level.Text = "Level: " + character.Level;
+            character3Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character3Strength.Text = "Strength: " + character.Strength;
+            character3Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character3Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character3Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character3Resistance.Text = "Resistance: " + character.Resistance;
+            character3Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character3Initiative.Text = "Initiative: " + character.Initiative;
+            character3Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character3Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character3Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character3Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character3Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character3Block.Text = " ";
+            }
+
+            character3Skill1.Text = character.Skill1.Name;
+            character3Skill1.MouseHover += ItemMouseHover;
+            character3Skill1.AccessibleDescription = character.Skill1?.Description;
+            character3Skill2.Text = character.Skill2.Name;
+            character3Skill2.MouseHover += ItemMouseHover;
+            character3Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+        private void character3right_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index3 = (index3 + 1) % Characters.Count;
+            Character character = Characters[index3];
+            character3.Text = character.Name;
+            character3Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character3Name.Text = "Name: ";
+            character3TextBox.Text = character.Name;
+            character3Level.Text = "Level: " + character.Level;
+            character3Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character3Strength.Text = "Strength: " + character.Strength;
+            character3Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character3Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character3Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character3Resistance.Text = "Resistance: " + character.Resistance;
+            character3Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character3Initiative.Text = "Initiative: " + character.Initiative;
+            character3Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character3Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character3Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character3Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character3Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character3Block.Text = " ";
+            }
+
+            character3Skill1.Text = character.Skill1.Name;
+            character3Skill1.MouseHover += ItemMouseHover;
+            character3Skill1.AccessibleDescription = character.Skill1?.Description;
+            character3Skill2.Text = character.Skill2.Name;
+            character3Skill2.MouseHover += ItemMouseHover;
+            character3Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+
+        private void character4left_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index4 = (index4 - 1 + Characters.Count) % Characters.Count;
+            Character character = Characters[index4];
+            character4.Text = character.Name;
+            character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character4Name.Text = "Name: ";
+            character4TextBox.Text = character.Name;
+            character4Level.Text = "Level: " + character.Level;
+            character4Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character4Strength.Text = "Strength: " + character.Strength;
+            character4Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character4Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character4Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character4Resistance.Text = "Resistance: " + character.Resistance;
+            character4Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character4Initiative.Text = "Initiative: " + character.Initiative;
+            character4Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character4Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character4Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character4Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character4Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character4Block.Text = " ";
+            }
+
+            character4Skill1.Text = character.Skill1.Name;
+            character4Skill1.MouseHover += ItemMouseHover;
+            character4Skill1.AccessibleDescription = character.Skill1?.Description;
+            character4Skill2.Text = character.Skill2.Name;
+            character4Skill2.MouseHover += ItemMouseHover;
+            character4Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+        private void character4right_Click(object sender, EventArgs e)
+        {
+            rozpocznijButton.Enabled = false;
+            index4 = (index4 + 1) % Characters.Count;
+            Character character = Characters[index4];
+            character4.Text = character.Name;
+            character4Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(character.CharacterType.ToString().ToLower() + "Picture");
+            character4Name.Text = "Name: ";
+            character4TextBox.Text = character.Name;
+            character4Level.Text = "Level: " + character.Level;
+            character4Exp.Text = "EXP Points: " + character.ExperiencePoints;
+            character4Strength.Text = "Strength: " + character.Strength;
+            character4Dexterity.Text = "Dexterity: " + character.Dexterity;
+            character4Intelligence.Text = "Intelligence: " + character.Intelligence;
+            character4Hp.Text = "HP: " + character.CurrentHP + "/" + character.MaxHP;
+            character4Resistance.Text = "Resistance: " + character.Resistance;
+            character4Crit.Text = "Crit Chance: " + character.CritChance + "%";
+            character4Initiative.Text = "Initiative: " + character.Initiative;
+            character4Dmg.Text = "Attack Damage: " + character.MinDmg + "-" + character.MaxDmg;
+            if (character.CharacterType == CharacterType.Knight)
+            {
+                Knight knight = (Knight)character;
+                character4Block.Text = "Block chance: " + knight.BlockChance;
+            }
+            else if (character.CharacterType == CharacterType.Rogue)
+            {
+                Rogue rogue = (Rogue)character;
+                character4Block.Text = "Dodge Chance: " + rogue.DodgeChance;
+            }
+            else if (character.CharacterType == CharacterType.Cleric)
+            {
+                Cleric cleric = (Cleric)character;
+                character4Block.Text = "Blessing Chance: " + cleric.BlessingChance;
+            }
+            else if (character.CharacterType == CharacterType.Joker)
+            {
+                Joker joker = (Joker)character;
+                character4Block.Text = "DoubleAttack chance: " + joker.DoubleAtackChance;
+            }
+            else
+            {
+                character4Block.Text = " ";
+            }
+
+            character4Skill1.Text = character.Skill1.Name;
+            character4Skill1.MouseHover += ItemMouseHover;
+            character4Skill1.AccessibleDescription = character.Skill1?.Description;
+            character4Skill2.Text = character.Skill2.Name;
+            character4Skill2.MouseHover += ItemMouseHover;
+            character4Skill2.AccessibleDescription = character.Skill2?.Description;
+            checkTeam();
+        }
+
+
+
+
+
+        private void ItemMouseHover(object sender, EventArgs e)
+        {
+            Label label = sender as Label;
+            if (label.AccessibleDescription != "  ")
+            {
+                toolTip1.SetToolTip(label, label.AccessibleDescription);
+            }
+
+        }
+
 
 
         private void checkTeam()
@@ -449,5 +772,7 @@ namespace Hopeless
             StarterInventory.Add(new Weapon((Weapon)weapon));
             StarterInventory.Add(new Armor((Armor)armor));
         }
+
+        
     }
 }

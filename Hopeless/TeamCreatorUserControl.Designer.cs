@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            CharacterClass = new FlowLayoutPanel();
             tabControl1 = new TabControl();
             knightPostac = new TabPage();
             character1Picture = new PictureBox();
@@ -118,6 +117,14 @@
             saveTeamButton = new Button();
             pictureBox4 = new PictureBox();
             toolTip1 = new ToolTip(components);
+            character1left = new Button();
+            character1right = new Button();
+            character2left = new Button();
+            character2right = new Button();
+            character3left = new Button();
+            character3right = new Button();
+            character4left = new Button();
+            character4right = new Button();
             tabControl1.SuspendLayout();
             knightPostac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)character1Picture).BeginInit();
@@ -140,14 +147,6 @@
             tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
-            // 
-            // CharacterClass
-            // 
-            CharacterClass.BackColor = Color.Bisque;
-            CharacterClass.Location = new Point(48, 634);
-            CharacterClass.Name = "CharacterClass";
-            CharacterClass.Size = new Size(335, 205);
-            CharacterClass.TabIndex = 9;
             // 
             // tabControl1
             // 
@@ -1065,10 +1064,98 @@
             pictureBox4.TabIndex = 20;
             pictureBox4.TabStop = false;
             // 
+            // character1left
+            // 
+            character1left.Location = new Point(111, 475);
+            character1left.Name = "character1left";
+            character1left.Size = new Size(75, 23);
+            character1left.TabIndex = 21;
+            character1left.Text = "<-";
+            character1left.UseVisualStyleBackColor = true;
+            character1left.Click += character1left_Click;
+            // 
+            // character1right
+            // 
+            character1right.Location = new Point(258, 475);
+            character1right.Name = "character1right";
+            character1right.Size = new Size(75, 23);
+            character1right.TabIndex = 22;
+            character1right.Text = "->";
+            character1right.UseVisualStyleBackColor = true;
+            character1right.Click += character1right_Click;
+            // 
+            // character2left
+            // 
+            character2left.Location = new Point(472, 475);
+            character2left.Name = "character2left";
+            character2left.Size = new Size(75, 23);
+            character2left.TabIndex = 23;
+            character2left.Text = "<-";
+            character2left.UseVisualStyleBackColor = true;
+            character2left.Click += character2left_Click;
+            // 
+            // character2right
+            // 
+            character2right.Location = new Point(619, 475);
+            character2right.Name = "character2right";
+            character2right.Size = new Size(75, 23);
+            character2right.TabIndex = 24;
+            character2right.Text = "->";
+            character2right.UseVisualStyleBackColor = true;
+            character2right.Click += character2right_Click;
+            // 
+            // character3left
+            // 
+            character3left.Location = new Point(813, 475);
+            character3left.Name = "character3left";
+            character3left.Size = new Size(75, 23);
+            character3left.TabIndex = 25;
+            character3left.Text = "<-";
+            character3left.UseVisualStyleBackColor = true;
+            character3left.Click += character3left_Click;
+            // 
+            // character3right
+            // 
+            character3right.Location = new Point(960, 475);
+            character3right.Name = "character3right";
+            character3right.Size = new Size(75, 23);
+            character3right.TabIndex = 26;
+            character3right.Text = "->";
+            character3right.UseVisualStyleBackColor = true;
+            character3right.Click += character3right_Click;
+            // 
+            // character4left
+            // 
+            character4left.Location = new Point(1179, 475);
+            character4left.Name = "character4left";
+            character4left.Size = new Size(75, 23);
+            character4left.TabIndex = 27;
+            character4left.Text = "<-";
+            character4left.UseVisualStyleBackColor = true;
+            character4left.Click += character4left_Click;
+            // 
+            // character4right
+            // 
+            character4right.Location = new Point(1326, 475);
+            character4right.Name = "character4right";
+            character4right.Size = new Size(75, 23);
+            character4right.TabIndex = 28;
+            character4right.Text = "->";
+            character4right.UseVisualStyleBackColor = true;
+            character4right.Click += character4right_Click;
+            // 
             // TeamCreatorUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(character4right);
+            Controls.Add(character4left);
+            Controls.Add(character3right);
+            Controls.Add(character3left);
+            Controls.Add(character2right);
+            Controls.Add(character2left);
+            Controls.Add(character1right);
+            Controls.Add(character1left);
             Controls.Add(saveTeamButton);
             Controls.Add(rozpocznijButton);
             Controls.Add(character4);
@@ -1079,7 +1166,6 @@
             Controls.Add(tabControl3);
             Controls.Add(tabControl2);
             Controls.Add(tabControl1);
-            Controls.Add(CharacterClass);
             Controls.Add(pictureBox4);
             Name = "TeamCreatorUserControl";
             Size = new Size(1424, 861);
@@ -1112,8 +1198,6 @@
         }
 
         #endregion
-
-        private FlowLayoutPanel CharacterClass;
         private TabControl tabControl1;
         private TabPage knightPostac;
         private PictureBox character1Picture;
@@ -1202,5 +1286,13 @@
         private TextBox character2TextBox;
         private TextBox character3TextBox;
         private TextBox character4TextBox;
+        private Button character1left;
+        private Button character1right;
+        private Button character2left;
+        private Button character2right;
+        private Button character3left;
+        private Button character3right;
+        private Button character4left;
+        private Button character4right;
     }
 }
