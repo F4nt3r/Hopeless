@@ -1,4 +1,5 @@
 ﻿using HopelessLibary.Intefrace;
+using System.Drawing;
 
 namespace HopelessLibary
 {
@@ -29,6 +30,7 @@ namespace HopelessLibary
         public abstract Skill? Skill2 { get; }
  
         public CharacterType CharacterType { get; set ; }
+        public Point Location { get; set; }
         
 
         public Character(int id,string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative,int minDmg,int maxDmg, CharacterType type)

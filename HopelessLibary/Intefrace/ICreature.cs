@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ public interface ICreature
      Skill? Skill1 { get; }
      Skill? Skill2 { get; }
      CharacterType CharacterType { get; set; }
-    
+    public Point Location { get; set; }
     string BasicAttackDescription => "You attack the enemy with your weapon" + Environment.NewLine + "DMG: " + MinDmg + "-" + MaxDmg;
      void AddBuff(Buff buff);
      void AddDeBuff(DeBuff debuff);

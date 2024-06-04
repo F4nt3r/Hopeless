@@ -22,6 +22,7 @@ namespace Hopeless
         public event EventHandler EventChoice;
         public bool EventResult;
         private bool playerActionTaken = false;
+        public List<PictureBox> pictureBoxes = new();
         public ExpeditionUserControl()
         {
             InitializeComponent();
@@ -90,6 +91,8 @@ namespace Hopeless
                                     response = figure.Skill1?
                                     .SkillHandler
                                     .Invoke(figure, fightOrder);
+
+                                 
                                 }
                                 else
                                 {
@@ -98,6 +101,7 @@ namespace Hopeless
                                         response = figure.Skill1?
                                     .SkillHandler
                                     .Invoke(figure, target);
+
                                     }
                                     else if (target != null && figure.Skill1.TargetType == TargetType.Ally && target.Any(x => x.CharacterType != CharacterType.Monster))
                                     {
@@ -168,19 +172,31 @@ namespace Hopeless
                                 playerActionTaken = true;
 
                             };
-                            EventHandler handlerBassicAttack = (s, e) =>
+                            EventHandler handlerBassicAttack = async (s, e) =>
                             {
                                 if (target.Count != 0)
                                 {
                                     int hp = target[0].CurrentHP;
                                     figure.BasicAttack(target[0], out int dmg);
 
+
+
                                     PlayBasicAttackSound();
+
+
                                     playerActionTaken = true;
-                                    if (target[0].CurrentHP != hp)
-                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals: " + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
-                                    else
-                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
+                                    if (target[0].CurrentHP != hp) { 
+                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals: " + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
+                                    PictureBox targetPictureBox = pictureBoxes.FirstOrDefault(p => p.Location == target[0].Location);
+                                    if (targetPictureBox != null)
+                                    {
+                                        await ShakeAnimation(targetPictureBox);
+                                    }
+                                    }
+                                else
+                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
+
+                                 
                                 }
 
                             };
@@ -247,13 +263,22 @@ namespace Hopeless
 
                                 figure.BasicAttack(target[0], out int dmg);
                                 PlayBasicAttackSound();
+                               
                                 if (target[0].CurrentHP != hp)
+                                {                          
                                     logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals:" + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
+                                    PictureBox targetPictureBox = pictureBoxes.FirstOrDefault(p => p.Location == target[0].Location);
+                                    if (targetPictureBox != null)
+                                    {
+                                        await ShakeAnimation(targetPictureBox);
+                                    }
+                                }
                                 else if (target[0].CurrentHP == hp && target is Rogue)
                                     logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
                                 else
                                     logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he blocked" + Environment.NewLine + logBattleBox.Text;
 
+                               
 
                             }
 
@@ -282,6 +307,30 @@ namespace Hopeless
             }
 
         }
+     
+
+        private async Task ShakeAnimation(PictureBox picture)
+        {
+            var originalLocation = picture.Location;
+            Random random = new Random();
+            int shakeAmplitude = 4;
+            int shakeDuration = 500; 
+            int shakeCount = 20;
+
+            for (int i = 0; i < shakeCount; i++)
+            {
+                int offsetX = random.Next(-shakeAmplitude, shakeAmplitude);
+                int offsetY = random.Next(-shakeAmplitude, shakeAmplitude);
+                picture.Location = new Point(originalLocation.X + offsetX, originalLocation.Y + offsetY);
+                await Task.Delay(shakeDuration / shakeCount);
+            }
+
+            picture.Location = originalLocation;
+        }
+
+
+
+
         private void RefreshEffectBox()
         {
             effectBox.Clear();
@@ -558,6 +607,26 @@ namespace Hopeless
             character2Picture.BackColor = Color.White;
             character3Picture.BackColor = Color.White;
             character4Picture.BackColor = Color.White;
+
+            Characters[0].Location = character1Picture.Location;
+            Characters[1].Location = character2Picture.Location;
+            Characters[2].Location = character3Picture.Location;
+            Characters[3].Location = character4Picture.Location;
+
+            Expedition.Monsters[0].Location = enemy1Picture.Location;
+            Expedition.Monsters[1].Location = enemy2Picture.Location;
+            Expedition.Monsters[2].Location = enemy3Picture.Location;
+            Expedition.Monsters[3].Location = enemy4Picture.Location;
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox)
+                {
+                   pictureBoxes.Add(control as PictureBox);
+                }
+
+            }
+
             basicAttackLabel.Text = "Base Attack";
             skill1Label.Text = "";
             skill2Label.Text = "";
