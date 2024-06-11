@@ -46,7 +46,11 @@ namespace HopelessLibary
             BlockChance = blockChance;
 
         }
-
+        public Knight(Knight existingKnight)
+       : base(existingKnight.Id, existingKnight.Name, existingKnight.ExperiencePoints, existingKnight.Strength, existingKnight.Dexterity, existingKnight.Intelligence, existingKnight.CurrentHP, existingKnight.MaxHP, existingKnight.Resistance, existingKnight.BaseResistance, existingKnight.CritChance, existingKnight.Initiative, existingKnight.MinDmg, existingKnight.MaxDmg, existingKnight.CharacterType)
+        {
+            BlockChance = existingKnight.BlockChance;
+        }
 
         public override void LevelUp()
         {

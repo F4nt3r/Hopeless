@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -731,33 +732,27 @@ namespace Hopeless
 
         private void checkClass(string name, string firstname, int id)
         {
+            // Znajdź istniejący obiekt character
             Character character = Characters.Find(c => c.Name == name);
-            if (character.CharacterType == CharacterType.Knight)
-            {
-                Knight knight = new Knight(id, firstname, 0, 10, 5, 2, 50, 50, 50, 50, 10, 34, 1, 2, 33, CharacterType.Knight);
-                ChooseCharacters.Add(knight);
-                GenerateStarterInventory(character);
 
-            }
-            else if (character.CharacterType == CharacterType.Rogue)
+            if (character != null)
             {
-                Rogue rogue = new Rogue(id, firstname, 0, 2, 10, 5, 35, 35, 30, 30, 50, 70, 1, 2, 33, CharacterType.Rogue);
-                ChooseCharacters.Add(rogue);
-                GenerateStarterInventory(character);
-            }
-            else if (character.CharacterType == CharacterType.Cleric)
-            {
-                Cleric cleric = new Cleric(id, firstname, 0, 2, 5, 10, 45, 45, 40, 40, 30, 30, 1, 2, 15, CharacterType.Cleric);
-                ChooseCharacters.Add(cleric);
-                GenerateStarterInventory(character);
-            }
-            else if (character.CharacterType == CharacterType.Joker)
-            {
-                Joker joker = new Joker(id, firstname, 0, 2, 7, 8, 30, 30, 30, 30, 50, 50, 1, 2, 20, CharacterType.Joker);
-                ChooseCharacters.Add(joker);
-                GenerateStarterInventory(character);
+          
+                Type characterType = character.GetType();
+                ConstructorInfo constructor = characterType.GetConstructor(new Type[] { characterType });
+
+                if (constructor != null)
+                {
+                    // Utwórz nową instancję używając konstruktora kopiującego
+                    Character newCharacter = (Character)constructor.Invoke(new object[] { character });
+                    newCharacter.Name = firstname;
+                    newCharacter.Id = id;
+                    ChooseCharacters.Add(newCharacter);
+                    GenerateStarterInventory(newCharacter);
+                }
             }
         }
+
 
         public event EventHandler startButtonClicked;
         private void startButton_Click(object sender, EventArgs e)
