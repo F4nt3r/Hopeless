@@ -94,16 +94,22 @@ namespace Hopeless
 
                                  
                                 }
+                                else if (figure.Skill1.SkillType == SkillType.Self)
+                                {
+                                    response = figure.Skill1?
+                                   .SkillHandler
+                                   .Invoke(figure, fightOrder);
+                                }
                                 else
                                 {
-                                    if (target != null && figure.Skill1.TargetType == TargetType.Enemy && target.Any(x => x.CharacterType == CharacterType.Monster))
+                                    if (target != null && figure.Skill1.TargetType == TargetType.Enemy && figure.Skill1.SkillType == SkillType.Single && target.Any(x => x.CharacterType == CharacterType.Monster))
                                     {
                                         response = figure.Skill1?
                                     .SkillHandler
                                     .Invoke(figure, target);
 
                                     }
-                                    else if (target != null && figure.Skill1.TargetType == TargetType.Ally && target.Any(x => x.CharacterType != CharacterType.Monster))
+                                    else if (target != null && figure.Skill1.TargetType == TargetType.Ally && figure.Skill1.SkillType == SkillType.Single && target.Any(x => x.CharacterType != CharacterType.Monster))
                                     {
                                         response = figure.Skill1?
                                          .SkillHandler
@@ -137,16 +143,21 @@ namespace Hopeless
                                     response = figure.Skill2?
                                     .SkillHandler
                                     .Invoke(figure, fightOrder);
+                                }else if(figure.Skill2.SkillType == SkillType.Self)
+                                {
+                                    response = figure.Skill2?
+                                   .SkillHandler
+                                   .Invoke(figure, fightOrder);
                                 }
                                 else
                                 {
-                                    if (target[0] != null && figure.Skill2.TargetType == TargetType.Enemy && target[0].CharacterType == CharacterType.Monster)
+                                    if (target[0] != null && figure.Skill2.TargetType == TargetType.Enemy && figure.Skill2.SkillType == SkillType.Single && target[0].CharacterType == CharacterType.Monster)
                                     {
                                         response = figure.Skill2?
                                     .SkillHandler
                                     .Invoke(figure, target);
                                     }
-                                    else if (target[0] != null && figure.Skill2.TargetType == TargetType.Ally && target[0].CharacterType != CharacterType.Monster)
+                                    else if (target[0] != null && figure.Skill2.TargetType == TargetType.Ally && figure.Skill2.SkillType == SkillType.Single && target[0].CharacterType != CharacterType.Monster)
                                     {
                                         response = figure.Skill2?
                                          .SkillHandler

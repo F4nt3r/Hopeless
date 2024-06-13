@@ -39,7 +39,7 @@ namespace HopelessLibary
             get
             {
                 if (skill2 == null)
-                    skill2 = new("CritAndDmgBuff", 0, TargetType.Ally, SkillType.AoE, handlerCritAndDmgBuff, SKILL_2_DESCRIPTION);
+                    skill2 = new("CritAndDmgBuff", 0, TargetType.Ally, SkillType.Self, handlerCritAndDmgBuff, SKILL_2_DESCRIPTION);
 
                 return skill2;
             }

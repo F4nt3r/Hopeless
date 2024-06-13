@@ -9,6 +9,7 @@ namespace HopelessLibary.Enums
     public enum SkillType
     {
         Single,
-        AoE
+        AoE,
+        Self
     }
 }
