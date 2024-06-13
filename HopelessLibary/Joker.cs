@@ -1,6 +1,7 @@
 ﻿using HopelessLibary.Enums;
 using HopelessLibary.Helpers;
 using HopelessLibary.Intefrace;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +41,17 @@ namespace HopelessLibary
                 return skill2;
             }
         }
-
+        [JsonConstructor]
         public Joker(int id, string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int doubleAtackChance, CharacterType type) : base(id, name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg,type)
         {
             DoubleAtackChance = doubleAtackChance;
         }
+        public Joker(Joker existingJoker)
+      : base(existingJoker.Id, existingJoker.Name, existingJoker.ExperiencePoints, existingJoker.Strength, existingJoker.Dexterity, existingJoker.Intelligence, existingJoker.CurrentHP, existingJoker.MaxHP, existingJoker.Resistance, existingJoker.BaseResistance, existingJoker.CritChance, existingJoker.Initiative, existingJoker.MinDmg, existingJoker.MaxDmg, existingJoker.CharacterType)
+        {
+            DoubleAtackChance = existingJoker.DoubleAtackChance;
+        }
 
-     
 
         public override void BasicAttack<T>(T target, out int dmg) 
         {

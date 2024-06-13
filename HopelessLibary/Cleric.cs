@@ -1,6 +1,7 @@
 ﻿using HopelessLibary.Enums;
 using HopelessLibary.Helpers;
 using HopelessLibary.Intefrace;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,15 +42,19 @@ namespace HopelessLibary
                 return skill2;
             }
         }
-
+        [JsonConstructor]
         public Cleric(int id, string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int blessingChance, CharacterType type) : base(id, name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg, type)
         {
             BlessingChance = blessingChance;
         }
+        public Cleric(Cleric existingCleric)
+     : base(existingCleric.Id, existingCleric.Name, existingCleric.ExperiencePoints, existingCleric.Strength, existingCleric.Dexterity, existingCleric.Intelligence, existingCleric.CurrentHP, existingCleric.MaxHP, existingCleric.Resistance, existingCleric.BaseResistance, existingCleric.CritChance, existingCleric.Initiative, existingCleric.MinDmg, existingCleric.MaxDmg, existingCleric.CharacterType)
+        {
+            BlessingChance = existingCleric.BlessingChance;
+        }
 
-      
 
-      
+
 
 
         public override void BasicAttack<T>(T target, out int dmg)

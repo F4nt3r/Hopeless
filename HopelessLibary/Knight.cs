@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace HopelessLibary
 {
@@ -40,7 +41,9 @@ namespace HopelessLibary
                 return skill2;
             }
         }
+      
 
+        [Newtonsoft.Json.JsonConstructor]
         public Knight(int id, string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int blockChance, CharacterType type) : base(id,name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg, type)
         {
             BlockChance = blockChance;

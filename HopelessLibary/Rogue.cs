@@ -2,6 +2,7 @@
 using HopelessLibary.Helpers;
 using HopelessLibary.Intefrace;
 using NAudio.CoreAudioApi;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,13 +44,17 @@ namespace HopelessLibary
                 return skill2;
             }
         }
-
+        [JsonConstructor]
         public Rogue(int id, string name, int experiencePoints, int strength, int dexterity, int intelligence, int currentHP, int maxHP, int resistance, int baseResistance, int critChance, int initiative, int minDmg, int maxDmg, int dodgeChance, CharacterType type) : base(id,name, experiencePoints, strength, dexterity, intelligence, currentHP, maxHP, resistance, baseResistance, critChance, initiative, minDmg, maxDmg, type)
         {
             DodgeChance = dodgeChance;
         }
+        public Rogue(Rogue existingRogue)
+      : base(existingRogue.Id, existingRogue.Name, existingRogue.ExperiencePoints, existingRogue.Strength, existingRogue.Dexterity, existingRogue.Intelligence, existingRogue.CurrentHP, existingRogue.MaxHP, existingRogue.Resistance, existingRogue.BaseResistance, existingRogue.CritChance, existingRogue.Initiative, existingRogue.MinDmg, existingRogue.MaxDmg, existingRogue.CharacterType)
+        {
+            DodgeChance = existingRogue.DodgeChance;
+        }
 
-       
         public override void LevelUp()
         {
             Level++;
