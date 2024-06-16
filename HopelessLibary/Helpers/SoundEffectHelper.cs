@@ -10,6 +10,60 @@ namespace HopelessLibary.Helpers
 {
     public static class SoundEffectHelper
     {
+        internal static void PlayBlockSound()
+        {
+
+            Stream equipWeaponStream = Resources.blockSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOutEvent out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        internal static void PlayHitSound()
+        {
+
+            Stream equipWeaponStream = Resources.hitSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOutEvent out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
+        internal static void PlayDodgeSound()
+        {
+
+            Stream equipWeaponStream = Resources.dodgeSound;
+            MemoryStream memoryStream = new MemoryStream();
+            equipWeaponStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            WaveStream waveStream = new WaveFileReader(memoryStream);
+
+            WaveOutEvent out1 = new();
+            out1.Init(waveStream);
+            out1.Play();
+
+            out1.PlaybackStopped += (s, args) =>
+            {
+                waveStream.Dispose();
+            };
+        }
         internal static void PlayDeathSound()
         {
 

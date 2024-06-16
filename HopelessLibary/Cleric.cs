@@ -83,8 +83,11 @@ namespace HopelessLibary
         {
             double finalDmg = damage * ((100 - (double)Resistance) / 100);
             finalDmg = Math.Round(finalDmg);
-            if ((int)finalDmg < CurrentHP)
+            
+            if ((int)finalDmg < CurrentHP) { 
                 CurrentHP -= (int)finalDmg;
+            SoundEffectHelper.PlayHitSound();
+        }
             else
             {
                 CurrentHP = 0;

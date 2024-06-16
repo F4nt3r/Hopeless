@@ -99,6 +99,15 @@ namespace HopelessLibary {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream blockSound {
+            get {
+                return ResourceManager.GetStream("blockSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream critAndDodgeBuffSound {
             get {
                 return ResourceManager.GetStream("critAndDodgeBuffSound", resourceCulture);
@@ -144,9 +153,27 @@ namespace HopelessLibary {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream dodgeSound {
+            get {
+                return ResourceManager.GetStream("dodgeSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream healSound {
             get {
                 return ResourceManager.GetStream("healSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream hitSound {
+            get {
+                return ResourceManager.GetStream("hitSound", resourceCulture);
             }
         }
         

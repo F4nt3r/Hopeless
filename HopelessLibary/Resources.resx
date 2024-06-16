@@ -130,6 +130,9 @@
   <data name="basicAttackSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\basicAttackSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="blockSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\blockSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="critAndDodgeBuffSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\critAndDodgeBuffSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -145,8 +148,14 @@
   <data name="deathSound4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\deathSound4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="dodgeSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\dodgeSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="healSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\healSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hitSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\hitSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="provokeSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\provokeSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

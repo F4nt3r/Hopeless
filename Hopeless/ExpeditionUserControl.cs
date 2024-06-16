@@ -271,9 +271,10 @@ namespace Hopeless
 
                                 } while (target[0].IsDead());
                                 int hp = target[0].CurrentHP;
-
-                                figure.BasicAttack(target[0], out int dmg);
                                 PlayBasicAttackSound();
+                           
+                                figure.BasicAttack(target[0], out int dmg);
+                               
                                
                                 if (target[0].CurrentHP != hp)
                                 {                          
