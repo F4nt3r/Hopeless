@@ -251,7 +251,7 @@ namespace Hopeless
                                     if (figure.DeBuffs != null && figure.DeBuffs.Count > 0)
                                     {
                                         var debuff = figure.DeBuffs.FirstOrDefault(x => x.Name.Equals("Provoke"));
-                                        if (debuff != null)
+                                        if (debuff != null && !debuff.Caster.IsDead())
                                         {
                                             target.Add(Characters.FirstOrDefault(x => x.Id == debuff.Caster.Id));
                                         }

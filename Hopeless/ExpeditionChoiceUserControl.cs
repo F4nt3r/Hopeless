@@ -1,4 +1,5 @@
-﻿using HopelessLibary;
+﻿using Hopeless.Properties;
+using HopelessLibary;
 using System;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
@@ -44,18 +45,18 @@ namespace Hopeless
         private void InitializeExpeditonsNames()
         {
 
-            QuestDescriptions.Add("Canals of Novigrad", "It smells... of corpses??");
-            QuestDescriptions.Add("Abandoned Warehouse", "Apparently they used to store apples here");
-            QuestDescriptions.Add("The Pied Piper of Hamelin", "Do you know where you can put this flute...?");
-            QuestDescriptions.Add("Puszcza Kampinoska", "Great Dark Forest, full of spiderwebs");
-            QuestDescriptions.Add("Swamp Camp", "Illegal swamp herb plantation");
-            QuestDescriptions.Add("A bar in the suburbs", "Full of drunks and... Monsters?!");
-            QuestDescriptions.Add("Old Cemetery", "I wonder if they still have any available quarters here?");
-            QuestDescriptions.Add("Beshamuntir Castle", "At its end there is said to be a Dragon waiting");
-            QuestDescriptions.Add("Red Forest", "Nice here, trees, stumps, dryads... But why do they have knives?");
-            QuestDescriptions.Add("Mount Hyjal", "You must clear the area around the World Tree of these monsters");
-            QuestDescriptions.Add("Black Gate", "Sauron!!! Get out, I know you're there!");
-            QuestDescriptions.Add("Mojave Wasteland", "Before the nukes there was a desert here too, but not as dangerous");
+            QuestDescriptions.Add("Canals_of_Novigrad", "It smells... of corpses??");
+            QuestDescriptions.Add("Abandoned_Warehouse", "Apparently they used to store apples here");
+            QuestDescriptions.Add("DeSalle", "Something scary is there, but I don't know what.");
+            QuestDescriptions.Add("Forbidden_Forest", "Great Dark Forest, full of spiderwebs");
+            QuestDescriptions.Add("Swamp_Camp", "Illegal swamp herb plantation");
+            QuestDescriptions.Add("A_bar_in_the_suburbs", "Full of drunks and... Monsters?!");
+            QuestDescriptions.Add("Old_Cemetery", "I wonder if they still have any available quarters here?");
+            QuestDescriptions.Add("Beshamuntir_Castle", "At its end there is said to be a Dragon waiting");
+            QuestDescriptions.Add("Red_Forest", "Nice here, trees, stumps, dryads... But why do they have knives?");
+            QuestDescriptions.Add("Mount_Hyjal", "You must clear the area around the World Tree of these monsters");
+            QuestDescriptions.Add("Black_Gate", "Sauron!!! Get out, I know you're there!");
+            QuestDescriptions.Add("Mojave_Wasteland", "Before the nukes there was a desert here too, but not as dangerous");
         }
 
         private void InitializeExpeditions()
@@ -87,10 +88,21 @@ namespace Hopeless
                 label.AutoSize = false;
                 label.Height = 155;
                 label.Width = 300;
-                label.Font = new Font("Arial", 15);
-                label.TextAlign = ContentAlignment.MiddleCenter;
                 label.BorderStyle = BorderStyle.FixedSingle;
-
+                label.BackgroundImageLayout = ImageLayout.Stretch;
+                
+                label.Font = new Font("Arial", 1);
+                
+                var resourceManager = Resources.ResourceManager;
+                var expeditionImage = (Image)resourceManager.GetObject(expediton.Name);
+                if (expeditionImage != null)
+                {
+                    label.BackgroundImage = expeditionImage;
+                }
+                else
+                {
+                    label.BackColor = Color.Gray;
+                }
 
                 label.AccessibleDescription = expediton.Name + Environment.NewLine + expediton.Description + Environment.NewLine + "Gold for the expedition: " + expediton.Gold.ToString() +
                   Environment.NewLine + "EXP for Expedition: " + expediton.ExperienceGains.ToString() + Environment.NewLine + Environment.NewLine +
@@ -100,28 +112,7 @@ namespace Hopeless
                   string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.Display())) + Environment.NewLine + Environment.NewLine +
                    "Monsters:" + Environment.NewLine +
                  string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
-                switch (expediton.Type)
-                {
-                    case DifficultyType.Event:
-                        label.BackColor = Color.Gold;
-                        break;
-                    case DifficultyType.Easy:
-                        label.BackColor = Color.Green;
-                        break;
-                    case DifficultyType.Medium:
-                        label.BackColor = Color.Orange;
-                        break;
-                    case DifficultyType.Hard:
-                        label.BackColor = Color.Red;
-                        label.ForeColor = Color.White;
-                        break;
-                    case DifficultyType.Boss:
-                        label.BackColor = Color.Black;
-                        label.ForeColor = Color.White;
-                        break;
-                    default:
-                        break;
-                }
+             
 
                 if (expediton.Type == DifficultyType.Easy)
                 {
@@ -236,7 +227,7 @@ namespace Hopeless
                     chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Mirror_Reflection")));
                     chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Mirror_Reflection")));
                     chosen.Add(new Monster(Monsters.FirstOrDefault(monster => monster.Name == "Gaunter_oDim")));
-                    newExpedition1 = new Expedition("???", "???????????????????????????????", 300, DifficultyType.Event, chosen, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                    newExpedition1 = new Expedition("Special", "???????????????????????????????", 300, DifficultyType.Event, chosen, 200, GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                     Expeditions.Add(newExpedition1);
                     EventQuest = true;
                     EventQuestExist?.Invoke(this, EventArgs.Empty);
@@ -279,7 +270,7 @@ namespace Hopeless
                 {
                     if (Expeditions.Count(exp => exp.Type == DifficultyType.Boss) < 1)
                     {
-                        newExpedition2 = new Expedition("The Sleeper's Cave", "So We Meet at Last", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
+                        newExpedition2 = new Expedition("The_Sleeper_Cave", "So We Meet at Last", GenerateRandomExp(DifficultyType.Boss), DifficultyType.Boss, GenerateMonsters(DifficultyType.Boss), GenerateRandomGold(DifficultyType.Boss), GenerateWeapons(DifficultyType.Boss), GenerateArmors(DifficultyType.Boss));
                         Expeditions.Add(newExpedition2);
                     }
                 }

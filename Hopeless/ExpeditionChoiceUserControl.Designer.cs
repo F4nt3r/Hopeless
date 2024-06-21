@@ -53,6 +53,7 @@
             // hardExpeditions
             // 
             hardExpeditions.AllowDrop = true;
+            hardExpeditions.BackColor = Color.Red;
             hardExpeditions.Location = new Point(31, 407);
             hardExpeditions.Name = "hardExpeditions";
             hardExpeditions.Size = new Size(920, 160);
@@ -61,6 +62,7 @@
             // mediumExpeditions
             // 
             mediumExpeditions.AllowDrop = true;
+            mediumExpeditions.BackColor = Color.Orange;
             mediumExpeditions.Location = new Point(31, 217);
             mediumExpeditions.Name = "mediumExpeditions";
             mediumExpeditions.Size = new Size(920, 160);
@@ -69,6 +71,7 @@
             // easyExpeditions
             // 
             easyExpeditions.AllowDrop = true;
+            easyExpeditions.BackColor = Color.Green;
             easyExpeditions.Location = new Point(31, 28);
             easyExpeditions.Name = "easyExpeditions";
             easyExpeditions.Size = new Size(920, 160);
@@ -77,6 +80,7 @@
             // bossExpeditions
             // 
             bossExpeditions.AllowDrop = true;
+            bossExpeditions.BackColor = Color.Black;
             bossExpeditions.Location = new Point(180, 611);
             bossExpeditions.Name = "bossExpeditions";
             bossExpeditions.Size = new Size(620, 160);
