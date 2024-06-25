@@ -87,19 +87,21 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -3);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1424, 864);
+            pictureBox1.Size = new Size(1350, 705);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // character4Name
             // 
+            character4Name.Anchor = AnchorStyles.None;
             character4Name.AutoSize = true;
             character4Name.BackColor = Color.LightGray;
-            character4Name.Location = new Point(27, 400);
+            character4Name.Location = new Point(13, 320);
             character4Name.Name = "character4Name";
             character4Name.Size = new Size(36, 15);
             character4Name.TabIndex = 12;
@@ -107,9 +109,10 @@
             // 
             // character3Name
             // 
+            character3Name.Anchor = AnchorStyles.None;
             character3Name.AutoSize = true;
             character3Name.BackColor = Color.LightGray;
-            character3Name.Location = new Point(183, 400);
+            character3Name.Location = new Point(169, 320);
             character3Name.Name = "character3Name";
             character3Name.Size = new Size(36, 15);
             character3Name.TabIndex = 13;
@@ -117,9 +120,10 @@
             // 
             // character2Name
             // 
+            character2Name.Anchor = AnchorStyles.None;
             character2Name.AutoSize = true;
             character2Name.BackColor = Color.LightGray;
-            character2Name.Location = new Point(338, 400);
+            character2Name.Location = new Point(324, 320);
             character2Name.Name = "character2Name";
             character2Name.Size = new Size(36, 15);
             character2Name.TabIndex = 14;
@@ -127,9 +131,10 @@
             // 
             // character1Name
             // 
+            character1Name.Anchor = AnchorStyles.None;
             character1Name.AutoSize = true;
             character1Name.BackColor = Color.LightGray;
-            character1Name.Location = new Point(495, 400);
+            character1Name.Location = new Point(481, 320);
             character1Name.Name = "character1Name";
             character1Name.Size = new Size(36, 15);
             character1Name.TabIndex = 15;
@@ -137,9 +142,10 @@
             // 
             // enemy1Name
             // 
+            enemy1Name.Anchor = AnchorStyles.None;
             enemy1Name.AutoSize = true;
             enemy1Name.BackColor = Color.LightGray;
-            enemy1Name.Location = new Point(777, 400);
+            enemy1Name.Location = new Point(722, 320);
             enemy1Name.Name = "enemy1Name";
             enemy1Name.Size = new Size(36, 15);
             enemy1Name.TabIndex = 16;
@@ -147,9 +153,10 @@
             // 
             // enemy2Name
             // 
+            enemy2Name.Anchor = AnchorStyles.None;
             enemy2Name.AutoSize = true;
             enemy2Name.BackColor = Color.LightGray;
-            enemy2Name.Location = new Point(933, 400);
+            enemy2Name.Location = new Point(878, 320);
             enemy2Name.Name = "enemy2Name";
             enemy2Name.Size = new Size(36, 15);
             enemy2Name.TabIndex = 17;
@@ -157,9 +164,10 @@
             // 
             // enemy3Name
             // 
+            enemy3Name.Anchor = AnchorStyles.None;
             enemy3Name.AutoSize = true;
             enemy3Name.BackColor = Color.LightGray;
-            enemy3Name.Location = new Point(1089, 400);
+            enemy3Name.Location = new Point(1034, 320);
             enemy3Name.Name = "enemy3Name";
             enemy3Name.Size = new Size(36, 15);
             enemy3Name.TabIndex = 18;
@@ -167,9 +175,10 @@
             // 
             // enemy4Name
             // 
+            enemy4Name.Anchor = AnchorStyles.None;
             enemy4Name.AutoSize = true;
             enemy4Name.BackColor = Color.LightGray;
-            enemy4Name.Location = new Point(1247, 400);
+            enemy4Name.Location = new Point(1192, 320);
             enemy4Name.Name = "enemy4Name";
             enemy4Name.Size = new Size(36, 15);
             enemy4Name.TabIndex = 19;
@@ -177,67 +186,76 @@
             // 
             // character4Health
             // 
-            character4Health.Location = new Point(27, 736);
+            character4Health.Anchor = AnchorStyles.None;
+            character4Health.Location = new Point(13, 656);
             character4Health.Name = "character4Health";
             character4Health.Size = new Size(150, 23);
             character4Health.TabIndex = 22;
             // 
             // character3Health
             // 
-            character3Health.Location = new Point(183, 736);
+            character3Health.Anchor = AnchorStyles.None;
+            character3Health.Location = new Point(169, 656);
             character3Health.Name = "character3Health";
             character3Health.Size = new Size(150, 23);
             character3Health.TabIndex = 23;
             // 
             // character2Health
             // 
-            character2Health.Location = new Point(338, 736);
+            character2Health.Anchor = AnchorStyles.None;
+            character2Health.Location = new Point(324, 656);
             character2Health.Name = "character2Health";
             character2Health.Size = new Size(151, 23);
             character2Health.TabIndex = 24;
             // 
             // character1Health
             // 
-            character1Health.Location = new Point(495, 736);
+            character1Health.Anchor = AnchorStyles.None;
+            character1Health.Location = new Point(481, 656);
             character1Health.Name = "character1Health";
             character1Health.Size = new Size(150, 23);
             character1Health.TabIndex = 25;
             // 
             // enemy1Health
             // 
+            enemy1Health.Anchor = AnchorStyles.None;
             enemy1Health.BackColor = SystemColors.ActiveCaptionText;
             enemy1Health.ForeColor = SystemColors.HotTrack;
-            enemy1Health.Location = new Point(777, 736);
+            enemy1Health.Location = new Point(722, 656);
             enemy1Health.Name = "enemy1Health";
             enemy1Health.Size = new Size(150, 23);
             enemy1Health.TabIndex = 26;
             // 
             // enemy2Health
             // 
-            enemy2Health.Location = new Point(933, 736);
+            enemy2Health.Anchor = AnchorStyles.None;
+            enemy2Health.Location = new Point(878, 656);
             enemy2Health.Name = "enemy2Health";
             enemy2Health.Size = new Size(150, 23);
             enemy2Health.TabIndex = 27;
             // 
             // enemy3Health
             // 
-            enemy3Health.Location = new Point(1089, 736);
+            enemy3Health.Anchor = AnchorStyles.None;
+            enemy3Health.Location = new Point(1034, 656);
             enemy3Health.Name = "enemy3Health";
             enemy3Health.Size = new Size(150, 23);
             enemy3Health.TabIndex = 28;
             // 
             // enemy4Health
             // 
-            enemy4Health.Location = new Point(1247, 736);
+            enemy4Health.Anchor = AnchorStyles.None;
+            enemy4Health.Location = new Point(1192, 656);
             enemy4Health.Name = "enemy4Health";
             enemy4Health.Size = new Size(150, 23);
             enemy4Health.TabIndex = 29;
             // 
             // character1HealthText
             // 
+            character1HealthText.Anchor = AnchorStyles.None;
             character1HealthText.AutoSize = true;
             character1HealthText.BackColor = Color.Transparent;
-            character1HealthText.Location = new Point(545, 759);
+            character1HealthText.Location = new Point(537, 682);
             character1HealthText.Name = "character1HealthText";
             character1HealthText.Size = new Size(38, 15);
             character1HealthText.TabIndex = 30;
@@ -245,9 +263,10 @@
             // 
             // character2HealthText
             // 
+            character2HealthText.Anchor = AnchorStyles.None;
             character2HealthText.AutoSize = true;
             character2HealthText.BackColor = Color.Transparent;
-            character2HealthText.Location = new Point(399, 762);
+            character2HealthText.Location = new Point(385, 682);
             character2HealthText.Name = "character2HealthText";
             character2HealthText.Size = new Size(38, 15);
             character2HealthText.TabIndex = 31;
@@ -255,9 +274,10 @@
             // 
             // character3HealthText
             // 
+            character3HealthText.Anchor = AnchorStyles.None;
             character3HealthText.AutoSize = true;
             character3HealthText.BackColor = Color.Transparent;
-            character3HealthText.Location = new Point(238, 762);
+            character3HealthText.Location = new Point(224, 682);
             character3HealthText.Name = "character3HealthText";
             character3HealthText.Size = new Size(38, 15);
             character3HealthText.TabIndex = 32;
@@ -265,9 +285,10 @@
             // 
             // character4HealthText
             // 
+            character4HealthText.Anchor = AnchorStyles.None;
             character4HealthText.AutoSize = true;
             character4HealthText.BackColor = Color.Transparent;
-            character4HealthText.Location = new Point(79, 762);
+            character4HealthText.Location = new Point(65, 682);
             character4HealthText.Name = "character4HealthText";
             character4HealthText.Size = new Size(38, 15);
             character4HealthText.TabIndex = 33;
@@ -275,9 +296,10 @@
             // 
             // enemy1HealthText
             // 
+            enemy1HealthText.Anchor = AnchorStyles.None;
             enemy1HealthText.AutoSize = true;
             enemy1HealthText.BackColor = Color.Transparent;
-            enemy1HealthText.Location = new Point(842, 762);
+            enemy1HealthText.Location = new Point(787, 682);
             enemy1HealthText.Name = "enemy1HealthText";
             enemy1HealthText.Size = new Size(38, 15);
             enemy1HealthText.TabIndex = 34;
@@ -285,9 +307,10 @@
             // 
             // enemy2HealthText
             // 
+            enemy2HealthText.Anchor = AnchorStyles.None;
             enemy2HealthText.AutoSize = true;
             enemy2HealthText.BackColor = Color.Transparent;
-            enemy2HealthText.Location = new Point(987, 762);
+            enemy2HealthText.Location = new Point(932, 682);
             enemy2HealthText.Name = "enemy2HealthText";
             enemy2HealthText.Size = new Size(38, 15);
             enemy2HealthText.TabIndex = 35;
@@ -295,9 +318,10 @@
             // 
             // enemy3HealthText
             // 
+            enemy3HealthText.Anchor = AnchorStyles.None;
             enemy3HealthText.AutoSize = true;
             enemy3HealthText.BackColor = Color.Transparent;
-            enemy3HealthText.Location = new Point(1141, 762);
+            enemy3HealthText.Location = new Point(1086, 682);
             enemy3HealthText.Name = "enemy3HealthText";
             enemy3HealthText.Size = new Size(38, 15);
             enemy3HealthText.TabIndex = 36;
@@ -305,9 +329,10 @@
             // 
             // enemy4HealthText
             // 
+            enemy4HealthText.Anchor = AnchorStyles.None;
             enemy4HealthText.AutoSize = true;
             enemy4HealthText.BackColor = Color.Transparent;
-            enemy4HealthText.Location = new Point(1305, 762);
+            enemy4HealthText.Location = new Point(1250, 682);
             enemy4HealthText.Name = "enemy4HealthText";
             enemy4HealthText.Size = new Size(38, 15);
             enemy4HealthText.TabIndex = 37;
@@ -353,7 +378,7 @@
             // logBattleBox
             // 
             logBattleBox.BackColor = Color.Lavender;
-            logBattleBox.Location = new Point(1089, 12);
+            logBattleBox.Location = new Point(1055, 12);
             logBattleBox.MaximumSize = new Size(270, 160);
             logBattleBox.Multiline = true;
             logBattleBox.Name = "logBattleBox";
@@ -365,7 +390,8 @@
             // 
             // startButton
             // 
-            startButton.Location = new Point(545, 293);
+            startButton.Anchor = AnchorStyles.None;
+            startButton.Location = new Point(516, 213);
             startButton.Name = "startButton";
             startButton.Size = new Size(335, 101);
             startButton.TabIndex = 42;
@@ -376,7 +402,7 @@
             // effectBox
             // 
             effectBox.BackColor = Color.Lavender;
-            effectBox.Location = new Point(792, 12);
+            effectBox.Location = new Point(768, 12);
             effectBox.MaximumSize = new Size(270, 160);
             effectBox.Multiline = true;
             effectBox.Name = "effectBox";
@@ -408,6 +434,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = SystemColors.AppWorkspace;
             panel1.Controls.Add(logBattleBox);
             panel1.Controls.Add(activeCharacterLabel);
@@ -416,15 +443,16 @@
             panel1.Controls.Add(basicAttackLabel);
             panel1.Controls.Add(turaLabel);
             panel1.Controls.Add(effectBox);
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(-8, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1424, 119);
             panel1.TabIndex = 46;
             // 
             // character4Picture
             // 
+            character4Picture.Anchor = AnchorStyles.None;
             character4Picture.BorderStyle = BorderStyle.FixedSingle;
-            character4Picture.Location = new Point(27, 400);
+            character4Picture.Location = new Point(13, 320);
             character4Picture.Name = "character4Picture";
             character4Picture.Size = new Size(150, 330);
             character4Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -433,8 +461,9 @@
             // 
             // character3Picture
             // 
+            character3Picture.Anchor = AnchorStyles.None;
             character3Picture.BorderStyle = BorderStyle.FixedSingle;
-            character3Picture.Location = new Point(183, 400);
+            character3Picture.Location = new Point(169, 320);
             character3Picture.Name = "character3Picture";
             character3Picture.Size = new Size(150, 330);
             character3Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -443,8 +472,9 @@
             // 
             // character2Picture
             // 
+            character2Picture.Anchor = AnchorStyles.None;
             character2Picture.BorderStyle = BorderStyle.FixedSingle;
-            character2Picture.Location = new Point(339, 400);
+            character2Picture.Location = new Point(324, 320);
             character2Picture.Name = "character2Picture";
             character2Picture.Size = new Size(150, 330);
             character2Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -453,9 +483,10 @@
             // 
             // character1Picture
             // 
+            character1Picture.Anchor = AnchorStyles.None;
             character1Picture.BackColor = Color.Transparent;
             character1Picture.BorderStyle = BorderStyle.FixedSingle;
-            character1Picture.Location = new Point(495, 400);
+            character1Picture.Location = new Point(481, 320);
             character1Picture.Name = "character1Picture";
             character1Picture.Size = new Size(150, 330);
             character1Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -464,8 +495,9 @@
             // 
             // enemy4Picture
             // 
+            enemy4Picture.Anchor = AnchorStyles.None;
             enemy4Picture.BorderStyle = BorderStyle.FixedSingle;
-            enemy4Picture.Location = new Point(1247, 400);
+            enemy4Picture.Location = new Point(1190, 320);
             enemy4Picture.Name = "enemy4Picture";
             enemy4Picture.Size = new Size(150, 330);
             enemy4Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -474,8 +506,9 @@
             // 
             // enemy3Picture
             // 
+            enemy3Picture.Anchor = AnchorStyles.None;
             enemy3Picture.BorderStyle = BorderStyle.FixedSingle;
-            enemy3Picture.Location = new Point(1089, 400);
+            enemy3Picture.Location = new Point(1034, 320);
             enemy3Picture.Name = "enemy3Picture";
             enemy3Picture.Size = new Size(150, 330);
             enemy3Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -484,8 +517,9 @@
             // 
             // enemy2Picture
             // 
+            enemy2Picture.Anchor = AnchorStyles.None;
             enemy2Picture.BorderStyle = BorderStyle.FixedSingle;
-            enemy2Picture.Location = new Point(933, 400);
+            enemy2Picture.Location = new Point(878, 320);
             enemy2Picture.Name = "enemy2Picture";
             enemy2Picture.Size = new Size(150, 330);
             enemy2Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -494,8 +528,9 @@
             // 
             // enemy1Picture
             // 
+            enemy1Picture.Anchor = AnchorStyles.None;
             enemy1Picture.BorderStyle = BorderStyle.FixedSingle;
-            enemy1Picture.Location = new Point(777, 400);
+            enemy1Picture.Location = new Point(722, 320);
             enemy1Picture.Name = "enemy1Picture";
             enemy1Picture.Size = new Size(150, 330);
             enemy1Picture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -542,7 +577,7 @@
             Controls.Add(character4Health);
             Controls.Add(pictureBox1);
             Name = "ExpeditionUserControl";
-            Size = new Size(1424, 861);
+            Size = new Size(1350, 705);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

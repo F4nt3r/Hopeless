@@ -737,7 +737,7 @@ namespace Hopeless
 
             if (character != null)
             {
-          
+
                 Type characterType = character.GetType();
                 ConstructorInfo constructor = characterType.GetConstructor(new Type[] { characterType });
 
@@ -768,6 +768,6 @@ namespace Hopeless
             StarterInventory.Add(new Armor((Armor)armor));
         }
 
-        
+
     }
 }

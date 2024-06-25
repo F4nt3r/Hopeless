@@ -148,16 +148,18 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1424, 861);
+            pictureBox1.Size = new Size(1350, 705);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // wyruszButton
             // 
-            wyruszButton.Location = new Point(1263, 800);
+            wyruszButton.Anchor = AnchorStyles.None;
+            wyruszButton.Location = new Point(1197, 652);
             wyruszButton.Name = "wyruszButton";
             wyruszButton.Size = new Size(150, 50);
             wyruszButton.TabIndex = 0;
@@ -167,10 +169,11 @@
             // 
             // tabControl3
             // 
+            tabControl3.Anchor = AnchorStyles.None;
             tabControl3.Controls.Add(clericPostac);
             tabControl3.Controls.Add(clericStatystyki);
             tabControl3.Controls.Add(clericEkwipunek);
-            tabControl3.Location = new Point(640, 70);
+            tabControl3.Location = new Point(738, 43);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
             tabControl3.Size = new Size(200, 336);
@@ -375,10 +378,11 @@
             // 
             // tabControl5
             // 
+            tabControl5.Anchor = AnchorStyles.None;
             tabControl5.Controls.Add(roguePostac);
             tabControl5.Controls.Add(rogueStatystyki);
             tabControl5.Controls.Add(rogueEkwipunek);
-            tabControl5.Location = new Point(353, 70);
+            tabControl5.Location = new Point(394, 43);
             tabControl5.Name = "tabControl5";
             tabControl5.SelectedIndex = 0;
             tabControl5.Size = new Size(200, 336);
@@ -583,10 +587,11 @@
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.None;
             tabControl1.Controls.Add(knightPostac);
             tabControl1.Controls.Add(knightStatystyki);
             tabControl1.Controls.Add(knightEkwipunek);
-            tabControl1.Location = new Point(67, 70);
+            tabControl1.Location = new Point(64, 43);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(200, 336);
@@ -791,10 +796,11 @@
             // 
             // tabControl2
             // 
+            tabControl2.Anchor = AnchorStyles.None;
             tabControl2.Controls.Add(jokerPostac);
             tabControl2.Controls.Add(jokerStatystyki);
             tabControl2.Controls.Add(jokerEkwipunek);
-            tabControl2.Location = new Point(928, 70);
+            tabControl2.Location = new Point(1043, 43);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(200, 336);
@@ -1000,8 +1006,9 @@
             // Inventory
             // 
             Inventory.AllowDrop = true;
+            Inventory.Anchor = AnchorStyles.None;
             Inventory.BackColor = Color.Bisque;
-            Inventory.Location = new Point(67, 578);
+            Inventory.Location = new Point(209, 459);
             Inventory.Name = "Inventory";
             Inventory.Size = new Size(335, 205);
             Inventory.TabIndex = 8;
@@ -1012,7 +1019,7 @@
             goldLabel.BackColor = Color.Gold;
             goldLabel.BorderStyle = BorderStyle.FixedSingle;
             goldLabel.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            goldLabel.Location = new Point(1184, 94);
+            goldLabel.Location = new Point(1139, 459);
             goldLabel.Name = "goldLabel";
             goldLabel.Size = new Size(77, 38);
             goldLabel.TabIndex = 23;
@@ -1028,15 +1035,17 @@
             // Shop
             // 
             Shop.AllowDrop = true;
+            Shop.Anchor = AnchorStyles.None;
             Shop.BackColor = Color.PeachPuff;
-            Shop.Location = new Point(1039, 526);
+            Shop.Location = new Point(786, 459);
             Shop.Name = "Shop";
             Shop.Size = new Size(320, 203);
             Shop.TabIndex = 24;
             // 
             // Roll
             // 
-            Roll.Location = new Point(1162, 735);
+            Roll.Anchor = AnchorStyles.None;
+            Roll.Location = new Point(899, 668);
             Roll.Name = "Roll";
             Roll.Size = new Size(91, 23);
             Roll.TabIndex = 25;
@@ -1046,7 +1055,8 @@
             // 
             // backButton
             // 
-            backButton.Location = new Point(13, 800);
+            backButton.Anchor = AnchorStyles.None;
+            backButton.Location = new Point(3, 652);
             backButton.Name = "backButton";
             backButton.Size = new Size(150, 50);
             backButton.TabIndex = 27;
@@ -1056,7 +1066,8 @@
             // 
             // SortKnight
             // 
-            SortKnight.Location = new Point(125, 549);
+            SortKnight.Anchor = AnchorStyles.None;
+            SortKnight.Location = new Point(270, 430);
             SortKnight.Name = "SortKnight";
             SortKnight.Size = new Size(63, 23);
             SortKnight.TabIndex = 28;
@@ -1066,7 +1077,8 @@
             // 
             // SortRogue
             // 
-            SortRogue.Location = new Point(197, 549);
+            SortRogue.Anchor = AnchorStyles.None;
+            SortRogue.Location = new Point(339, 430);
             SortRogue.Name = "SortRogue";
             SortRogue.Size = new Size(63, 23);
             SortRogue.TabIndex = 29;
@@ -1076,7 +1088,8 @@
             // 
             // SortCleric
             // 
-            SortCleric.Location = new Point(266, 549);
+            SortCleric.Anchor = AnchorStyles.None;
+            SortCleric.Location = new Point(411, 430);
             SortCleric.Name = "SortCleric";
             SortCleric.Size = new Size(63, 23);
             SortCleric.TabIndex = 30;
@@ -1086,7 +1099,8 @@
             // 
             // SortJoker
             // 
-            SortJoker.Location = new Point(339, 549);
+            SortJoker.Anchor = AnchorStyles.None;
+            SortJoker.Location = new Point(480, 430);
             SortJoker.Name = "SortJoker";
             SortJoker.Size = new Size(63, 23);
             SortJoker.TabIndex = 31;
@@ -1096,7 +1110,8 @@
             // 
             // SortAll
             // 
-            SortAll.Location = new Point(56, 549);
+            SortAll.Anchor = AnchorStyles.None;
+            SortAll.Location = new Point(201, 430);
             SortAll.Name = "SortAll";
             SortAll.Size = new Size(63, 23);
             SortAll.TabIndex = 32;
@@ -1108,12 +1123,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(backButton);
             Controls.Add(SortAll);
             Controls.Add(SortJoker);
             Controls.Add(SortCleric);
             Controls.Add(SortRogue);
             Controls.Add(SortKnight);
-            Controls.Add(backButton);
             Controls.Add(Roll);
             Controls.Add(Shop);
             Controls.Add(goldLabel);
@@ -1125,7 +1140,7 @@
             Controls.Add(wyruszButton);
             Controls.Add(pictureBox1);
             Name = "PreparationUserControl";
-            Size = new Size(1424, 861);
+            Size = new Size(1350, 705);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl3.ResumeLayout(false);
             clericPostac.ResumeLayout(false);

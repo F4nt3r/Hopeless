@@ -92,7 +92,7 @@ namespace Hopeless
                                     .SkillHandler
                                     .Invoke(figure, fightOrder);
 
-                                 
+
                                 }
                                 else if (figure.Skill1.SkillType == SkillType.Self)
                                 {
@@ -143,7 +143,8 @@ namespace Hopeless
                                     response = figure.Skill2?
                                     .SkillHandler
                                     .Invoke(figure, fightOrder);
-                                }else if(figure.Skill2.SkillType == SkillType.Self)
+                                }
+                                else if (figure.Skill2.SkillType == SkillType.Self)
                                 {
                                     response = figure.Skill2?
                                    .SkillHandler
@@ -196,18 +197,19 @@ namespace Hopeless
 
 
                                     playerActionTaken = true;
-                                    if (target[0].CurrentHP != hp) { 
-                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals: " + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
-                                    PictureBox targetPictureBox = pictureBoxes.FirstOrDefault(p => p.Location == target[0].Location);
-                                    if (targetPictureBox != null)
+                                    if (target[0].CurrentHP != hp)
                                     {
-                                        await ShakeAnimation(targetPictureBox);
+                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals: " + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
+                                        PictureBox targetPictureBox = pictureBoxes.FirstOrDefault(p => p.Location == target[0].Location);
+                                        if (targetPictureBox != null)
+                                        {
+                                            await ShakeAnimation(targetPictureBox);
+                                        }
                                     }
-                                    }
-                                else
-                                    logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
+                                    else
+                                        logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he dodge" + Environment.NewLine + logBattleBox.Text;
 
-                                 
+
                                 }
 
                             };
@@ -272,12 +274,12 @@ namespace Hopeless
                                 } while (target[0].IsDead());
                                 int hp = target[0].CurrentHP;
                                 PlayBasicAttackSound();
-                           
+
                                 figure.BasicAttack(target[0], out int dmg);
-                               
-                               
+
+
                                 if (target[0].CurrentHP != hp)
-                                {                          
+                                {
                                     logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " deals:" + (hp - target[0].CurrentHP) + " damage" + Environment.NewLine + logBattleBox.Text;
                                     PictureBox targetPictureBox = pictureBoxes.FirstOrDefault(p => p.Location == target[0].Location);
                                     if (targetPictureBox != null)
@@ -290,7 +292,7 @@ namespace Hopeless
                                 else
                                     logBattleBox.Text = figure.Name + " attacks " + target[0].Name + " but he blocked" + Environment.NewLine + logBattleBox.Text;
 
-                               
+
 
                             }
 
@@ -319,14 +321,14 @@ namespace Hopeless
             }
 
         }
-     
+
 
         private async Task ShakeAnimation(PictureBox picture)
         {
             var originalLocation = picture.Location;
             Random random = new Random();
             int shakeAmplitude = 4;
-            int shakeDuration = 500; 
+            int shakeDuration = 500;
             int shakeCount = 20;
 
             for (int i = 0; i < shakeCount; i++)
@@ -634,7 +636,7 @@ namespace Hopeless
             {
                 if (control is PictureBox)
                 {
-                   pictureBoxes.Add(control as PictureBox);
+                    pictureBoxes.Add(control as PictureBox);
                 }
 
             }

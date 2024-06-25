@@ -150,10 +150,11 @@
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.None;
             tabControl1.Controls.Add(knightPostac);
             tabControl1.Controls.Add(knightStatystyki);
             tabControl1.Controls.Add(knightEkwipunek);
-            tabControl1.Location = new Point(124, 101);
+            tabControl1.Location = new Point(87, 23);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(200, 336);
@@ -359,10 +360,11 @@
             // 
             // tabControl2
             // 
+            tabControl2.Anchor = AnchorStyles.None;
             tabControl2.Controls.Add(tabPage1);
             tabControl2.Controls.Add(tabPage2);
             tabControl2.Controls.Add(tabPage3);
-            tabControl2.Location = new Point(480, 101);
+            tabControl2.Location = new Point(414, 23);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(200, 336);
@@ -568,10 +570,11 @@
             // 
             // tabControl3
             // 
+            tabControl3.Anchor = AnchorStyles.None;
             tabControl3.Controls.Add(tabPage4);
             tabControl3.Controls.Add(tabPage5);
             tabControl3.Controls.Add(tabPage6);
-            tabControl3.Location = new Point(821, 101);
+            tabControl3.Location = new Point(750, 23);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
             tabControl3.Size = new Size(200, 336);
@@ -777,10 +780,11 @@
             // 
             // tabControl4
             // 
+            tabControl4.Anchor = AnchorStyles.None;
             tabControl4.Controls.Add(tabPage7);
             tabControl4.Controls.Add(tabPage8);
             tabControl4.Controls.Add(tabPage9);
-            tabControl4.Location = new Point(1188, 101);
+            tabControl4.Location = new Point(1082, 23);
             tabControl4.Name = "tabControl4";
             tabControl4.SelectedIndex = 0;
             tabControl4.Size = new Size(200, 336);
@@ -987,8 +991,9 @@
             // character1
             // 
             character1.AllowDrop = true;
+            character1.Anchor = AnchorStyles.None;
             character1.BorderStyle = BorderStyle.FixedSingle;
-            character1.Location = new Point(192, 456);
+            character1.Location = new Point(155, 378);
             character1.MinimumSize = new Size(60, 60);
             character1.Name = "character1";
             character1.Size = new Size(60, 60);
@@ -999,8 +1004,9 @@
             // character2
             // 
             character2.AllowDrop = true;
+            character2.Anchor = AnchorStyles.None;
             character2.BorderStyle = BorderStyle.FixedSingle;
-            character2.Location = new Point(553, 456);
+            character2.Location = new Point(482, 378);
             character2.MinimumSize = new Size(60, 60);
             character2.Name = "character2";
             character2.Size = new Size(60, 60);
@@ -1011,8 +1017,9 @@
             // character3
             // 
             character3.AllowDrop = true;
+            character3.Anchor = AnchorStyles.None;
             character3.BorderStyle = BorderStyle.FixedSingle;
-            character3.Location = new Point(894, 456);
+            character3.Location = new Point(823, 378);
             character3.MinimumSize = new Size(60, 60);
             character3.Name = "character3";
             character3.Size = new Size(60, 60);
@@ -1023,8 +1030,9 @@
             // character4
             // 
             character4.AllowDrop = true;
+            character4.Anchor = AnchorStyles.None;
             character4.BorderStyle = BorderStyle.FixedSingle;
-            character4.Location = new Point(1260, 456);
+            character4.Location = new Point(1150, 378);
             character4.MinimumSize = new Size(60, 60);
             character4.Name = "character4";
             character4.Size = new Size(60, 60);
@@ -1034,8 +1042,9 @@
             // 
             // rozpocznijButton
             // 
+            rozpocznijButton.Anchor = AnchorStyles.None;
             rozpocznijButton.Enabled = false;
-            rozpocznijButton.Location = new Point(1260, 789);
+            rozpocznijButton.Location = new Point(1197, 652);
             rozpocznijButton.Name = "rozpocznijButton";
             rozpocznijButton.Size = new Size(150, 50);
             rozpocznijButton.TabIndex = 18;
@@ -1045,8 +1054,9 @@
             // 
             // saveTeamButton
             // 
+            saveTeamButton.Anchor = AnchorStyles.None;
             saveTeamButton.Enabled = false;
-            saveTeamButton.Location = new Point(1260, 716);
+            saveTeamButton.Location = new Point(1197, 596);
             saveTeamButton.Name = "saveTeamButton";
             saveTeamButton.Size = new Size(150, 50);
             saveTeamButton.TabIndex = 19;
@@ -1059,14 +1069,15 @@
             pictureBox4.Dock = DockStyle.Fill;
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(1424, 861);
+            pictureBox4.Size = new Size(1350, 705);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 20;
             pictureBox4.TabStop = false;
             // 
             // character1left
             // 
-            character1left.Location = new Point(111, 475);
+            character1left.Anchor = AnchorStyles.None;
+            character1left.Location = new Point(74, 397);
             character1left.Name = "character1left";
             character1left.Size = new Size(75, 23);
             character1left.TabIndex = 21;
@@ -1076,7 +1087,8 @@
             // 
             // character1right
             // 
-            character1right.Location = new Point(258, 475);
+            character1right.Anchor = AnchorStyles.None;
+            character1right.Location = new Point(221, 397);
             character1right.Name = "character1right";
             character1right.Size = new Size(75, 23);
             character1right.TabIndex = 22;
@@ -1086,7 +1098,8 @@
             // 
             // character2left
             // 
-            character2left.Location = new Point(472, 475);
+            character2left.Anchor = AnchorStyles.None;
+            character2left.Location = new Point(401, 397);
             character2left.Name = "character2left";
             character2left.Size = new Size(75, 23);
             character2left.TabIndex = 23;
@@ -1096,7 +1109,8 @@
             // 
             // character2right
             // 
-            character2right.Location = new Point(619, 475);
+            character2right.Anchor = AnchorStyles.None;
+            character2right.Location = new Point(548, 397);
             character2right.Name = "character2right";
             character2right.Size = new Size(75, 23);
             character2right.TabIndex = 24;
@@ -1106,7 +1120,8 @@
             // 
             // character3left
             // 
-            character3left.Location = new Point(813, 475);
+            character3left.Anchor = AnchorStyles.None;
+            character3left.Location = new Point(742, 397);
             character3left.Name = "character3left";
             character3left.Size = new Size(75, 23);
             character3left.TabIndex = 25;
@@ -1116,7 +1131,8 @@
             // 
             // character3right
             // 
-            character3right.Location = new Point(960, 475);
+            character3right.Anchor = AnchorStyles.None;
+            character3right.Location = new Point(889, 397);
             character3right.Name = "character3right";
             character3right.Size = new Size(75, 23);
             character3right.TabIndex = 26;
@@ -1126,7 +1142,8 @@
             // 
             // character4left
             // 
-            character4left.Location = new Point(1179, 475);
+            character4left.Anchor = AnchorStyles.None;
+            character4left.Location = new Point(1069, 397);
             character4left.Name = "character4left";
             character4left.Size = new Size(75, 23);
             character4left.TabIndex = 27;
@@ -1136,7 +1153,8 @@
             // 
             // character4right
             // 
-            character4right.Location = new Point(1326, 475);
+            character4right.Anchor = AnchorStyles.None;
+            character4right.Location = new Point(1216, 397);
             character4right.Name = "character4right";
             character4right.Size = new Size(75, 23);
             character4right.TabIndex = 28;
@@ -1168,7 +1186,7 @@
             Controls.Add(tabControl1);
             Controls.Add(pictureBox4);
             Name = "TeamCreatorUserControl";
-            Size = new Size(1424, 861);
+            Size = new Size(1350, 705);
             tabControl1.ResumeLayout(false);
             knightPostac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)character1Picture).EndInit();

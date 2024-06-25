@@ -1602,10 +1602,10 @@ namespace Hopeless
         private void returnButton_Click(object sender, EventArgs e)
         {
             ReturnButtonClicked?.Invoke(this, EventArgs.Empty);
-          
-                SaveGameState();
-                
-            
+
+            SaveGameState();
+
+
         }
         private void PlaySellAndBuySound()
         {

@@ -86,13 +86,13 @@ namespace Hopeless
                 Label label = new Label();
                 label.Text = expediton.Name;
                 label.AutoSize = false;
-                label.Height = 155;
+                label.Height = 135;
                 label.Width = 300;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.BackgroundImageLayout = ImageLayout.Stretch;
-                
+
                 label.Font = new Font("Arial", 1);
-                
+
                 var resourceManager = Resources.ResourceManager;
                 var expeditionImage = (Image)resourceManager.GetObject(expediton.Name);
                 if (expeditionImage != null)
@@ -112,7 +112,7 @@ namespace Hopeless
                   string.Join("," + Environment.NewLine, expediton.ArmorRewards.Select(Name => Name.Display())) + Environment.NewLine + Environment.NewLine +
                    "Monsters:" + Environment.NewLine +
                  string.Join("," + Environment.NewLine, expediton.Monsters.Select(Name => Name.ToString()));
-             
+
 
                 if (expediton.Type == DifficultyType.Easy)
                 {

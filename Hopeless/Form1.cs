@@ -15,8 +15,8 @@ namespace Hopeless
         private ExpeditionChoiceUserControl expeditionChoiceUserControl;
         private List<Character> characters;
         private List<Monster> monsters;
-        private  List<IInventory> ekwipunek;
-        private  List<IInventory> CommonIventory;
+        private List<IInventory> ekwipunek;
+        private List<IInventory> CommonIventory;
         private List<IInventory> pulaEkwipunku;
         private List<Expedition> expeditons;
         public Form1()
@@ -28,7 +28,7 @@ namespace Hopeless
             TeamCreatorUserControl = new TeamCreatorUserControl();
             preparationsUserControl = new PreparationUserControl();
             expeditionUserControl = new ExpeditionUserControl();
-            expeditionChoiceUserControl= new ExpeditionChoiceUserControl();
+            expeditionChoiceUserControl = new ExpeditionChoiceUserControl();
             Controls.Add(menuUserControl);
             Controls.Add(TeamCreatorUserControl);
             Controls.Add(preparationsUserControl);
@@ -136,7 +136,7 @@ namespace Hopeless
             Monster giant = new Monster("Giant", 75, 55, 55, 30, 20, 10, 15, 20, 5, DifficultyType.Hard);
 
             Monster cannon = new Monster("Cannon", 75, 55, 55, 40, 15, 10, 16, 25, 5, DifficultyType.Hard);
-            
+
             Monster ghost = new Monster("Ghost", 80, 50, 50, 20, 15, 20, 20, 26, 30, DifficultyType.Hard);
 
             Monster bigCrab = new Monster("Big_Crab", 75, 55, 55, 15, 15, 15, 20, 25, 10, DifficultyType.Hard);
@@ -170,7 +170,7 @@ namespace Hopeless
 
 
 
-              
+
                 TeamCreatorUserControl.Visible = true;
                 menuUserControl.Visible = false;
             };
@@ -205,7 +205,7 @@ namespace Hopeless
             preparationsUserControl.WyruszButtonClicked += (sender, args) =>
             {
 
-               
+
                 preparationsUserControl.Visible = false;
                 expeditionChoiceUserControl.Visible = true;
 
@@ -226,7 +226,7 @@ namespace Hopeless
 
                 expeditionUserControl.Expedition = expeditionChoiceUserControl.SelectedExpedition;
 
-               
+
 
 
                 backgroundMusicPlayer.Stop();
@@ -239,8 +239,8 @@ namespace Hopeless
                 else
                     fightMusicPlayer.PlayLooping();
 
-               expeditionUserControl.Visible = true;
-                
+                expeditionUserControl.Visible = true;
+
             };
             expeditionChoiceUserControl.EventQuestExist += (sender, args) =>
             {
@@ -248,8 +248,8 @@ namespace Hopeless
             };
             expeditionUserControl.EventChoice += (sender, args) =>
             {
-               expeditionChoiceUserControl.EventResult = true;
-               preparationsUserControl.eventResult = true;
+                expeditionChoiceUserControl.EventResult = true;
+                preparationsUserControl.eventResult = true;
                 expeditionUserControl.EventResult = true;
             };
             expeditionUserControl.FinishButtonClicked += (sender, args) =>
@@ -257,7 +257,7 @@ namespace Hopeless
                 bossFightMusicPlayer.Stop();
                 fightMusicPlayer.Stop();
                 backgroundMusicPlayer.PlayLooping();
-               expeditionUserControl.Visible = false;
+                expeditionUserControl.Visible = false;
                 preparationsUserControl.Visible = true;
             };
 
@@ -282,16 +282,16 @@ namespace Hopeless
 
             characters.AddRange(gameState.Chararacters);
             equippedEkwipunek.AddRange(gameState.Equiped);
-            ekwipunek.AddRange(gameState.Inventory);           
+            ekwipunek.AddRange(gameState.Inventory);
             expeditons.AddRange(gameState.Expeditions);
             shopItems.AddRange(gameState.Shop);
-  
 
-            preparationsUserControl.eventQuest=gameState.EventQuest;
+
+            preparationsUserControl.eventQuest = gameState.EventQuest;
             preparationsUserControl.eventResult = gameState.EventResult;
-            expeditionChoiceUserControl.EventQuest=gameState.EventQuest;
+            expeditionChoiceUserControl.EventQuest = gameState.EventQuest;
             expeditionChoiceUserControl.EventResult = gameState.EventResult;
-            expeditionUserControl.EventResult=gameState.EventResult;
+            expeditionUserControl.EventResult = gameState.EventResult;
             preparationsUserControl.expeditons = expeditons;
             preparationsUserControl.characters = characters;
             preparationsUserControl.inventory = ekwipunek;
@@ -300,6 +300,6 @@ namespace Hopeless
             preparationsUserControl.gold = gameState.Gold;
             preparationsUserControl.shopItems = shopItems;
         }
-      
+
     }
 }

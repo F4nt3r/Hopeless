@@ -40,16 +40,18 @@
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1424, 861);
+            pictureBox1.Size = new Size(1350, 705);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // kontynuujGreButton
             // 
+            kontynuujGreButton.Anchor = AnchorStyles.None;
             kontynuujGreButton.BackColor = Color.White;
+            kontynuujGreButton.BackgroundImageLayout = ImageLayout.Stretch;
             kontynuujGreButton.Enabled = false;
-            kontynuujGreButton.Location = new Point(638, 693);
+            kontynuujGreButton.Location = new Point(600, 484);
             kontynuujGreButton.Name = "kontynuujGreButton";
             kontynuujGreButton.Size = new Size(150, 50);
             kontynuujGreButton.TabIndex = 1;
@@ -62,7 +64,7 @@
             nowaGraButton.Anchor = AnchorStyles.None;
             nowaGraButton.BackColor = Color.White;
             nowaGraButton.BackgroundImageLayout = ImageLayout.Stretch;
-            nowaGraButton.Location = new Point(638, 626);
+            nowaGraButton.Location = new Point(600, 417);
             nowaGraButton.Name = "nowaGraButton";
             nowaGraButton.Size = new Size(150, 50);
             nowaGraButton.TabIndex = 2;
@@ -72,8 +74,9 @@
             // 
             // exitButton
             // 
+            exitButton.Anchor = AnchorStyles.None;
             exitButton.BackColor = Color.White;
-            exitButton.Location = new Point(638, 762);
+            exitButton.Location = new Point(600, 556);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(150, 50);
             exitButton.TabIndex = 3;
@@ -90,7 +93,7 @@
             Controls.Add(kontynuujGreButton);
             Controls.Add(pictureBox1);
             Name = "MenuUserControl";
-            Size = new Size(1424, 861);
+            Size = new Size(1350, 705);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
